@@ -3,8 +3,8 @@
 import numpy as np
 import pandas as pd
 
-x_1 = np.random.uniform(-1, 1, 200)
-x_2 = np.random.uniform(-1, 1, 200)
+x_1 = np.random.uniform(-1, 1, 300)
+x_2 = np.random.uniform(-1, 1, 300)
 y = 1 * (x_1 > x_2)
 
 df = pd.DataFrame({'x_1': x_1, 'x_2': x_2, 'y': y})

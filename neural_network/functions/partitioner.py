@@ -1,4 +1,6 @@
+import math
 import random
+import typing
 
 
 class Partitioner:
@@ -18,11 +20,19 @@ class Partitioner:
         self._n = n
         self._m = m
 
-    def __call__(self):
+    def __call__(self) -> typing.List:
+        """Shuffles all integers from 0 to `n` - 1 and creates a partition of
+        this list.
+
+        Returns
+        -------
+        typing.List
+            The partitioned list
+        """
         ints = list(range(self._n))
         random.shuffle(ints)
         output_list = []
-        num_sets = self._n // self._m + 1
+        num_sets = math.ceil(self._n / self._m)
         for i in range(num_sets - 1):
             output_list.append(ints[i * self._m : (i + 1) * self._m])
         output_list.append(ints[(num_sets - 1) * self._m :])

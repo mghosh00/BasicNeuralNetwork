@@ -24,6 +24,7 @@ class Edge:
                     right_neuron.get_id()[1])
         self._weight = random.random()
         self.loss_gradients = []
+        self._velocity = 0.0
 
     def set_weight(self, weight: float):
         """Setter method
@@ -74,6 +75,26 @@ class Edge:
             The id
         """
         return self._id
+
+    def set_velocity(self, velocity: float):
+        """Setter method
+
+        Parameters
+        ----------
+        velocity : float
+            The new velocity
+        """
+        self._velocity = velocity
+
+    def get_velocity(self) -> float:
+        """Getter method
+
+        Returns
+        -------
+        float
+            The velocity
+        """
+        return self._velocity
 
     def __str__(self):
         return f"Edge between {self._left_neuron} and {self._right_neuron}"

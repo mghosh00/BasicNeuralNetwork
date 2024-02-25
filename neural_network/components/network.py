@@ -17,7 +17,8 @@ class Network:
 
     def __init__(self, num_features: int, num_hidden_layers: int,
                  neuron_counts: typing.List, leak: float = 0.01,
-                 learning_rate: float = 0.01, num_classes: int = 2):
+                 learning_rate: float = 0.01, num_classes: int = 2,
+                 adaptive: bool = False, gamma: float = 0.9):
         """Constructor method
 
         Parameters
@@ -34,10 +35,15 @@ class Network:
             The learning rate of the network
         num_classes : int
             The number of classes for the classification task
+        adaptive : bool
+            Whether we wish to have an adaptive learning rate or not
+        gamma : float
+            The adaptive learning rate parameter
         """
         if not num_hidden_layers == len(neuron_counts):
             raise ValueError("neuron_counts must have a length equal to"
                              "num_hidden_layers")
+        self._num_features = num_features
         self._num_hidden_layers = num_hidden_layers
         self._neuron_counts = neuron_counts
         self._input_layer = Layer(0, num_features)
@@ -64,6 +70,8 @@ class Network:
         self._softmax = Softmax()
         self._loss = Loss()
         self._learning_rate = learning_rate
+        self._adaptive = adaptive
+        self._gamma = gamma
 
     def forward_pass_one_datapoint(self, x: np.array) -> typing.List:
         """Performs a forward pass for one datapoint, excluding the ground
@@ -156,8 +164,14 @@ class Network:
         current_weight = edge.get_weight()
         batch_size = len(edge.loss_gradients)
         avg_loss_gradient = sum(edge.loss_gradients) / batch_size
-        edge.set_weight(current_weight - self._learning_rate *
-                        avg_loss_gradient)
+        if self._adaptive:
+            velocity = (self._gamma * edge.get_velocity() +
+                        self._learning_rate * avg_loss_gradient)
+            edge.set_weight(current_weight - velocity)
+            edge.set_velocity(velocity)
+        else:
+            edge.set_weight(current_weight - self._learning_rate *
+                            avg_loss_gradient)
         edge.loss_gradients = []
 
     def back_propagate_bias(self, neuron: Neuron):
@@ -212,4 +226,5 @@ class Network:
         typing.List
             A list of numbers of neurons per layer
         """
-        return self._neuron_counts
+        return ([self._num_features] + self._neuron_counts +
+                [self._num_features])

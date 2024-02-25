@@ -4,6 +4,7 @@ from . import main
 
 from .functions import AbstractFunction
 from .functions import Partitioner
+from .functions import WeightedPartitioner
 from .functions import ReLU
 from .functions import Sigmoid
 from .functions import TransferFunction
@@ -15,4 +16,8 @@ from .components import Edge
 from .components import Layer
 from .components import Network
 
+from .main import Plotter
+from .main import AbstractSimulator
+from .main import Validator
 from .main import Trainer
+from .main import Tester
