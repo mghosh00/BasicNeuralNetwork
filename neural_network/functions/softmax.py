@@ -1,5 +1,5 @@
 import math
-import typing
+from typing import List
 
 
 class Softmax:
@@ -11,12 +11,12 @@ class Softmax:
         """
         self._normalisation = 1
 
-    def normalisation(self, z: typing.List):
+    def normalisation(self, z: List[float]):
         """The normalisation constant for the softmax function
 
         Parameters
         ----------
-        z : typing.List
+        z : List[float]
             The vector of values from the output layer of the main network
 
         Returns

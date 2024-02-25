@@ -1,4 +1,4 @@
-import typing
+from typing import List
 
 from .abstract_function import AbstractFunction
 
@@ -18,14 +18,14 @@ class ReLU(AbstractFunction):
         super().__init__()
         self._leak = leak
 
-    def __call__(self, x: float, w: typing.List = None) -> float:
+    def __call__(self, x: float, w: List[float] = None) -> float:
         """Implementation of ReLU
 
         Parameters
         ----------
         x : float
             Input to function
-        w : typing.List
+        w : List[float]
             Weights (not used here)
 
         Returns
@@ -35,14 +35,14 @@ class ReLU(AbstractFunction):
         """
         return x if x >= 0 else x * self._leak
 
-    def gradient(self, x: float, w: typing.List = None) -> float:
+    def gradient(self, x: float, w: List[float] = None) -> float:
         """Gradient of ReLU
 
         Parameters
         ----------
         x : float
             Input to function
-        w : typing.List
+        w : List[float]
             Not used for this class
 
         Returns

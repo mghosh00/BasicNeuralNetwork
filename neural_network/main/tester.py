@@ -1,4 +1,6 @@
 import math
+import statistics
+
 import pandas as pd
 
 from neural_network.components import Network
@@ -51,7 +53,7 @@ class Tester(AbstractSimulator):
         title : str
             An optional title to append to the plot
         """
-        super().generate_scatter(f'validation_{title}')
+        super().abs_generate_scatter(phase='testing', title=title)
 
     def generate_confusion(self):
         """Creates a confusion matrix from the results.
@@ -66,3 +68,13 @@ class Tester(AbstractSimulator):
         confusion_df = pd.crosstab(self._data.y, self._data.y_hat)
         print("Confusion matrix for testing data:")
         print(confusion_df)
+        num_classes = len(confusion_df)
+        dice_scores = {}
+        for i in range(num_classes):
+            true_positive = confusion_df.at[i, i]
+            sum_row = sum(confusion_df.iloc[i, :])
+            sum_column = sum(confusion_df.iloc[:, i])
+            dice = 2 * true_positive / (sum_row + sum_column)
+            dice_scores[i] = dice
+        print(f"Dice scores: {dice_scores}")
+        print(f"Mean dice score: {statistics.mean(dice_scores.values())}")

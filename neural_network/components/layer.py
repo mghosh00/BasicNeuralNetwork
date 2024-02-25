@@ -1,4 +1,4 @@
-import typing
+from typing import List
 
 from .neuron import Neuron
 
@@ -31,13 +31,13 @@ class Layer:
         """
         return self._id
 
-    def get_neurons(self) -> typing.List:
+    def get_neurons(self) -> List[Neuron]:
         """Getter method
 
         Returns
         -------
-        typing.List
-            The weight
+        List[Neuron]
+            The `Neurons` in the `Layer`
         """
         return self._neurons
 

@@ -20,6 +20,9 @@ tester = Tester(network, testing_data, 5)
 
 trainer.run()
 trainer.generate_loss_plot()
+trainer.generate_scatter()
+validator.generate_scatter()
 
 tester.run()
 tester.generate_confusion()
+tester.generate_scatter()

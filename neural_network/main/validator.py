@@ -59,4 +59,4 @@ class Validator(AbstractSimulator):
         title : str
             An optional title to append to the plot
         """
-        super().generate_scatter(f'validation_{title}')
+        super().abs_generate_scatter(phase='validation', title=title)

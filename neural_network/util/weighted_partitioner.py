@@ -1,6 +1,6 @@
 import math
 import random
-import typing
+from typing import List
 import pandas as pd
 
 from .partitioner import Partitioner
@@ -32,13 +32,13 @@ class WeightedPartitioner(Partitioner):
         for i in range(len(df)):
             self._class_dict[int(df.loc[i, 'y'])].append(i)
 
-    def __call__(self) -> typing.List:
+    def __call__(self) -> List[List[int]]:
         """Uses weights for each class to create sets of size `m` containing
         integers (sampled with replacement).
 
         Returns
         -------
-        typing.List
+        List[List[int]]
             The list of sets
         """
         # Produces a list of `n` class indices

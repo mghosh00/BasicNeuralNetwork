@@ -1,5 +1,5 @@
 import math
-import typing
+from typing import List
 
 from .abstract_function import AbstractFunction
 
@@ -13,14 +13,14 @@ class Sigmoid(AbstractFunction):
         """
         super().__init__()
 
-    def __call__(self, x: float, w: typing.List = None) -> float:
+    def __call__(self, x: float, w: List[float] = None) -> float:
         """Implementation of Sigmoid
 
         Parameters
         ----------
         x : float
             Input to function
-        w : typing.List
+        w : List[float]
             Weights (not used here)
 
         Returns
@@ -30,14 +30,14 @@ class Sigmoid(AbstractFunction):
         """
         return 1 / (1 + math.exp(x))
 
-    def gradient(self, x: float, w: typing.List = None) -> float:
+    def gradient(self, x: float, w: List[float] = None) -> float:
         """Gradient of Sigmoid
 
         Parameters
         ----------
         x : float
             Input to function
-        w : typing.List
+        w : List[float]
             Not used for this class
 
         Returns

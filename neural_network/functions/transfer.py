@@ -1,4 +1,4 @@
-import typing
+from typing import List
 
 from .abstract_function import AbstractFunction
 
@@ -12,14 +12,14 @@ class TransferFunction(AbstractFunction):
         """
         super().__init__()
 
-    def __call__(self, o: typing.List, w: typing.List = None) -> float:
+    def __call__(self, o: List[float], w: List[float] = None) -> float:
         """Implementation of the transfer function
 
         Parameters
         ----------
-        o : typing.List
+        o : List[float]
             Output of previous layer
-        w : typing.List
+        w : List[float]
             Weights and bias
 
         Returns
@@ -33,19 +33,19 @@ class TransferFunction(AbstractFunction):
                              f"{o_size + 1})")
         return sum([o[i] * w[i] for i in range(o_size)]) + w[o_size]
 
-    def gradient(self, o: typing.List, w: typing.List = None) -> typing.List:
+    def gradient(self, o: List[float], w: List[float] = None) -> List[float]:
         """Gradient of transfer
 
         Parameters
         ----------
-        o : typing.List
+        o : List[float]
             Output of previous layer
-        w : typing.List
+        w : List[float]
             Weights
 
         Returns
         -------
-        typing.List
+        List[float]
             Gradient of transfer function w.r.t w (including the bias)
         """
         return o + [0]

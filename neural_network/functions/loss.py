@@ -1,5 +1,5 @@
 import math
-import typing
+from typing import List
 
 
 class Loss:
@@ -11,12 +11,12 @@ class Loss:
         """
         pass
 
-    def __call__(self, y_hat: typing.List, y: int) -> float:
+    def __call__(self, y_hat: List[float], y: int) -> float:
         """The loss function
 
         Parameters
         ----------
-        y_hat : typing.List
+        y_hat : List[float]
             Output vector from softmax layer
         y : int
             Target class (in {0, 1, ...})

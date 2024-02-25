@@ -14,7 +14,8 @@ class Plotter:
     def __init__(self):
         self._frames = []
 
-    def plot_predictions(self, df: pd.DataFrame, title: str = ''):
+    def plot_predictions(self, df: pd.DataFrame, phase: str = 'training',
+                         title: str = ''):
         """Creates a scatter plot of the predicted classes for a given set
         of data
 
@@ -22,16 +23,18 @@ class Plotter:
         ----------
         df : pd.DataFrame
             The data
+        phase : str
+            The phase of learning (training/validation/testing)
         title : str
             The title
         """
         plot = (ggplot(df, aes(x='x_1', y='x_2'))
                 + geom_point(aes(color='factor(y_hat)'))
-                + ggtitle("Predicted classes for data")
+                + ggtitle(f"Predicted classes for {phase} data")
                 )
         self._frames.append(plot)
         substring = '_' + title if title else ''
-        plot.save(Plotter.path + f"scatter{substring}.png")
+        plot.save(Plotter.path + f"{phase}/scatter{substring}.png")
 
     @staticmethod
     def plot_loss(df: pd.DataFrame, title: str = ''):

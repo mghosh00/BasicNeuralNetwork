@@ -2,9 +2,11 @@ from . import functions
 from . import components
 from . import main
 
+from .util import Partitioner
+from .util import WeightedPartitioner
+from .util import DataSplitter
+
 from .functions import AbstractFunction
-from .functions import Partitioner
-from .functions import WeightedPartitioner
 from .functions import ReLU
 from .functions import Sigmoid
 from .functions import TransferFunction

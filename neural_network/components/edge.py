@@ -1,5 +1,5 @@
 import random
-import typing
+from typing import Tuple
 
 from .neuron import Neuron
 
@@ -66,12 +66,12 @@ class Edge:
         """
         return self._right_neuron
 
-    def get_id(self) -> typing.Tuple:
+    def get_id(self) -> Tuple[int, ...]:
         """Getter method
 
         Returns
         -------
-        typing.Tuple
+        Tuple[int, ...]
             The id
         """
         return self._id

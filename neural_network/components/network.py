@@ -1,4 +1,4 @@
-import typing
+from typing import List
 import numpy as np
 
 from neural_network.functions import TransferFunction
@@ -16,7 +16,7 @@ class Network:
     """
 
     def __init__(self, num_features: int, num_hidden_layers: int,
-                 neuron_counts: typing.List, leak: float = 0.01,
+                 neuron_counts: List[int], leak: float = 0.01,
                  learning_rate: float = 0.01, num_classes: int = 2,
                  adaptive: bool = False, gamma: float = 0.9):
         """Constructor method
@@ -27,7 +27,7 @@ class Network:
             The number of features for the network
         num_hidden_layers : int
             The total number of hidden `Layers` in the `Network`
-        neuron_counts : typing.List
+        neuron_counts : List[int]
             A list of numbers of `Neurons` for each hidden `Layer`
         leak : float
             The leak rate of LeakyReLU
@@ -73,7 +73,7 @@ class Network:
         self._adaptive = adaptive
         self._gamma = gamma
 
-    def forward_pass_one_datapoint(self, x: np.array) -> typing.List:
+    def forward_pass_one_datapoint(self, x: np.array) -> List[float]:
         """Performs a forward pass for one datapoint, excluding the ground
         truth value. This method returns the predicted value in the final
         neuron in the output layer.
@@ -85,7 +85,7 @@ class Network:
 
         Returns
         -------
-        typing.List
+        List[float]
             The softmax probabilities of each class
         """
         input_neurons = self._input_layer.get_neurons()
@@ -188,27 +188,27 @@ class Network:
                         avg_bias_gradient)
         neuron.bias_gradients = []
 
-    def get_edges(self) -> typing.List:
+    def get_edges(self) -> List[List[List[Edge]]]:
         """Getter method for edges
 
         Returns
         -------
-        typing.List
+        List[List[List[Edge]]]
             A list of `Edges`
         """
         return self._edges
 
-    def get_main_layers(self) -> typing.List:
+    def get_main_layers(self) -> List[Layer]:
         """Getter method for main layers
 
         Returns
         -------
-        typing.List
+        List[Layer]
             A list of main `Layers`
         """
         return self._main_layers
 
-    def get_softmax_edges(self) -> typing.List:
+    def get_softmax_edges(self) -> List[Edge]:
         """Getter method for softmax edges
 
         Returns
@@ -218,12 +218,12 @@ class Network:
         """
         return self._softmax_edges
 
-    def get_neuron_counts(self) -> typing.List:
+    def get_neuron_counts(self) -> List[int]:
         """Getter method for neuron_counts
 
         Returns
         -------
-        typing.List
+        List[int]
             A list of numbers of neurons per layer
         """
         return ([self._num_features] + self._neuron_counts +

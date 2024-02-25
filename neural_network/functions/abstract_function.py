@@ -1,4 +1,4 @@
-import typing
+from typing import List
 
 class AbstractFunction:
     """Class to represent an abstract function
@@ -9,14 +9,14 @@ class AbstractFunction:
         """
         pass
 
-    def __call__(self, x: float | typing.List, w: typing.List = None) -> float:
+    def __call__(self, x: float | List[float], w: List[float] = None) -> float:
         """Calling of the function
 
         Parameters
         ----------
-        x : float | typing.List
+        x : float | List[float]
             The input value
-        w : typing.List [Optional, Default = None]
+        w : List[float] [Optional, Default = None]
             The weights
         Returns
         -------
@@ -25,20 +25,20 @@ class AbstractFunction:
         """
         raise NotImplementedError("Cannot call from base class")
 
-    def gradient(self, x: float | typing.List, w: typing.List = None)\
-            -> float | typing.List:
+    def gradient(self, x: float | List[float], w: List[float] = None)\
+            -> float | List[float]:
         """The gradient of the function
 
         Parameters
         ----------
-        x : float | typing.List
+        x : float | List[float]
             The input value
-        w : typing.List
+        w : List[float]
             The weights
 
         Returns
         -------
-        float | typing.List
+        float | List[float]
             The gradient of the function
         """
         raise NotImplementedError("Cannot call from base class")

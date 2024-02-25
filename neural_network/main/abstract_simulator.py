@@ -1,8 +1,8 @@
-import typing
+from typing import List
 import pandas as pd
 
-from neural_network.functions import Partitioner
-from neural_network.functions import WeightedPartitioner
+from neural_network.util import Partitioner
+from neural_network.util import WeightedPartitioner
 from neural_network.functions import Loss
 from neural_network.components import Network
 
@@ -34,7 +34,7 @@ class AbstractSimulator:
         self._network = network
 
         # Ensure that number of input nodes equals number of features
-        n = len(data.columns) - 2
+        n = len(data.columns) - 1
         m = network.get_neuron_counts()[0]
         if m != n:
             raise ValueError(f"Number of features must match number of "
@@ -42,7 +42,7 @@ class AbstractSimulator:
                              f"neurons = {m})")
 
         # Renaming of columns
-        data.columns = ['id'] + [f'x_{i + 1}' for i in range(n)] + ['y']
+        data.columns = [f'x_{i + 1}' for i in range(n)] + ['y']
         data['y_hat'] = [0] * len(data)
         self._data = data
 
@@ -60,12 +60,12 @@ class AbstractSimulator:
             self._partitioner = Partitioner(len(data), batch_size)
         self._plotter = Plotter()
 
-    def forward_pass_one_batch(self, batch_ids: typing.List) -> float:
+    def forward_pass_one_batch(self, batch_ids: List[int]) -> float:
         """Performs the forward pass for one batch of the data.
 
         Parameters
         ----------
-        batch_ids : typing.List
+        batch_ids : List[int]
             The random list of ids for the current batch
 
         Returns
@@ -75,7 +75,7 @@ class AbstractSimulator:
         """
         total_loss = 0
         for i in batch_ids:
-            labelled_point = self._data.loc[i].to_numpy()[1:]
+            labelled_point = self._data.loc[i].to_numpy()
             x, y = labelled_point[:-2], int(labelled_point[-2])
             # Do the forward pass and save the predicted value to the df
             y_hat = self._network.forward_pass_one_datapoint(x)
@@ -94,12 +94,14 @@ class AbstractSimulator:
     def store_gradients(self, batch_id):
         pass
 
-    def generate_scatter(self, title: str = ''):
+    def abs_generate_scatter(self, phase: str = 'training', title: str = ''):
         """Creates scatter plot from the data and their predicted values
 
         Parameters
         ----------
+        phase : str
+            The phase of learning
         title : str
             An optional title to append to the plot
         """
-        self._plotter.plot_predictions(self._data, title)
+        self._plotter.plot_predictions(self._data, phase, title)

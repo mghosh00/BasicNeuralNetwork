@@ -119,7 +119,7 @@ class Trainer(AbstractSimulator):
         title : str
             An optional title to append to the plot
         """
-        super().generate_scatter(f'training_{title}')
+        super().abs_generate_scatter(phase='training', title=title)
 
     def generate_loss_plot(self, title: str = ''):
         Plotter.plot_loss(self._loss_df, title)
