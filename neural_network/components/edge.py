@@ -20,6 +20,11 @@ class Edge:
         """
         self._left_neuron = left_neuron
         self._right_neuron = right_neuron
+        left_id = left_neuron.get_id()[0]
+        right_id = right_neuron.get_id()[0]
+        if left_id + 1 != right_id:
+            raise ValueError(f"Edge must connect adjacent layers "
+                             f"(left: {left_id}, right: {right_id})")
         self._id = (left_neuron.get_id()[0], left_neuron.get_id()[1],
                     right_neuron.get_id()[1])
         self._weight = random.random()

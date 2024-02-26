@@ -2,7 +2,7 @@ import unittest
 from unittest import TestCase
 from unittest import mock
 
-import neural_network as nn
+from neural_network.components.neuron import Neuron
 
 
 class TestNeuron(TestCase):
@@ -12,12 +12,12 @@ class TestNeuron(TestCase):
     @mock.patch('random.random')
     def setUp(self, mock_random):
         mock_random.return_value = 0.1
-        self.neuron = nn.Neuron(3, 4)
+        self.neuron = Neuron(3, 4)
 
     def test_construct(self):
         self.assertEqual((3, 4), self.neuron._id)
         self.assertEqual(0.1, self.neuron._bias)
-        self.assertEqual(None, self.neuron._value)
+        self.assertIsNone(self.neuron._value)
         self.assertEqual([], self.neuron.bias_gradients)
 
     def test_bias_getter_and_setter(self):
@@ -26,7 +26,7 @@ class TestNeuron(TestCase):
         self.assertEqual(0.4, self.neuron._bias)
 
     def test_value_getter_and_setter(self):
-        self.assertEqual(None, self.neuron.get_value())
+        self.assertIsNone(self.neuron.get_value())
         self.neuron.set_value(0.5)
         self.assertEqual(0.5, self.neuron._value)
 
