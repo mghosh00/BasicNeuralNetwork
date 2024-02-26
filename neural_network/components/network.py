@@ -88,11 +88,11 @@ class Network:
         List[float]
             The softmax probabilities of each class
         """
-        input_neurons = self._input_layer.get_neurons()
-        if not len(x) == len(input_neurons):
+        if not len(x) == len(self._input_layer):
             raise ValueError(f"Number of features must match the number of "
                              f"neurons in the input layer ({len(x)} != "
-                             f"{len(input_neurons)})")
+                             f"{len(self._input_layer)})")
+        input_neurons = self._input_layer.get_neurons()
         for j, neuron in enumerate(input_neurons):
             neuron.set_value(x[j])
         for i, left_layer in enumerate(self._main_layers[:-1]):
@@ -147,7 +147,7 @@ class Network:
         else:
             next_layer = self._main_layers[right_index + 1]
             next_edges = [self._edges[right_index][j][row]
-                          for j in range(len(next_layer.get_neurons()))]
+                          for j in range(len(next_layer))]
             factor = sum([new_edge.get_weight() * new_edge.loss_gradients[-1]
                           for new_edge in next_edges])
             edge.loss_gradients.append(o_left * factor * relu_grad)

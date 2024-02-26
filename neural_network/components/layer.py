@@ -41,5 +41,22 @@ class Layer:
         """
         return self._neurons
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """String representation of the `Layer`.
+
+        Returns
+        -------
+        str
+            String representation
+        """
         return f"Layer {self._id}"
+
+    def __len__(self) -> int:
+        """Length of the `Layer` - the number of `Neurons`.
+
+        Returns
+        -------
+        int
+            Number of `Neurons` in the `Layer`
+        """
+        return self._num_neurons

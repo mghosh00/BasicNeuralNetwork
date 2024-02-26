@@ -66,9 +66,9 @@ class Trainer(AbstractSimulator):
 
         edges = self._network.get_edges()
         for edge_layer in reversed(edges):
-            for right_node in edge_layer:
+            for right_neuron in edge_layer:
                 first = True
-                for edge in right_node:
+                for edge in right_neuron:
                     self._network.store_gradient_of_loss(edge, y, first)
                     first = False
 
@@ -78,8 +78,8 @@ class Trainer(AbstractSimulator):
         """
         edges = self._network.get_edges()
         for layer in reversed(edges):
-            for right_node in layer:
-                for edge in right_node:
+            for right_neuron in layer:
+                for edge in right_neuron:
                     self._network.back_propagate(edge)
 
         layers = self._network.get_main_layers()
