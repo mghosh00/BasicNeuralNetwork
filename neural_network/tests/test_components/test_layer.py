@@ -1,10 +1,10 @@
 from unittest import TestCase
 
-from neural_network.components import Neuron, Layer
+from neural_network.components import Layer
 
 
-class TestNeuron(TestCase):
-    """Tests the `Neuron` class
+class TestLayer(TestCase):
+    """Tests the `Layer` class
     """
 
     def setUp(self):
