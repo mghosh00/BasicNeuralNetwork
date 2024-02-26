@@ -1,5 +1,6 @@
 from typing import List
 
+
 class AbstractFunction:
     """Class to represent an abstract function
     """

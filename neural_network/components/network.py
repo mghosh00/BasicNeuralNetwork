@@ -51,8 +51,8 @@ class Network:
                                for i in range(1, num_hidden_layers + 1)]
         self._output_layer = Layer(num_hidden_layers + 1, num_classes)
         self._softmax_layer = Layer(num_hidden_layers + 2, num_classes)
-        self._main_layers = ([self._input_layer] + self._hidden_layers +
-                             [self._output_layer])
+        self._main_layers = ([self._input_layer] + self._hidden_layers
+                             + [self._output_layer])
         self._edges = []
         for i, left_layer in enumerate(self._main_layers[:-1]):
             right_layer = self._main_layers[i + 1]
@@ -165,13 +165,13 @@ class Network:
         batch_size = len(edge.loss_gradients)
         avg_loss_gradient = sum(edge.loss_gradients) / batch_size
         if self._adaptive:
-            velocity = (self._gamma * edge.get_velocity() +
-                        self._learning_rate * avg_loss_gradient)
+            velocity = (self._gamma * edge.get_velocity()
+                        + self._learning_rate * avg_loss_gradient)
             edge.set_weight(current_weight - velocity)
             edge.set_velocity(velocity)
         else:
-            edge.set_weight(current_weight - self._learning_rate *
-                            avg_loss_gradient)
+            edge.set_weight(current_weight - self._learning_rate
+                            * avg_loss_gradient)
         edge.loss_gradients = []
 
     def back_propagate_bias(self, neuron: Neuron):
@@ -184,8 +184,8 @@ class Network:
         current_bias = neuron.get_bias()
         batch_size = len(neuron.bias_gradients)
         avg_bias_gradient = sum(neuron.bias_gradients) / batch_size
-        neuron.set_bias(current_bias - self._learning_rate *
-                        avg_bias_gradient)
+        neuron.set_bias(current_bias - self._learning_rate
+                        * avg_bias_gradient)
         neuron.bias_gradients = []
 
     def get_edges(self) -> List[List[List[Edge]]]:
@@ -226,5 +226,5 @@ class Network:
         List[int]
             A list of numbers of neurons per layer
         """
-        return ([self._num_features] + self._neuron_counts +
-                [self._num_features])
+        return ([self._num_features] + self._neuron_counts
+                + [self._num_features])

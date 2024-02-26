@@ -42,8 +42,8 @@ class Validator(AbstractSimulator):
         self._epoch += 1
         total_loss = 0
         batch_partition = self._partitioner()
-        for iteration in range(math.ceil(len(self._data) /
-                                         self._batch_size)):
+        for iteration in range(math.ceil(len(self._data)
+                                         / self._batch_size)):
             batch_ids = batch_partition[iteration]
             total_loss += self.forward_pass_one_batch(batch_ids)
         loss = total_loss / len(self._data)

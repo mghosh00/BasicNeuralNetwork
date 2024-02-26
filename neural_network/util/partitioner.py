@@ -34,6 +34,6 @@ class Partitioner:
         output_list = []
         num_sets = math.ceil(self._n / self._m)
         for i in range(num_sets - 1):
-            output_list.append(ints[i * self._m : (i + 1) * self._m])
-        output_list.append(ints[(num_sets - 1) * self._m :])
+            output_list.append(ints[i * self._m:(i + 1) * self._m])
+        output_list.append(ints[(num_sets - 1) * self._m:])
         return output_list

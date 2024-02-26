@@ -24,7 +24,7 @@ class Softmax:
         float
             The normalisation constant
         """
-        self._normalisation =  sum([math.exp(z_i) for z_i in z])
+        self._normalisation = sum([math.exp(z_i) for z_i in z])
 
     def __call__(self, z_k: float) -> float:
         """The loss function
