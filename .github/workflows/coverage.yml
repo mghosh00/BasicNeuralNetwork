@@ -32,9 +32,8 @@ jobs:
         coverage run neural_network/run_tests.py --unit
 
     - name: Upload coverage reports to Codecov
-      if: success()
-      env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      uses: codecov/codecov-action@v4.0.1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        slug: mghosh00/NeuralNetwork
         files: coverage.xml
-      run: |
-        codecov
