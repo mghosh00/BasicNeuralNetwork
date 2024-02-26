@@ -2,7 +2,7 @@ import unittest
 from unittest import TestCase
 from unittest import mock
 
-from neural_network.components import Neuron
+import neural_network as nn
 
 
 class TestNeuron(TestCase):
@@ -12,7 +12,7 @@ class TestNeuron(TestCase):
     @mock.patch('random.random')
     def setUp(self, mock_random):
         mock_random.return_value = 0.1
-        self.neuron = Neuron(3, 4)
+        self.neuron = nn.Neuron(3, 4)
 
     def test_construct(self):
         self.assertEqual((3, 4), self.neuron._id)
