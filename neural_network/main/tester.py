@@ -44,7 +44,6 @@ class Tester(AbstractSimulator):
         loss = total_loss / len(self._data)
         print(f"Testing loss: {loss}")
 
-
     def generate_scatter(self, title: str = ''):
         """Creates scatter plot from the data and their predicted values.
 
