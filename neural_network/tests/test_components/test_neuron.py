@@ -6,7 +6,7 @@ from neural_network.components import Neuron
 
 
 class TestNeuron(TestCase):
-    """Tests the `Neuron` class
+    """Tests the `Neuron` class.
     """
 
     @mock.patch('random.random')
