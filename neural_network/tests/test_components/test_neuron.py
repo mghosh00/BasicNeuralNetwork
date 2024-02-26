@@ -1,3 +1,4 @@
+import unittest
 from unittest import TestCase
 from unittest import mock
 
@@ -34,3 +35,7 @@ class TestNeuron(TestCase):
 
     def test_str(self):
         self.assertEqual("Neuron (3, 4)", str(self.neuron))
+
+
+if __name__ == '__main__':
+    unittest.main()

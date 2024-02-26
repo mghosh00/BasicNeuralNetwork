@@ -1,3 +1,4 @@
+import unittest
 from unittest import TestCase
 
 from neural_network.components import Layer
@@ -29,3 +30,7 @@ class TestLayer(TestCase):
 
     def test_len(self):
         self.assertEqual(6, len(self.layer))
+
+
+if __name__ == '__main__':
+    unittest.main()
