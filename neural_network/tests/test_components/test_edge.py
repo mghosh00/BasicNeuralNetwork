@@ -2,8 +2,8 @@ import unittest
 from unittest import TestCase
 from unittest import mock
 
-from components.neuron import Neuron
-from components.edge import Edge
+from neuron import Neuron
+from edge import Edge
 
 
 class TestEdge(TestCase):
