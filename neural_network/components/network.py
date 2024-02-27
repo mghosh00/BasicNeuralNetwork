@@ -1,4 +1,5 @@
 from typing import List
+
 import numpy as np
 
 from neural_network.functions import TransferFunction
@@ -41,8 +42,9 @@ class Network:
             The adaptive learning rate parameter
         """
         if not num_hidden_layers == len(neuron_counts):
-            raise ValueError("neuron_counts must have a length equal to"
-                             "num_hidden_layers")
+            raise ValueError(f"neuron_counts ({len(neuron_counts)}) must have "
+                             f"a length equal to num_hidden_layers "
+                             f"({num_hidden_layers})")
         self._num_features = num_features
         self._num_hidden_layers = num_hidden_layers
         self._neuron_counts = neuron_counts
@@ -92,20 +94,62 @@ class Network:
             raise ValueError(f"Number of features must match the number of "
                              f"neurons in the input layer ({len(x)} != "
                              f"{len(self._input_layer)})")
+
+        # Input layer
         input_neurons = self._input_layer.get_neurons()
         for j, neuron in enumerate(input_neurons):
             neuron.set_value(x[j])
-        for i, left_layer in enumerate(self._main_layers[:-1]):
-            right_layer = self._main_layers[i + 1]
-            for k, right_neuron in enumerate(right_layer.get_neurons()):
-                left_neurons = left_layer.get_neurons()
-                edges = self._edges[i][k]
-                o_list = [neuron.get_value() for neuron in left_neurons]
-                w_list = [edge.get_weight() for edge in edges]
-                bias = right_neuron.get_bias()
-                a = self._transfer(o_list, w_list + [bias])
-                right_neuron.set_value(self._relu(a))
 
+        # Hidden layers
+        for left_layer in self._main_layers[:-1]:
+            right_layer = self._main_layers[left_layer.get_id() + 1]
+            for right_neuron in right_layer.get_neurons():
+
+                # Calculates the desired values for each neuron
+                self._propagate_value_forward(left_layer, right_neuron)
+
+        # Output -> softmax layer
+        # Calculates all values in the softmax_layer
+        softmax_vector = self._propagate_softmax_layer()
+        return softmax_vector
+
+    def _propagate_value_forward(self, left_layer: Layer,
+                                 right_neuron: Neuron):
+        """Given a `left_layer` and a `right_neuron`, this calculates the
+        activation function and value from the `left_layer` and propagates
+        this value to the `right_neuron`
+
+        Parameters
+        ----------
+        left_layer : Layer
+            The current `left_layer` in forward propagation
+        right_neuron : Neuron
+            The current `right_neuron` in forward propagation
+        """
+        left_neurons = left_layer.get_neurons()
+        i, j = right_neuron.get_id()
+
+        # All edges connecting the left_layer to the right_neuron
+        edges = self._edges[i - 1][j]
+
+        # Lists of values and weights, with the bias
+        o_list = [neuron.get_value() for neuron in left_neurons]
+        w_list = [edge.get_weight() for edge in edges]
+        bias = right_neuron.get_bias()
+        a = self._transfer(o_list, w_list + [bias])
+
+        # Use ReLU to find the value for the right_neuron
+        right_neuron.set_value(self._relu(a))
+
+    def _propagate_softmax_layer(self) -> List[float]:
+        """Completes a forward pass for one datapoint by transferring all
+        values from the output layer into softmax probabilities
+
+        Returns
+        -------
+        List[float]
+            The `List` of softmax probabilities
+        """
         values = [neuron.get_value()
                   for neuron in self._output_layer.get_neurons()]
         self._softmax.normalisation(values)
@@ -178,8 +222,8 @@ class Network:
         """Uses the bias gradients of all datapoints (for this specific neuron)
         to perform gradient descent and calculate a new bias for this neuron.
 
-        node : Node
-            The `Node` whose bias we are interested in updating
+        neuron : Neuron
+            The `Neuron` whose bias we are interested in updating
         """
         current_bias = neuron.get_bias()
         batch_size = len(neuron.bias_gradients)

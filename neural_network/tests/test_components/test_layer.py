@@ -1,7 +1,7 @@
 import unittest
 from unittest import TestCase
 
-from neural_network.components.layer import Layer
+from neural_network import Layer
 
 
 class TestLayer(TestCase):
