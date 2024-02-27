@@ -1,3 +1,3 @@
-from .partitioner import Partitioner
-from .weighted_partitioner import WeightedPartitioner
-from .data_splitter import DataSplitter
+from neural_network.util.partitioner import Partitioner
+from neural_network.util.weighted_partitioner import WeightedPartitioner
+from neural_network.util.data_splitter import DataSplitter

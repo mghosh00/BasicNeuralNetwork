@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58548c86-52df-414f-855a-9e2625a8f076" name="Changes" comment="Created a class to split data and added confusion matrix and dice scores" />
+    <list default="true" id="58548c86-52df-414f-855a-9e2625a8f076" name="Changes" comment="Added test_edge.py" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,6 +30,9 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python tests.Python tests for test_edge.TestEdge.executor": "Run",
+    "Python tests.Python tests for test_layer.TestNeuron.executor": "Run",
+    "Python tests.Python tests for test_neuron.TestNeuron.executor": "Run",
     "Python.circle_main (1).executor": "Run",
     "Python.circle_main.executor": "Run",
     "Python.generate_circle_data (1).executor": "Run",
@@ -41,7 +44,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/matth/IdeaProjects/Python/NeuralNetwork/neural_network/main",
+    "last_opened_file_path": "C:/Users/matth/IdeaProjects/Python/NeuralNetwork",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0"
@@ -49,13 +52,16 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\matth\IdeaProjects\Python\NeuralNetwork" />
+      <recent name="C:\Users\matth\IdeaProjects\Python\NeuralNetwork\neural_network" />
       <recent name="C:\Users\matth\IdeaProjects\Python\NeuralNetwork\neural_network\main" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\matth\IdeaProjects\Python\NeuralNetwork\neural_network\tests\test_components" />
       <recent name="C:\Users\matth\IdeaProjects\Python\NeuralNetwork\neural_network\util" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.circle_main (1)">
+  <component name="RunManager" selected="Python tests.Python tests for test_edge.TestEdge">
     <configuration name="circle_main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
@@ -70,50 +76,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/neural_network/examples/circle/circle_main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="circle_main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="NeuralNetwork" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/examples" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/neural_network/examples/circle_main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="generate_circle_data (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="NeuralNetwork" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/examples/circle" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/neural_network/examples/circle/generate_circle_data.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -144,35 +106,58 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="weighted_partitioner" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_edge.TestEdge" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/functions" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_components" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\matth\IdeaProjects\Python\NeuralNetwork\neural_network\util\weighted_partitioner.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_edge.TestEdge&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_layer.TestNeuron" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="NeuralNetwork" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_components" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_layer.TestNeuron&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_neuron.TestNeuron" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="NeuralNetwork" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_components" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_neuron.TestNeuron&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests for test_edge.TestEdge" />
+        <item itemvalue="Python tests.Python tests for test_layer.TestNeuron" />
+        <item itemvalue="Python tests.Python tests for test_neuron.TestNeuron" />
         <item itemvalue="Python.circle_main (1)" />
         <item itemvalue="Python.linear_main" />
-        <item itemvalue="Python.generate_circle_data (1)" />
-        <item itemvalue="Python.weighted_partitioner" />
-        <item itemvalue="Python.circle_main" />
       </list>
     </recent_temporary>
   </component>
@@ -209,7 +194,95 @@
       <option name="project" value="LOCAL" />
       <updated>1708892684967</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Created package, docs and workflows">
+      <option name="closed" value="true" />
+      <created>1708965933641</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1708965933641</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Fixed run_tests.py">
+      <option name="closed" value="true" />
+      <created>1708966521183</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1708966521183</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added .readthedocs.yml">
+      <option name="closed" value="true" />
+      <created>1708966661708</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1708966661708</updated>
+    </task>
+    <task id="LOCAL-00007" summary="flake8">
+      <option name="closed" value="true" />
+      <created>1708967378230</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1708967378230</updated>
+    </task>
+    <task id="LOCAL-00008" summary="flake8">
+      <option name="closed" value="true" />
+      <created>1708967653881</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1708967653881</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Tests for Layer class">
+      <option name="closed" value="true" />
+      <created>1708969124415</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1708969124415</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Error fix">
+      <option name="closed" value="true" />
+      <created>1708969165096</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1708969165096</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Changed tests">
+      <option name="closed" value="true" />
+      <created>1708971449717</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1708971449717</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Changed tests">
+      <option name="closed" value="true" />
+      <created>1708973264091</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1708973264092</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Attempt">
+      <option name="closed" value="true" />
+      <created>1708973737156</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1708973737156</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Added test_edge.py">
+      <option name="closed" value="true" />
+      <created>1708974710075</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1708974710075</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -227,6 +300,15 @@
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Created testing and validation features along with weighted partitioning" />
     <MESSAGE value="Created a class to split data and added confusion matrix and dice scores" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created a class to split data and added confusion matrix and dice scores" />
+    <MESSAGE value="Created package, docs and workflows" />
+    <MESSAGE value="Fixed run_tests.py" />
+    <MESSAGE value="Added .readthedocs.yml" />
+    <MESSAGE value="flake8" />
+    <MESSAGE value="Tests for Layer class" />
+    <MESSAGE value="Error fix" />
+    <MESSAGE value="Changed tests" />
+    <MESSAGE value="Attempt" />
+    <MESSAGE value="Added test_edge.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added test_edge.py" />
   </component>
 </project>
