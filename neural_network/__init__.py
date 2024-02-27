@@ -3,24 +3,24 @@ from neural_network import functions
 from neural_network import components
 from neural_network import main
 
-from util import Partitioner
-from util import WeightedPartitioner
-from util import DataSplitter
+from neural_network.util import Partitioner
+from neural_network.util import WeightedPartitioner
+from neural_network.util import DataSplitter
 
-from functions import AbstractFunction
-from functions import ReLU
-from functions import Sigmoid
-from functions import TransferFunction
-from functions import Softmax
-from functions import Loss
+from neural_network.functions import AbstractFunction
+from neural_network.functions import ReLU
+from neural_network.functions import Sigmoid
+from neural_network.functions import TransferFunction
+from neural_network.functions import Softmax
+from neural_network.functions import Loss
 
-from components import Neuron
-from components import Edge
-from components import Layer
-from components import Network
+from neural_network.components import Neuron
+from neural_network.components import Edge
+from neural_network.components import Layer
+from neural_network.components import Network
 
-from main import Plotter
-from main import AbstractSimulator
-from main import Validator
-from main import Trainer
-from main import Tester
+from neural_network.main import Plotter
+from neural_network.main import AbstractSimulator
+from neural_network.main import Validator
+from neural_network.main import Trainer
+from neural_network.main import Tester
