@@ -29,7 +29,8 @@ jobs:
 
     - name: Run coverage
       run: |
-        coverage run neural_network/run_tests.py --unit --debug=trace
+        coverage run neural_network/run_tests.py --unit
+        coverage run --debug=trace
 
     - name: codecov
       if: success()
