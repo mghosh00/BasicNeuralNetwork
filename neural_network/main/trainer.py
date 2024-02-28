@@ -83,7 +83,7 @@ class Trainer(AbstractSimulator):
                 for edge in right_neuron:
                     self._network.back_propagate_weight(edge)
 
-        layers = self._network.get_main_layers()
+        layers = self._network.get_layers()
         for layer in layers[1:]:
             for neuron in layer.get_neurons():
                 self._network.back_propagate_bias(neuron)
