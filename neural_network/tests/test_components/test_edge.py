@@ -29,6 +29,7 @@ class TestEdge(TestCase):
         self.assertEqual((4, 3, 2), self.edge._id)
         self.assertEqual(0.1, self.edge._weight)
         self.assertEqual([], self.edge.loss_gradients)
+        self.assertEqual(0.0, self.edge._delta)
         self.assertEqual(0.0, self.edge._velocity)
 
     def test_weight_getter_and_setter(self):
@@ -40,6 +41,11 @@ class TestEdge(TestCase):
         self.assertEqual(0.0, self.edge.get_velocity())
         self.edge.set_velocity(0.5)
         self.assertEqual(0.5, self.edge._velocity)
+
+    def test_delta_getter_and_setter(self):
+        self.assertEqual(0.0, self.edge.get_delta())
+        self.edge.set_delta(0.6)
+        self.assertEqual(0.6, self.edge._delta)
 
     def test_get_id(self):
         self.assertEqual((4, 3, 2), self.edge.get_id())

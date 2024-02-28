@@ -29,7 +29,7 @@ class Edge:
                     right_neuron.get_id()[1])
         self._weight = random.uniform(-1, 1)
         self.loss_gradients = []
-        self._delta = 0
+        self._delta = 0.0
         self._velocity = 0.0
 
     def set_weight(self, weight: float):
