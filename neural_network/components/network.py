@@ -289,4 +289,4 @@ class Network:
             A list of numbers of neurons per layer
         """
         return ([self._num_features] + self._neuron_counts
-                + [len(self._softmax_layer)])
+                + [len(self._softmax_layer), len(self._softmax_layer)])
