@@ -7,7 +7,6 @@ import numpy as np
 from neural_network.functions import TransferFunction
 from neural_network.functions import ReLU
 from neural_network.functions import Softmax
-from neural_network.functions import Loss
 
 from .neuron import Neuron
 from .edge import Edge
@@ -80,7 +79,6 @@ class Network:
         self._transfer = TransferFunction()
         self._relu = ReLU(leak)
         self._softmax = Softmax()
-        self._loss = Loss()
         self._learning_rate = learning_rate
         self._adaptive = adaptive
         self._gamma = gamma
@@ -110,7 +108,7 @@ class Network:
         for j, neuron in enumerate(input_neurons):
             neuron.set_value(x[j])
 
-        # Hidden layers
+        # Hidden layers and output layer
         for left_layer in self._main_layers[:-1]:
             right_layer = self._main_layers[left_layer.get_id() + 1]
             for right_neuron in right_layer.get_neurons():
@@ -146,10 +144,10 @@ class Network:
         o_list = [neuron.get_value() for neuron in left_neurons]
         w_list = [edge.get_weight() for edge in edges]
         bias = right_neuron.get_bias()
-        a = self._transfer(o_list, w_list + [bias])
+        z = self._transfer(o_list, w_list + [bias])
 
         # Use ReLU to find the value for the right_neuron
-        right_neuron.set_value(self._relu(a))
+        right_neuron.set_value(self._relu(z))
 
     def _propagate_softmax_layer(self) -> List[float]:
         """Completes a forward pass for one datapoint by transferring all
@@ -175,7 +173,7 @@ class Network:
     def store_gradient_of_loss(self, edge: Edge, target: int, first: bool):
         """Calculates the gradient of the loss function with respect to one
         weight (assigned to the edge) based on the values at edges of future
-        layers. One part of the back propagation process
+        layers. One part of the back propagation process.
 
         edge : Edge
             The `Edge` containing the weight we are interested in
@@ -187,17 +185,27 @@ class Network:
         """
         left_layer_index = edge.get_id()[0]
         right_neuron = edge.get_right_neuron()
+
+        # Value of left neuron and right neuron
         o_left = edge.get_left_neuron().get_value()
         o_right = right_neuron.get_value()
+
+        # Constant (either +1 or -self._leak)
         relu_grad = self._relu.gradient(o_right)
         right_index, row = right_neuron.get_id()
+
+        # Softmax layer
         if left_layer_index == self._num_hidden_layers + 1:
             edge.loss_gradients.append(o_right - int(row == target))
+
+        # Output layer
         elif left_layer_index == self._num_hidden_layers:
             delta = self._softmax_edges[row].loss_gradients[-1] * relu_grad
             edge.loss_gradients.append(o_left * delta)
             if first:
                 right_neuron.bias_gradients.append(delta)
+
+        # Hidden layers
         else:
             next_layer = self._main_layers[right_index + 1]
             next_edges = [self._edges[right_index][j][row]
@@ -208,7 +216,7 @@ class Network:
             if first:
                 right_neuron.bias_gradients.append(factor * relu_grad)
 
-    def back_propagate(self, edge: Edge):
+    def back_propagate_weight(self, edge: Edge):
         """Uses the loss gradients of all datapoints (for this specific edge)
         to perform gradient descent and calculate a new weight for this edge.
 
@@ -281,4 +289,4 @@ class Network:
             A list of numbers of neurons per layer
         """
         return ([self._num_features] + self._neuron_counts
-                + [self._num_features])
+                + [len(self._softmax_layer)])

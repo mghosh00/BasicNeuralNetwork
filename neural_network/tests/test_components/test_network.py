@@ -2,14 +2,12 @@ import unittest
 from unittest import TestCase
 from unittest import mock
 
+import numpy as np
+
 from neural_network import TransferFunction
 from neural_network import ReLU
 from neural_network import Softmax
-from neural_network import Loss
 
-from neural_network import Neuron
-from neural_network import Edge
-from neural_network import Layer
 from neural_network import Network
 
 
@@ -106,12 +104,172 @@ class TestNetwork(TestCase):
         self.assertIsInstance(self.network._transfer, TransferFunction)
         self.assertIsInstance(self.network._relu, ReLU)
         self.assertIsInstance(self.network._softmax, Softmax)
-        self.assertIsInstance(self.network._loss, Loss)
 
         # Checking other parameters
         self.assertEqual(self.network._learning_rate, 0.005)
         self.assertEqual(self.network._adaptive, True)
         self.assertEqual(self.network._gamma, 0.8)
+
+    def test_forward_pass_one_datapoint_erroneous(self):
+        erroneous_data = np.array([1, 2, 3])
+        with self.assertRaises(ValueError) as ve:
+            self.network.forward_pass_one_datapoint(erroneous_data)
+        self.assertEqual(str(ve.exception), "Number of features must match "
+                                            "the number of neurons in the "
+                                            "input layer (3 != 2)")
+
+    @mock.patch('neural_network.components.network'
+                '.Network._propagate_value_forward')
+    @mock.patch('neural_network.components.network'
+                '.Network._propagate_softmax_layer')
+    def test_forward_pass_one_datapoint(self, mock_softmax, mock_propagator):
+        mock_softmax.return_value = [0.2, 0.4, 0.4]
+        x = np.array([2, 3])
+        softmax_vector = self.network.forward_pass_one_datapoint(x)
+
+        # Check input layer has correct values
+        input_layer = self.network._input_layer
+        for i in range(len(input_layer)):
+            input_neuron = input_layer.get_neurons()[i]
+            self.assertEqual(x[i], input_neuron.get_value())
+
+        main_layers = self.network.get_main_layers()
+        # Assert _propagate_value_forward is called
+        for left_layer in main_layers[:-1]:
+            right_layer = main_layers[left_layer.get_id() + 1]
+            for right_neuron in right_layer.get_neurons():
+                # Calculates the desired values for each neuron
+                mock_propagator.assert_any_call(left_layer, right_neuron)
+
+        # We have one call for every right_neuron, which will be
+        # 1 + 4 + 2 + 3 (hidden layers 1-3 and the output layer)
+        self.assertEqual(mock_propagator.call_count, 10)
+
+        # Assert _propagate_softmax_layer is called
+        self.assertListEqual([0.2, 0.4, 0.4], softmax_vector)
+
+    def test_propagate_value_forward(self):
+        # Here, we wish to control all values involved so that we can
+        # track the calculation
+
+        # We choose the left_layer to have 4 neurons, and the right_neuron
+        # to be the second one down in its layer
+        left_layer = self.network.get_main_layers()[2]
+        left_neurons = left_layer.get_neurons()
+        self.assertEqual(len(left_layer), 4)
+        right_neuron = self.network.get_main_layers()[3].get_neurons()[1]
+
+        # This list contains 4 edges all connected to right_neuron from the
+        # left_layer
+        edges = self.network.get_edges()[2][1]
+        self.assertEqual(len(edges), 4)
+
+        # Setting up values
+        for i, left_neuron in enumerate(left_neurons):
+            # values = 2, 3, 4, 5
+            left_neuron.set_value(i + 2)
+        for j, edge in enumerate(edges):
+            # weights = 2, 1, 0, -1
+            edge.set_weight(2 - j)
+        right_neuron.set_bias(2)
+
+        # The method will apply the transfer function followed by a Leaky ReLU,
+        # with leak = 0.5
+        self.network._propagate_value_forward(left_layer, right_neuron)
+        self.assertEqual(4, right_neuron.get_value())
+
+        # Now try with different weights, so that the transfer is negative
+        for j, edge in enumerate(edges):
+            # weights = 1, 0, -1, -2
+            edge.set_weight(1 - j)
+        self.network._propagate_value_forward(left_layer, right_neuron)
+        self.assertEqual(-5, right_neuron.get_value())
+
+    def test_propagate_softmax_layer(self):
+        # Now control all values in the output layer
+        output_layer = self.network._output_layer
+        output_neurons = output_layer.get_neurons()
+        for j, neuron in enumerate(output_neurons):
+            # values = -2, 0, 2
+            neuron.set_value(2 * (j - 1))
+        softmax_vector = self.network._propagate_softmax_layer()
+
+        # Check the normalisation constant is good
+        self.assertAlmostEqual(8.5243913822,
+                               self.network._softmax._normalisation,
+                               places=8)
+
+        predicted_vector = [0.01587624, 0.11731043, 0.86681333]
+        softmax_neurons = self.network._softmax_layer.get_neurons()
+        for i in range(3):
+            self.assertAlmostEqual(softmax_vector[i], predicted_vector[i],
+                                   places=8)
+            self.assertAlmostEqual(softmax_neurons[i].get_value(),
+                                   predicted_vector[i], places=8)
+
+    def test_back_propagate_weight_no_momentum(self):
+        # The default_network has _adaptive = False
+        edge = self.default_network.get_edges()[1][1][3]
+
+        # Current weight
+        edge.set_weight(1)
+
+        # The loss gradients picked up by the batch
+        edge.loss_gradients = [-0.1, 0.0, 0.1, 0.2, 0.3]
+        self.default_network.back_propagate_weight(edge)
+
+        # learning_rate is 0.01
+        self.assertListEqual(edge.loss_gradients, [])
+        self.assertEqual(edge.get_weight(), 1 - 0.01 * 0.1)
+
+    def test_back_propagate_weight_with_momentum(self):
+        # The network has _adaptive = True
+        edge = self.network.get_edges()[1][1][0]
+
+        # Current weight and velocity for edge
+        edge.set_weight(1)
+        edge.set_velocity(-2)
+
+        # The loss gradients picked up by the batch
+        edge.loss_gradients = [-0.1, 0.0, 0.1, 0.2, 0.3]
+        self.network.back_propagate_weight(edge)
+
+        # learning_rate is 0.005 and gamma is 0.8
+        self.assertListEqual(edge.loss_gradients, [])
+        self.assertEqual(edge.get_weight(), 1 + 2 * 0.8 - 0.005 * 0.1)
+        self.assertEqual(edge.get_velocity(), 0.005 * 0.1 - 2 * 0.8)
+
+    def test_back_propagate_bias(self):
+        neuron = self.network.get_main_layers()[3].get_neurons()[0]
+
+        # Current bias for neuron
+        neuron.set_bias(2)
+
+        # The bias gradients picked up by the batch
+        neuron.bias_gradients = [0.1, 0.2, 0.3, 0.4]
+        self.network.back_propagate_bias(neuron)
+
+        # Check they have been reset
+        self.assertListEqual(neuron.bias_gradients, [])
+
+        # Recall learning_rate = 0.005
+        self.assertEqual(neuron.get_bias(), 2 - 0.005 * 0.25)
+
+    def test_get_edges(self):
+        self.assertListEqual(self.network._edges,
+                             self.network.get_edges())
+
+    def test_get_main_layers(self):
+        self.assertListEqual(self.network._main_layers,
+                             self.network.get_main_layers())
+
+    def test_get_softmax_edges(self):
+        self.assertListEqual(self.network._softmax_edges,
+                             self.network.get_softmax_edges())
+
+    def test_get_neuron_counts(self):
+        self.assertListEqual([2, 1, 4, 2, 3, 3],
+                             self.network.get_neuron_counts())
 
 
 if __name__ == '__main__':

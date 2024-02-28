@@ -80,7 +80,7 @@ class Trainer(AbstractSimulator):
         for layer in reversed(edges):
             for right_neuron in layer:
                 for edge in right_neuron:
-                    self._network.back_propagate(edge)
+                    self._network.back_propagate_weight(edge)
 
         layers = self._network.get_main_layers()
         for layer in layers[1:]:

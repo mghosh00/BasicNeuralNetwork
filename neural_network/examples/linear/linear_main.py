@@ -5,7 +5,7 @@ from neural_network import Validator
 from neural_network import Trainer
 from neural_network import Tester
 
-data = pd.read_csv("linear_data.csv")
+data = pd.read_csv("linear_data.csv").iloc[:, 1:]
 training_data = data.head(200)
 validation_data = data.tail(100).head(50)
 testing_data = data.tail(50)
