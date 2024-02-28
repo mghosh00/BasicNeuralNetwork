@@ -10,7 +10,7 @@ class TestEdge(TestCase):
     """Tests the `Edge` class.
     """
 
-    @mock.patch('random.random')
+    @mock.patch('random.uniform')
     def setUp(self, mock_random):
         mock_random.return_value = 0.1
         self.left_neuron = Neuron(4, 3)

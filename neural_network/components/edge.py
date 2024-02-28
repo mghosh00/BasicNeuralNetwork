@@ -27,7 +27,7 @@ class Edge:
                              f"(left: {left_id}, right: {right_id})")
         self._id = (left_neuron.get_id()[0], left_neuron.get_id()[1],
                     right_neuron.get_id()[1])
-        self._weight = random.random()
+        self._weight = random.uniform(-1, 1)
         self.loss_gradients = []
         self._velocity = 0.0
 

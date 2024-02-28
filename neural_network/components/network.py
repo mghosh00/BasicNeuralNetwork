@@ -1,4 +1,6 @@
 from typing import List
+import math
+import random
 
 import numpy as np
 
@@ -19,7 +21,8 @@ class Network:
     def __init__(self, num_features: int, num_hidden_layers: int,
                  neuron_counts: List[int], leak: float = 0.01,
                  learning_rate: float = 0.01, num_classes: int = 2,
-                 adaptive: bool = False, gamma: float = 0.9):
+                 adaptive: bool = False, gamma: float = 0.9,
+                 he_weights: bool = False):
         """Constructor method
 
         Parameters
@@ -40,6 +43,8 @@ class Network:
             Whether we wish to have an adaptive learning rate or not
         gamma : float
             The adaptive learning rate parameter
+        he_weights : bool
+            Whether we wish to initialise the weights according to He or not
         """
         if not num_hidden_layers == len(neuron_counts):
             raise ValueError(f"neuron_counts ({len(neuron_counts)}) must have "
@@ -63,6 +68,11 @@ class Network:
                 edge_list = [Edge(left_neuron, right_neuron)
                              for left_neuron in left_layer.get_neurons()]
                 layer_list.append(edge_list)
+                if he_weights:
+                    n = len(left_layer)
+                    for edge in edge_list:
+                        edge.set_weight(random.gauss(0.0,
+                                                     math.sqrt(2 / n)))
             self._edges.append(layer_list)
         self._softmax_edges = [Edge(self._output_layer.get_neurons()[i],
                                     self._softmax_layer.get_neurons()[i])

@@ -1,4 +1,3 @@
-import random
 from typing import Tuple
 
 
@@ -17,7 +16,7 @@ class Neuron:
             The row in the layer
         """
         self._id = layer_id, row_id
-        self._bias = random.random()
+        self._bias = 0.0
         self._value = None
         self.bias_gradients = []
 

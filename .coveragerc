@@ -2,6 +2,7 @@
 source = neural_network
 omit =
 	*/tests/*
-	neural_network/run_tests.py
+	run_tests.py
 	setup.py
 	*/__init__.py
+	neural_network/examples/*

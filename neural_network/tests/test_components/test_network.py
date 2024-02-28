@@ -1,5 +1,6 @@
 import unittest
 from unittest import TestCase
+from unittest import mock
 
 from neural_network import TransferFunction
 from neural_network import ReLU
@@ -16,13 +17,17 @@ class TestNetwork(TestCase):
     """Tests the `Network` class
     """
 
-    def setUp(self):
+    @mock.patch('random.uniform')
+    @mock.patch('random.gauss')
+    def setUp(self, mock_gauss, mock_uniform):
+        mock_gauss.return_value = 0.2
+        mock_uniform.return_value = 0.5
         self.default_network = Network(num_features=3, num_hidden_layers=2,
                                        neuron_counts=[4, 2])
         self.network = Network(num_features=2, num_hidden_layers=3,
                                neuron_counts=[1, 4, 2], leak=0.5,
                                learning_rate=0.005, num_classes=3,
-                               adaptive=True, gamma=0.8)
+                               adaptive=True, gamma=0.8, he_weights=True)
         self.minimal_network = Network(num_features=1, num_hidden_layers=0,
                                        neuron_counts=[], num_classes=2)
 
@@ -80,10 +85,21 @@ class TestNetwork(TestCase):
                 for k, left_neuron in enumerate(right_neuron):
                     edge = self.network._edges[i][j][k]
                     self.assertEqual(edge.get_id(), (i, k, j))
+                    # Check for He weights
+                    self.assertEqual(edge.get_weight(), 0.2)
 
         self.assertEqual(len(self.network._softmax_edges), 3)
         for i, edge in enumerate(self.network._softmax_edges):
             self.assertEqual(edge.get_id(), (4, i, i))
+
+        # Check non-He weights for default_network
+        for i, left_layer in enumerate(self.default_network._edges):
+            for j, right_neuron in enumerate(left_layer):
+                for k, left_neuron in enumerate(right_neuron):
+                    edge = self.default_network._edges[i][j][k]
+                    self.assertEqual(edge.get_id(), (i, k, j))
+                    # Check for non-He weights
+                    self.assertEqual(edge.get_weight(), 0.5)
 
     def test_construct_others(self):
         # Checking functions
