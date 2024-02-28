@@ -295,3 +295,4 @@ class Network:
         """
         return ([self._num_features] + self._neuron_counts
                 + [len(self._output_layer)])
+
