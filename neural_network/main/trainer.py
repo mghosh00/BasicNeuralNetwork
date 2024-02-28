@@ -59,11 +59,12 @@ class Trainer(AbstractSimulator):
             The total loss of the batch (to keep track)
         """
         y = int(self._data.loc[_id, 'y'])
+        #
+        # # Take gradients of loss and store them in the edges (backwards)
+        # for softmax_edge in self._network.get_softmax_edges():
+        #     self._network.store_gradient_of_loss(softmax_edge, y, False)
 
         # Take gradients of loss and store them in the edges (backwards)
-        for softmax_edge in self._network.get_softmax_edges():
-            self._network.store_gradient_of_loss(softmax_edge, y, False)
-
         edges = self._network.get_edges()
         for edge_layer in reversed(edges):
             for right_neuron in edge_layer:
@@ -82,7 +83,7 @@ class Trainer(AbstractSimulator):
                 for edge in right_neuron:
                     self._network.back_propagate_weight(edge)
 
-        layers = self._network.get_main_layers()
+        layers = self._network.get_layers()
         for layer in layers[1:]:
             for neuron in layer.get_neurons():
                 self._network.back_propagate_bias(neuron)
