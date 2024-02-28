@@ -56,12 +56,12 @@ class Network:
         self._hidden_layers = [Layer(i, neuron_counts[i - 1])
                                for i in range(1, num_hidden_layers + 1)]
         self._output_layer = Layer(num_hidden_layers + 1, num_classes)
-        self._softmax_layer = Layer(num_hidden_layers + 2, num_classes)
-        self._main_layers = ([self._input_layer] + self._hidden_layers
-                             + [self._output_layer])
+        # self._softmax_layer = Layer(num_hidden_layers + 2, num_classes)
+        self._layers = ([self._input_layer] + self._hidden_layers
+                        + [self._output_layer])
         self._edges = []
-        for i, left_layer in enumerate(self._main_layers[:-1]):
-            right_layer = self._main_layers[i + 1]
+        for i, left_layer in enumerate(self._layers[:-1]):
+            right_layer = self._layers[i + 1]
             layer_list = []
             for right_neuron in right_layer.get_neurons():
                 edge_list = [Edge(left_neuron, right_neuron)
@@ -73,9 +73,9 @@ class Network:
                         edge.set_weight(random.gauss(0.0,
                                                      math.sqrt(2 / n)))
             self._edges.append(layer_list)
-        self._softmax_edges = [Edge(self._output_layer.get_neurons()[i],
-                                    self._softmax_layer.get_neurons()[i])
-                               for i in range(num_classes)]
+        # self._softmax_edges = [Edge(self._output_layer.get_neurons()[i],
+        #                             self._softmax_layer.get_neurons()[i])
+        #                        for i in range(num_classes)]
         self._transfer = TransferFunction()
         self._relu = ReLU(leak)
         self._softmax = Softmax()
@@ -108,21 +108,33 @@ class Network:
         for j, neuron in enumerate(input_neurons):
             neuron.set_value(x[j])
 
+        # This is for the output layer
+        z_output_layer = []
         # Hidden layers and output layer
-        for left_layer in self._main_layers[:-1]:
-            right_layer = self._main_layers[left_layer.get_id() + 1]
-            for right_neuron in right_layer.get_neurons():
+        for left_layer in self._layers[:-1]:
+            right_layer = self._layers[left_layer.get_id() + 1]
 
-                # Calculates the desired values for each neuron
-                self._propagate_value_forward(left_layer, right_neuron)
+            if right_layer.get_id() != self._output_layer.get_id():
+                for right_neuron in right_layer.get_neurons():
+                    # Calculates the desired values for each neuron
+                    z = self.calculate_pre_activated_value(left_layer,
+                                                           right_neuron)
+                    # Uses ReLU activation for the neuron
+                    right_neuron.set_value(self._relu(z))
+            else:
+                for right_neuron in right_layer.get_neurons():
+                    # Calculate the desired values for each neuron
+                    z = self.calculate_pre_activated_value(left_layer,
+                                                           right_neuron)
+                    z_output_layer.append(z)
 
-        # Output -> softmax layer
-        # Calculates all values in the softmax_layer
-        softmax_vector = self._propagate_softmax_layer()
+        # Output layer
+        # Activates the output layer using Softmax activation
+        softmax_vector = self._activate_output_layer(z_output_layer)
         return softmax_vector
 
-    def _propagate_value_forward(self, left_layer: Layer,
-                                 right_neuron: Neuron):
+    def calculate_pre_activated_value(self, left_layer: Layer,
+                                      right_neuron: Neuron) -> float:
         """Given a `left_layer` and a `right_neuron`, this calculates the
         activation function and value from the `left_layer` and propagates
         this value to the `right_neuron`
@@ -144,26 +156,25 @@ class Network:
         o_list = [neuron.get_value() for neuron in left_neurons]
         w_list = [edge.get_weight() for edge in edges]
         bias = right_neuron.get_bias()
-        z = self._transfer(o_list, w_list + [bias])
 
+        # Return the pre-activated value for this neuron
+        return self._transfer(o_list, w_list + [bias])
         # Use ReLU to find the value for the right_neuron
-        right_neuron.set_value(self._relu(z))
+        # right_neuron.set_value(self._relu(z))
 
-    def _propagate_softmax_layer(self) -> List[float]:
-        """Completes a forward pass for one datapoint by transferring all
-        values from the output layer into softmax probabilities
+    def _activate_output_layer(self, z_list: List[float]) -> List[float]:
+        """Activates the values from the `output_layer` using the Softmax
+        activation function.
 
         Returns
         -------
         List[float]
             The `List` of softmax probabilities
         """
-        values = [neuron.get_value()
-                  for neuron in self._output_layer.get_neurons()]
-        self._softmax.normalisation(values)
-        softmax_neurons = self._softmax_layer.get_neurons()
+        self._softmax.normalisation(z_list)
+        softmax_neurons = self._output_layer.get_neurons()
         softmax_vector = []
-        for j, value in enumerate(values):
+        for j, value in enumerate(z_list):
             softmax = self._softmax(value)
             softmax_vector.append(softmax)
             softmax_neurons[j].set_value(softmax)
@@ -194,27 +205,31 @@ class Network:
         relu_grad = self._relu.gradient(o_right)
         right_index, row = right_neuron.get_id()
 
-        # Softmax layer
-        if left_layer_index == self._num_hidden_layers + 1:
-            edge.loss_gradients.append(o_right - int(row == target))
+        # # Softmax layer
+        # if left_layer_index == self._num_hidden_layers + 1:
+        #     edge.loss_gradients.append(o_right - int(row == target))
 
         # Output layer
-        elif left_layer_index == self._num_hidden_layers:
-            delta = self._softmax_edges[row].loss_gradients[-1] * relu_grad
+        if left_layer_index == self._num_hidden_layers:
+            # delta = self._softmax_edges[row].loss_gradients[-1] * relu_grad
+            delta = o_right - int(row == target)
+            edge.set_delta(delta)
             edge.loss_gradients.append(o_left * delta)
             if first:
                 right_neuron.bias_gradients.append(delta)
 
         # Hidden layers
         else:
-            next_layer = self._main_layers[right_index + 1]
+            next_layer = self._layers[right_index + 1]
             next_edges = [self._edges[right_index][j][row]
                           for j in range(len(next_layer))]
-            factor = sum([new_edge.get_weight() * new_edge.loss_gradients[-1]
+            factor = sum([new_edge.get_weight() * new_edge.get_delta()
                           for new_edge in next_edges])
-            edge.loss_gradients.append(o_left * factor * relu_grad)
+            delta = factor * relu_grad
+            edge.set_delta(delta)
+            edge.loss_gradients.append(o_left * delta)
             if first:
-                right_neuron.bias_gradients.append(factor * relu_grad)
+                right_neuron.bias_gradients.append(delta)
 
     def back_propagate_weight(self, edge: Edge):
         """Uses the loss gradients of all datapoints (for this specific edge)
@@ -268,17 +283,7 @@ class Network:
         List[Layer]
             A list of main `Layers`
         """
-        return self._main_layers
-
-    def get_softmax_edges(self) -> List[Edge]:
-        """Getter method for softmax edges
-
-        Returns
-        -------
-        typing.List
-            A list of softmax `Edges`
-        """
-        return self._softmax_edges
+        return self._layers
 
     def get_neuron_counts(self) -> List[int]:
         """Getter method for neuron_counts
@@ -289,4 +294,4 @@ class Network:
             A list of numbers of neurons per layer
         """
         return ([self._num_features] + self._neuron_counts
-                + [len(self._softmax_layer)])
+                + [len(self._output_layer)])

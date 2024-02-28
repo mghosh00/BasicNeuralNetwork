@@ -29,6 +29,7 @@ class Edge:
                     right_neuron.get_id()[1])
         self._weight = random.uniform(-1, 1)
         self.loss_gradients = []
+        self._delta = 0
         self._velocity = 0.0
 
     def set_weight(self, weight: float):
@@ -80,6 +81,26 @@ class Edge:
             The id
         """
         return self._id
+
+    def set_delta(self, delta: float):
+        """Setter method
+
+        Parameters
+        ----------
+        delta : float
+            The new delta
+        """
+        self._delta = delta
+
+    def get_delta(self) -> float:
+        """Getter method
+
+        Returns
+        -------
+        float
+            The delta
+        """
+        return self._delta
 
     def set_velocity(self, velocity: float):
         """Setter method

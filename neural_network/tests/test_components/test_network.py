@@ -54,26 +54,26 @@ class TestNetwork(TestCase):
         # Checking layers for main network
         self.assertEqual(len(self.network._hidden_layers), 3)
         all_neuron_counts = [2, 1, 4, 2, 3, 3]
-        for i, layer in enumerate(self.network._main_layers
+        for i, layer in enumerate(self.network._layers
                                   + [self.network._softmax_layer]):
             self.assertEqual(layer.get_id(), i)
             self.assertEqual(len(layer.get_neurons()), all_neuron_counts[i])
-        self.assertIn(self.network._input_layer, self.network._main_layers)
-        self.assertIn(self.network._output_layer, self.network._main_layers)
+        self.assertIn(self.network._input_layer, self.network._layers)
+        self.assertIn(self.network._output_layer, self.network._layers)
         for layer in self.network._hidden_layers:
-            self.assertIn(layer, self.network._main_layers)
+            self.assertIn(layer, self.network._layers)
 
         # Checking layers for minimal network
         self.assertEqual(len(self.minimal_network._hidden_layers), 0)
         all_neuron_counts = [1, 2, 2]
-        for i, layer in enumerate(self.minimal_network._main_layers
+        for i, layer in enumerate(self.minimal_network._layers
                                   + [self.minimal_network._softmax_layer]):
             self.assertEqual(layer.get_id(), i)
             self.assertEqual(len(layer.get_neurons()), all_neuron_counts[i])
         self.assertIn(self.minimal_network._input_layer,
-                      self.minimal_network._main_layers)
+                      self.minimal_network._layers)
         self.assertIn(self.minimal_network._output_layer,
-                      self.minimal_network._main_layers)
+                      self.minimal_network._layers)
 
     def test_construct_edges(self):
         # Checking edges
@@ -175,14 +175,14 @@ class TestNetwork(TestCase):
 
         # The method will apply the transfer function followed by a Leaky ReLU,
         # with leak = 0.5
-        self.network._propagate_value_forward(left_layer, right_neuron)
+        self.network.calculate_pre_activated_value(left_layer, right_neuron)
         self.assertEqual(4, right_neuron.get_value())
 
         # Now try with different weights, so that the transfer is negative
         for j, edge in enumerate(edges):
             # weights = 1, 0, -1, -2
             edge.set_weight(1 - j)
-        self.network._propagate_value_forward(left_layer, right_neuron)
+        self.network.calculate_pre_activated_value(left_layer, right_neuron)
         self.assertEqual(-5, right_neuron.get_value())
 
     def test_propagate_softmax_layer(self):
@@ -260,7 +260,7 @@ class TestNetwork(TestCase):
                              self.network.get_edges())
 
     def test_get_main_layers(self):
-        self.assertListEqual(self.network._main_layers,
+        self.assertListEqual(self.network._layers,
                              self.network.get_main_layers())
 
     def test_get_softmax_edges(self):
