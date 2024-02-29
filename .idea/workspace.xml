@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58548c86-52df-414f-855a-9e2625a8f076" name="Changes" comment="Fixed test_network.py and added test_transfer.py to complete test_functions">
-      <change afterPath="$PROJECT_DIR$/neural_network/tests/test_main/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/neural_network/tests/test_main/test_abstract_simulator.py" afterDir="false" />
+    <list default="true" id="58548c86-52df-414f-855a-9e2625a8f076" name="Changes" comment="Flake8">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neural_network/main/abstract_simulator.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_network/main/abstract_simulator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neural_network/tests/test_main/test_abstract_simulator.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_network/tests/test_main/test_abstract_simulator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +43,13 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python tests.Python tests for test_abstract_function.TestAbstractFunction.executor": "Run",
+    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.executor": "Run",
+    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_abs_generate_scatter.executor": "Run",
+    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct.executor": "Run",
+    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_default.executor": "Run",
+    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_erroneous.executor": "Run",
+    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_non_default.executor": "Run",
+    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_forward_pass_one_batch.executor": "Run",
     "Python tests.Python tests for test_edge.TestEdge.executor": "Run",
     "Python tests.Python tests for test_layer.TestNeuron.executor": "Run",
     "Python tests.Python tests for test_loss.TestLoss.executor": "Run",
@@ -90,6 +97,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\matth\IdeaProjects\Python\NeuralNetwork\neural_network\tests\test_main" />
       <recent name="C:\Users\matth\IdeaProjects\Python\NeuralNetwork\neural_network\tests\test_functions" />
       <recent name="C:\Users\matth\IdeaProjects\Python\NeuralNetwork" />
       <recent name="C:\Users\matth\IdeaProjects\Python\NeuralNetwork\neural_network" />
@@ -101,89 +109,89 @@
       <recent name="C:\Users\matth\IdeaProjects\Python\NeuralNetwork\neural_network\util" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for test_network.TestNetwork">
-    <configuration name="Python tests for test_network.TestNetwork" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator">
+    <configuration name="Python tests for test_abstract_simulator.TestAbstractSimulator" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_components" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_main" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_network.TestNetwork&quot;" />
+      <option name="_new_target" value="&quot;test_abstract_simulator.TestAbstractSimulator&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_sigmoid.TestSigmoid" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_abstract_simulator.TestAbstractSimulator.test_abs_generate_scatter" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_functions" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_main" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_sigmoid.TestSigmoid&quot;" />
+      <option name="_new_target" value="&quot;test_abstract_simulator.TestAbstractSimulator.test_abs_generate_scatter&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_softmax.TestSoftmax" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_default" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_functions" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_main" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_softmax.TestSoftmax&quot;" />
+      <option name="_new_target" value="&quot;test_abstract_simulator.TestAbstractSimulator.test_construct_default&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_transfer.TestTransferFunction" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_non_default" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_functions" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_main" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_transfer.TestTransferFunction&quot;" />
+      <option name="_new_target" value="&quot;test_abstract_simulator.TestAbstractSimulator.test_construct_non_default&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_transfer.TestTransferFunction.test_call_erroneous" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_abstract_simulator.TestAbstractSimulator.test_forward_pass_one_batch" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_functions" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_main" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_transfer.TestTransferFunction.test_call_erroneous&quot;" />
+      <option name="_new_target" value="&quot;test_abstract_simulator.TestAbstractSimulator.test_forward_pass_one_batch&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests for test_network.TestNetwork" />
-        <item itemvalue="Python tests.Python tests for test_transfer.TestTransferFunction" />
-        <item itemvalue="Python tests.Python tests for test_transfer.TestTransferFunction.test_call_erroneous" />
-        <item itemvalue="Python tests.Python tests for test_softmax.TestSoftmax" />
-        <item itemvalue="Python tests.Python tests for test_sigmoid.TestSigmoid" />
+        <item itemvalue="Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator" />
+        <item itemvalue="Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_abs_generate_scatter" />
+        <item itemvalue="Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_forward_pass_one_batch" />
+        <item itemvalue="Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_non_default" />
+        <item itemvalue="Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_default" />
       </list>
     </recent_temporary>
   </component>
@@ -460,7 +468,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709231973061</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Flake8">
+      <option name="closed" value="true" />
+      <created>1709232177284</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1709232177284</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -499,6 +515,7 @@
     <MESSAGE value="Finished test_network.py" />
     <MESSAGE value="Added test_functions directory and updated some functions to avoid overflow errors" />
     <MESSAGE value="Fixed test_network.py and added test_transfer.py to complete test_functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed test_network.py and added test_transfer.py to complete test_functions" />
+    <MESSAGE value="Flake8" />
+    <option name="LAST_COMMIT_MESSAGE" value="Flake8" />
   </component>
 </project>

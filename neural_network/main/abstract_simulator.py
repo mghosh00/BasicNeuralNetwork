@@ -32,7 +32,7 @@ class AbstractSimulator:
             If `True` then we are classifying, otherwise it will be regression
         """
         self._network = network
-
+        data = data.copy()
         # Ensure that number of input nodes equals number of features
         n = len(data.columns) - 1
         m = network.get_neuron_counts()[0]
@@ -43,13 +43,30 @@ class AbstractSimulator:
 
         # Renaming of columns
         data.columns = [f'x_{i + 1}' for i in range(n)] + ['y']
-        data['y_hat'] = [0] * len(data)
-        self._data = data
+        # Ensure that number of network output neurons equals the number of
+        # classes in the dataframe
+        y_set = set(data['y'])
+        num_classes = len(y_set)
+        num_outputs = network.get_neuron_counts()[-1]
+        if num_outputs < num_classes:
+            raise ValueError(f"The number of output neurons in the network "
+                             f"({num_outputs}) is less than the number of "
+                             f"classes in the dataframe ({num_classes})")
+
+        # Ensure that classes are indexed correctly
+        if not set(range(num_classes)) == y_set:
+            y_list = sorted(list(y_set))
+            raise ValueError(f"The final column of data must only contain "
+                             f"numbers between 0 and {num_classes - 1} "
+                             f"inclusive (classes = {y_list})")
 
         # Ensure that batch_size is not too big
         if batch_size > len(data):
             raise ValueError("Batch size must be smaller than number of "
                              "datapoints")
+
+        data['y_hat'] = [0] * len(data)
+        self._data = data
         self._batch_size = batch_size
         self._classification = classification
         self._loss = Loss()
@@ -78,10 +95,10 @@ class AbstractSimulator:
             labelled_point = self._data.loc[i].to_numpy()
             x, y = labelled_point[:-2], int(labelled_point[-2])
             # Do the forward pass and save the predicted value to the df
-            y_hat = self._network.forward_pass_one_datapoint(x)
-            total_loss += self._loss(y_hat, y)
-            self._data.at[i, 'y_hat'] = max(range(len(y_hat)),
-                                            key=y_hat.__getitem__)
+            softmax_vector = self._network.forward_pass_one_datapoint(x)
+            total_loss += self._loss(softmax_vector, y)
+            self._data.at[i, 'y_hat'] = max(range(len(softmax_vector)),
+                                            key=softmax_vector.__getitem__)
             self.store_gradients(i)
         # Return the total loss for this batch
         return total_loss
@@ -92,7 +109,7 @@ class AbstractSimulator:
         raise NotImplementedError("Cannot call from base class")
 
     def store_gradients(self, batch_id):
-        pass
+        return
 
     def abs_generate_scatter(self, phase: str = 'training', title: str = ''):
         """Creates scatter plot from the data and their predicted values
