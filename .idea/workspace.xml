@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58548c86-52df-414f-855a-9e2625a8f076" name="Changes" comment="Added test_functions directory and updated some functions to avoid overflow errors">
-      <change afterPath="$PROJECT_DIR$/neural_network/tests/test_functions/test_transfer.py" afterDir="false" />
+    <list default="true" id="58548c86-52df-414f-855a-9e2625a8f076" name="Changes" comment="Fixed test_network.py and added test_transfer.py to complete test_functions">
+      <change afterPath="$PROJECT_DIR$/neural_network/tests/test_main/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neural_network/tests/test_main/test_abstract_simulator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_network/functions/transfer.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_network/functions/transfer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +82,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/matth/IdeaProjects/Python/NeuralNetwork/neural_network/tests/test_functions",
+    "last_opened_file_path": "C:/Users/matth/IdeaProjects/Python/NeuralNetwork/neural_network/tests/test_main",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0"
@@ -101,19 +101,19 @@
       <recent name="C:\Users\matth\IdeaProjects\Python\NeuralNetwork\neural_network\util" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for test_transfer.TestTransferFunction">
-    <configuration name="Python tests for test_relu.TestReLU" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.Python tests for test_network.TestNetwork">
+    <configuration name="Python tests for test_network.TestNetwork" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_functions" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_components" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_relu.TestReLU&quot;" />
+      <option name="_new_target" value="&quot;test_network.TestNetwork&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -179,11 +179,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests for test_network.TestNetwork" />
         <item itemvalue="Python tests.Python tests for test_transfer.TestTransferFunction" />
         <item itemvalue="Python tests.Python tests for test_transfer.TestTransferFunction.test_call_erroneous" />
         <item itemvalue="Python tests.Python tests for test_softmax.TestSoftmax" />
         <item itemvalue="Python tests.Python tests for test_sigmoid.TestSigmoid" />
-        <item itemvalue="Python tests.Python tests for test_relu.TestReLU" />
       </list>
     </recent_temporary>
   </component>
@@ -452,7 +452,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709230879132</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Fixed test_network.py and added test_transfer.py to complete test_functions">
+      <option name="closed" value="true" />
+      <created>1709231973061</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1709231973061</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -490,6 +498,7 @@
     <MESSAGE value="Update test_network.py" />
     <MESSAGE value="Finished test_network.py" />
     <MESSAGE value="Added test_functions directory and updated some functions to avoid overflow errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added test_functions directory and updated some functions to avoid overflow errors" />
+    <MESSAGE value="Fixed test_network.py and added test_transfer.py to complete test_functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed test_network.py and added test_transfer.py to complete test_functions" />
   </component>
 </project>

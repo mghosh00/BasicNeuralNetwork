@@ -19,7 +19,7 @@ class TestLoss(TestCase):
         with self.assertRaises(ValueError) as ve:
             self.loss(self.y_hat, y=0)
         self.assertEqual(str(ve.exception), "Softmax value should be between"
-                                           " 0 and 1 (y_hat[0] = -1)")
+                                            " 0 and 1 (y_hat[0] = -1)")
 
     def test_call(self):
         self.assertAlmostEqual(0.91629073, self.loss(self.y_hat, y=1),

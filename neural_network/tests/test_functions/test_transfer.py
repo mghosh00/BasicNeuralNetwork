@@ -38,5 +38,6 @@ class TestTransferFunction(TestCase):
         self.assertListEqual([1.0, 2.0, 3.0, 0.0],
                              self.transfer.gradient(self.o_list, self.w_list))
 
+
 if __name__ == '__main__':
     unittest.main()
