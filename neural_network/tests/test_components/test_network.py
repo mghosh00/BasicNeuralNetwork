@@ -190,7 +190,7 @@ class TestNetwork(TestCase):
         softmax_vector = self.network._activate_output_layer(z_list)
 
         # Check the normalisation constant is good
-        self.assertAlmostEqual(8.5243913822,
+        self.assertAlmostEqual(1.15365092,
                                self.network._softmax._normalisation,
                                places=8)
 

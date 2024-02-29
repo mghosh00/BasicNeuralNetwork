@@ -27,10 +27,12 @@ class TransferFunction(AbstractFunction):
         float
             Output to function
         """
+        if w is None:
+            raise ValueError("w cannot be None")
         o_size = len(o)
         if len(w) != o_size + 1:
-            raise ValueError(f"w and o do not match in size ({len(w)} != "
-                             f"{o_size + 1})")
+            raise ValueError(f"w is not one element longer than o "
+                             f"({len(w)} != {o_size} + 1)")
         return sum([o[i] * w[i] for i in range(o_size)]) + w[o_size]
 
     def gradient(self, o: List[float], w: List[float] = None) -> List[float]:
