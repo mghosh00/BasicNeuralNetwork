@@ -201,17 +201,10 @@ class Network:
         o_left = edge.get_left_neuron().get_value()
         o_right = right_neuron.get_value()
 
-        # Constant (either +1 or -self._leak)
-        relu_grad = self._relu.gradient(o_right)
         right_index, row = right_neuron.get_id()
-
-        # # Softmax layer
-        # if left_layer_index == self._num_hidden_layers + 1:
-        #     edge.loss_gradients.append(o_right - int(row == target))
 
         # Output layer
         if left_layer_index == self._num_hidden_layers:
-            # delta = self._softmax_edges[row].loss_gradients[-1] * relu_grad
             delta = o_right - int(row == target)
             edge.set_delta(delta)
             edge.loss_gradients.append(o_left * delta)
@@ -225,6 +218,9 @@ class Network:
                           for j in range(len(next_layer))]
             factor = sum([new_edge.get_weight() * new_edge.get_delta()
                           for new_edge in next_edges])
+
+            # Constant (either +1 or self._leak)
+            relu_grad = self._relu.gradient(o_right)
             delta = factor * relu_grad
             edge.set_delta(delta)
             edge.loss_gradients.append(o_left * delta)

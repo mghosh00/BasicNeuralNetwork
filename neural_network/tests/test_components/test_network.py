@@ -202,6 +202,78 @@ class TestNetwork(TestCase):
             self.assertAlmostEqual(softmax_neurons[i].get_value(),
                                    predicted_vector[i], places=8)
 
+    def test_store_gradient_of_loss_outer_layer(self):
+        # index = -1 is outer layer
+        # edge location: left_layer = 3, right_neuron = 1, left_neuron = 0
+        edge = self.network.get_edges()[-1][1][0]
+
+        # We have 3 classes, so target = 0, 1 or 2 depending on which class
+        # the ground truth label corresponds to
+        target = 0
+        first = True
+
+        # Set the values of the left and right neurons
+        edge.get_left_neuron().set_value(0.2)
+        right_neuron = edge.get_right_neuron()
+        right_neuron.set_value(-0.5)
+        edge.loss_gradients = [0.2, 0.1, 0.3]
+        right_neuron.bias_gradients = [-0.3, 0.1, 0.4]
+
+        self.network.store_gradient_of_loss(edge, target, first)
+        self.assertEqual(edge.get_delta(), -0.5)
+        self.assertListEqual(edge.loss_gradients, [0.2, 0.1, 0.3, -0.1])
+        self.assertListEqual(right_neuron.bias_gradients, [-0.3, 0.1,
+                                                           0.4, -0.5])
+
+        # Now try for a new edge
+        edge = self.network.get_edges()[-1][0][1]
+        target = 0
+        first = False
+
+        # Same inputs as before to provide comparison
+        edge.get_left_neuron().set_value(0.2)
+        right_neuron = edge.get_right_neuron()
+        right_neuron.set_value(-0.5)
+        edge.loss_gradients = [0.2, 0.1, 0.3]
+        right_neuron.bias_gradients = [-0.3, 0.1, 0.4]
+
+        self.network.store_gradient_of_loss(edge, target, first)
+        self.assertEqual(edge.get_delta(), -1.5)
+        expected = [0.2, 0.1, 0.3, -0.3]
+        for i in range(4):
+            self.assertAlmostEqual(edge.loss_gradients[i], expected[i])
+        self.assertListEqual(right_neuron.bias_gradients, [-0.3, 0.1, 0.4])
+
+    def test_store_gradient_of_loss_hidden_layer(self):
+        # edge location: left_layer = 2, right_neuron = 1, left_neuron = 0
+        edge = self.network.get_edges()[2][1][0]
+
+        # Set the values of the left and right neurons
+        edge.get_left_neuron().set_value(0.2)
+        right_neuron = edge.get_right_neuron()
+        right_neuron.set_value(-0.5)
+        edge.loss_gradients = [0.2, 0.1, 0.3]
+        right_neuron.bias_gradients = [-0.3, 0.1, 0.4]
+
+        # There are 3 edges connecting the right_neuron to the next layer
+        # along, and we must take these values into account also
+        new_edges = [self.network.get_edges()[3][j][1] for j in range(3)]
+        for j, new_edge in enumerate(new_edges):
+            new_edge.set_weight(j + 1)
+            new_edge.set_delta(-j)
+
+        target = 0
+        first = True
+        self.network.store_gradient_of_loss(edge, target, first)
+
+        # 1 * 0 + 2 * (-1) + 3 * (-2)
+        factor = -8
+        relu_grad = 0.5
+        self.assertEqual(edge.get_delta(), factor * relu_grad)
+        self.assertListEqual(edge.loss_gradients, [0.2, 0.1, 0.3, -0.8])
+        self.assertListEqual(right_neuron.bias_gradients, [-0.3, 0.1,
+                                                           0.4, -4])
+
     def test_back_propagate_weight_no_momentum(self):
         # The default_network has _adaptive = False
         edge = self.default_network.get_edges()[1][1][3]
