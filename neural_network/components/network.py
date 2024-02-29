@@ -171,7 +171,7 @@ class Network:
         List[float]
             The `List` of softmax probabilities
         """
-        self._softmax.normalisation(z_list)
+        self._softmax.normalise(z_list)
         softmax_neurons = self._output_layer.get_neurons()
         softmax_vector = []
         for j, value in enumerate(z_list):

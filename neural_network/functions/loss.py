@@ -26,4 +26,12 @@ class Loss:
         float
             Loss value
         """
-        return - math.log(y_hat[y])
+        softmax_value = y_hat[y]
+
+        # This should be a probability
+        if 0 < softmax_value < 1:
+            return - math.log(y_hat[y])
+
+        else:
+            raise ValueError(f"Softmax value should be between 0 and 1"
+                             f" (y_hat[{y}] = {softmax_value})")

@@ -28,7 +28,11 @@ class Sigmoid(AbstractFunction):
         float
             Output to function
         """
-        return 1 / (1 + math.exp(x))
+        # We do the below to avoid overflow errors
+        if x < 0:
+            return math.exp(x) / (1 + math.exp(x))
+        else:
+            return 1 / (1 + math.exp(-x))
 
     def gradient(self, x: float, w: List[float] = None) -> float:
         """Gradient of Sigmoid
