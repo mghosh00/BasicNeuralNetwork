@@ -91,5 +91,6 @@ class TestPlotter(TestCase):
         Plotter.plot_loss(self.loss_df, "test_title")
         mock_save.assert_called_once_with("plots/losses_test_title.png")
 
+
 if __name__ == '__main__':
     unittest.main()
