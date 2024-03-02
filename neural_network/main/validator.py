@@ -46,7 +46,7 @@ class Validator(AbstractSimulator):
                                          / self._batch_size)):
             batch_ids = batch_partition[iteration]
             total_loss += self.forward_pass_one_batch(batch_ids)
-        loss = total_loss / len(self._data)
+        loss = round(total_loss / len(self._data), 8)
         if self._epoch % factor == 0:
             print(f"Validation loss: {loss}")
         return loss
