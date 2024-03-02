@@ -2,7 +2,6 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from plotnine import ggplot, aes, geom_point, ggtitle
-from plotnine.animation import PlotnineAnimation
 
 
 class Plotter:
@@ -53,10 +52,3 @@ class Plotter:
         plt.title("Loss over time")
         substring = '_' + title if title else ''
         plt.savefig(Plotter.path + f"losses{substring}.png")
-
-    def plot_predictions_gif(self):
-        """Produces gif of scatter plots
-        """
-        plots = (frame for frame in self._frames)
-        animation = PlotnineAnimation(plots, interval=100, repeat_delay=500)
-        animation.save("gifs/scatter.mp4")

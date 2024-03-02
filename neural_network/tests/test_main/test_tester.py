@@ -40,7 +40,7 @@ class TestTester(TestCase):
     @mock.patch('neural_network.util.partitioner.Partitioner.__call__')
     @mock.patch('builtins.print')
     def test_run_default(self, mock_print, mock_partition,
-                              mock_forward_pass):
+                         mock_forward_pass):
         # Here we use the different static lists of the class to dictate what
         # each of the above functions returns
         mock_partition.return_value = self.partitions

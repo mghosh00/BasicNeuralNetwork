@@ -113,6 +113,3 @@ class Trainer(AbstractSimulator):
 
     def generate_loss_plot(self, title: str = ''):
         Plotter.plot_loss(self._loss_df, title)
-
-    def generate_gif(self):
-        self._plotter.plot_predictions_gif()
