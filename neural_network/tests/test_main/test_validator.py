@@ -25,7 +25,7 @@ class TestValidator(TestCase):
                                          [-2, -4, 1, 0],
                                          [-9, 2, 4, 0]])
         self.df = pd.DataFrame(self.validation_data,
-                                          columns=["a", "b", "c", "class"])
+                               columns=["a", "b", "c", "class"])
         self.default_validator = Validator(self.network, self.df, batch_size=1)
         self.validator = Validator(self.network, self.df, batch_size=1,
                                    weighted=True, classification=False)
