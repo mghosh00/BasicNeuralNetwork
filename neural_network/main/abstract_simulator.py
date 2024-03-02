@@ -75,7 +75,6 @@ class AbstractSimulator:
                                                     data)
         else:
             self._partitioner = Partitioner(len(data), batch_size)
-        self._plotter = Plotter()
 
     def forward_pass_one_batch(self, batch_ids: List[int]) -> float:
         """Performs the forward pass for one batch of the data.
@@ -121,4 +120,4 @@ class AbstractSimulator:
         title : str
             An optional title to append to the plot
         """
-        self._plotter.plot_predictions(self._data, phase, title)
+        Plotter.plot_predictions(self._data, phase, title)

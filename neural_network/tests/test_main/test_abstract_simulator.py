@@ -10,7 +10,6 @@ from neural_network import WeightedPartitioner
 from neural_network import Loss
 from neural_network import Network
 
-from neural_network import Plotter
 from neural_network import AbstractSimulator
 
 
@@ -89,7 +88,6 @@ class TestAbstractSimulator(TestCase):
         # _n = len(data), _m = batch_size
         self.assertEqual(10, self.default_simulator._partitioner._n)
         self.assertEqual(2, self.default_simulator._partitioner._m)
-        self.assertIsInstance(self.default_simulator._plotter, Plotter)
 
     def test_construct_non_default(self):
         self.assertFalse(self.simulator._classification)

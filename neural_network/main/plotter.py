@@ -10,10 +10,8 @@ class Plotter:
 
     path = "plots/"
 
-    def __init__(self):
-        self._frames = []
-
-    def plot_predictions(self, df: pd.DataFrame, phase: str = 'training',
+    @staticmethod
+    def plot_predictions(df: pd.DataFrame, phase: str = 'training',
                          title: str = ''):
         """Creates a scatter plot of the predicted classes for a given set
         of data
@@ -31,7 +29,6 @@ class Plotter:
                 + geom_point(aes(color='factor(y_hat)'))
                 + ggtitle(f"Predicted classes for {phase} data")
                 )
-        self._frames.append(plot)
         substring = '_' + title if title else ''
         plot.save(Plotter.path + f"{phase}/scatter{substring}.png")
 
@@ -43,7 +40,7 @@ class Plotter:
         df : pd.DataFrame
             The data
         """
-        times = np.linspace(0, len(df), len(df))
+        times = np.linspace(0, len(df), len(df), endpoint=False)
         for column in df.columns:
             plt.plot(times, df[column].to_numpy(), label=column)
         plt.xlabel("Epoch")

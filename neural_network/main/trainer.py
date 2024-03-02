@@ -38,7 +38,6 @@ class Trainer(AbstractSimulator):
         super().__init__(network, data, batch_size, weighted, classification)
         self._num_epochs = num_epochs
         self._validator = validator
-        self._plotter = Plotter()
 
         columns = ['Training']
         if self._validator:

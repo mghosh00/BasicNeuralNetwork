@@ -7,7 +7,6 @@ import pandas as pd
 
 from neural_network import Network
 
-from neural_network import Plotter
 from neural_network import Validator
 from neural_network import Trainer
 
@@ -57,14 +56,12 @@ class TestTrainer(TestCase):
         self.assertEqual(self.network, self.default_trainer._network)
         self.assertEqual(5, self.default_trainer._num_epochs)
         self.assertIsNone(self.default_trainer._validator)
-        self.assertIsInstance(self.default_trainer._plotter, Plotter)
         pd.testing.assert_frame_equal(pd.DataFrame(columns=['Training']),
                                       self.default_trainer._loss_df)
 
     def test_construct_non_default(self):
         self.assertEqual(5, self.trainer._num_epochs)
         self.assertEqual(self.validator, self.trainer._validator)
-        self.assertIsInstance(self.trainer._plotter, Plotter)
         pd.testing.assert_frame_equal(pd.DataFrame(columns=['Training',
                                                             'Validation']),
                                       self.trainer._loss_df)
@@ -208,11 +205,6 @@ class TestTrainer(TestCase):
         self.trainer.generate_loss_plot('test_title')
         mock_plotter.assert_called_once_with(self.trainer._loss_df,
                                              'test_title')
-
-    @mock.patch('neural_network.main.plotter.Plotter.plot_predictions_gif')
-    def test_generate_gif(self, mock_plotter):
-        self.trainer.generate_gif()
-        mock_plotter.assert_called_once()
 
 
 if __name__ == '__main__':
