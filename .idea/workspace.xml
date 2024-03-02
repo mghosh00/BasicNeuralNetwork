@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58548c86-52df-414f-855a-9e2625a8f076" name="Changes" comment="Flake8">
+    <list default="true" id="58548c86-52df-414f-855a-9e2625a8f076" name="Changes" comment="Finished test_abstract_simulator.py">
+      <change afterPath="$PROJECT_DIR$/neural_network/tests/test_main/test_trainer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_network/main/abstract_simulator.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_network/main/abstract_simulator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_network/tests/test_main/test_abstract_simulator.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_network/tests/test_main/test_abstract_simulator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neural_network/main/trainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_network/main/trainer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,61 +40,62 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python tests.Python tests for test_abstract_function.TestAbstractFunction.executor": "Run",
-    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.executor": "Run",
-    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_abs_generate_scatter.executor": "Run",
-    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct.executor": "Run",
-    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_default.executor": "Run",
-    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_erroneous.executor": "Run",
-    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_non_default.executor": "Run",
-    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_forward_pass_one_batch.executor": "Run",
-    "Python tests.Python tests for test_edge.TestEdge.executor": "Run",
-    "Python tests.Python tests for test_layer.TestNeuron.executor": "Run",
-    "Python tests.Python tests for test_loss.TestLoss.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_activate_output_layer.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_back_propagate_bias.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_back_propagate_weight_no_momentum.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_back_propagate_weight_with_momentum.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_calculate_pre_activated_value.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_construct.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_construct_defaults.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_construct_edges.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_construct_erroneous.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_construct_layers.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_construct_others.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_forward_pass_one_datapoint.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_forward_pass_one_datapoint_erroneous.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_get_neuron_counts.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_propagate_softmax_layer.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_propagate_value_forward.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_store_gradient_of_loss_hidden_layer.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_store_gradient_of_loss_outer_layer.executor": "Run",
-    "Python tests.Python tests for test_neuron.TestNeuron.executor": "Run",
-    "Python tests.Python tests for test_relu.TestReLU.executor": "Run",
-    "Python tests.Python tests for test_sigmoid.TestSigmoid.executor": "Run",
-    "Python tests.Python tests for test_softmax.TestSoftmax.executor": "Run",
-    "Python tests.Python tests for test_transfer.TestTransferFunction.executor": "Run",
-    "Python tests.Python tests for test_transfer.TestTransferFunction.test_call_erroneous.executor": "Run",
-    "Python.circle_main (1).executor": "Run",
-    "Python.circle_main.executor": "Run",
-    "Python.generate_circle_data (1).executor": "Run",
-    "Python.generate_circle_data.executor": "Run",
-    "Python.linear_main.executor": "Run",
-    "Python.weighted_partitioner.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/matth/IdeaProjects/Python/NeuralNetwork/neural_network/tests/test_main",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python tests.Python tests for test_abstract_function.TestAbstractFunction.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_abs_generate_scatter.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_default.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_erroneous.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_non_default.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_forward_pass_one_batch.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_store_gradients.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_edge.TestEdge.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_layer.TestNeuron.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_loss.TestLoss.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_activate_output_layer.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_back_propagate_bias.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_back_propagate_weight_no_momentum.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_back_propagate_weight_with_momentum.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_calculate_pre_activated_value.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_construct.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_construct_defaults.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_construct_edges.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_construct_erroneous.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_construct_layers.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_construct_others.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_forward_pass_one_datapoint.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_forward_pass_one_datapoint_erroneous.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_get_neuron_counts.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_propagate_softmax_layer.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_propagate_value_forward.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_store_gradient_of_loss_hidden_layer.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_store_gradient_of_loss_outer_layer.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_neuron.TestNeuron.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_relu.TestReLU.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_sigmoid.TestSigmoid.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_softmax.TestSoftmax.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_transfer.TestTransferFunction.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_transfer.TestTransferFunction.test_call_erroneous.executor&quot;: &quot;Run&quot;,
+    &quot;Python.circle_main (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.circle_main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.generate_circle_data (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.generate_circle_data.executor&quot;: &quot;Run&quot;,
+    &quot;Python.linear_main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.weighted_partitioner.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/matth/IdeaProjects/Python/NeuralNetwork/neural_network/tests/test_main&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\matth\IdeaProjects\Python\NeuralNetwork\neural_network\tests\test_main" />
@@ -140,21 +141,6 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_default" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="NeuralNetwork" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_main" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_abstract_simulator.TestAbstractSimulator.test_construct_default&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
     <configuration name="Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_non_default" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
@@ -185,13 +171,28 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for test_abstract_simulator.TestAbstractSimulator.test_store_gradients" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="NeuralNetwork" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_main" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_abstract_simulator.TestAbstractSimulator.test_store_gradients&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator" />
+        <item itemvalue="Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_store_gradients" />
         <item itemvalue="Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_abs_generate_scatter" />
         <item itemvalue="Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_forward_pass_one_batch" />
         <item itemvalue="Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_non_default" />
-        <item itemvalue="Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_default" />
       </list>
     </recent_temporary>
   </component>
@@ -476,7 +477,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709232177284</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Finished test_abstract_simulator.py">
+      <option name="closed" value="true" />
+      <created>1709241144576</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1709241144576</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +500,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Initial commit" />
     <MESSAGE value="Created testing and validation features along with weighted partitioning" />
     <MESSAGE value="Created a class to split data and added confusion matrix and dice scores" />
     <MESSAGE value="Created package, docs and workflows" />
@@ -516,6 +524,7 @@
     <MESSAGE value="Added test_functions directory and updated some functions to avoid overflow errors" />
     <MESSAGE value="Fixed test_network.py and added test_transfer.py to complete test_functions" />
     <MESSAGE value="Flake8" />
-    <option name="LAST_COMMIT_MESSAGE" value="Flake8" />
+    <MESSAGE value="Finished test_abstract_simulator.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished test_abstract_simulator.py" />
   </component>
 </project>

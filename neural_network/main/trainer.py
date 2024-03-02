@@ -52,17 +52,8 @@ class Trainer(AbstractSimulator):
         ----------
         _id : int
             The id of the datapoint
-
-        Returns
-        -------
-        float
-            The total loss of the batch (to keep track)
         """
         y = int(self._data.loc[_id, 'y'])
-        #
-        # # Take gradients of loss and store them in the edges (backwards)
-        # for softmax_edge in self._network.get_softmax_edges():
-        #     self._network.store_gradient_of_loss(softmax_edge, y, False)
 
         # Take gradients of loss and store them in the edges (backwards)
         edges = self._network.get_edges()
@@ -91,7 +82,7 @@ class Trainer(AbstractSimulator):
     def run(self):
         """Performs training of the network
         """
-        factor = int(self._num_epochs / 100)
+        factor = math.ceil(self._num_epochs / 100)
         for epoch in range(self._num_epochs):
             total_loss = 0
             batch_partition = self._partitioner()
@@ -100,7 +91,7 @@ class Trainer(AbstractSimulator):
                 batch_ids = batch_partition[iteration]
                 total_loss += self.forward_pass_one_batch(batch_ids)
                 self.back_propagate_one_batch()
-            loss = total_loss / len(self._data)
+            loss = round(total_loss / len(self._data), 8)
             if epoch % factor == 0:
                 print(f"Epoch: {epoch}")
                 print(f"Loss: {loss}")
@@ -109,8 +100,6 @@ class Trainer(AbstractSimulator):
             if self._validator:
                 validation_loss = self._validator.validate(factor)
                 self._loss_df.at[epoch, 'Validation'] = validation_loss
-                # pd.set_option('display.max_rows', None)
-                # print(self._data)
 
     def generate_scatter(self, title: str = ''):
         """Creates scatter plot from the data and their predicted values
