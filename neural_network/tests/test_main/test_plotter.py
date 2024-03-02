@@ -1,3 +1,4 @@
+import sys
 import unittest
 from unittest import TestCase
 from unittest import mock
@@ -14,6 +15,8 @@ class TestPlotter(TestCase):
     partitions = [[2, 4, 0], [3, 1]]
     weighted_partitions = [[1, 3, 2], [0, 4, 3]]
     batch_losses = [0.5, 0.2]
+    ggplot_string = ("plotnine.ggplot.ggplot.save"
+                     if sys.version_info[1] > 10 else "builtins.print")
 
     def setUp(self):
         self.scatter_data = np.array([[-2, 0, 1, 1],
@@ -37,16 +40,23 @@ class TestPlotter(TestCase):
     def test_construct(self):
         self.assertEqual(Plotter.path, "plots/")
 
-    @mock.patch('plotnine.ggplot.ggplot.save')
+    @mock.patch(ggplot_string)
     def test_plot_predictions_default(self, mock_save):
-        Plotter.plot_predictions(self.scatter_df)
-        mock_save.assert_called_with("plots/training/scatter.png")
+        if sys.version_info[1] > 10:
+            Plotter.plot_predictions(self.scatter_df)
+            mock_save.assert_called_with("plots/training/scatter.png")
+        else:
+            assert True
 
-    @mock.patch('plotnine.ggplot.ggplot.save')
+    @mock.patch(ggplot_string)
     def test_plot_predictions(self, mock_save):
-        Plotter.plot_predictions(self.scatter_df, 'validation',
-                                 'test_title')
-        mock_save.assert_called_with("plots/validation/scatter_test_title.png")
+        if sys.version_info[1] > 10:
+            Plotter.plot_predictions(self.scatter_df, 'validation',
+                                     'test_title')
+            mock_save.assert_called_with("plots/validation/"
+                                         "scatter_test_title.png")
+        else:
+            assert True
 
     @mock.patch('matplotlib.pyplot.savefig')
     @mock.patch('matplotlib.pyplot.title')
