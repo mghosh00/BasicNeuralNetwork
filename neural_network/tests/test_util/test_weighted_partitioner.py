@@ -1,7 +1,6 @@
 import unittest
 from unittest import TestCase
 from unittest import mock
-import random
 
 import numpy as np
 import pandas as pd
