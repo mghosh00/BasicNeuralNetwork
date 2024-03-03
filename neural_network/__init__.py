@@ -16,6 +16,8 @@ from neural_network.functions import Softmax
 from neural_network.functions import Loss
 
 from neural_network.data_generators import AbstractDataGenerator
+from neural_network.data_generators import NormalDataGenerator
+from neural_network.data_generators import UniformDataGenerator
 
 from neural_network.components import Neuron
 from neural_network.components import Edge

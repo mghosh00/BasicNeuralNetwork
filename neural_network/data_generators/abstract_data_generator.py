@@ -1,4 +1,4 @@
-from typing import Callable, Any
+from typing import Union, Callable, Any
 from inspect import signature
 
 import numpy as np
@@ -10,13 +10,19 @@ class AbstractDataGenerator:
     a given rule.
     """
 
-    def __init__(self, classifier: Callable[[float, ...], Any],
-                 num_datapoints: int):
+    custom_type = Union[
+        Callable[[float], Any],
+        Callable[[float, float], Any],
+        Callable[[float, float, float], Any],
+        Callable[[float, float, float, float], Any]
+    ]
+
+    def __init__(self, classifier: custom_type, num_datapoints: int):
         """Constructor method
 
         Parameters
         ----------
-        classifier : Callable[[float, ...], Any]
+        classifier : custom_type
             A rule which takes a certain number of coordinates and returns a
             value representing the class of the datapoint
         num_datapoints : int
@@ -39,7 +45,7 @@ class AbstractDataGenerator:
     def _generate_data(self):
         """To generate the data - cannot be called from AbstractDataGenerator
         """
-        raise NotImplementedError("Cannot call generate_data or __call__ "
+        raise NotImplementedError("Cannot call _generate_data or __call__ "
                                   "from base class")
 
     def __call__(self) -> pd.DataFrame:
