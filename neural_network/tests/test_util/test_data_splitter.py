@@ -7,6 +7,7 @@ import pandas as pd
 
 from neural_network import DataSplitter
 
+
 class TestDataSplitter(TestCase):
     """Tests the `DataSplitter` class
     """
