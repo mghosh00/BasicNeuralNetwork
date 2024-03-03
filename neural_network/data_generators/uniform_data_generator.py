@@ -1,4 +1,4 @@
-from typing import List, Tuple, Callable, Any
+from typing import List, Callable, Any
 
 import numpy as np
 
@@ -11,7 +11,8 @@ class UniformDataGenerator(AbstractDataGenerator):
     """
 
     def __init__(self, classifier: Callable[[float, ...], Any],
-                 num_datapoints: int, bounds: List[Tuple[float, float]]):
+                 num_datapoints: int, lower_bounds: List[float],
+                 upper_bounds: List[float]):
         """Constructor method
 
         Parameters
@@ -21,30 +22,35 @@ class UniformDataGenerator(AbstractDataGenerator):
             value representing the class of the datapoint
         num_datapoints : int
             The number of datapoints to be generated
-        bounds : List[Tuple[float, float]]
-            A list of lower, upper bound pairs for each coordinate
+        lower_bounds : List[float]
+            A list of lower bounds for each coordinate
+        upper_bounds : List[float]
+            A list of upper bounds for each coordinate
         """
         super().__init__(classifier, num_datapoints)
-        for bound_pair in bounds:
-            if len(bound_pair) != 2:
-                raise ValueError(f"Each bound pair in bounds must have a "
-                                 f"length of 2 (error: {bound_pair}).")
-            if bound_pair[0] >= bound_pair[1]:
-                raise ValueError(f"In each bound pair in bounds, the first "
-                                 f"element is the lower bound and the second "
-                                 f"is the upper bound (error: {bound_pair}).")
-        if len(bounds) != self._dimensions:
+        if len(lower_bounds) != self._dimensions:
             raise ValueError(f"The classifier method accepts "
                              f"{self._dimensions} parameters but we have "
-                             f"{len(bounds)} bound pairs in bounds list.")
-        self._bounds = bounds
+                             f"{len(lower_bounds)} lower bounds.")
+        if len(upper_bounds) != self._dimensions:
+            raise ValueError(f"The classifier method accepts "
+                             f"{self._dimensions} parameters but we have "
+                             f"{len(upper_bounds)} upper bounds.")
+        for i in range(len(lower_bounds)):
+            if lower_bounds[i] > upper_bounds[i]:
+                raise ValueError(f"All lower bounds must be lower than their "
+                                 f"related upper bounds ({lower_bounds[i]}"
+                                 f" > {upper_bounds[i]})")
+        self._lower_bounds = lower_bounds
+        self._upper_bounds = upper_bounds
 
     def _generate_data(self):
         """To generate uniformly distributed data
         """
         # A list of numpy arrays, each representing one observed coordinate for
         # all datapoints
-        x = [np.random.uniform(low=self._bounds[i][0], high=self._bounds[i][1],
+        x = [np.random.uniform(low=self._lower_bounds[i],
+                               high=self._upper_bounds[i],
                                size=self._num_datapoints)
              for i in range(self._dimensions)]
         self._x = x
