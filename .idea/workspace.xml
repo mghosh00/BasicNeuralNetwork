@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58548c86-52df-414f-855a-9e2625a8f076" name="Changes" comment="Updated docs and added test_abstract_data_generator.py">
-      <change afterPath="$PROJECT_DIR$/neural_network/tests/test_data_generators/test_normal_data_generator.py" afterDir="false" />
+    <list default="true" id="58548c86-52df-414f-855a-9e2625a8f076" name="Changes" comment="Added test_normal_data_generator.py and test_uniform_data_generator.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_network/data_generators/normal_data_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_network/data_generators/normal_data_generator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neural_network/tests/test_data_generators/test_abstract_data_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_network/tests/test_data_generators/test_abstract_data_generator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +81,10 @@
     "Python tests.Python tests for test_network.TestNetwork.test_store_gradient_of_loss_hidden_layer.executor": "Run",
     "Python tests.Python tests for test_network.TestNetwork.test_store_gradient_of_loss_outer_layer.executor": "Run",
     "Python tests.Python tests for test_neuron.TestNeuron.executor": "Run",
+    "Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.executor": "Run",
+    "Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_call_one_coord.executor": "Run",
+    "Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_call_str.executor": "Run",
+    "Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_call_two_coord.executor": "Run",
     "Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_generate_data_one_coord.executor": "Run",
     "Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_generate_data_two_coord.executor": "Run",
     "Python tests.Python tests for test_partitioner.TestPartitioner.executor": "Run",
@@ -110,6 +113,8 @@
     "Python tests.Python tests for test_trainer.TestTrainer.test_store_gradients.executor": "Run",
     "Python tests.Python tests for test_transfer.TestTransferFunction.executor": "Run",
     "Python tests.Python tests for test_transfer.TestTransferFunction.test_call_erroneous.executor": "Run",
+    "Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator.executor": "Run",
+    "Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator.test_construct_erroneous.executor": "Run",
     "Python tests.Python tests for test_validator.TestTrainer.test_construct.executor": "Run",
     "Python tests.Python tests for test_validator.TestValidator.executor": "Run",
     "Python tests.Python tests for test_validator.TestValidator.test_generate_scatter.executor": "Run",
@@ -151,8 +156,8 @@
       <recent name="C:\Users\matth\IdeaProjects\Python\NeuralNetwork\neural_network\util" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_generate_data_one_coord">
-    <configuration name="Python tests for test_abstract_data_generator.TestAbstractDataGenerator" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator">
+    <configuration name="Python tests for test_normal_data_generator.TestNormalDataGenerator" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -163,11 +168,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_abstract_data_generator.TestAbstractDataGenerator&quot;" />
+      <option name="_new_target" value="&quot;test_normal_data_generator.TestNormalDataGenerator&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_abstract_data_generator.TestAbstractDataGenerator.test_construct" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_normal_data_generator.TestNormalDataGenerator.test_call_str" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -178,11 +183,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_abstract_data_generator.TestAbstractDataGenerator.test_construct&quot;" />
+      <option name="_new_target" value="&quot;test_normal_data_generator.TestNormalDataGenerator.test_call_str&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_abstract_data_generator.TestAbstractDataGenerator.test_write_to_csv" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_normal_data_generator.TestNormalDataGenerator.test_call_two_coord" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -193,11 +198,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_abstract_data_generator.TestAbstractDataGenerator.test_write_to_csv&quot;" />
+      <option name="_new_target" value="&quot;test_normal_data_generator.TestNormalDataGenerator.test_call_two_coord&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_normal_data_generator.TestNormalDataGenerator.test_generate_data_one_coord" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_uniform_data_generator.TestUniformDataGenerator" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -208,11 +213,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_normal_data_generator.TestNormalDataGenerator.test_generate_data_one_coord&quot;" />
+      <option name="_new_target" value="&quot;test_uniform_data_generator.TestUniformDataGenerator&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_normal_data_generator.TestNormalDataGenerator.test_generate_data_two_coord" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_uniform_data_generator.TestUniformDataGenerator.test_construct_erroneous" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -223,17 +228,17 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_normal_data_generator.TestNormalDataGenerator.test_generate_data_two_coord&quot;" />
+      <option name="_new_target" value="&quot;test_uniform_data_generator.TestUniformDataGenerator.test_construct_erroneous&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_generate_data_one_coord" />
-        <item itemvalue="Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_generate_data_two_coord" />
-        <item itemvalue="Python tests.Python tests for test_abstract_data_generator.TestAbstractDataGenerator" />
-        <item itemvalue="Python tests.Python tests for test_abstract_data_generator.TestAbstractDataGenerator.test_write_to_csv" />
-        <item itemvalue="Python tests.Python tests for test_abstract_data_generator.TestAbstractDataGenerator.test_construct" />
+        <item itemvalue="Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator" />
+        <item itemvalue="Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator.test_construct_erroneous" />
+        <item itemvalue="Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator" />
+        <item itemvalue="Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_call_str" />
+        <item itemvalue="Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_call_two_coord" />
       </list>
     </recent_temporary>
   </component>
@@ -245,14 +250,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708014585261</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Created testing and validation features along with weighted partitioning">
-      <option name="closed" value="true" />
-      <created>1708881254742</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1708881254742</updated>
     </task>
     <task id="LOCAL-00003" summary="Created a class to split data and added confusion matrix and dice scores">
       <option name="closed" value="true" />
@@ -638,7 +635,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709493575748</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Added test_normal_data_generator.py and test_uniform_data_generator.py">
+      <option name="closed" value="true" />
+      <created>1709502355147</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1709502355148</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -653,7 +658,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changed imports" />
     <MESSAGE value="Started new tests in test_network.py" />
     <MESSAGE value="Added He weights feature" />
     <MESSAGE value="Added new tests" />
@@ -678,6 +682,7 @@
     <MESSAGE value="Created abstract_data_generator.py and uniform_data_generator.py" />
     <MESSAGE value="Created normal_data_generator.py" />
     <MESSAGE value="Updated docs and added test_abstract_data_generator.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated docs and added test_abstract_data_generator.py" />
+    <MESSAGE value="Added test_normal_data_generator.py and test_uniform_data_generator.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added test_normal_data_generator.py and test_uniform_data_generator.py" />
   </component>
 </project>

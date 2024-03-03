@@ -61,10 +61,10 @@ class TestAbstractDataGenerator(TestCase):
                                       self.two_coord_gen._df)
         self.assertListEqual([], self.two_coord_gen._x)
         self.assertEqual(Union[
-                             Callable[[float], Any],
-                             Callable[[float, float], Any],
-                             Callable[[float, float, float], Any],
-                             Callable[[float, float, float, float], Any]
+                               Callable[[float], Any],
+                               Callable[[float, float], Any],
+                               Callable[[float, float, float], Any],
+                               Callable[[float, float, float, float], Any]
                          ], self.one_coord_gen.custom_type)
 
     def test_generate_data(self):

@@ -14,7 +14,7 @@ class TestUniformDataGenerator(TestCase):
 
     one_coord_uniform_data = [np.array([1.8, 1.2, 1.1, 1.6, 1.1])]
     two_coord_uniform_data = [np.array([0.8, 0.5, 0.4, 0.5, 0.2]),
-                             np.array([0.2, 2.1, 3.5, 4.2, 3.1])]
+                              np.array([0.2, 2.1, 3.5, 4.2, 3.1])]
     str_classifier_data = [np.array([9.5, 14.2, 11.7, 13.6, 8.8])]
 
     @staticmethod
