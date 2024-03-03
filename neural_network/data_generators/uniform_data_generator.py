@@ -24,7 +24,7 @@ class UniformDataGenerator(AbstractDataGenerator):
 
         Parameters
         ----------
-        classifier : Callable[[float, ...], Any]
+        classifier : custom_type
             A rule which takes a certain number of coordinates and returns a
             value representing the class of the datapoint
         num_datapoints : int
