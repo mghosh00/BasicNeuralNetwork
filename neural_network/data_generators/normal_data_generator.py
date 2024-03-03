@@ -1,4 +1,4 @@
-from typing import List, Callable, Any
+from typing import Union, List, Callable, Any
 
 import numpy as np
 
@@ -10,7 +10,14 @@ class NormalDataGenerator(AbstractDataGenerator):
     a given rule, with data being generated via a normal distribution.
     """
 
-    def __init__(self, classifier: Callable[[float, ...], Any],
+    custom_type = Union[
+        Callable[[float], Any],
+        Callable[[float, float], Any],
+        Callable[[float, float, float], Any],
+        Callable[[float, float, float, float], Any]
+    ]
+
+    def __init__(self, classifier: custom_type,
                  num_datapoints: int, means: List[float],
                  std_devs: List[float]):
         """Constructor method

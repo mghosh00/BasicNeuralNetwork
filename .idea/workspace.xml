@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58548c86-52df-414f-855a-9e2625a8f076" name="Changes" comment="Created normal_data_generator.py">
-      <change afterPath="$PROJECT_DIR$/neural_network/docs/data_generators.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/neural_network/tests/test_data_generators/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/neural_network/tests/test_data_generators/test_abstract_data_generator.py" afterDir="false" />
+    <list default="true" id="58548c86-52df-414f-855a-9e2625a8f076" name="Changes" comment="Updated docs and added test_abstract_data_generator.py">
+      <change afterPath="$PROJECT_DIR$/neural_network/tests/test_data_generators/test_normal_data_generator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_network/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_network/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_network/data_generators/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_network/data_generators/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_network/data_generators/abstract_data_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_network/data_generators/abstract_data_generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_network/docs/index.rst" beforeDir="false" afterPath="$PROJECT_DIR$/neural_network/docs/index.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neural_network/data_generators/normal_data_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_network/data_generators/normal_data_generator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +42,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python tests.Python tests for test_abstract_data_generator.TestAbstractDataGenerator.executor": "Run",
     "Python tests.Python tests for test_abstract_data_generator.TestAbstractDataGenerator.test_construct.executor": "Run",
     "Python tests.Python tests for test_abstract_data_generator.TestAbstractDataGenerator.test_construct_erroneous.executor": "Run",
     "Python tests.Python tests for test_abstract_data_generator.TestAbstractDataGenerator.test_write_to_csv.executor": "Run",
@@ -86,6 +82,8 @@
     "Python tests.Python tests for test_network.TestNetwork.test_store_gradient_of_loss_hidden_layer.executor": "Run",
     "Python tests.Python tests for test_network.TestNetwork.test_store_gradient_of_loss_outer_layer.executor": "Run",
     "Python tests.Python tests for test_neuron.TestNeuron.executor": "Run",
+    "Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_generate_data_one_coord.executor": "Run",
+    "Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_generate_data_two_coord.executor": "Run",
     "Python tests.Python tests for test_partitioner.TestPartitioner.executor": "Run",
     "Python tests.Python tests for test_partitioner.TestPartitioner.test_call_even_partitioner.executor": "Run",
     "Python tests.Python tests for test_plotter.TestPlotter.executor": "Run",
@@ -153,27 +151,20 @@
       <recent name="C:\Users\matth\IdeaProjects\Python\NeuralNetwork\neural_network\util" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for test_abstract_data_generator.TestAbstractDataGenerator.test_write_to_csv">
-    <configuration name="circle_main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_generate_data_one_coord">
+    <configuration name="Python tests for test_abstract_data_generator.TestAbstractDataGenerator" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/examples/circle" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_data_generators" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/neural_network/examples/circle/circle_main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_abstract_data_generator.TestAbstractDataGenerator&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <configuration name="Python tests for test_abstract_data_generator.TestAbstractDataGenerator.test_construct" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
@@ -188,21 +179,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test_abstract_data_generator.TestAbstractDataGenerator.test_construct&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for test_abstract_data_generator.TestAbstractDataGenerator.test_construct_erroneous" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="NeuralNetwork" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_data_generators" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_abstract_data_generator.TestAbstractDataGenerator.test_construct_erroneous&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -221,28 +197,43 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_plotter.TestPlotter.test_plot_loss_default" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_normal_data_generator.TestNormalDataGenerator.test_generate_data_one_coord" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_main" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_data_generators" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_plotter.TestPlotter.test_plot_loss_default&quot;" />
+      <option name="_new_target" value="&quot;test_normal_data_generator.TestNormalDataGenerator.test_generate_data_one_coord&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_normal_data_generator.TestNormalDataGenerator.test_generate_data_two_coord" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="NeuralNetwork" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_data_generators" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_normal_data_generator.TestNormalDataGenerator.test_generate_data_two_coord&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_generate_data_one_coord" />
+        <item itemvalue="Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_generate_data_two_coord" />
+        <item itemvalue="Python tests.Python tests for test_abstract_data_generator.TestAbstractDataGenerator" />
         <item itemvalue="Python tests.Python tests for test_abstract_data_generator.TestAbstractDataGenerator.test_write_to_csv" />
         <item itemvalue="Python tests.Python tests for test_abstract_data_generator.TestAbstractDataGenerator.test_construct" />
-        <item itemvalue="Python tests.Python tests for test_abstract_data_generator.TestAbstractDataGenerator.test_construct_erroneous" />
-        <item itemvalue="Python tests.Python tests for test_plotter.TestPlotter.test_plot_loss_default" />
-        <item itemvalue="Python.circle_main" />
       </list>
     </recent_temporary>
   </component>
@@ -254,14 +245,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708014585261</updated>
-    </task>
-    <task id="LOCAL-00001" summary="Initial commit">
-      <option name="closed" value="true" />
-      <created>1708854103549</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1708854103549</updated>
     </task>
     <task id="LOCAL-00002" summary="Created testing and validation features along with weighted partitioning">
       <option name="closed" value="true" />
@@ -647,7 +630,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709484907232</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Updated docs and added test_abstract_data_generator.py">
+      <option name="closed" value="true" />
+      <created>1709493575745</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1709493575748</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -662,7 +653,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changed location of run_tests.py" />
     <MESSAGE value="Changed imports" />
     <MESSAGE value="Started new tests in test_network.py" />
     <MESSAGE value="Added He weights feature" />
@@ -687,6 +677,7 @@
     <MESSAGE value="Made slight adjustments" />
     <MESSAGE value="Created abstract_data_generator.py and uniform_data_generator.py" />
     <MESSAGE value="Created normal_data_generator.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created normal_data_generator.py" />
+    <MESSAGE value="Updated docs and added test_abstract_data_generator.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated docs and added test_abstract_data_generator.py" />
   </component>
 </project>

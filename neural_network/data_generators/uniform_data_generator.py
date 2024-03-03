@@ -1,4 +1,4 @@
-from typing import List, Callable, Any
+from typing import List, Callable, Any, Union
 
 import numpy as np
 
@@ -10,7 +10,14 @@ class UniformDataGenerator(AbstractDataGenerator):
     a given rule, with data being generated via a uniform distribution.
     """
 
-    def __init__(self, classifier: Callable[[float, ...], Any],
+    custom_type = Union[
+        Callable[[float], Any],
+        Callable[[float, float], Any],
+        Callable[[float, float, float], Any],
+        Callable[[float, float, float, float], Any]
+    ]
+
+    def __init__(self, classifier: custom_type,
                  num_datapoints: int, lower_bounds: List[float],
                  upper_bounds: List[float]):
         """Constructor method
@@ -37,10 +44,10 @@ class UniformDataGenerator(AbstractDataGenerator):
                              f"{self._dimensions} parameters but we have "
                              f"{len(upper_bounds)} upper bounds.")
         for i in range(len(lower_bounds)):
-            if lower_bounds[i] > upper_bounds[i]:
+            if lower_bounds[i] >= upper_bounds[i]:
                 raise ValueError(f"All lower bounds must be lower than their "
                                  f"related upper bounds ({lower_bounds[i]}"
-                                 f" > {upper_bounds[i]})")
+                                 f" >= {upper_bounds[i]})")
         self._lower_bounds = lower_bounds
         self._upper_bounds = upper_bounds
 

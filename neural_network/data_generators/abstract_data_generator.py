@@ -1,4 +1,4 @@
-from typing import Union, Callable, Any
+from typing import Union, Callable, Any, Tuple, List
 from inspect import signature
 
 import numpy as np
@@ -48,13 +48,14 @@ class AbstractDataGenerator:
         raise NotImplementedError("Cannot call _generate_data or __call__ "
                                   "from base class")
 
-    def __call__(self) -> pd.DataFrame:
+    def __call__(self) -> Tuple[pd.DataFrame, List[Any]]:
         """Writes to self._df with the generated data and classes.
 
         Returns
         -------
-        pd.DataFrame
-            self._df with the newly generated data
+        Tuple[pd.DataFrame, List[Any]]
+            self._df with the newly generated data and the
+            category names/numbers
         """
         # Generates data (using a subclass)
         self._generate_data()
@@ -77,15 +78,19 @@ class AbstractDataGenerator:
 
         # Now we use labels 0 to (num_classes - 1) to standardise
         y = [0] * self._num_datapoints
+        categories = dict(sorted(categories.items()))
         for k, category in enumerate(categories.keys()):
             for j in categories[category]:
                 y[j] = k
 
         # Finally, update the df
         for i in range(self._dimensions):
-            self._df[f'x_{i}'] = self._x[i]
+            self._df[f'x_{i + 1}'] = self._x[i]
         self._df['y'] = np.array(y)
-        return self._df
+
+        # Return the dataframe and the category names, in case the user wishes
+        # to keep track of them
+        return self._df, list(categories.keys())
 
     def write_to_csv(self, title: str, directory: str = ''):
         """Writes the generated data to a .csv file.
