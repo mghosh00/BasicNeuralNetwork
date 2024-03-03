@@ -18,7 +18,7 @@ class DataSplitter:
         proportions : typing.List
             The proportions in the sequence training:validation:testing
         """
-        self._df = pd.read_csv(path).iloc[:, 1:]
+        self._df = pd.read_csv(path, index_col=0)
         if not 1 <= len(proportions) <= 3:
             raise ValueError("proportions must have 1-3 elements denoting the"
                              "train:validation:test ratio")
@@ -39,6 +39,8 @@ class DataSplitter:
         dfs = []
         for i in range(len(self._proportions) - 1):
             len_new_df = math.floor(n * (self._proportions[i] / prop_total))
+            if len_new_df == 0:
+                len_new_df = 1
             splits.append(sum(splits) + len_new_df)
             new_df = self._df.iloc[splits[i]:splits[i + 1]]
             new_df.index = range(len_new_df)

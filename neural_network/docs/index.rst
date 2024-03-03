@@ -1,8 +1,8 @@
-.. NeuralNetwork index file
+.. BasicNeuralNetwork index file
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to NeuralNetwork's documentation!
+Welcome to BasicNeuralNetwork's documentation!
 ==========================================
 
 This is a python backend for the neural_network package.

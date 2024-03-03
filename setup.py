@@ -39,7 +39,7 @@ setup(
 
     maintainer_email='matthew.ghosh@gtc.ox.ac.uk',
 
-    url='https://github.com/mghosh00/NeuralNetwork',
+    url='https://github.com/mghosh00/BasicNeuralNetwork',
 
     # Packages to include
     packages=find_packages(include=('neural_network', 'neural_network.*')),

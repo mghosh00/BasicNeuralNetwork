@@ -11,7 +11,7 @@ sys.path.insert(0, os.path.abspath('../..'))
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'Neural Network Project'
+project = 'Basic Neural Network Project'
 copyright = "2024, 'Matthew Ghosh'"
 author = "'Matthew Ghosh'"
 
