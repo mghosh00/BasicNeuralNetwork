@@ -9,7 +9,7 @@ from .abstract_simulator import AbstractSimulator
 
 
 class Tester(AbstractSimulator):
-    """Class to test a neural network
+    """Class to test a neural network.
     """
 
     def __init__(self, network: Network, data: pd.DataFrame, batch_size: int,

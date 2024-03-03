@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58548c86-52df-414f-855a-9e2625a8f076" name="Changes" comment="Finished test_abstract_simulator.py">
-      <change afterPath="$PROJECT_DIR$/neural_network/tests/test_main/test_trainer.py" afterDir="false" />
+    <list default="true" id="58548c86-52df-414f-855a-9e2625a8f076" name="Changes" comment="Added test_normal_data_generator.py and test_uniform_data_generator.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_network/main/trainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_network/main/trainer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neural_network/tests/test_data_generators/test_abstract_data_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_network/tests/test_data_generators/test_abstract_data_generator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="softmax-error-fix" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -40,62 +39,108 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python tests.Python tests for test_abstract_function.TestAbstractFunction.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_abs_generate_scatter.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_default.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_erroneous.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_non_default.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_forward_pass_one_batch.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_store_gradients.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_edge.TestEdge.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_layer.TestNeuron.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_loss.TestLoss.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_network.TestNetwork.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_network.TestNetwork.test_activate_output_layer.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_network.TestNetwork.test_back_propagate_bias.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_network.TestNetwork.test_back_propagate_weight_no_momentum.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_network.TestNetwork.test_back_propagate_weight_with_momentum.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_network.TestNetwork.test_calculate_pre_activated_value.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_network.TestNetwork.test_construct.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_network.TestNetwork.test_construct_defaults.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_network.TestNetwork.test_construct_edges.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_network.TestNetwork.test_construct_erroneous.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_network.TestNetwork.test_construct_layers.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_network.TestNetwork.test_construct_others.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_network.TestNetwork.test_forward_pass_one_datapoint.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_network.TestNetwork.test_forward_pass_one_datapoint_erroneous.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_network.TestNetwork.test_get_neuron_counts.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_network.TestNetwork.test_propagate_softmax_layer.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_network.TestNetwork.test_propagate_value_forward.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_network.TestNetwork.test_store_gradient_of_loss_hidden_layer.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_network.TestNetwork.test_store_gradient_of_loss_outer_layer.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_neuron.TestNeuron.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_relu.TestReLU.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_sigmoid.TestSigmoid.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_softmax.TestSoftmax.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_transfer.TestTransferFunction.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_transfer.TestTransferFunction.test_call_erroneous.executor&quot;: &quot;Run&quot;,
-    &quot;Python.circle_main (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.circle_main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.generate_circle_data (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.generate_circle_data.executor&quot;: &quot;Run&quot;,
-    &quot;Python.linear_main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.weighted_partitioner.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/matth/IdeaProjects/Python/NeuralNetwork/neural_network/tests/test_main&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python tests.Python tests for test_abstract_data_generator.TestAbstractDataGenerator.executor": "Run",
+    "Python tests.Python tests for test_abstract_data_generator.TestAbstractDataGenerator.test_construct.executor": "Run",
+    "Python tests.Python tests for test_abstract_data_generator.TestAbstractDataGenerator.test_construct_erroneous.executor": "Run",
+    "Python tests.Python tests for test_abstract_data_generator.TestAbstractDataGenerator.test_write_to_csv.executor": "Run",
+    "Python tests.Python tests for test_abstract_function.TestAbstractFunction.executor": "Run",
+    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.executor": "Run",
+    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_abs_generate_scatter.executor": "Run",
+    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct.executor": "Run",
+    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_default.executor": "Run",
+    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_erroneous.executor": "Run",
+    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_non_default.executor": "Run",
+    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_forward_pass_one_batch.executor": "Run",
+    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_store_gradients.executor": "Run",
+    "Python tests.Python tests for test_data_splitter.TestDataSplitter.executor": "Run",
+    "Python tests.Python tests for test_data_splitter.TestDataSplitter.test_construct.executor": "Run",
+    "Python tests.Python tests for test_data_splitter.TestDataSplitter.test_construct_erroneous.executor": "Run",
+    "Python tests.Python tests for test_data_splitter.TestDataSplitter.test_split_1.executor": "Run",
+    "Python tests.Python tests for test_edge.TestEdge.executor": "Run",
+    "Python tests.Python tests for test_layer.TestNeuron.executor": "Run",
+    "Python tests.Python tests for test_loss.TestLoss.executor": "Run",
+    "Python tests.Python tests for test_network.TestNetwork.executor": "Run",
+    "Python tests.Python tests for test_network.TestNetwork.test_activate_output_layer.executor": "Run",
+    "Python tests.Python tests for test_network.TestNetwork.test_back_propagate_bias.executor": "Run",
+    "Python tests.Python tests for test_network.TestNetwork.test_back_propagate_weight_no_momentum.executor": "Run",
+    "Python tests.Python tests for test_network.TestNetwork.test_back_propagate_weight_with_momentum.executor": "Run",
+    "Python tests.Python tests for test_network.TestNetwork.test_calculate_pre_activated_value.executor": "Run",
+    "Python tests.Python tests for test_network.TestNetwork.test_construct.executor": "Run",
+    "Python tests.Python tests for test_network.TestNetwork.test_construct_defaults.executor": "Run",
+    "Python tests.Python tests for test_network.TestNetwork.test_construct_edges.executor": "Run",
+    "Python tests.Python tests for test_network.TestNetwork.test_construct_erroneous.executor": "Run",
+    "Python tests.Python tests for test_network.TestNetwork.test_construct_layers.executor": "Run",
+    "Python tests.Python tests for test_network.TestNetwork.test_construct_others.executor": "Run",
+    "Python tests.Python tests for test_network.TestNetwork.test_forward_pass_one_datapoint.executor": "Run",
+    "Python tests.Python tests for test_network.TestNetwork.test_forward_pass_one_datapoint_erroneous.executor": "Run",
+    "Python tests.Python tests for test_network.TestNetwork.test_get_neuron_counts.executor": "Run",
+    "Python tests.Python tests for test_network.TestNetwork.test_propagate_softmax_layer.executor": "Run",
+    "Python tests.Python tests for test_network.TestNetwork.test_propagate_value_forward.executor": "Run",
+    "Python tests.Python tests for test_network.TestNetwork.test_store_gradient_of_loss_hidden_layer.executor": "Run",
+    "Python tests.Python tests for test_network.TestNetwork.test_store_gradient_of_loss_outer_layer.executor": "Run",
+    "Python tests.Python tests for test_neuron.TestNeuron.executor": "Run",
+    "Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.executor": "Run",
+    "Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_call_one_coord.executor": "Run",
+    "Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_call_str.executor": "Run",
+    "Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_call_two_coord.executor": "Run",
+    "Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_generate_data_one_coord.executor": "Run",
+    "Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_generate_data_two_coord.executor": "Run",
+    "Python tests.Python tests for test_partitioner.TestPartitioner.executor": "Run",
+    "Python tests.Python tests for test_partitioner.TestPartitioner.test_call_even_partitioner.executor": "Run",
+    "Python tests.Python tests for test_plotter.TestPlotter.executor": "Run",
+    "Python tests.Python tests for test_plotter.TestPlotter.test_plot_loss_default.executor": "Run",
+    "Python tests.Python tests for test_plotter.TestPlotter.test_plot_predictions.executor": "Run",
+    "Python tests.Python tests for test_plotter.TestPlotter.test_plot_predictions_default.executor": "Run",
+    "Python tests.Python tests for test_relu.TestReLU.executor": "Run",
+    "Python tests.Python tests for test_sigmoid.TestSigmoid.executor": "Run",
+    "Python tests.Python tests for test_softmax.TestSoftmax.executor": "Run",
+    "Python tests.Python tests for test_tester.TestTester.executor": "Run",
+    "Python tests.Python tests for test_tester.TestTester.test_construct.executor": "Run",
+    "Python tests.Python tests for test_tester.TestTester.test_generate_confusion.executor": "Run",
+    "Python tests.Python tests for test_tester.TestTester.test_generate_scatter.executor": "Run",
+    "Python tests.Python tests for test_tester.TestTester.test_run.executor": "Run",
+    "Python tests.Python tests for test_tester.TestTester.test_validate_default.executor": "Run",
+    "Python tests.Python tests for test_trainer.TestTrainer.executor": "Run",
+    "Python tests.Python tests for test_trainer.TestTrainer.test_back_propagate_one_batch.executor": "Run",
+    "Python tests.Python tests for test_trainer.TestTrainer.test_construct_default.executor": "Run",
+    "Python tests.Python tests for test_trainer.TestTrainer.test_generate_gif.executor": "Run",
+    "Python tests.Python tests for test_trainer.TestTrainer.test_generate_loss_plot.executor": "Run",
+    "Python tests.Python tests for test_trainer.TestTrainer.test_generate_scatter.executor": "Run",
+    "Python tests.Python tests for test_trainer.TestTrainer.test_run.executor": "Run",
+    "Python tests.Python tests for test_trainer.TestTrainer.test_run_default.executor": "Run",
+    "Python tests.Python tests for test_trainer.TestTrainer.test_store_gradients.executor": "Run",
+    "Python tests.Python tests for test_transfer.TestTransferFunction.executor": "Run",
+    "Python tests.Python tests for test_transfer.TestTransferFunction.test_call_erroneous.executor": "Run",
+    "Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator.executor": "Run",
+    "Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator.test_construct_erroneous.executor": "Run",
+    "Python tests.Python tests for test_validator.TestTrainer.test_construct.executor": "Run",
+    "Python tests.Python tests for test_validator.TestValidator.executor": "Run",
+    "Python tests.Python tests for test_validator.TestValidator.test_generate_scatter.executor": "Run",
+    "Python tests.Python tests for test_validator.TestValidator.test_run.executor": "Run",
+    "Python tests.Python tests for test_validator.TestValidator.test_run_default.executor": "Run",
+    "Python tests.Python tests for test_weighted_partitioner.TestWeightedPartitioner.executor": "Run",
+    "Python tests.Python tests for test_weighted_partitioner.TestWeightedPartitioner.test_call_even_partitioner.executor": "Run",
+    "Python tests.Python tests for test_weighted_partitioner.TestWeightedPartitioner.test_construct.executor": "Run",
+    "Python.circle_main (1).executor": "Run",
+    "Python.circle_main.executor": "Run",
+    "Python.generate_circle_data (1).executor": "Run",
+    "Python.generate_circle_data.executor": "Run",
+    "Python.linear_main.executor": "Run",
+    "Python.trainer.executor": "Run",
+    "Python.weighted_partitioner.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "automated-data-generation",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/matth/IdeaProjects/Python/NeuralNetwork/neural_network/tests/test_main",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\matth\IdeaProjects\Python\NeuralNetwork\neural_network\tests\test_main" />
@@ -105,94 +150,95 @@
       <recent name="C:\Users\matth\IdeaProjects\Python\NeuralNetwork\neural_network\main" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\matth\IdeaProjects\Python\NeuralNetwork\neural_network\data_generators" />
       <recent name="C:\Users\matth\IdeaProjects\Python\NeuralNetwork" />
       <recent name="C:\Users\matth\IdeaProjects\Python\NeuralNetwork\neural_network\tests\test_components" />
       <recent name="C:\Users\matth\IdeaProjects\Python\NeuralNetwork\neural_network\util" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator">
-    <configuration name="Python tests for test_abstract_simulator.TestAbstractSimulator" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator">
+    <configuration name="Python tests for test_normal_data_generator.TestNormalDataGenerator" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_main" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_data_generators" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_abstract_simulator.TestAbstractSimulator&quot;" />
+      <option name="_new_target" value="&quot;test_normal_data_generator.TestNormalDataGenerator&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_abstract_simulator.TestAbstractSimulator.test_abs_generate_scatter" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_normal_data_generator.TestNormalDataGenerator.test_call_str" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_main" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_data_generators" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_abstract_simulator.TestAbstractSimulator.test_abs_generate_scatter&quot;" />
+      <option name="_new_target" value="&quot;test_normal_data_generator.TestNormalDataGenerator.test_call_str&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_non_default" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_normal_data_generator.TestNormalDataGenerator.test_call_two_coord" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_main" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_data_generators" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_abstract_simulator.TestAbstractSimulator.test_construct_non_default&quot;" />
+      <option name="_new_target" value="&quot;test_normal_data_generator.TestNormalDataGenerator.test_call_two_coord&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_abstract_simulator.TestAbstractSimulator.test_forward_pass_one_batch" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_uniform_data_generator.TestUniformDataGenerator" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_main" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_data_generators" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_abstract_simulator.TestAbstractSimulator.test_forward_pass_one_batch&quot;" />
+      <option name="_new_target" value="&quot;test_uniform_data_generator.TestUniformDataGenerator&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_abstract_simulator.TestAbstractSimulator.test_store_gradients" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_uniform_data_generator.TestUniformDataGenerator.test_construct_erroneous" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_main" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_data_generators" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_abstract_simulator.TestAbstractSimulator.test_store_gradients&quot;" />
+      <option name="_new_target" value="&quot;test_uniform_data_generator.TestUniformDataGenerator.test_construct_erroneous&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator" />
-        <item itemvalue="Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_store_gradients" />
-        <item itemvalue="Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_abs_generate_scatter" />
-        <item itemvalue="Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_forward_pass_one_batch" />
-        <item itemvalue="Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_non_default" />
+        <item itemvalue="Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator" />
+        <item itemvalue="Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator.test_construct_erroneous" />
+        <item itemvalue="Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator" />
+        <item itemvalue="Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_call_str" />
+        <item itemvalue="Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_call_two_coord" />
       </list>
     </recent_temporary>
   </component>
@@ -204,22 +250,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708014585261</updated>
-    </task>
-    <task id="LOCAL-00001" summary="Initial commit">
-      <option name="closed" value="true" />
-      <created>1708854103549</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1708854103549</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Created testing and validation features along with weighted partitioning">
-      <option name="closed" value="true" />
-      <created>1708881254742</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1708881254742</updated>
     </task>
     <task id="LOCAL-00003" summary="Created a class to split data and added confusion matrix and dice scores">
       <option name="closed" value="true" />
@@ -485,7 +515,135 @@
       <option name="project" value="LOCAL" />
       <updated>1709241144576</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Finished test_trainer.py">
+      <option name="closed" value="true" />
+      <created>1709392893518</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1709392893519</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Finished test_validator.py">
+      <option name="closed" value="true" />
+      <created>1709394003635</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1709394003636</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Finished test_tester.py">
+      <option name="closed" value="true" />
+      <created>1709396272197</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1709396272198</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Finished test_tester.py">
+      <option name="closed" value="true" />
+      <created>1709396431200</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1709396431200</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Finished test_plotter.py">
+      <option name="closed" value="true" />
+      <created>1709399381596</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1709399381596</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Fixed error">
+      <option name="closed" value="true" />
+      <created>1709404140141</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1709404140142</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Flake8 fix">
+      <option name="closed" value="true" />
+      <created>1709404558098</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1709404558098</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Finished test_data_splitter.py">
+      <option name="closed" value="true" />
+      <created>1709465245882</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1709465245882</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Finished test_partitioner.py and test_weighted_partitioner.py">
+      <option name="closed" value="true" />
+      <created>1709468312617</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1709468312617</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Flake8">
+      <option name="closed" value="true" />
+      <created>1709468351396</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1709468351396</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Flake8">
+      <option name="closed" value="true" />
+      <created>1709468475749</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1709468475749</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Made slight adjustments">
+      <option name="closed" value="true" />
+      <created>1709471301061</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1709471301061</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Created abstract_data_generator.py and uniform_data_generator.py">
+      <option name="closed" value="true" />
+      <created>1709484166801</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1709484166801</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Created normal_data_generator.py">
+      <option name="closed" value="true" />
+      <created>1709484907232</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1709484907232</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Updated docs and added test_abstract_data_generator.py">
+      <option name="closed" value="true" />
+      <created>1709493575745</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1709493575748</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Added test_normal_data_generator.py and test_uniform_data_generator.py">
+      <option name="closed" value="true" />
+      <created>1709502355147</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1709502355148</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -500,19 +658,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created testing and validation features along with weighted partitioning" />
-    <MESSAGE value="Created a class to split data and added confusion matrix and dice scores" />
-    <MESSAGE value="Created package, docs and workflows" />
-    <MESSAGE value="Fixed run_tests.py" />
-    <MESSAGE value="Added .readthedocs.yml" />
-    <MESSAGE value="flake8" />
-    <MESSAGE value="Tests for Layer class" />
-    <MESSAGE value="Changed tests" />
-    <MESSAGE value="Attempt" />
-    <MESSAGE value="Added test_edge.py" />
-    <MESSAGE value="Changed import statements" />
-    <MESSAGE value="Changed location of run_tests.py" />
-    <MESSAGE value="Changed imports" />
     <MESSAGE value="Started new tests in test_network.py" />
     <MESSAGE value="Added He weights feature" />
     <MESSAGE value="Added new tests" />
@@ -523,8 +668,21 @@
     <MESSAGE value="Finished test_network.py" />
     <MESSAGE value="Added test_functions directory and updated some functions to avoid overflow errors" />
     <MESSAGE value="Fixed test_network.py and added test_transfer.py to complete test_functions" />
-    <MESSAGE value="Flake8" />
     <MESSAGE value="Finished test_abstract_simulator.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished test_abstract_simulator.py" />
+    <MESSAGE value="Finished test_trainer.py" />
+    <MESSAGE value="Finished test_validator.py" />
+    <MESSAGE value="Finished test_tester.py" />
+    <MESSAGE value="Finished test_plotter.py" />
+    <MESSAGE value="Fixed error" />
+    <MESSAGE value="Flake8 fix" />
+    <MESSAGE value="Finished test_data_splitter.py" />
+    <MESSAGE value="Finished test_partitioner.py and test_weighted_partitioner.py" />
+    <MESSAGE value="Flake8" />
+    <MESSAGE value="Made slight adjustments" />
+    <MESSAGE value="Created abstract_data_generator.py and uniform_data_generator.py" />
+    <MESSAGE value="Created normal_data_generator.py" />
+    <MESSAGE value="Updated docs and added test_abstract_data_generator.py" />
+    <MESSAGE value="Added test_normal_data_generator.py and test_uniform_data_generator.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added test_normal_data_generator.py and test_uniform_data_generator.py" />
   </component>
 </project>

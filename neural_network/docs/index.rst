@@ -15,6 +15,7 @@ Contents
 
 .. toctree::
     components
+    data_generators
     functions
     main
     util
