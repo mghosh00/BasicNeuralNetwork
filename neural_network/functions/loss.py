@@ -29,7 +29,7 @@ class Loss:
         softmax_value = y_hat[y]
 
         # This should be a probability
-        if 0 < softmax_value < 1:
+        if 0 <= softmax_value <= 1:
             return - math.log(y_hat[y])
 
         else:

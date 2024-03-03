@@ -10,7 +10,7 @@ training_data, validation_data, testing_data = data_splitter.split()
 
 # Setting up the neural network
 learning_rate = 0.01
-network = Network(2, 2, [4, 4],
+network = Network(2, 3, [4, 4, 4],
                   learning_rate=learning_rate, adaptive=True,
                   he_weights=True)
 

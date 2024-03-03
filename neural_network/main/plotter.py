@@ -41,7 +41,7 @@ class Plotter:
             The data
         """
         times = np.linspace(0, len(df), len(df), endpoint=False)
-        for column in df.columns:
+        for column in reversed(df.columns):
             plt.plot(times, df[column].to_numpy(), label=column)
         plt.xlabel("Epoch")
         plt.ylabel("Cross entropy loss")

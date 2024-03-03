@@ -73,12 +73,12 @@ class TestPlotter(TestCase):
         times = np.array([0, 1, 2, 3, 4, 5, 6, 7])
         np.testing.assert_array_equal(first_args[0], times)
         np.testing.assert_array_equal(second_args[0], times)
-        np.testing.assert_array_equal(first_args[1], self.loss_data[:, 0])
-        np.testing.assert_array_equal(second_args[1], self.loss_data[:, 1])
+        np.testing.assert_array_equal(first_args[1], self.loss_data[:, 1])
+        np.testing.assert_array_equal(second_args[1], self.loss_data[:, 0])
         self.assertDictEqual(plot_call_list[0].kwargs,
-                             {'label': 'Training'})
-        self.assertDictEqual(plot_call_list[1].kwargs,
                              {'label': 'Validation'})
+        self.assertDictEqual(plot_call_list[1].kwargs,
+                             {'label': 'Training'})
         mock_xlabel.assert_called_once_with("Epoch")
         mock_ylabel.assert_called_once_with("Cross entropy loss")
         mock_legend.assert_called_once()
