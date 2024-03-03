@@ -1,5 +1,6 @@
 from neural_network import util
 from neural_network import functions
+from neural_network import data_generators
 from neural_network import components
 from neural_network import main
 
@@ -13,6 +14,8 @@ from neural_network.functions import Sigmoid
 from neural_network.functions import TransferFunction
 from neural_network.functions import Softmax
 from neural_network.functions import Loss
+
+from neural_network.data_generators import AbstractDataGenerator
 
 from neural_network.components import Neuron
 from neural_network.components import Edge
