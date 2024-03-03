@@ -4,7 +4,7 @@ from typing import List
 
 
 class Partitioner:
-    """Class to randomly partition `n` integers into `m` sets
+    """Class to randomly partition `n` integers into sets of size `m`
     """
 
     def __init__(self, n: int, m: int):
@@ -15,8 +15,12 @@ class Partitioner:
         n : int
             Number of integers
         m : int
-            Number of sets for the partition
+            Size of each set
         """
+        if n <= 0 or m <= 0:
+            raise ValueError(f"n ({n}) and m ({m}) must be positive integers")
+        if m > n:
+            raise ValueError(f"m ({m}) cannot be greater than n ({n})")
         self._n = n
         self._m = m
 
