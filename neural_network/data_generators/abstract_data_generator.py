@@ -60,6 +60,10 @@ class AbstractDataGenerator:
         # Generates data (using a subclass)
         self._generate_data()
 
+        # Update df with x data
+        for i in range(self._dimensions):
+            self._df[f'x_{i + 1}'] = self._x[i]
+
         # The below is a dictionary containing categories as keys and lists of
         # datapoint indices as values
         categories = {}
@@ -68,28 +72,27 @@ class AbstractDataGenerator:
             # using all its coordinates as inputs
             category = self._classifier(*[self._x[i][j]
                                           for i in range(self._dimensions)])
+            self._df.at[j, 'y'] = category
 
-            # If this is the first occurrence of the category, we create a new
-            # list of indices. Else, we append this index to the current list.
-            if category in categories.keys():
-                categories[category].append(j)
-            else:
-                categories[category] = [j]
-
-        # Now we use labels 0 to (num_classes - 1) to standardise
-        y = [0] * self._num_datapoints
-        categories = dict(sorted(categories.items()))
-        for k, category in enumerate(categories.keys()):
-            for j in categories[category]:
-                y[j] = k
-
-        # Finally, update the df
-        for i in range(self._dimensions):
-            self._df[f'x_{i + 1}'] = self._x[i]
-        self._df['y'] = np.array(y)
-
-        # Return the dataframe and the category names, in case the user wishes
-        # to keep track of them
+        #     # If this is the first occurrence of the category, we create a new
+        #     # list of indices. Else, we append this index to the current list.
+        #     if category in categories.keys():
+        #         categories[category].append(j)
+        #     else:
+        #         categories[category] = [j]
+        #
+        # # Now we use labels 0 to (num_classes - 1) to standardise
+        # y = [0] * self._num_datapoints
+        # categories = dict(sorted(categories.items()))
+        # for k, category in enumerate(categories.keys()):
+        #     for j in categories[category]:
+        #         y[j] = k
+        #
+        # # Finally, update the df
+        # self._df['y'] = np.array(y)
+        #
+        # # Return the dataframe and the category names, in case the user wishes
+        # # to keep track of them
         return self._df, list(categories.keys())
 
     def write_to_csv(self, title: str, directory: str = ''):

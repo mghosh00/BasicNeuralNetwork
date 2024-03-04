@@ -44,6 +44,8 @@ class Tester(AbstractSimulator):
         loss = round(total_loss / len(self._data), 8)
         print(f"Testing loss: {loss}")
 
+        self._update_categorical_dataframe()
+
     def generate_scatter(self, title: str = ''):
         """Creates scatter plot from the data and their predicted values.
 
@@ -57,20 +59,13 @@ class Tester(AbstractSimulator):
     def generate_confusion(self):
         """Creates a confusion matrix from the results.
         """
-        # num_classes = len(set(self._data['y'].to_numpy()))
-        # confusion_df = pd.DataFrame(index=range(num_classes),
-        #                             columns=range(num_classes))
-        # for i in range(len(self._data)):
-        #     actual = int(self._data.at[i, 'y'])
-        #     predicted = int(self._data.at[i, 'y_hat'])
-        #     confusion_df.at[actual, predicted] += 1
-        confusion_df = pd.crosstab(self._data.y, self._data.y_hat)
+        confusion_df = pd.crosstab(self._categorical_data.y,
+                                   self._categorical_data.y_hat)
         print("Confusion matrix for testing data:")
         print(confusion_df)
-        num_classes = len(confusion_df)
         dice_scores = {}
-        for i in range(num_classes):
-            true_positive = confusion_df.at[i, i]
+        for i, category in enumerate(self._category_names):
+            true_positive = confusion_df.at[category, category]
             sum_row = sum(confusion_df.iloc[i, :])
             sum_column = sum(confusion_df.iloc[:, i])
             dice = 2 * true_positive / (sum_row + sum_column)

@@ -49,6 +49,9 @@ class Validator(AbstractSimulator):
         loss = round(total_loss / len(self._data), 8)
         if self._epoch % factor == 0:
             print(f"Validation loss: {loss}")
+
+        self._update_categorical_dataframe()
+
         return loss
 
     def generate_scatter(self, title: str = ''):

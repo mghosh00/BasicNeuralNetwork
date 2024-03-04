@@ -43,36 +43,38 @@ class AbstractSimulator:
 
         # Renaming of columns
         data.columns = [f'x_{i + 1}' for i in range(n)] + ['y']
+
+        # Save the category names to be used for plots and output data
+        self._category_names = sorted(list(set(data['y'])))
+
         # Ensure that number of network output neurons equals the number of
         # classes in the dataframe
-        y_set = set(data['y'])
-        num_classes = len(y_set)
+        num_classes = len(self._category_names)
         num_outputs = network.get_neuron_counts()[-1]
         if num_outputs < num_classes:
             raise ValueError(f"The number of output neurons in the network "
                              f"({num_outputs}) is less than the number of "
                              f"classes in the dataframe ({num_classes})")
 
-        # Ensure that classes are indexed correctly
-        if not set(range(num_classes)) == y_set:
-            y_list = sorted(list(y_set))
-            raise ValueError(f"The final column of data must only contain "
-                             f"numbers between 0 and {num_classes - 1} "
-                             f"inclusive (classes = {y_list})")
-
         # Ensure that batch_size is not too big
         if batch_size > len(data):
             raise ValueError("Batch size must be smaller than number of "
                              "datapoints")
 
+        # Change the category names to integers from 0 to num_classes - 1 for
+        # the numerical calculations, but save the category names for reference
+        # in plots.
         data['y_hat'] = [0] * len(data)
-        self._data = data
+        self._categorical_data = data
+        numerical_data = data.replace({'y': {self._category_names[i]: i
+                                             for i in range(num_classes)}})
+        self._data = numerical_data
         self._batch_size = batch_size
         self._classification = classification
         self._loss = Loss()
         if weighted:
             self._partitioner = WeightedPartitioner(len(data), batch_size,
-                                                    data)
+                                                    numerical_data)
         else:
             self._partitioner = Partitioner(len(data), batch_size)
 
@@ -107,11 +109,32 @@ class AbstractSimulator:
         """
         raise NotImplementedError("Cannot call from base class")
 
-    def store_gradients(self, batch_id):
+    def store_gradients(self, batch_id: int):
+        """To be overridden by subclasses.
+
+        Parameters
+        ----------
+        batch_id : id of the current batch
+        """
         return
 
+    def _update_categorical_dataframe(self):
+        """Update the categorical dataframe with y_hat data but using the
+        original categories from the data - to be used for plotting and
+        outputs to the user. Note that this method will be called after
+        training/testing/validation is complete so that the y_hat values are
+        fully updated.
+        """
+        names = self._category_names
+        self._categorical_data['y_hat'] = \
+            list(self._data.replace({'y_hat':
+                                    {i: names[i] for i in range(len(names))}})
+                 ['y_hat'])
+
     def abs_generate_scatter(self, phase: str = 'training', title: str = ''):
-        """Creates scatter plot from the data and their predicted values
+        """Creates scatter plot from the data and their predicted values. We
+        use the categories the user provided with the data instead of arbitrary
+        integer classes.
 
         Parameters
         ----------
@@ -120,4 +143,4 @@ class AbstractSimulator:
         title : str
             An optional title to append to the plot
         """
-        Plotter.plot_predictions(self._data, phase, title)
+        Plotter.plot_predictions(self._categorical_data, phase, title)

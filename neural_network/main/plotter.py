@@ -1,3 +1,5 @@
+import os
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -8,7 +10,10 @@ class Plotter:
     """Class to track progress of training/testing
     """
 
-    path = "plots/"
+    path = "plots"
+    if not os.path.exists(path):
+        os.makedirs(path)
+    path += "/"
 
     @staticmethod
     def plot_predictions(df: pd.DataFrame, phase: str = 'training',
@@ -30,6 +35,8 @@ class Plotter:
                 + ggtitle(f"Predicted classes for {phase} data")
                 )
         substring = '_' + title if title else ''
+        if not os.path.exists(Plotter.path + phase):
+            os.makedirs(Plotter.path + phase)
         plot.save(Plotter.path + f"{phase}/scatter{substring}.png")
 
     @staticmethod
