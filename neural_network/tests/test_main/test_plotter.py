@@ -114,7 +114,10 @@ class TestPlotter(TestCase):
     @mock.patch('os.makedirs')
     @mock.patch('os.path.exists')
     def test_plot_loss(self, mock_exists, mock_makedirs, mock_plt, mock_save):
+        mock_exists.return_value = False
         Plotter.plot_loss(self.loss_df, "test_title")
+        mock_exists.assert_called_with("plots/")
+        mock_makedirs.assert_called_with("plots/")
         mock_save.assert_called_once_with("plots/losses_test_title.png")
 
 
