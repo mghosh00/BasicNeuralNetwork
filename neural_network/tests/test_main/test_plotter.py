@@ -40,7 +40,6 @@ class TestPlotter(TestCase):
     def test_construct(self):
         self.assertEqual(Plotter.path, "plots/")
 
-
     @mock.patch(ggplot_string)
     @mock.patch('os.makedirs')
     @mock.patch('os.path.exists')

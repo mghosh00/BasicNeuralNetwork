@@ -1,7 +1,6 @@
-from typing import Union, Callable, Any, Tuple, List
+from typing import Union, Callable, Any
 from inspect import signature
 
-import numpy as np
 import pandas as pd
 
 

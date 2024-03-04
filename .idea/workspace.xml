@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58548c86-52df-414f-855a-9e2625a8f076" name="Changes" comment="Updated to include category names in output (tests need to be written)">
+    <list default="true" id="58548c86-52df-414f-855a-9e2625a8f076" name="Changes" comment="Updated all tests with new changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_network/main/plotter.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_network/main/plotter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_network/tests/test_main/test_abstract_simulator.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_network/tests/test_main/test_abstract_simulator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_network/tests/test_main/test_plotter.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_network/tests/test_main/test_plotter.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,6 +115,9 @@
     "Python tests.Python tests for test_transfer.TestTransferFunction.executor": "Run",
     "Python tests.Python tests for test_transfer.TestTransferFunction.test_call_erroneous.executor": "Run",
     "Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator.executor": "Run",
+    "Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator.test_call_one_coord.executor": "Run",
+    "Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator.test_call_str.executor": "Run",
+    "Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator.test_call_two_coord.executor": "Run",
     "Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator.test_construct_erroneous.executor": "Run",
     "Python tests.Python tests for test_validator.TestTrainer.test_construct.executor": "Run",
     "Python tests.Python tests for test_validator.TestValidator.executor": "Run",
@@ -164,89 +164,103 @@
       <recent name="C:\Users\matth\IdeaProjects\Python\NeuralNetwork\neural_network\util" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for test_plotter.TestPlotter.test_construct">
-    <configuration name="Python tests for test_abstract_simulator.TestAbstractSimulator" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.even_odd_main">
+    <configuration name="even_odd_main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="NeuralNetwork" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/examples/even_odd" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/neural_network/examples/even_odd/even_odd_main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="generate_even_odd_data" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="NeuralNetwork" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/examples/even_odd" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/neural_network/examples/even_odd/generate_even_odd_data.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_uniform_data_generator.TestUniformDataGenerator" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_main" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_data_generators" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_abstract_simulator.TestAbstractSimulator&quot;" />
+      <option name="_new_target" value="&quot;test_uniform_data_generator.TestUniformDataGenerator&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_abstract_simulator.TestAbstractSimulator.test_abs_generate_scatter" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_uniform_data_generator.TestUniformDataGenerator.test_call_str" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_main" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_data_generators" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_abstract_simulator.TestAbstractSimulator.test_abs_generate_scatter&quot;" />
+      <option name="_new_target" value="&quot;test_uniform_data_generator.TestUniformDataGenerator.test_call_str&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_default" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_uniform_data_generator.TestUniformDataGenerator.test_call_two_coord" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_main" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_data_generators" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_abstract_simulator.TestAbstractSimulator.test_construct_default&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for test_abstract_simulator.TestAbstractSimulator.test_update_categorical_dataframe" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="NeuralNetwork" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_main" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_abstract_simulator.TestAbstractSimulator.test_update_categorical_dataframe&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for test_plotter.TestPlotter.test_construct" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="NeuralNetwork" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_main" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_plotter.TestPlotter.test_construct&quot;" />
+      <option name="_new_target" value="&quot;test_uniform_data_generator.TestUniformDataGenerator.test_call_two_coord&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests for test_plotter.TestPlotter.test_construct" />
-        <item itemvalue="Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator" />
-        <item itemvalue="Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_update_categorical_dataframe" />
-        <item itemvalue="Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_default" />
-        <item itemvalue="Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_abs_generate_scatter" />
+        <item itemvalue="Python.even_odd_main" />
+        <item itemvalue="Python.generate_even_odd_data" />
+        <item itemvalue="Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator" />
+        <item itemvalue="Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator.test_call_str" />
+        <item itemvalue="Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator.test_call_two_coord" />
       </list>
     </recent_temporary>
   </component>
@@ -258,14 +272,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708014585261</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Added .readthedocs.yml">
-      <option name="closed" value="true" />
-      <created>1708966661708</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1708966661708</updated>
     </task>
     <task id="LOCAL-00007" summary="flake8">
       <option name="closed" value="true" />
@@ -651,7 +657,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709582562047</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Updated all tests with new changes">
+      <option name="closed" value="true" />
+      <created>1709595490787</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1709595490787</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -666,7 +680,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Error fix" />
     <MESSAGE value="Softmax fixes work for linear example" />
     <MESSAGE value="Update test_edge.py" />
     <MESSAGE value="Update test_network.py" />
@@ -691,6 +704,7 @@
     <MESSAGE value="Created new example (diagonals) and added plots from old examples" />
     <MESSAGE value="Fixed docstrings" />
     <MESSAGE value="Updated to include category names in output (tests need to be written)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated to include category names in output (tests need to be written)" />
+    <MESSAGE value="Updated all tests with new changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated all tests with new changes" />
   </component>
 </project>
