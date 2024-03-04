@@ -10,10 +10,7 @@ class Plotter:
     """Class to track progress of training/testing
     """
 
-    path = "plots"
-    if not os.path.exists(path):
-        os.makedirs(path)
-    path += "/"
+    path = "plots/"
 
     @staticmethod
     def plot_predictions(df: pd.DataFrame, phase: str = 'training',
@@ -30,6 +27,9 @@ class Plotter:
         title : str
             The title
         """
+        if not os.path.exists(Plotter.path):
+            os.makedirs(Plotter.path)
+
         plot = (ggplot(df, aes(x='x_1', y='x_2'))
                 + geom_point(aes(color='factor(y_hat)'))
                 + ggtitle(f"Predicted classes for {phase} data")
@@ -47,6 +47,9 @@ class Plotter:
         df : pd.DataFrame
             The data
         """
+        if not os.path.exists(Plotter.path):
+            os.makedirs(Plotter.path)
+
         times = np.linspace(0, len(df), len(df), endpoint=False)
         for column in reversed(df.columns):
             plt.plot(times, df[column].to_numpy(), label=column)

@@ -29,5 +29,5 @@ generator = UniformDataGenerator(classifier=classifier, num_datapoints=400,
                                  lower_bounds=[0.0, 0.0],
                                  upper_bounds=[6.0, 6.0])
 
-data, categories = generator()
+data = generator()
 generator.write_to_csv("even_odd_data")

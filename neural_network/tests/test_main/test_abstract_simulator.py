@@ -32,6 +32,7 @@ class TestAbstractSimulator(TestCase):
                                     [2, 3, -4, 1]])
         self.df = pd.DataFrame(self.numpy_data,
                                columns=["a", "b", "c", "class"])
+        self.df["class"] = ["r", "r", "r", "l", "l", "r", "l", "r", "l", "r"]
         self.default_simulator = AbstractSimulator(self.network, self.df,
                                                    batch_size=2)
         self.simulator = AbstractSimulator(self.network, self.df, batch_size=2,
@@ -57,17 +58,7 @@ class TestAbstractSimulator(TestCase):
                          "classes in the dataframe (3)",
                          str(ve_2.exception))
 
-        # 3. Labels not in {0, 1}
-        array_3 = np.array([[0, 0, 0, 0], [1, 1, 1, 0], [2, 2, 2, 2]])
-        df_3 = pd.DataFrame(array_3)
-        with self.assertRaises(ValueError) as ve_3:
-            AbstractSimulator(self.network, df_3, batch_size=1)
-        self.assertEqual("The final column of data must only contain "
-                         "numbers between 0 and 1 inclusive "
-                         "(classes = [0, 2])",
-                         str(ve_3.exception))
-
-        # 4. Batch size too big
+        # 3. Batch size too big
         with self.assertRaises(ValueError) as ve_4:
             AbstractSimulator(self.network, self.df, batch_size=11)
         self.assertEqual("Batch size must be smaller than number of "
@@ -75,9 +66,17 @@ class TestAbstractSimulator(TestCase):
 
     def test_construct_default(self):
         self.assertEqual(self.network, self.default_simulator._network)
+        self.assertListEqual(["l", "r"],
+                             self.default_simulator._category_names)
         transformed_df = self.df.copy()
         transformed_df.columns = ['x_1', 'x_2', 'x_3', 'y']
+
+        # Check that before the name change we get the categorical data, and
+        # after we get the numerical data
         transformed_df['y_hat'] = [0] * 10
+        pd.testing.assert_frame_equal(transformed_df,
+                                      self.default_simulator._categorical_data)
+        transformed_df['y'] = [1, 1, 1, 0, 0, 1, 0, 1, 0, 1]
         pd.testing.assert_frame_equal(transformed_df,
                                       self.default_simulator._data)
         self.assertEqual(2, self.default_simulator._batch_size)
@@ -132,10 +131,21 @@ class TestAbstractSimulator(TestCase):
         result = self.simulator.store_gradients(4)
         self.assertIsNone(result)
 
+    def test_update_categorical_dataframe(self):
+        self.default_simulator._data['y_hat'] = np.array([0, 1, 0, 0, 1,
+                                                          0, 1, 1, 0, 1])
+        self.default_simulator._update_categorical_dataframe()
+        expected_df = self.default_simulator._categorical_data.copy()
+        expected_df['y_hat'] = ["l", "r", "l", "l", "r",
+                                "l", "r", "r", "l", "r"]
+        pd.testing.assert_frame_equal(expected_df,
+                                      self.default_simulator._categorical_data)
+
     @mock.patch('neural_network.main.plotter.Plotter.plot_predictions')
     def test_abs_generate_scatter(self, mock_plot):
         self.simulator.abs_generate_scatter()
-        mock_plot.assert_called_once_with(self.simulator._data, 'training', '')
+        mock_plot.assert_called_once_with(self.simulator._categorical_data,
+                                          'training', '')
 
 
 if __name__ == '__main__':

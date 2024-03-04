@@ -40,19 +40,38 @@ class TestPlotter(TestCase):
     def test_construct(self):
         self.assertEqual(Plotter.path, "plots/")
 
+
     @mock.patch(ggplot_string)
-    def test_plot_predictions_default(self, mock_save):
+    @mock.patch('os.makedirs')
+    @mock.patch('os.path.exists')
+    def test_plot_predictions_default(self, mock_exists, mock_makedirs,
+                                      mock_save):
         if sys.version_info[1] > 10:
+            mock_exists.return_value = False
             Plotter.plot_predictions(self.scatter_df)
-            mock_save.assert_called_with("plots/training/scatter.png")
+            exists_calls = mock_exists.call_args_list
+            self.assertListEqual([mock.call("plots/"),
+                                  mock.call("plots/training")], exists_calls)
+            self.assertListEqual(exists_calls, mock_makedirs.call_args_list)
+            self.assertEqual(mock_exists.call_count, 2)
+            self.assertEqual(mock_makedirs.call_count, 2)
+            mock_save.assert_called_once_with("plots/training/scatter.png")
         else:
             assert True
 
     @mock.patch(ggplot_string)
-    def test_plot_predictions(self, mock_save):
+    @mock.patch('os.makedirs')
+    @mock.patch('os.path.exists')
+    def test_plot_predictions(self, mock_exists, mock_makedirs, mock_save):
         if sys.version_info[1] > 10:
+            mock_exists.return_value = True
             Plotter.plot_predictions(self.scatter_df, 'validation',
                                      'test_title')
+            exists_calls = mock_exists.call_args_list
+            self.assertListEqual([mock.call("plots/"),
+                                  mock.call("plots/validation")], exists_calls)
+            self.assertEqual(mock_exists.call_count, 2)
+            self.assertEqual(mock_makedirs.call_count, 0)
             mock_save.assert_called_with("plots/validation/"
                                          "scatter_test_title.png")
         else:
@@ -64,9 +83,15 @@ class TestPlotter(TestCase):
     @mock.patch('matplotlib.pyplot.ylabel')
     @mock.patch('matplotlib.pyplot.xlabel')
     @mock.patch('matplotlib.pyplot.plot')
-    def test_plot_loss_default(self, mock_plt, mock_xlabel, mock_ylabel,
-                               mock_legend, mock_title, mock_save):
+    @mock.patch('os.makedirs')
+    @mock.patch('os.path.exists')
+    def test_plot_loss_default(self, mock_exists, mock_makedirs, mock_plt,
+                               mock_xlabel, mock_ylabel, mock_legend,
+                               mock_title, mock_save):
+        mock_exists.return_value = True
         Plotter.plot_loss(self.loss_df)
+        mock_exists.assert_called_once_with("plots/")
+        self.assertEqual(mock_makedirs.call_count, 0)
         plot_call_list = mock_plt.call_args_list
         first_args = plot_call_list[0].args
         second_args = plot_call_list[1].args
@@ -87,7 +112,9 @@ class TestPlotter(TestCase):
 
     @mock.patch('matplotlib.pyplot.savefig')
     @mock.patch('matplotlib.pyplot.plot')
-    def test_plot_loss(self, mock_plt, mock_save):
+    @mock.patch('os.makedirs')
+    @mock.patch('os.path.exists')
+    def test_plot_loss(self, mock_exists, mock_makedirs, mock_plt, mock_save):
         Plotter.plot_loss(self.loss_df, "test_title")
         mock_save.assert_called_once_with("plots/losses_test_title.png")
 

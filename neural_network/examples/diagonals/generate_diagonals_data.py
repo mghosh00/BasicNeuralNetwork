@@ -32,5 +32,5 @@ def classifier(x_1: float, x_2: float) -> str:
 generator = NormalDataGenerator(classifier=classifier, num_datapoints=400,
                                 means=[0.0, 0.0], std_devs=[1.0, 1.0])
 
-data, categories = generator()
+data = generator()
 generator.write_to_csv("diagonals_data")

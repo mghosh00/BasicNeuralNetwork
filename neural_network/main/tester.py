@@ -69,6 +69,6 @@ class Tester(AbstractSimulator):
             sum_row = sum(confusion_df.iloc[i, :])
             sum_column = sum(confusion_df.iloc[:, i])
             dice = 2 * true_positive / (sum_row + sum_column)
-            dice_scores[i] = dice
+            dice_scores[category] = dice
         print(f"Dice scores: {dice_scores}")
         print(f"Mean dice score: {statistics.mean(dice_scores.values())}")

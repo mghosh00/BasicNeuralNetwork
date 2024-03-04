@@ -35,12 +35,14 @@ class TestTester(TestCase):
         self.assertEqual(self.network, self.default_tester._network)
         self.assertFalse(self.tester._classification)
 
+    @mock.patch('neural_network.main.tester.Tester'
+                '._update_categorical_dataframe')
     @mock.patch('neural_network.main.tester.Tester.forward_pass_one_batch',
                 side_effect=batch_losses)
     @mock.patch('neural_network.util.partitioner.Partitioner.__call__')
     @mock.patch('builtins.print')
     def test_run_default(self, mock_print, mock_partition,
-                         mock_forward_pass):
+                         mock_forward_pass, mock_update_frame):
         # Here we use the different static lists of the class to dictate what
         # each of the above functions returns
         mock_partition.return_value = self.partitions
@@ -59,13 +61,16 @@ class TestTester(TestCase):
         print_calls = [mock.call(f"Testing loss: {expected_loss}")]
         mock_print.assert_has_calls(print_calls)
         self.assertEqual(1, mock_print.call_count)
+        mock_update_frame.assert_called_once()
 
+    @mock.patch('neural_network.main.tester.Tester'
+                '._update_categorical_dataframe')
     @mock.patch('neural_network.main.tester.Tester'
                 '.forward_pass_one_batch',
                 side_effect=batch_losses)
     @mock.patch('neural_network.util.weighted_partitioner'
                 '.WeightedPartitioner.__call__')
-    def test_run(self, mock_partition, mock_forward_pass):
+    def test_run(self, mock_partition, mock_forward_pass, mock_update_frame):
         # Here we use the different static lists of the class to dictate what
         # each of the above functions returns
         mock_partition.return_value = self.weighted_partitions
@@ -76,6 +81,7 @@ class TestTester(TestCase):
         partition_calls = [mock.call(self.weighted_partitions[i])
                            for i in range(2)]
         mock_forward_pass.assert_has_calls(partition_calls)
+        mock_update_frame.assert_called_once()
 
     @mock.patch('neural_network.main.abstract_simulator.AbstractSimulator'
                 '.abs_generate_scatter')
@@ -86,11 +92,14 @@ class TestTester(TestCase):
 
     @mock.patch('builtins.print')
     def test_generate_confusion(self, mock_print):
-        self.tester._data['y_hat'] = np.array([1, 0, 0, 0, 0])
+        # Changing category names and categories to strings
+        self.tester._category_names = ["l", "r"]
+        self.tester._categorical_data['y'] = ["r", "r", "l", "l", "l"]
+        self.tester._categorical_data['y_hat'] = ["r", "l", "l", "l", "l"]
         self.tester.generate_confusion()
         expected_confusion_array = np.array([[3, 0], [1, 1]],
                                             dtype='int64')
-        expected_dice_scores = {0: 6 / 7, 1: 2 / 3}
+        expected_dice_scores = {"l": 6 / 7, "r": 2 / 3}
         expected_average_dice_score = 16 / 21
         print_calls = [mock.call("Confusion matrix for testing data:"),
                        mock.call(expected_confusion_array),

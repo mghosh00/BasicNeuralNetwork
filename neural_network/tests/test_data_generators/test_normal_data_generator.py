@@ -101,23 +101,22 @@ class TestNormalDataGenerator(TestCase):
     def test_call_one_coord(self, mock_gen_method):
         # This represents what _generate_data would do
         self.one_coord_gen._x = self.one_coord_normal_data
-        actual_df, categories = self.one_coord_gen()
+        actual_df = self.one_coord_gen()
         mock_gen_method.assert_called_once()
         expected_df = pd.DataFrame(columns=['x_1', 'y'])
         expected_df['x_1'] = self.one_coord_normal_data[0]
 
         # These are the classes each datapoint is assigned to using the
-        # classifier method and renaming the indices to be 0-2
-        expected_df['y'] = np.array([1, 2, 2, 1, 0])
+        # classifier method
+        expected_df['y'] = np.array([4, 5, 5, 4, 3], dtype=object)
         pd.testing.assert_frame_equal(expected_df, actual_df)
-        self.assertListEqual([3, 4, 5], categories)
 
     @mock.patch('neural_network.data_generators.normal_data_generator'
                 '.NormalDataGenerator._generate_data')
     def test_call_two_coord(self, mock_gen_method):
         # This represents what _generate_data would do
         self.two_coord_gen._x = self.two_coord_normal_data
-        actual_df, categories = self.two_coord_gen()
+        actual_df = self.two_coord_gen()
         mock_gen_method.assert_called_once()
         expected_df = pd.DataFrame(columns=['x_1', 'x_2', 'y'])
         expected_df['x_1'] = self.two_coord_normal_data[0]
@@ -125,25 +124,23 @@ class TestNormalDataGenerator(TestCase):
 
         # These are the classes each datapoint is assigned to using the
         # classifier method
-        expected_df['y'] = np.array([0, 1, 1, 1, 1])
+        expected_df['y'] = np.array([0, 1, 1, 1, 1], dtype=object)
         pd.testing.assert_frame_equal(expected_df, actual_df)
-        self.assertListEqual([0, 1], categories)
 
     @mock.patch('neural_network.data_generators.normal_data_generator'
                 '.NormalDataGenerator._generate_data')
     def test_call_str(self, mock_gen_method):
         # This represents what _generate_data would do
         self.str_gen._x = self.str_classifier_data
-        actual_df, categories = self.str_gen()
+        actual_df = self.str_gen()
         mock_gen_method.assert_called_once()
         expected_df = pd.DataFrame(columns=['x_1', 'y'])
         expected_df['x_1'] = self.str_classifier_data[0]
 
         # These are the classes each datapoint is assigned to using the
         # classifier method
-        expected_df['y'] = np.array([0, 0, 1, 1, 0])
+        expected_df['y'] = ["Even", "Even", "Odd", "Odd", "Even"]
         pd.testing.assert_frame_equal(expected_df, actual_df)
-        self.assertListEqual(["Even", "Odd"], categories)
 
 
 if __name__ == '__main__':

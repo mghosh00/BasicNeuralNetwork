@@ -37,12 +37,14 @@ class TestValidator(TestCase):
         self.assertEqual(0, self.validator._epoch)
 
     @mock.patch('neural_network.main.validator.Validator'
+                '._update_categorical_dataframe')
+    @mock.patch('neural_network.main.validator.Validator'
                 '.forward_pass_one_batch',
                 side_effect=batch_losses)
     @mock.patch('neural_network.util.partitioner.Partitioner.__call__')
     @mock.patch('builtins.print')
     def test_validate_default(self, mock_print, mock_partition,
-                              mock_forward_pass):
+                              mock_forward_pass, mock_update_frame):
         # Here we use the different static lists of the class to dictate what
         # each of the above functions returns
         mock_partition.return_value = self.partitions
@@ -62,13 +64,17 @@ class TestValidator(TestCase):
         print_calls = [mock.call(f"Validation loss: {expected_loss}")]
         mock_print.assert_has_calls(print_calls)
         self.assertEqual(1, mock_print.call_count)
+        mock_update_frame.assert_called_once()
 
+    @mock.patch('neural_network.main.validator.Validator'
+                '._update_categorical_dataframe')
     @mock.patch('neural_network.main.validator.Validator'
                 '.forward_pass_one_batch',
                 side_effect=batch_losses)
     @mock.patch('neural_network.util.weighted_partitioner'
                 '.WeightedPartitioner.__call__')
-    def test_validate(self, mock_partition, mock_forward_pass):
+    def test_validate(self, mock_partition, mock_forward_pass,
+                      mock_update_frame):
         # Here we use the different static lists of the class to dictate what
         # each of the above functions returns
         mock_partition.return_value = self.weighted_partitions
@@ -82,6 +88,7 @@ class TestValidator(TestCase):
         partition_calls = [mock.call(self.weighted_partitions[i])
                            for i in range(4)]
         mock_forward_pass.assert_has_calls(partition_calls)
+        mock_update_frame.assert_called_once()
 
     @mock.patch('neural_network.main.abstract_simulator.AbstractSimulator'
                 '.abs_generate_scatter')

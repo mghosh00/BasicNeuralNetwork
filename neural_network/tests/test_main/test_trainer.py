@@ -115,13 +115,15 @@ class TestTrainer(TestCase):
         mock_bias_propagator.assert_has_calls(bias_calls)
 
     @mock.patch('neural_network.main.trainer.Trainer'
+                '._update_categorical_dataframe')
+    @mock.patch('neural_network.main.trainer.Trainer'
                 '.back_propagate_one_batch')
     @mock.patch('neural_network.main.trainer.Trainer.forward_pass_one_batch',
                 side_effect=batch_losses)
     @mock.patch('neural_network.util.partitioner.Partitioner.__call__')
     @mock.patch('builtins.print')
     def test_run_default(self, mock_print, mock_partition, mock_forward_pass,
-                         mock_back_propagate):
+                         mock_back_propagate, mock_update_frame):
         # Here we use the different static lists of the class to dictate what
         # each of the above functions returns
         mock_partition.return_value = self.partitions
@@ -149,7 +151,10 @@ class TestTrainer(TestCase):
                                                          dtype=object)})
         pd.testing.assert_frame_equal(expected_df,
                                       self.default_trainer._loss_df)
+        mock_update_frame.assert_called_once()
 
+    @mock.patch('neural_network.main.trainer.Trainer'
+                '._update_categorical_dataframe')
     @mock.patch('neural_network.main.validator.Validator.validate',
                 side_effect=validation_losses)
     @mock.patch('neural_network.main.trainer.Trainer'
@@ -160,7 +165,7 @@ class TestTrainer(TestCase):
                 '.WeightedPartitioner.__call__')
     @mock.patch('builtins.print')
     def test_run(self, mock_print, mock_partition, mock_forward_pass,
-                 mock_back_propagate, mock_validate):
+                 mock_back_propagate, mock_validate, mock_update_frame):
         # Here we use the different static lists of the class to dictate what
         # each of the above functions returns
         mock_partition.return_value = self.weighted_partitions
@@ -192,6 +197,7 @@ class TestTrainer(TestCase):
                                                  dtype=object)})
         pd.testing.assert_frame_equal(expected_df,
                                       self.trainer._loss_df)
+        mock_update_frame.assert_called_once()
 
     @mock.patch('neural_network.main.abstract_simulator.AbstractSimulator'
                 '.abs_generate_scatter')
