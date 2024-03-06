@@ -89,6 +89,7 @@ class TestValidator(TestCase):
                            for i in range(4)]
         mock_forward_pass.assert_has_calls(partition_calls)
         mock_update_frame.assert_called_once()
+        self.assertEqual(1, self.validator._epoch)
 
     @mock.patch('neural_network.main.abstract_simulator.AbstractSimulator'
                 '.abs_generate_scatter')

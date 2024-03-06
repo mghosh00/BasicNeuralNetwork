@@ -39,7 +39,6 @@ class Validator(AbstractSimulator):
         factor : int
             The epochs on which we need to print out the validation
         """
-        self._epoch += 1
         total_loss = 0
         batch_partition = self._partitioner()
         for iteration in range(math.ceil(len(self._data)
@@ -51,7 +50,7 @@ class Validator(AbstractSimulator):
             print(f"Validation loss: {loss}")
 
         self._update_categorical_dataframe()
-
+        self._epoch += 1
         return loss
 
     def generate_scatter(self, title: str = ''):
