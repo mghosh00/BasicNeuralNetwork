@@ -29,11 +29,27 @@ class TestTester(TestCase):
                                columns=["a", "b", "c", "class"])
         self.default_tester = Tester(self.network, self.df, batch_size=3)
         self.tester = Tester(self.network, self.df, batch_size=3,
-                             weighted=True, classification=False)
+                             weighted=True)
+        self.regression_network = Network(num_features=3, num_hidden_layers=2,
+                                          neuron_counts=[4, 3],
+                                          do_regression=True)
+        self.regression_data = np.array([[-2, 0, 3, 1.0],
+                                         [2, 6, -9, 1.3],
+                                         [-8, -2, 9, 0.4],
+                                         [-8, 4, 1, 0.2],
+                                         [2, 6, -8, 0.3]])
+        self.regression_df = pd.DataFrame(self.regression_data,
+                                          columns=["a", "b", "c",
+                                                   "prediction"])
+        self.regression_tester = Tester(self.regression_network,
+                                        self.regression_df, batch_size=3)
 
     def test_construct(self):
         self.assertEqual(self.network, self.default_tester._network)
-        self.assertFalse(self.tester._classification)
+        self.assertFalse(self.tester._do_regression)
+
+    def test_construct_regression(self):
+        self.assertTrue(self.regression_tester._do_regression)
 
     @mock.patch('neural_network.main.tester.Tester'
                 '._update_categorical_dataframe')
@@ -82,6 +98,13 @@ class TestTester(TestCase):
                            for i in range(2)]
         mock_forward_pass.assert_has_calls(partition_calls)
         mock_update_frame.assert_called_once()
+
+    @mock.patch('neural_network.main.tester.Tester'
+                '._update_categorical_dataframe')
+    def test_run_regression(self, mock_update_frame):
+        self.regression_tester.run()
+        self.assertEqual(mock_update_frame.call_count, 0)
+
 
     @mock.patch('neural_network.main.abstract_simulator.AbstractSimulator'
                 '.abs_generate_scatter')

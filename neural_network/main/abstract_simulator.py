@@ -31,7 +31,7 @@ class AbstractSimulator:
             the standard Partitioner
         """
         self._network = network
-        self._regression = network.do_regression()
+        self._do_regression = network.do_regression()
         data = data.copy()
         # Ensure that number of input nodes equals number of features
         n = len(data.columns) - 1
@@ -50,7 +50,7 @@ class AbstractSimulator:
                              "datapoints")
         self._batch_size = batch_size
 
-        if not self._regression:
+        if not self._do_regression:
             # Save the category names to be used for plots and output data
             self._category_names = sorted(list(set(data['y'])))
 
@@ -75,6 +75,7 @@ class AbstractSimulator:
         else:
             # If we are doing regression, we have no categories, and we will
             # use a mean squared error loss
+            data['y_hat'] = [0.0] * len(data)
             self._data = data
             self._mse_loss = MSELoss()
 
@@ -100,10 +101,12 @@ class AbstractSimulator:
         total_loss = 0
         for i in batch_ids:
             labelled_point = self._data.loc[i].to_numpy()
-            x, y = labelled_point[:-2], int(labelled_point[-2])
+            x, y = labelled_point[:-2], labelled_point[-2]
+            if not self._do_regression:
+                y = int(y)
 
             # Do the forward pass and save the predicted value to the df
-            if self._regression:
+            if self._do_regression:
                 pred_value = self._network.forward_pass_one_datapoint(x)[0]
                 total_loss += self._mse_loss(pred_value, y)
                 self._data.at[i, 'y_hat'] = pred_value
@@ -139,6 +142,9 @@ class AbstractSimulator:
         training/testing/validation is complete so that the y_hat values are
         fully updated.
         """
+        if self._do_regression:
+            raise RuntimeError("Cannot call _update_categorical_dataframe"
+                               "with a regressional network")
         names = self._category_names
         self._categorical_data['y_hat'] = \
             list(self._data.replace({'y_hat':
@@ -158,7 +164,7 @@ class AbstractSimulator:
         title : str
             An optional title to append to the plot
         """
-        if self._regression:
+        if self._do_regression:
             Plotter.comparison_scatter(self._data, phase, title)
         else:
             Plotter.plot_predictions(self._categorical_data, phase, title)

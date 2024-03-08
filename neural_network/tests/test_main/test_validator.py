@@ -28,13 +28,28 @@ class TestValidator(TestCase):
                                columns=["a", "b", "c", "class"])
         self.default_validator = Validator(self.network, self.df, batch_size=1)
         self.validator = Validator(self.network, self.df, batch_size=1,
-                                   weighted=True, classification=False)
+                                   weighted=True)
+        self.regression_network = Network(num_features=3, num_hidden_layers=2,
+                                          neuron_counts=[4, 3],
+                                          do_regression=True)
+        self.reg_validation_data = np.array([[4, 1, 3, 1.3],
+                                             [2, 5, -4, 1.4],
+                                             [-2, -4, 1, 0.1],
+                                             [-9, 2, 4, 0.2]])
+        self.reg_validation_df = pd.DataFrame(self.reg_validation_data,
+                                              columns=["a", "b", "c",
+                                                       "predicted"])
+        self.reg_validator = Validator(self.regression_network,
+                                       self.reg_validation_df, batch_size=1)
 
     def test_construct(self):
         self.assertEqual(self.network, self.default_validator._network)
         self.assertEqual(0, self.default_validator._epoch)
-        self.assertFalse(self.validator._classification)
+        self.assertFalse(self.validator._do_regression)
         self.assertEqual(0, self.validator._epoch)
+
+    def test_construct_regression(self):
+        self.assertTrue(self.reg_validator._do_regression)
 
     @mock.patch('neural_network.main.validator.Validator'
                 '._update_categorical_dataframe')
@@ -89,6 +104,12 @@ class TestValidator(TestCase):
                            for i in range(4)]
         mock_forward_pass.assert_has_calls(partition_calls)
         mock_update_frame.assert_called_once()
+
+    @mock.patch('neural_network.main.validator.Validator'
+                '._update_categorical_dataframe')
+    def test_validate_regression(self, mock_update_frame):
+        self.reg_validator.validate(1)
+        self.assertEqual(mock_update_frame.call_count, 0)
 
     @mock.patch('neural_network.main.abstract_simulator.AbstractSimulator'
                 '.abs_generate_scatter')
