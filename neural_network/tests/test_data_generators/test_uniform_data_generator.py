@@ -55,12 +55,12 @@ class TestUniformDataGenerator(TestCase):
         with self.assertRaises(ValueError) as ve_1:
             UniformDataGenerator(self.one_coord_classifier, num_datapoints=10,
                                  lower_bounds=[1.0, 2.0], upper_bounds=[1.0])
-        self.assertEqual("The classifier method accepts 1 parameters but "
+        self.assertEqual("The function method accepts 1 parameters but "
                          "we have 2 lower bounds.", str(ve_1.exception))
         with self.assertRaises(ValueError) as ve_2:
             UniformDataGenerator(self.one_coord_classifier, num_datapoints=10,
                                  lower_bounds=[1.0], upper_bounds=[1.0, 2.0])
-        self.assertEqual("The classifier method accepts 1 parameters but "
+        self.assertEqual("The function method accepts 1 parameters but "
                          "we have 2 upper bounds.", str(ve_2.exception))
         with self.assertRaises(ValueError) as ve_3:
             UniformDataGenerator(self.two_coords_classifier, num_datapoints=10,
@@ -72,11 +72,11 @@ class TestUniformDataGenerator(TestCase):
 
     def test_construct(self):
         self.assertEqual(self.one_coord_classifier,
-                         self.one_coord_gen._classifier)
+                         self.one_coord_gen._function)
         self.assertListEqual([1.0], self.one_coord_gen._lower_bounds)
         self.assertListEqual([2.0], self.one_coord_gen._upper_bounds)
         self.assertEqual(self.two_coords_classifier,
-                         self.two_coord_gen._classifier)
+                         self.two_coord_gen._function)
         self.assertListEqual([0.0, 0.0], self.two_coord_gen._lower_bounds)
         self.assertListEqual([1.0, 5.0], self.two_coord_gen._upper_bounds)
 

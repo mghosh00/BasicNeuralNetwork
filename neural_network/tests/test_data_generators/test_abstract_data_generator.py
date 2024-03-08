@@ -37,7 +37,7 @@ class TestAbstractDataGenerator(TestCase):
     def test_construct_erroneous(self):
         with self.assertRaises(ValueError) as ve_1:
             AbstractDataGenerator(self.erroneous_classifier, num_datapoints=10)
-        self.assertEqual("classifier must have at least one coordinate "
+        self.assertEqual("function must have at least one coordinate "
                          "(num_coordinates = 0)", str(ve_1.exception))
         with self.assertRaises(ValueError) as ve_2:
             AbstractDataGenerator(self.one_coord_classifier, num_datapoints=0)
@@ -46,14 +46,14 @@ class TestAbstractDataGenerator(TestCase):
 
     def test_construct(self):
         self.assertEqual(self.one_coord_classifier,
-                         self.one_coord_gen._classifier)
+                         self.one_coord_gen._function)
         self.assertEqual(1, self.one_coord_gen._dimensions)
         self.assertEqual(100, self.one_coord_gen._num_datapoints)
         pd.testing.assert_frame_equal(pd.DataFrame(columns=['x_1', 'y']),
                                       self.one_coord_gen._df)
         self.assertListEqual([], self.one_coord_gen._x)
         self.assertEqual(self.two_coords_classifier,
-                         self.two_coord_gen._classifier)
+                         self.two_coord_gen._function)
         self.assertEqual(2, self.two_coord_gen._dimensions)
         self.assertEqual(200, self.two_coord_gen._num_datapoints)
         pd.testing.assert_frame_equal(pd.DataFrame(columns=['x_1', 'x_2',

@@ -53,12 +53,12 @@ class TestNormalDataGenerator(TestCase):
         with self.assertRaises(ValueError) as ve_1:
             NormalDataGenerator(self.one_coord_classifier, num_datapoints=10,
                                 means=[1.0, 2.0], std_devs=[1.0])
-        self.assertEqual("The classifier method accepts 1 parameters but "
+        self.assertEqual("The function method accepts 1 parameters but "
                          "we have 2 means.", str(ve_1.exception))
         with self.assertRaises(ValueError) as ve_2:
             NormalDataGenerator(self.one_coord_classifier, num_datapoints=10,
                                 means=[1.0], std_devs=[1.0, 2.0])
-        self.assertEqual("The classifier method accepts 1 parameters but "
+        self.assertEqual("The function method accepts 1 parameters but "
                          "we have 2 standard deviations.", str(ve_2.exception))
         with self.assertRaises(ValueError) as ve_3:
             NormalDataGenerator(self.two_coords_classifier, num_datapoints=10,
@@ -68,11 +68,11 @@ class TestNormalDataGenerator(TestCase):
 
     def test_construct(self):
         self.assertEqual(self.one_coord_classifier,
-                         self.one_coord_gen._classifier)
+                         self.one_coord_gen._function)
         self.assertListEqual([1.0], self.one_coord_gen._means)
         self.assertListEqual([1.0], self.one_coord_gen._std_devs)
         self.assertEqual(self.two_coords_classifier,
-                         self.two_coord_gen._classifier)
+                         self.two_coord_gen._function)
         self.assertListEqual([0.0, 2.0], self.two_coord_gen._means)
         self.assertListEqual([1.0, 2.0], self.two_coord_gen._std_devs)
 
