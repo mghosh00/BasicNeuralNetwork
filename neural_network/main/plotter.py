@@ -56,7 +56,7 @@ class Plotter:
         """
         if not os.path.exists(Plotter.path):
             os.makedirs(Plotter.path)
-        df.rename(columns={'y': 'Actual', 'y_hat': 'Predicted'})
+        df = df.rename(columns={'y': 'Actual', 'y_hat': 'Predicted'})
         plot = (ggplot(df, aes(x='Actual', y='Predicted'))
                 + geom_point()
                 + geom_abline()

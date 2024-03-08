@@ -15,7 +15,7 @@ class AbstractSimulator:
     """
 
     def __init__(self, network: Network, data: pd.DataFrame, batch_size: int,
-                 weighted: bool = False):
+                 weighted: bool = False, bins: int = 10):
         """Constructor method
 
         Parameters
@@ -27,8 +27,11 @@ class AbstractSimulator:
         batch_size : int
             The number of datapoints used in each epoch
         weighted : bool
-            If `True` then we use the WeightedPartitioner, otherwise we use
-            the standard Partitioner
+            If `True` then we use the `WeightedPartitioner`, otherwise we use
+            the standard `Partitioner`
+        bins : int
+            If `weighted` is `True` and `do_regression` is `True`, then we need
+            to specify the number of bins for the weighted partitioner
         """
         self._network = network
         self._do_regression = network.do_regression()
@@ -82,7 +85,9 @@ class AbstractSimulator:
 
         if weighted:
             self._partitioner = WeightedPartitioner(len(self._data),
-                                                    batch_size, self._data)
+                                                    batch_size, self._data,
+                                                    self._do_regression,
+                                                    bins=bins)
         else:
             self._partitioner = Partitioner(len(self._data), batch_size)
 

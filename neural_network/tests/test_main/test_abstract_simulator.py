@@ -55,7 +55,9 @@ class TestAbstractSimulator(TestCase):
                                           columns=["a", "b", "c", "actual"])
         self.regression_simulator = AbstractSimulator(self.regression_network,
                                                       self.regression_df,
-                                                      batch_size=2)
+                                                      batch_size=2,
+                                                      weighted=True,
+                                                      bins=5)
 
     def test_construct_erroneous(self):
         # 1. Not enough columns
