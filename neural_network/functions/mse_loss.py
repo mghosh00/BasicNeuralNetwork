@@ -23,7 +23,7 @@ class MSELoss:
         float
             Squared difference of the two values
         """
-        return (y_hat - y) ** 2
+        return round((y_hat - y) ** 2, 8)
 
     def gradient(self, y_hat: float, y: float) -> float:
         """The gradient of the loss function.
@@ -40,4 +40,4 @@ class MSELoss:
         float
             Difference of the two values multiplied by 2
         """
-        return 2 * (y_hat - y)
+        return round(2 * (y_hat - y), 8)

@@ -7,6 +7,7 @@ import numpy as np
 from neural_network import TransferFunction
 from neural_network import ReLU
 from neural_network import Softmax
+from neural_network import MSELoss
 
 from neural_network import Network
 
@@ -14,6 +15,7 @@ from neural_network import Network
 class TestNetwork(TestCase):
     """Tests the `Network` class
     """
+    pre_activated_values = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
 
     @mock.patch('random.uniform')
     @mock.patch('random.gauss')
@@ -23,11 +25,17 @@ class TestNetwork(TestCase):
         self.default_network = Network(num_features=3, num_hidden_layers=2,
                                        neuron_counts=[4, 2])
         self.network = Network(num_features=2, num_hidden_layers=3,
-                               neuron_counts=[1, 4, 2], leak=0.5,
-                               learning_rate=0.005, num_classes=3,
+                               neuron_counts=[1, 4, 2], do_regression=False,
+                               leak=0.5, learning_rate=0.005, num_classes=3,
                                adaptive=True, gamma=0.8, he_weights=True)
         self.minimal_network = Network(num_features=1, num_hidden_layers=0,
                                        neuron_counts=[], num_classes=2)
+        self.regression_network = Network(num_features=2, num_hidden_layers=3,
+                                          neuron_counts=[1, 4, 2],
+                                          do_regression=True, leak=0.5,
+                                          learning_rate=0.005, num_classes=3,
+                                          adaptive=True, gamma=0.8,
+                                          he_weights=True)
 
     def test_construct_erroneous(self):
         with self.assertRaises(ValueError) as ve:
@@ -38,6 +46,7 @@ class TestNetwork(TestCase):
                                             " (2)")
 
     def test_construct_defaults(self):
+        self.assertEqual(self.default_network._do_regression, False)
         self.assertEqual(self.default_network._relu._leak, 0.01)
         self.assertEqual(self.default_network._learning_rate, 0.01)
 
@@ -97,12 +106,27 @@ class TestNetwork(TestCase):
         # Checking functions
         self.assertIsInstance(self.network._transfer, TransferFunction)
         self.assertIsInstance(self.network._relu, ReLU)
+
+        # We have different functions depending on whether we use regression
+        # or not
         self.assertIsInstance(self.network._softmax, Softmax)
+        self.assertFalse(hasattr(self.network, "_mse_loss"))
 
         # Checking other parameters
         self.assertEqual(self.network._learning_rate, 0.005)
         self.assertEqual(self.network._adaptive, True)
         self.assertEqual(self.network._gamma, 0.8)
+
+    def test_construct_regression_network(self):
+        self.assertEqual(self.regression_network._do_regression, True)
+
+        # Check that num_classes changed to 1 even though 3 was passed to the
+        # constructor
+        self.assertEqual(len(self.regression_network._output_layer), 1)
+
+        # Check the functions
+        self.assertIsInstance(self.regression_network._mse_loss, MSELoss)
+        self.assertFalse(hasattr(self.regression_network, "_softmax"))
 
     def test_forward_pass_one_datapoint_erroneous(self):
         erroneous_data = np.array([1, 2, 3])
@@ -113,12 +137,12 @@ class TestNetwork(TestCase):
                                             "input layer (3 != 2)")
 
     @mock.patch('neural_network.components.network'
-                '.Network._calculate_pre_activated_value')
+                '.Network._calculate_pre_activated_value',
+                side_effect=pre_activated_values)
     @mock.patch('neural_network.components.network'
                 '.Network._activate_output_layer')
     def test_forward_pass_one_datapoint(self, mock_activate, mock_calculate):
         mock_activate.return_value = [0.2, 0.4, 0.4]
-        mock_calculate.return_value = 0.1
         x = np.array([2, 3])
         softmax_vector = self.network.forward_pass_one_datapoint(x)
 
@@ -131,12 +155,15 @@ class TestNetwork(TestCase):
         # All layers but output layer
         main_layers = self.network.get_layers()[:-1]
         # Assert _calculate_pre_activated_value is called
+        i = 0
         for left_layer in main_layers[:-1]:
             right_layer = main_layers[left_layer.get_id() + 1]
             for right_neuron in right_layer.get_neurons():
                 # Calculates the desired values for each neuron
                 mock_calculate.assert_any_call(left_layer, right_neuron)
-                self.assertEqual(right_neuron.get_value(), 0.1)
+                self.assertEqual(right_neuron.get_value(),
+                                 self.pre_activated_values[i])
+                i += 1
 
         # We have one call for every right_neuron, which will be
         # 1 + 4 + 2 + 3 (hidden layers 1-3 and the output layer)
@@ -144,6 +171,49 @@ class TestNetwork(TestCase):
 
         # Assert _propagate_softmax_layer is called
         self.assertListEqual([0.2, 0.4, 0.4], softmax_vector)
+
+    @mock.patch('neural_network.components.network'
+                '.Network._calculate_pre_activated_value',
+                side_effect=pre_activated_values)
+    @mock.patch('neural_network.components.network'
+                '.Network._activate_output_layer')
+    def test_forward_pass_one_datapoint_regression(self, mock_activate,
+                                                   mock_calculate):
+        mock_activate.return_value = [0.2, 0.4, 0.4]
+        mock_calculate.return_value = 0.1
+        x = np.array([2, 3])
+        pred_list = self.regression_network.forward_pass_one_datapoint(x)
+
+        # Check input layer has correct values
+        input_layer = self.regression_network._input_layer
+        for i in range(len(input_layer)):
+            input_neuron = input_layer.get_neurons()[i]
+            self.assertEqual(x[i], input_neuron.get_value())
+
+        # All layers but output layer
+        main_layers = self.regression_network.get_layers()[:-1]
+        # Assert _calculate_pre_activated_value is called
+        i = 0
+        for left_layer in main_layers[:-1]:
+            right_layer = main_layers[left_layer.get_id() + 1]
+            for right_neuron in right_layer.get_neurons():
+                # Calculates the desired values for each neuron
+                mock_calculate.assert_any_call(left_layer, right_neuron)
+                self.assertEqual(right_neuron.get_value(),
+                                 self.pre_activated_values[i])
+                i += 1
+
+        # We have one call for every right_neuron, which will be
+        # 1 + 4 + 2 + 1 (hidden layers 1-3 and the output layer)
+        self.assertEqual(mock_calculate.call_count, 8)
+
+        # Check that we get out the final calculated result
+        self.assertListEqual(pred_list, [0.8])
+        output_neuron = self.regression_network._output_layer.get_neurons()[0]
+        self.assertEqual(output_neuron.get_value(), 0.8)
+
+        # Check that mock_activate is never called
+        self.assertEqual(mock_activate.call_count, 0)
 
     def test_calculate_pre_activated_value(self):
         # Here, we wish to control all values involved so that we can
@@ -244,6 +314,48 @@ class TestNetwork(TestCase):
             self.assertAlmostEqual(edge.loss_gradients[i], expected[i])
         self.assertListEqual(right_neuron.bias_gradients, [-0.3, 0.1, 0.4])
 
+    def test_store_gradient_of_loss_outer_layer_regression(self):
+        # index = -1 is outer layer
+        # edge location: left_layer = 3, right_neuron = 0, left_neuron = 0
+        edge = self.regression_network.get_edges()[-1][0][0]
+
+        # Choose a ground truth value
+        target = 8.8
+        first = True
+
+        # Set the values of the left and right neurons
+        edge.get_left_neuron().set_value(0.2)
+        right_neuron = edge.get_right_neuron()
+        right_neuron.set_value(8.0)
+        edge.loss_gradients = [0.2, 0.1, 0.3]
+        right_neuron.bias_gradients = [-0.3, 0.1, 0.4]
+
+        self.regression_network.store_gradient_of_loss(edge, target, first)
+        # The delta should be 2 * (o_right - target)
+        self.assertEqual(edge.get_delta(), -1.6)
+        self.assertListEqual(edge.loss_gradients, [0.2, 0.1, 0.3, -0.32])
+        self.assertListEqual(right_neuron.bias_gradients, [-0.3, 0.1,
+                                                           0.4, -1.6])
+
+        # Now try for a new edge
+        edge = self.regression_network.get_edges()[-1][0][1]
+        target = 8.8
+        first = False
+
+        # Same inputs as before to provide comparison
+        edge.get_left_neuron().set_value(0.2)
+        right_neuron = edge.get_right_neuron()
+        right_neuron.set_value(8.0)
+        edge.loss_gradients = [0.2, 0.1, 0.3]
+        right_neuron.bias_gradients = [-0.3, 0.1, 0.4]
+
+        self.regression_network.store_gradient_of_loss(edge, target, first)
+        self.assertEqual(edge.get_delta(), -1.6)
+        expected = [0.2, 0.1, 0.3, -0.32]
+        for i in range(4):
+            self.assertAlmostEqual(edge.loss_gradients[i], expected[i])
+        self.assertListEqual(right_neuron.bias_gradients, [-0.3, 0.1, 0.4])
+
     def test_store_gradient_of_loss_hidden_layer(self):
         # edge location: left_layer = 2, right_neuron = 1, left_neuron = 0
         edge = self.network.get_edges()[2][1][0]
@@ -333,6 +445,10 @@ class TestNetwork(TestCase):
     def test_get_neuron_counts(self):
         self.assertListEqual([2, 1, 4, 2, 3],
                              self.network.get_neuron_counts())
+
+    def test_do_regression(self):
+        self.assertTrue(self.regression_network.do_regression())
+        self.assertFalse(self.network.do_regression())
 
 
 if __name__ == '__main__':

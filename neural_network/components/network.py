@@ -205,7 +205,7 @@ class Network:
 
         return softmax_vector
 
-    def store_gradient_of_loss(self, edge: Edge, target: int, first: bool):
+    def store_gradient_of_loss(self, edge: Edge, target: float, first: bool):
         """Calculates the gradient of the loss function with respect to one
         weight (assigned to the edge) based on the values at edges of future
         layers. One part of the back propagation process.
@@ -232,9 +232,9 @@ class Network:
             if self._do_regression:
                 delta = self._mse_loss.gradient(o_right, target)
             else:
-                delta = o_right - int(row == target)
+                delta = o_right - int(row == int(target))
             edge.set_delta(delta)
-            edge.loss_gradients.append(o_left * delta)
+            edge.loss_gradients.append(round(o_left * delta, 8))
             if first:
                 right_neuron.bias_gradients.append(delta)
 
