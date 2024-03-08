@@ -42,17 +42,17 @@ class TestAbstractSimulator(TestCase):
                                           neuron_counts=[4, 3],
                                           do_regression=True)
         self.regression_data = np.array([[3, 2, 5, 5.0],
-                                    [6, -2, -3, 6.0],
-                                    [0, 1, 0, 1.0],
-                                    [-4, -3, -2, -2.0],
-                                    [1, -9, 2, 2.0],
-                                    [2, 4, -3, 4.0],
-                                    [-4, -2, 5, 5.0],
-                                    [2, 3, 1, 3.0],
-                                    [-9, -3, 2, 2.0],
-                                    [2, 3, -4, 3.0]])
+                                         [6, -2, -3, 6.0],
+                                         [0, 1, 0, 1.0],
+                                         [-4, -3, -2, -2.0],
+                                         [1, -9, 2, 2.0],
+                                         [2, 4, -3, 4.0],
+                                         [-4, -2, 5, 5.0],
+                                         [2, 3, 1, 3.0],
+                                         [-9, -3, 2, 2.0],
+                                         [2, 3, -4, 3.0]])
         self.regression_df = pd.DataFrame(self.regression_data,
-                               columns=["a", "b", "c", "actual"])
+                                          columns=["a", "b", "c", "actual"])
         self.regression_simulator = AbstractSimulator(self.regression_network,
                                                       self.regression_df,
                                                       batch_size=2)

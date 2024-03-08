@@ -105,7 +105,6 @@ class TestTester(TestCase):
         self.regression_tester.run()
         self.assertEqual(mock_update_frame.call_count, 0)
 
-
     @mock.patch('neural_network.main.abstract_simulator.AbstractSimulator'
                 '.abs_generate_scatter')
     def test_generate_scatter(self, mock_generator):

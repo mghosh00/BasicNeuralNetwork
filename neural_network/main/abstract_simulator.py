@@ -59,13 +59,14 @@ class AbstractSimulator:
             num_classes = len(self._category_names)
             num_outputs = network.get_neuron_counts()[-1]
             if num_outputs < num_classes:
-                raise ValueError(f"The number of output neurons in the network "
-                                 f"({num_outputs}) is less than the number of "
-                                 f"classes in the dataframe ({num_classes})")
+                raise ValueError(f"The number of output neurons in the "
+                                 f"network ({num_outputs}) is less than the "
+                                 f"number of classes in the dataframe "
+                                 f"({num_classes})")
 
-            # Change the category names to integers from 0 to num_classes - 1 for
-            # the numerical calculations, but save the category names for reference
-            # in plots.
+            # Change the category names to integers from 0 to
+            # num_classes - 1 for the numerical calculations, but save the
+            # category names for reference in plots.
             data['y_hat'] = [0] * len(data)
             self._categorical_data = data
             numerical_data = data.replace({'y': {self._category_names[i]: i

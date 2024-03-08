@@ -55,9 +55,9 @@ class TestTrainer(TestCase):
                                           neuron_counts=[4, 3],
                                           do_regression=True)
         self.reg_validation_data = np.array([[4, 1, 3, 1.3],
-                                                    [2, 5, -4, 1.4],
-                                                    [-2, -4, 1, 0.1],
-                                                    [-9, 2, 4, 0.2]])
+                                             [2, 5, -4, 1.4],
+                                             [-2, -4, 1, 0.1],
+                                             [-9, 2, 4, 0.2]])
         self.reg_validation_df = pd.DataFrame(self.reg_validation_data,
                                               columns=["a", "b", "c",
                                                        "predicted"])
