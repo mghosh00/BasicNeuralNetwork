@@ -50,7 +50,8 @@ class Validator(AbstractSimulator):
         if self._epoch % factor == 0:
             print(f"Validation loss: {loss}")
 
-        self._update_categorical_dataframe()
+        if not self._regression:
+            self._update_categorical_dataframe()
 
         return loss
 

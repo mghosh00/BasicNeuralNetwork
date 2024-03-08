@@ -100,7 +100,8 @@ class Trainer(AbstractSimulator):
                 validation_loss = self._validator.validate(factor)
                 self._loss_df.at[epoch, 'Validation'] = validation_loss
 
-        self._update_categorical_dataframe()
+        if not self._regression:
+            self._update_categorical_dataframe()
 
     def generate_scatter(self, title: str = ''):
         """Creates scatter plot from the data and their predicted values

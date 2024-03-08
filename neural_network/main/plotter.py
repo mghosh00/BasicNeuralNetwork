@@ -3,7 +3,7 @@ import os
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from plotnine import ggplot, aes, geom_point, ggtitle
+from plotnine import ggplot, aes, geom_point, ggtitle, geom_abline
 
 
 class Plotter:
@@ -16,7 +16,7 @@ class Plotter:
     def plot_predictions(df: pd.DataFrame, phase: str = 'training',
                          title: str = ''):
         """Creates a scatter plot of the predicted classes for a given set
-        of data
+        of data.
 
         Parameters
         ----------
@@ -33,6 +33,34 @@ class Plotter:
         plot = (ggplot(df, aes(x='x_1', y='x_2'))
                 + geom_point(aes(color='factor(y_hat)'))
                 + ggtitle(f"Predicted classes for {phase} data")
+                )
+        substring = '_' + title if title else ''
+        if not os.path.exists(Plotter.path + phase):
+            os.makedirs(Plotter.path + phase)
+        plot.save(Plotter.path + f"{phase}/scatter{substring}.png")
+
+    @staticmethod
+    def comparison_scatter(df: pd.DataFrame, phase: str = 'training',
+                           title: str = ''):
+        """Creates a scatter plot comparing the true and predicted values from
+        the network.
+
+        Parameters
+        ----------
+        df : pd.DataFrame
+            The data
+        phase : str
+            The phase of learning (training/validation/testing)
+        title : str
+            The title
+        """
+        if not os.path.exists(Plotter.path):
+            os.makedirs(Plotter.path)
+        df.rename(columns={'y': 'Actual', 'y_hat': 'Predicted'})
+        plot = (ggplot(df, aes(x='Actual', y='Predicted'))
+                + geom_point()
+                + geom_abline()
+                + ggtitle(f"Comparison scatter plot for {phase} data")
                 )
         substring = '_' + title if title else ''
         if not os.path.exists(Plotter.path + phase):

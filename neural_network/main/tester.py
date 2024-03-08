@@ -44,7 +44,8 @@ class Tester(AbstractSimulator):
         loss = round(total_loss / len(self._data), 8)
         print(f"Testing loss: {loss}")
 
-        self._update_categorical_dataframe()
+        if not self._regression:
+            self._update_categorical_dataframe()
 
     def generate_scatter(self, title: str = ''):
         """Creates scatter plot from the data and their predicted values.
