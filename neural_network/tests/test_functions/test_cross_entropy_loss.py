@@ -1,19 +1,19 @@
 import unittest
 from unittest import TestCase
 
-from neural_network import Loss
+from neural_network import CrossEntropyLoss
 
 
-class TestLoss(TestCase):
-    """Tests the `Loss` class
+class TestCrossEntropyLoss(TestCase):
+    """Tests the `CrossEntropyLoss` class
     """
 
     def setUp(self):
-        self.loss = Loss()
+        self.loss = CrossEntropyLoss()
         self.y_hat = [-1, 0.4, 0.2, 2]
 
     def test_construct(self):
-        self.assertIsInstance(self.loss, Loss)
+        self.assertIsInstance(self.loss, CrossEntropyLoss)
 
     def test_call_erroneous(self):
         with self.assertRaises(ValueError) as ve:
