@@ -6,7 +6,7 @@ import pandas as pd
 
 class AbstractDataGenerator:
     """Class to randomly generate datapoints and categorise them according to
-    a given rule.
+    a given rule or provide an output value if we are regressing.
     """
 
     custom_type = Union[
@@ -16,21 +16,21 @@ class AbstractDataGenerator:
         Callable[[float, float, float, float], Any]
     ]
 
-    def __init__(self, classifier: custom_type, num_datapoints: int):
+    def __init__(self, function: custom_type, num_datapoints: int):
         """Constructor method
 
         Parameters
         ----------
-        classifier : custom_type
+        function : custom_type
             A rule which takes a certain number of coordinates and returns a
-            value representing the class of the datapoint
+            value representing the class or function output of the datapoint
         num_datapoints : int
             The number of datapoints to be generated
         """
-        self._classifier = classifier
-        dimensions = len(signature(classifier).parameters)
+        self._function = function
+        dimensions = len(signature(function).parameters)
         if dimensions < 1:
-            raise ValueError(f"classifier must have at least one coordinate "
+            raise ValueError(f"function must have at least one coordinate "
                              f"(num_coordinates = {dimensions})")
         if num_datapoints < 1:
             raise ValueError(f"Must have at least one datapoint "
@@ -63,10 +63,10 @@ class AbstractDataGenerator:
             self._df[f'x_{i + 1}'] = self._x[i]
 
         for j in range(self._num_datapoints):
-            # The below will evaluate the classifier for one datapoint x_j
+            # The below will evaluate the function for one datapoint x_j
             # using all its coordinates as inputs
-            category = self._classifier(*[self._x[i][j]
-                                          for i in range(self._dimensions)])
+            category = self._function(*[self._x[i][j]
+                                        for i in range(self._dimensions)])
             self._df.at[j, 'y'] = category
 
         return self._df

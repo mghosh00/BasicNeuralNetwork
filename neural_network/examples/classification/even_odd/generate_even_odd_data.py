@@ -25,7 +25,7 @@ def classifier(x_1: float, x_2: float) -> str:
 
 
 # Generate the data (using a uniform distribution) and save it to a .csv file
-generator = UniformDataGenerator(classifier=classifier, num_datapoints=400,
+generator = UniformDataGenerator(function=classifier, num_datapoints=400,
                                  lower_bounds=[0.0, 0.0],
                                  upper_bounds=[6.0, 6.0])
 

@@ -7,6 +7,7 @@ import numpy as np
 from neural_network.functions import TransferFunction
 from neural_network.functions import ReLU
 from neural_network.functions import Softmax
+from neural_network.functions import MSELoss
 
 from .neuron import Neuron
 from .edge import Edge
@@ -18,10 +19,10 @@ class Network:
     """
 
     def __init__(self, num_features: int, num_hidden_layers: int,
-                 neuron_counts: List[int], leak: float = 0.01,
-                 learning_rate: float = 0.01, num_classes: int = 2,
-                 adaptive: bool = False, gamma: float = 0.9,
-                 he_weights: bool = False):
+                 neuron_counts: List[int], do_regression: bool = False,
+                 leak: float = 0.01, learning_rate: float = 0.01,
+                 num_classes: int = 2, adaptive: bool = False,
+                 gamma: float = 0.9, he_weights: bool = False):
         """Constructor method
 
         Parameters
@@ -32,6 +33,9 @@ class Network:
             The total number of hidden `Layers` in the `Network`
         neuron_counts : List[int]
             A list of numbers of `Neurons` for each hidden `Layer`
+        do_regression : bool
+            Whether we are performing regression or not (if `False` we are
+            performing classification)
         leak : float
             The leak rate of LeakyReLU
         learning_rate : float
@@ -52,6 +56,11 @@ class Network:
         self._num_features = num_features
         self._num_hidden_layers = num_hidden_layers
         self._neuron_counts = neuron_counts
+        self._do_regression = do_regression
+        # If we are doing regression set num_classes to 1, no matter what the
+        # input was
+        if do_regression:
+            num_classes = 1
 
         # Layers
         self._input_layer = Layer(0, num_features)
@@ -80,7 +89,10 @@ class Network:
         # Functions and other parameters
         self._transfer = TransferFunction()
         self._relu = ReLU(leak)
-        self._softmax = Softmax()
+        if do_regression:
+            self._mse_loss = MSELoss()
+        else:
+            self._softmax = Softmax()
         self._learning_rate = learning_rate
         self._adaptive = adaptive
         self._gamma = gamma
@@ -98,7 +110,8 @@ class Network:
         Returns
         -------
         List[float]
-            The softmax probabilities of each class
+            The softmax probabilities of each class (for classification) or
+            the predicted regression value (for regression)
         """
         if not len(x) == len(self._input_layer):
             raise ValueError(f"Number of features must match the number of "
@@ -124,11 +137,22 @@ class Network:
                     # Uses ReLU activation for the neuron
                     right_neuron.set_value(self._relu(z))
             else:
-                for right_neuron in right_layer.get_neurons():
-                    # Calculate the desired values for each neuron
+                if self._do_regression:
+                    # We only have one output neuron with linear activation
+                    # for a regression network
+                    output_neuron = self._output_layer.get_neurons()[0]
                     z = self._calculate_pre_activated_value(left_layer,
-                                                            right_neuron)
-                    z_output_layer.append(z)
+                                                            output_neuron)
+                    output_neuron.set_value(z)
+                    # Here we exit the method, returning the value of the
+                    # output neuron
+                    return [z]
+                else:
+                    for right_neuron in right_layer.get_neurons():
+                        # Calculate the desired values for each neuron
+                        z = self._calculate_pre_activated_value(left_layer,
+                                                                right_neuron)
+                        z_output_layer.append(z)
 
         # Output layer
         # Activates the output layer using Softmax activation
@@ -181,7 +205,7 @@ class Network:
 
         return softmax_vector
 
-    def store_gradient_of_loss(self, edge: Edge, target: int, first: bool):
+    def store_gradient_of_loss(self, edge: Edge, target: float, first: bool):
         """Calculates the gradient of the loss function with respect to one
         weight (assigned to the edge) based on the values at edges of future
         layers. One part of the back propagation process.
@@ -205,9 +229,12 @@ class Network:
 
         # Output layer
         if left_layer_index == self._num_hidden_layers:
-            delta = o_right - int(row == target)
+            if self._do_regression:
+                delta = self._mse_loss.gradient(o_right, target)
+            else:
+                delta = o_right - int(row == int(target))
             edge.set_delta(delta)
-            edge.loss_gradients.append(o_left * delta)
+            edge.loss_gradients.append(round(o_left * delta, 8))
             if first:
                 right_neuron.bias_gradients.append(delta)
 
@@ -282,7 +309,7 @@ class Network:
         return self._layers
 
     def get_neuron_counts(self) -> List[int]:
-        """Getter method for neuron_counts
+        """Getter method for neuron_counts.
 
         Returns
         -------
@@ -292,3 +319,12 @@ class Network:
         return ([self._num_features] + self._neuron_counts
                 + [len(self._output_layer)])
 
+    def do_regression(self) -> bool:
+        """Getter method for do_regression.
+
+        Returns
+        -------
+        bool
+            Whether we do regression or classification
+        """
+        return self._do_regression

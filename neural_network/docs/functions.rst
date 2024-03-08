@@ -9,7 +9,8 @@ Here is a list of classes in the package.
 Overview:
 
 - :class:`AbstractFunction`
-- :class:`Loss`
+- :class:`CrossEntropyLoss`
+- :class:`MSELoss`
 - :class:`ReLU`
 - :class:`Sigmoid`
 - :class:`Softmax`
@@ -21,7 +22,12 @@ Overview:
     :private-members:
     :special-members: __init__, __call__
 
-.. autoclass:: Loss
+.. autoclass:: CrossEntropyLoss
+    :members:
+    :private-members:
+    :special-members: __init__, __call__
+
+.. autoclass:: MSELoss
     :members:
     :private-members:
     :special-members: __init__, __call__

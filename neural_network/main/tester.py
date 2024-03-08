@@ -13,7 +13,7 @@ class Tester(AbstractSimulator):
     """
 
     def __init__(self, network: Network, data: pd.DataFrame, batch_size: int,
-                 weighted: bool = False, classification: bool = True):
+                 weighted: bool = False):
         """Constructor method
 
         Parameters
@@ -27,10 +27,8 @@ class Tester(AbstractSimulator):
         weighted : bool
             If `True` then we use the WeightedPartitioner, otherwise we use
             the standard Partitioner
-        classification : bool
-            If `True` then we are classifying, otherwise it will be regression
         """
-        super().__init__(network, data, batch_size, weighted, classification)
+        super().__init__(network, data, batch_size, weighted)
 
     def run(self):
         """Performs testing of the network.
@@ -44,7 +42,8 @@ class Tester(AbstractSimulator):
         loss = round(total_loss / len(self._data), 8)
         print(f"Testing loss: {loss}")
 
-        self._update_categorical_dataframe()
+        if not self._do_regression:
+            self._update_categorical_dataframe()
 
     def generate_scatter(self, title: str = ''):
         """Creates scatter plot from the data and their predicted values.

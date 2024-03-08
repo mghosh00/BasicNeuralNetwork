@@ -26,6 +26,14 @@ class TestPlotter(TestCase):
                                       [2, 6, 0, 1]])
         self.scatter_df = pd.DataFrame(self.scatter_data,
                                        columns=["x_1", "x_2", "y", "y_hat"])
+        self.reg_scatter_data = np.array([[-2, 0, 0.0, 0.3],
+                                          [2, 6, 6.0, 5.7],
+                                          [-8, -2, -2.0, -4.2],
+                                          [-8, 4, 4.0, 4.1],
+                                          [2, 6, 6.0, 5.5]])
+        self.reg_scatter_df = pd.DataFrame(self.reg_scatter_data,
+                                           columns=["x_1", "x_2", "y",
+                                                    "y_hat"])
         self.loss_data = np.array([[0.8, 0.9],
                                    [0.7, 0.8],
                                    [0.6, 0.7],
@@ -56,7 +64,7 @@ class TestPlotter(TestCase):
             self.assertEqual(mock_makedirs.call_count, 2)
             mock_save.assert_called_once_with("plots/training/scatter.png")
         else:
-            assert True
+            self.skipTest("plotnine testing incompatible with python 3.10")
 
     @mock.patch(ggplot_string)
     @mock.patch('os.makedirs')
@@ -74,7 +82,25 @@ class TestPlotter(TestCase):
             mock_save.assert_called_with("plots/validation/"
                                          "scatter_test_title.png")
         else:
-            assert True
+            self.skipTest("plotnine testing incompatible with python 3.10")
+
+    @mock.patch(ggplot_string)
+    @mock.patch('os.makedirs')
+    @mock.patch('os.path.exists')
+    def test_comparison_scatter(self, mock_exists, mock_makedirs,
+                                mock_save):
+        if sys.version_info[1] > 10:
+            mock_exists.return_value = False
+            Plotter.comparison_scatter(self.reg_scatter_df)
+            exists_calls = mock_exists.call_args_list
+            self.assertListEqual([mock.call("plots/"),
+                                  mock.call("plots/training")], exists_calls)
+            self.assertListEqual(exists_calls, mock_makedirs.call_args_list)
+            self.assertEqual(mock_exists.call_count, 2)
+            self.assertEqual(mock_makedirs.call_count, 2)
+            mock_save.assert_called_once_with("plots/training/scatter.png")
+        else:
+            self.skipTest("plotnine testing incompatible with python 3.10")
 
     @mock.patch('matplotlib.pyplot.savefig')
     @mock.patch('matplotlib.pyplot.title')

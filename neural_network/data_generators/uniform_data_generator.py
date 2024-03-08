@@ -7,7 +7,8 @@ from .abstract_data_generator import AbstractDataGenerator
 
 class UniformDataGenerator(AbstractDataGenerator):
     """Class to randomly generate datapoints and categorise them according to
-    a given rule, with data being generated via a uniform distribution.
+    a given rule, or provide an output value if we are regressing,
+    with data being generated via a uniform distribution.
     """
 
     custom_type = Union[
@@ -17,16 +18,16 @@ class UniformDataGenerator(AbstractDataGenerator):
         Callable[[float, float, float, float], Any]
     ]
 
-    def __init__(self, classifier: custom_type,
+    def __init__(self, function: custom_type,
                  num_datapoints: int, lower_bounds: List[float],
                  upper_bounds: List[float]):
         """Constructor method
 
         Parameters
         ----------
-        classifier : custom_type
+        function : custom_type
             A rule which takes a certain number of coordinates and returns a
-            value representing the class of the datapoint
+            value representing the class or function output of the datapoint
         num_datapoints : int
             The number of datapoints to be generated
         lower_bounds : List[float]
@@ -34,13 +35,13 @@ class UniformDataGenerator(AbstractDataGenerator):
         upper_bounds : List[float]
             A list of upper bounds for each coordinate
         """
-        super().__init__(classifier, num_datapoints)
+        super().__init__(function, num_datapoints)
         if len(lower_bounds) != self._dimensions:
-            raise ValueError(f"The classifier method accepts "
+            raise ValueError(f"The function method accepts "
                              f"{self._dimensions} parameters but we have "
                              f"{len(lower_bounds)} lower bounds.")
         if len(upper_bounds) != self._dimensions:
-            raise ValueError(f"The classifier method accepts "
+            raise ValueError(f"The function method accepts "
                              f"{self._dimensions} parameters but we have "
                              f"{len(upper_bounds)} upper bounds.")
         for i in range(len(lower_bounds)):

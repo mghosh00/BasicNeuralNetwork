@@ -50,7 +50,33 @@ class TestTrainer(TestCase):
                                        batch_size=2)
         self.trainer = Trainer(self.network, self.df, num_epochs=5,
                                batch_size=2, validator=self.validator,
-                               weighted=True, classification=False)
+                               weighted=True)
+        self.regression_network = Network(num_features=3, num_hidden_layers=2,
+                                          neuron_counts=[4, 3],
+                                          do_regression=True)
+        self.reg_validation_data = np.array([[4, 1, 3, 1.3],
+                                             [2, 5, -4, 1.4],
+                                             [-2, -4, 1, 0.1],
+                                             [-9, 2, 4, 0.2]])
+        self.reg_validation_df = pd.DataFrame(self.reg_validation_data,
+                                              columns=["a", "b", "c",
+                                                       "predicted"])
+        self.reg_validator = Validator(self.regression_network,
+                                       self.reg_validation_df, batch_size=1)
+        self.reg_train_data = np.array([[3, 2, 5, 1.2],
+                                        [6, -2, -3, 1.3],
+                                        [0, 1, 0, 1.4],
+                                        [-4, -3, -2, 0.8],
+                                        [1, -9, 2, 0.4],
+                                        [2, 4, -3, 1.5],
+                                        [-4, -2, 5, 0.3],
+                                        [2, 3, 1, 1.8],
+                                        [-9, -3, 2, 0.5],
+                                        [2, 3, -4, 1.3]])
+        self.reg_df = pd.DataFrame(self.reg_train_data,
+                                   columns=["a", "b", "c", "predicted"])
+        self.regression_trainer = Trainer(self.regression_network, self.reg_df,
+                                          num_epochs=5, batch_size=2)
 
     def test_construct_default(self):
         self.assertEqual(self.network, self.default_trainer._network)
@@ -65,6 +91,9 @@ class TestTrainer(TestCase):
         pd.testing.assert_frame_equal(pd.DataFrame(columns=['Training',
                                                             'Validation']),
                                       self.trainer._loss_df)
+
+    def test_construct_regression(self):
+        self.assertTrue(self.regression_trainer._do_regression)
 
     @mock.patch('neural_network.components.network.Network'
                 '.store_gradient_of_loss')
@@ -198,6 +227,12 @@ class TestTrainer(TestCase):
         pd.testing.assert_frame_equal(expected_df,
                                       self.trainer._loss_df)
         mock_update_frame.assert_called_once()
+
+    @mock.patch('neural_network.main.trainer.Trainer'
+                '._update_categorical_dataframe')
+    def test_run_regression(self, mock_update_frame):
+        self.regression_trainer.run()
+        self.assertEqual(mock_update_frame.call_count, 0)
 
     @mock.patch('neural_network.main.abstract_simulator.AbstractSimulator'
                 '.abs_generate_scatter')

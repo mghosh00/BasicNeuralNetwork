@@ -2,8 +2,9 @@ import math
 from typing import List
 
 
-class Loss:
-    """Class to represent the cross entropy loss function
+class CrossEntropyLoss:
+    """Class to represent the cross entropy loss function for classification
+    networks.
     """
 
     def __init__(self):
@@ -12,7 +13,7 @@ class Loss:
         pass
 
     def __call__(self, y_hat: List[float], y: int) -> float:
-        """The loss function
+        """The loss function.
 
         Parameters
         ----------
@@ -24,7 +25,7 @@ class Loss:
         Returns
         -------
         float
-            Loss value
+            Cross entropy loss value
         """
         softmax_value = y_hat[y]
 

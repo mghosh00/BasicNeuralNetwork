@@ -14,7 +14,7 @@ class Trainer(AbstractSimulator):
 
     def __init__(self, network: Network, data: pd.DataFrame, num_epochs: int,
                  batch_size: int, validator: Validator = None,
-                 weighted: bool = False, classification: bool = True):
+                 weighted: bool = False):
         """Constructor method
 
         Parameters
@@ -32,10 +32,8 @@ class Trainer(AbstractSimulator):
         weighted : bool
             If `True` then we use the WeightedPartitioner, otherwise we use
             the standard Partitioner
-        classification : bool
-            If `True` then we are classifying, otherwise it will be regression
         """
-        super().__init__(network, data, batch_size, weighted, classification)
+        super().__init__(network, data, batch_size, weighted)
         self._num_epochs = num_epochs
         self._validator = validator
 
@@ -52,7 +50,7 @@ class Trainer(AbstractSimulator):
         _id : int
             The id of the datapoint
         """
-        y = int(self._data.loc[_id, 'y'])
+        y = self._data.loc[_id, 'y']
 
         # Take gradients of loss and store them in the edges (backwards)
         edges = self._network.get_edges()
@@ -100,7 +98,8 @@ class Trainer(AbstractSimulator):
                 validation_loss = self._validator.validate(factor)
                 self._loss_df.at[epoch, 'Validation'] = validation_loss
 
-        self._update_categorical_dataframe()
+        if not self._do_regression:
+            self._update_categorical_dataframe()
 
     def generate_scatter(self, title: str = ''):
         """Creates scatter plot from the data and their predicted values

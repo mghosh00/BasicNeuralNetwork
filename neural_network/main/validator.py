@@ -11,7 +11,7 @@ class Validator(AbstractSimulator):
     """
 
     def __init__(self, network: Network, data: pd.DataFrame, batch_size: int,
-                 weighted: bool = False, classification: bool = True):
+                 weighted: bool = False):
         """Constructor method
 
         Parameters
@@ -25,10 +25,8 @@ class Validator(AbstractSimulator):
         weighted : bool
             If `True` then we use the WeightedPartitioner, otherwise we use
             the standard Partitioner
-        classification : bool
-            If `True` then we are classifying, otherwise it will be regression
         """
-        super().__init__(network, data, batch_size, weighted, classification)
+        super().__init__(network, data, batch_size, weighted)
         self._epoch = 0
 
     def validate(self, factor: int):
@@ -39,6 +37,7 @@ class Validator(AbstractSimulator):
         factor : int
             The epochs on which we need to print out the validation
         """
+        self._epoch += 1
         total_loss = 0
         batch_partition = self._partitioner()
         for iteration in range(math.ceil(len(self._data)
@@ -49,8 +48,9 @@ class Validator(AbstractSimulator):
         if self._epoch % factor == 0:
             print(f"Validation loss: {loss}")
 
-        self._update_categorical_dataframe()
-        self._epoch += 1
+        if not self._do_regression:
+            self._update_categorical_dataframe()
+
         return loss
 
     def generate_scatter(self, title: str = ''):

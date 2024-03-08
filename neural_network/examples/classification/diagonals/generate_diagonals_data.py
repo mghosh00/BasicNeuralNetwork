@@ -29,7 +29,7 @@ def classifier(x_1: float, x_2: float) -> str:
 
 
 # Generate the data (using a multivariate normal) and save it to a .csv file
-generator = NormalDataGenerator(classifier=classifier, num_datapoints=400,
+generator = NormalDataGenerator(function=classifier, num_datapoints=400,
                                 means=[0.0, 0.0], std_devs=[1.0, 1.0])
 
 data = generator()

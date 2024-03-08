@@ -13,7 +13,8 @@ from neural_network.functions import ReLU
 from neural_network.functions import Sigmoid
 from neural_network.functions import TransferFunction
 from neural_network.functions import Softmax
-from neural_network.functions import Loss
+from neural_network.functions import CrossEntropyLoss
+from neural_network.functions import MSELoss
 
 from neural_network.data_generators import AbstractDataGenerator
 from neural_network.data_generators import NormalDataGenerator

@@ -7,7 +7,8 @@ from .abstract_data_generator import AbstractDataGenerator
 
 class NormalDataGenerator(AbstractDataGenerator):
     """Class to randomly generate datapoints and categorise them according to
-    a given rule, with data being generated via a normal distribution.
+    a given rule, or provide an output value if we are regressing,
+    with data being generated via a normal distribution.
     """
 
     custom_type = Union[
@@ -17,16 +18,16 @@ class NormalDataGenerator(AbstractDataGenerator):
         Callable[[float, float, float, float], Any]
     ]
 
-    def __init__(self, classifier: custom_type,
+    def __init__(self, function: custom_type,
                  num_datapoints: int, means: List[float],
                  std_devs: List[float]):
         """Constructor method
 
         Parameters
         ----------
-        classifier : custom_type
+        function : custom_type
             A rule which takes a certain number of coordinates and returns a
-            value representing the class of the datapoint
+            value representing the class or function value of the datapoint
         num_datapoints : int
             The number of datapoints to be generated
         means : List[float]
@@ -34,13 +35,13 @@ class NormalDataGenerator(AbstractDataGenerator):
         std_devs : List[float]
             A list of standard deviations for each coordinate
         """
-        super().__init__(classifier, num_datapoints)
+        super().__init__(function, num_datapoints)
         if len(means) != self._dimensions:
-            raise ValueError(f"The classifier method accepts "
+            raise ValueError(f"The function method accepts "
                              f"{self._dimensions} parameters but we have "
                              f"{len(means)} means.")
         if len(std_devs) != self._dimensions:
-            raise ValueError(f"The classifier method accepts "
+            raise ValueError(f"The function method accepts "
                              f"{self._dimensions} parameters but we have "
                              f"{len(std_devs)} standard deviations.")
         for i in range(len(std_devs)):
