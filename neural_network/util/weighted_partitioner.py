@@ -11,7 +11,8 @@ class WeightedPartitioner(Partitioner):
     ground truth class each integer lies in
     """
 
-    def __init__(self, n: int, m: int, df: pd.DataFrame):
+    def __init__(self, n: int, m: int, df: pd.DataFrame,
+                 do_regression: bool = False, bins: int = 10):
         """Constructor method
 
         Parameters
@@ -22,15 +23,43 @@ class WeightedPartitioner(Partitioner):
             Number of sets for the partition
         df : pd.DataFrame
             The classes for the integers
+        do_regression : bool
+            Whether we are partitioning regressional or classificational data
+        bins : int
+            If do_regression is True, this represents the number of bins to
+            split the data in to. Otherwise, this parameter is ignored
         """
         super().__init__(n, m)
         if not len(df) == n:
             raise ValueError(f"n must equal the length of the dataframe "
                              f"(n = {n}, len(df) = {len(df)})")
-        self._num_classes = len(set(df['y'].to_numpy()))
-        self._class_dict = {j: [] for j in range(self._num_classes)}
-        for i in range(len(df)):
-            self._class_dict[int(df.loc[i, 'y'])].append(i)
+        if do_regression:
+            self._num_classes = bins
+            class_dict = {j: [] for j in range(self._num_classes)}
+            min_y, max_y = min(df['y']), max(df['y'])
+            class_width = (max_y - min_y) / bins
+            for i in range(len(df)):
+                y = df.loc[i, 'y']
+                chosen_bin = int((y - min_y) / class_width)
+                if chosen_bin == self._num_classes:
+                    chosen_bin = self._num_classes - 1
+                class_dict[chosen_bin].append(i)
+
+            # Need to account for potentially empty class lists
+            for j in range(self._num_classes):
+                if not class_dict[j]:
+                    class_dict.pop(j)
+                    self._num_classes -= 1
+
+            self._class_dict = {}
+            for i, j in enumerate(class_dict.keys()):
+                # Relabelling the classes
+                self._class_dict[i] = class_dict[j]
+        else:
+            self._num_classes = len(set(df['y'].to_numpy()))
+            self._class_dict = {j: [] for j in range(self._num_classes)}
+            for i in range(len(df)):
+                self._class_dict[int(df.loc[i, 'y'])].append(i)
 
     def __call__(self) -> List[List[int]]:
         """Uses weights for each class to create sets of size `m` containing

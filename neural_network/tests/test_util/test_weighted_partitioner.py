@@ -31,6 +31,21 @@ class TestWeightedPartitioner(TestCase):
         self.uneven_partitioner = WeightedPartitioner(10, 3, self.df)
         self.big_partitioner = WeightedPartitioner(10, 10, self.df)
         self.small_partitioner = WeightedPartitioner(10, 1, self.df)
+        self.reg_data = np.array([[3, 2, 5, 1.4],
+                                  [6, -2, -3, 6.2],
+                                  [0, 1, 0, 5.3],
+                                  [-4, -3, -2, 8.8],
+                                  [1, -9, 2, 3.4],
+                                  [2, 4, -3, 3.1],
+                                  [-4, -2, 5, 2.6],
+                                  [2, 3, 1, 1.0],
+                                  [-9, -3, 2, 9.0],
+                                  [2, 3, -4, 8.2]])
+        self.reg_df = pd.DataFrame(self.reg_data, columns=["x_1", "x_2",
+                                                           "x_3", "y"])
+        self.reg_partitioner = WeightedPartitioner(10, 5, self.reg_df,
+                                                   do_regression=True,
+                                                   bins=8)
 
     def test_construct_erroneous(self):
         with self.assertRaises(ValueError) as ve:
@@ -45,6 +60,14 @@ class TestWeightedPartitioner(TestCase):
         self.assertEqual(3, self.even_partitioner._num_classes)
         self.assertDictEqual({0: [4, 6, 8], 1: [0, 1, 5, 7, 9], 2: [2, 3]},
                              self.even_partitioner._class_dict)
+
+    def test_construct_regression(self):
+        self.assertEqual(10, self.reg_partitioner._n)
+        self.assertEqual(5, self.reg_partitioner._m)
+        self.assertEqual(6, self.reg_partitioner._num_classes)
+        self.assertDictEqual({0: [0, 7], 1: [6], 2: [4, 5], 3: [2], 4: [1],
+                              5: [3, 8, 9]},
+                             self.reg_partitioner._class_dict)
 
     @mock.patch('random.choice',
                 side_effect=mock_random_choice)
