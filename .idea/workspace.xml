@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58548c86-52df-414f-855a-9e2625a8f076" name="Changes" comment="Updated all tests with new changes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="58548c86-52df-414f-855a-9e2625a8f076" name="Changes" comment="Added new examples" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -91,6 +89,7 @@
     "Python tests.Python tests for test_partitioner.TestPartitioner.test_call_even_partitioner.executor": "Run",
     "Python tests.Python tests for test_plotter.TestPlotter.executor": "Run",
     "Python tests.Python tests for test_plotter.TestPlotter.test_construct.executor": "Run",
+    "Python tests.Python tests for test_plotter.TestPlotter.test_plot_loss.executor": "Run",
     "Python tests.Python tests for test_plotter.TestPlotter.test_plot_loss_default.executor": "Run",
     "Python tests.Python tests for test_plotter.TestPlotter.test_plot_predictions.executor": "Run",
     "Python tests.Python tests for test_plotter.TestPlotter.test_plot_predictions_default.executor": "Run",
@@ -127,15 +126,19 @@
     "Python tests.Python tests for test_weighted_partitioner.TestWeightedPartitioner.executor": "Run",
     "Python tests.Python tests for test_weighted_partitioner.TestWeightedPartitioner.test_call_even_partitioner.executor": "Run",
     "Python tests.Python tests for test_weighted_partitioner.TestWeightedPartitioner.test_construct.executor": "Run",
+    "Python.annulus_main.executor": "Run",
     "Python.circle_main (1).executor": "Run",
     "Python.circle_main.executor": "Run",
     "Python.diagonals_main.executor": "Run",
     "Python.even_odd_main.executor": "Run",
+    "Python.generate_annulus_data.executor": "Run",
     "Python.generate_circle_data (1).executor": "Run",
     "Python.generate_circle_data.executor": "Run",
     "Python.generate_diagonals_data.executor": "Run",
     "Python.generate_even_odd_data.executor": "Run",
+    "Python.generate_sine_data.executor": "Run",
     "Python.linear_main.executor": "Run",
+    "Python.sine_main.executor": "Run",
     "Python.trainer.executor": "Run",
     "Python.weighted_partitioner.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -164,8 +167,8 @@
       <recent name="C:\Users\matth\IdeaProjects\Python\NeuralNetwork\neural_network\util" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.even_odd_main">
-    <configuration name="even_odd_main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.annulus_main">
+    <configuration name="annulus_main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -174,11 +177,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/examples/even_odd" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/examples/annulus" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/neural_network/examples/even_odd/even_odd_main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/neural_network/examples/annulus/annulus_main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -187,7 +190,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="generate_even_odd_data" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="generate_annulus_data" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -196,11 +199,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/examples/even_odd" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/examples/annulus" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/neural_network/examples/even_odd/generate_even_odd_data.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/neural_network/examples/annulus/generate_annulus_data.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -209,58 +212,72 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_uniform_data_generator.TestUniformDataGenerator" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="generate_sine_data" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_data_generators" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/examples/sinusoidal" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_uniform_data_generator.TestUniformDataGenerator&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/neural_network/examples/sinusoidal/generate_sine_data.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_uniform_data_generator.TestUniformDataGenerator.test_call_str" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="sine_main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_data_generators" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/examples/sinusoidal" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_uniform_data_generator.TestUniformDataGenerator.test_call_str&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/neural_network/examples/sinusoidal/sine_main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_uniform_data_generator.TestUniformDataGenerator.test_call_two_coord" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_validator.TestValidator" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_data_generators" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_main" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_uniform_data_generator.TestUniformDataGenerator.test_call_two_coord&quot;" />
+      <option name="_new_target" value="&quot;test_validator.TestValidator&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.even_odd_main" />
-        <item itemvalue="Python.generate_even_odd_data" />
-        <item itemvalue="Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator" />
-        <item itemvalue="Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator.test_call_str" />
-        <item itemvalue="Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator.test_call_two_coord" />
+        <item itemvalue="Python.annulus_main" />
+        <item itemvalue="Python.generate_annulus_data" />
+        <item itemvalue="Python tests.Python tests for test_validator.TestValidator" />
+        <item itemvalue="Python.sine_main" />
+        <item itemvalue="Python.generate_sine_data" />
       </list>
     </recent_temporary>
   </component>
@@ -272,30 +289,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708014585261</updated>
-    </task>
-    <task id="LOCAL-00007" summary="flake8">
-      <option name="closed" value="true" />
-      <created>1708967378230</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1708967378230</updated>
-    </task>
-    <task id="LOCAL-00008" summary="flake8">
-      <option name="closed" value="true" />
-      <created>1708967653881</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1708967653881</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Tests for Layer class">
-      <option name="closed" value="true" />
-      <created>1708969124415</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1708969124415</updated>
     </task>
     <task id="LOCAL-00010" summary="Error fix">
       <option name="closed" value="true" />
@@ -665,7 +658,31 @@
       <option name="project" value="LOCAL" />
       <updated>1709595490787</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="Flake8">
+      <option name="closed" value="true" />
+      <created>1709596145999</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1709596146000</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Increased codecov to 100%">
+      <option name="closed" value="true" />
+      <created>1709596441214</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1709596441215</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Added new examples">
+      <option name="closed" value="true" />
+      <created>1709718537013</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1709718537014</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -680,8 +697,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Softmax fixes work for linear example" />
-    <MESSAGE value="Update test_edge.py" />
     <MESSAGE value="Update test_network.py" />
     <MESSAGE value="Finished test_network.py" />
     <MESSAGE value="Added test_functions directory and updated some functions to avoid overflow errors" />
@@ -695,7 +710,6 @@
     <MESSAGE value="Flake8 fix" />
     <MESSAGE value="Finished test_data_splitter.py" />
     <MESSAGE value="Finished test_partitioner.py and test_weighted_partitioner.py" />
-    <MESSAGE value="Flake8" />
     <MESSAGE value="Made slight adjustments" />
     <MESSAGE value="Created abstract_data_generator.py and uniform_data_generator.py" />
     <MESSAGE value="Created normal_data_generator.py" />
@@ -705,6 +719,9 @@
     <MESSAGE value="Fixed docstrings" />
     <MESSAGE value="Updated to include category names in output (tests need to be written)" />
     <MESSAGE value="Updated all tests with new changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated all tests with new changes" />
+    <MESSAGE value="Flake8" />
+    <MESSAGE value="Increased codecov to 100%" />
+    <MESSAGE value="Added new examples" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added new examples" />
   </component>
 </project>

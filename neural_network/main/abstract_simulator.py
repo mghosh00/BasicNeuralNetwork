@@ -3,7 +3,8 @@ import pandas as pd
 
 from neural_network.util import Partitioner
 from neural_network.util import WeightedPartitioner
-from neural_network.functions import Loss
+from neural_network.functions import CrossEntropyLoss
+from neural_network.functions import MSELoss
 from neural_network.components import Network
 
 from .plotter import Plotter
@@ -14,7 +15,7 @@ class AbstractSimulator:
     """
 
     def __init__(self, network: Network, data: pd.DataFrame, batch_size: int,
-                 weighted: bool = False, classification: bool = True):
+                 weighted: bool = False):
         """Constructor method
 
         Parameters
@@ -28,8 +29,6 @@ class AbstractSimulator:
         weighted : bool
             If `True` then we use the WeightedPartitioner, otherwise we use
             the standard Partitioner
-        classification : bool
-            If `True` then we are classifying, otherwise it will be regression
         """
         self._network = network
         data = data.copy()
@@ -70,8 +69,11 @@ class AbstractSimulator:
                                              for i in range(num_classes)}})
         self._data = numerical_data
         self._batch_size = batch_size
-        self._classification = classification
-        self._loss = Loss()
+        self._regression = network.do_regression()
+        if self._regression:
+            self._loss = MSELoss()
+        else:
+            self._loss = CrossEntropyLoss()
         if weighted:
             self._partitioner = WeightedPartitioner(len(data), batch_size,
                                                     numerical_data)
