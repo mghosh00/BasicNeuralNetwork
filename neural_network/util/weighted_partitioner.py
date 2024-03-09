@@ -26,7 +26,7 @@ class WeightedPartitioner(Partitioner):
         do_regression : bool
             Whether we are partitioning regressional or classificational data
         bins : int
-            If do_regression is True, this represents the number of bins to
+            If regression is True, this represents the number of bins to
             split the data in to. Otherwise, this parameter is ignored
         """
         super().__init__(n, m)

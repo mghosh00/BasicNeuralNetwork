@@ -30,11 +30,11 @@ class AbstractSimulator:
             If `True` then we use the `WeightedPartitioner`, otherwise we use
             the standard `Partitioner`
         bins : int
-            If `weighted` is `True` and `do_regression` is `True`, then we need
+            If `weighted` is `True` and `regression` is `True`, then we need
             to specify the number of bins for the weighted partitioner
         """
         self._network = network
-        self._do_regression = network.do_regression()
+        self._regression = network.is_regressor()
         data = data.copy()
         # Ensure that number of input nodes equals number of features
         n = len(data.columns) - 1
@@ -53,7 +53,7 @@ class AbstractSimulator:
                              "datapoints")
         self._batch_size = batch_size
 
-        if not self._do_regression:
+        if not self._regression:
             # Save the category names to be used for plots and output data
             self._category_names = sorted(list(set(data['y'])))
 
@@ -86,7 +86,7 @@ class AbstractSimulator:
         if weighted:
             self._partitioner = WeightedPartitioner(len(self._data),
                                                     batch_size, self._data,
-                                                    self._do_regression,
+                                                    self._regression,
                                                     bins=bins)
         else:
             self._partitioner = Partitioner(len(self._data), batch_size)
@@ -108,11 +108,11 @@ class AbstractSimulator:
         for i in batch_ids:
             labelled_point = self._data.loc[i].to_numpy()
             x, y = labelled_point[:-2], labelled_point[-2]
-            if not self._do_regression:
+            if not self._regression:
                 y = int(y)
 
             # Do the forward pass and save the predicted value to the df
-            if self._do_regression:
+            if self._regression:
                 pred_value = self._network.forward_pass_one_datapoint(x)[0]
                 total_loss += self._mse_loss(pred_value, y)
                 self._data.at[i, 'y_hat'] = pred_value
@@ -148,7 +148,7 @@ class AbstractSimulator:
         training/testing/validation is complete so that the y_hat values are
         fully updated.
         """
-        if self._do_regression:
+        if self._regression:
             raise RuntimeError("Cannot call _update_categorical_dataframe"
                                "with a regressional network")
         names = self._category_names
@@ -159,8 +159,7 @@ class AbstractSimulator:
 
     def abs_generate_scatter(self, phase: str = 'training', title: str = ''):
         """Creates scatter plot from the data and their predicted values. For
-        regression, we plot a scatter comparing predicted values to actual. for
-        classification,we use the categories the user provided with the data
+        classification, we use the categories the user provided with the data
         instead of arbitrary integer classes.
 
         Parameters
@@ -170,7 +169,24 @@ class AbstractSimulator:
         title : str
             An optional title to append to the plot
         """
-        if self._do_regression:
-            Plotter.comparison_scatter(self._data, phase, title)
+        if self._regression:
+            Plotter.plot_predictions(self._data, phase, title,
+                                     regression=True)
         else:
             Plotter.plot_predictions(self._categorical_data, phase, title)
+
+    def abs_comparison_scatter(self, phase: str = 'training', title: str = ''):
+        """Creates scatter plot comparing the predicted and actual values in
+        a regressional problem. Cannot be called with classification problems
+
+        Parameters
+        ----------
+        phase : str
+            The phase of learning
+        title : str
+            An optional title to append to the plot
+        """
+        if self._regression:
+            Plotter.comparison_scatter(self._data, phase, title)
+        else:
+            raise RuntimeError("Cannot call this method with categorical data")

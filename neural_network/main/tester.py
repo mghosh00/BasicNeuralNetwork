@@ -42,7 +42,7 @@ class Tester(AbstractSimulator):
         loss = round(total_loss / len(self._data), 8)
         print(f"Testing loss: {loss}")
 
-        if not self._do_regression:
+        if not self._regression:
             self._update_categorical_dataframe()
 
     def generate_scatter(self, title: str = ''):
@@ -54,6 +54,17 @@ class Tester(AbstractSimulator):
             An optional title to append to the plot
         """
         super().abs_generate_scatter(phase='testing', title=title)
+
+    def comparison_scatter(self, title: str = ''):
+        """Creates scatter plot comparing predicted to actual values (for
+        regressional problems only).
+
+        Parameters
+        ----------
+        title : str
+            An optional title to append to the plot
+        """
+        super().abs_comparison_scatter(phase='testing', title=title)
 
     def generate_confusion(self):
         """Creates a confusion matrix from the results.

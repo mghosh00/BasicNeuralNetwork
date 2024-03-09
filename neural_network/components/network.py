@@ -19,7 +19,7 @@ class Network:
     """
 
     def __init__(self, num_features: int, num_hidden_layers: int,
-                 neuron_counts: List[int], do_regression: bool = False,
+                 neuron_counts: List[int], regression: bool = False,
                  leak: float = 0.01, learning_rate: float = 0.01,
                  num_classes: int = 2, adaptive: bool = False,
                  gamma: float = 0.9, he_weights: bool = False):
@@ -33,7 +33,7 @@ class Network:
             The total number of hidden `Layers` in the `Network`
         neuron_counts : List[int]
             A list of numbers of `Neurons` for each hidden `Layer`
-        do_regression : bool
+        regression : bool
             Whether we are performing regression or not (if `False` we are
             performing classification)
         leak : float
@@ -56,10 +56,10 @@ class Network:
         self._num_features = num_features
         self._num_hidden_layers = num_hidden_layers
         self._neuron_counts = neuron_counts
-        self._do_regression = do_regression
+        self._regression = regression
         # If we are doing regression set num_classes to 1, no matter what the
         # input was
-        if do_regression:
+        if regression:
             num_classes = 1
 
         # Layers
@@ -89,7 +89,7 @@ class Network:
         # Functions and other parameters
         self._transfer = TransferFunction()
         self._relu = ReLU(leak)
-        if do_regression:
+        if regression:
             self._mse_loss = MSELoss()
         else:
             self._softmax = Softmax()
@@ -137,7 +137,7 @@ class Network:
                     # Uses ReLU activation for the neuron
                     right_neuron.set_value(self._relu(z))
             else:
-                if self._do_regression:
+                if self._regression:
                     # We only have one output neuron with linear activation
                     # for a regression network
                     output_neuron = self._output_layer.get_neurons()[0]
@@ -229,7 +229,7 @@ class Network:
 
         # Output layer
         if left_layer_index == self._num_hidden_layers:
-            if self._do_regression:
+            if self._regression:
                 delta = self._mse_loss.gradient(o_right, target)
             else:
                 delta = o_right - int(row == int(target))
@@ -319,12 +319,12 @@ class Network:
         return ([self._num_features] + self._neuron_counts
                 + [len(self._output_layer)])
 
-    def do_regression(self) -> bool:
-        """Getter method for do_regression.
+    def is_regressor(self) -> bool:
+        """Getter method for regression.
 
         Returns
         -------
         bool
             Whether we do regression or classification
         """
-        return self._do_regression
+        return self._regression

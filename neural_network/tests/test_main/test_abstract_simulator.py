@@ -40,7 +40,7 @@ class TestAbstractSimulator(TestCase):
                                            weighted=True)
         self.regression_network = Network(num_features=3, num_hidden_layers=2,
                                           neuron_counts=[4, 3],
-                                          do_regression=True)
+                                          regression=True)
         self.regression_data = np.array([[3, 2, 5, 5.0],
                                          [6, -2, -3, 6.0],
                                          [0, 1, 0, 1.0],
@@ -87,7 +87,7 @@ class TestAbstractSimulator(TestCase):
 
     def test_construct_default(self):
         self.assertEqual(self.network, self.default_simulator._network)
-        self.assertFalse(self.default_simulator._do_regression)
+        self.assertFalse(self.default_simulator._regression)
         self.assertListEqual(["l", "r"],
                              self.default_simulator._category_names)
         transformed_df = self.df.copy()
@@ -126,7 +126,7 @@ class TestAbstractSimulator(TestCase):
     def test_construct_regression(self):
         self.assertEqual(self.regression_network,
                          self.regression_simulator._network)
-        self.assertTrue(self.regression_simulator._do_regression)
+        self.assertTrue(self.regression_simulator._regression)
         transformed_df = self.regression_df.copy()
         transformed_df.columns = ['x_1', 'x_2', 'x_3', 'y']
         transformed_df['y_hat'] = [0.0] * 10
@@ -216,11 +216,21 @@ class TestAbstractSimulator(TestCase):
         mock_plot.assert_called_once_with(self.simulator._categorical_data,
                                           'training', '')
 
-    @mock.patch('neural_network.main.plotter.Plotter.comparison_scatter')
+    @mock.patch('neural_network.main.plotter.Plotter.plot_predictions')
     def test_abs_generate_scatter_regression(self, mock_plot):
         self.regression_simulator.abs_generate_scatter()
         mock_plot.assert_called_once_with(self.regression_simulator._data,
+                                          'training', '', regression=True)
+
+    @mock.patch('neural_network.main.plotter.Plotter.comparison_scatter')
+    def test_abs_comparison_scatter(self, mock_plot):
+        self.regression_simulator.abs_comparison_scatter()
+        mock_plot.assert_called_once_with(self.regression_simulator._data,
                                           'training', '')
+        with self.assertRaises(RuntimeError) as re:
+            self.simulator.abs_comparison_scatter()
+        self.assertEqual("Cannot call this method with categorical data",
+                         str(re.exception))
 
 
 if __name__ == '__main__':
