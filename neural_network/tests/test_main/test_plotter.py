@@ -124,7 +124,7 @@ class TestPlotter(TestCase):
             self.assertListEqual(exists_calls, mock_makedirs.call_args_list)
             self.assertEqual(mock_exists.call_count, 2)
             self.assertEqual(mock_makedirs.call_count, 2)
-            mock_save.assert_called_once_with("plots/training/scatter.png")
+            mock_save.assert_called_once_with("plots/training/comparison.png")
         else:
             self.skipTest("plotnine testing incompatible with python 3.10")
 

@@ -70,13 +70,13 @@ class Plotter:
         df = df.rename(columns={'y': 'Actual', 'y_hat': 'Predicted'})
         plot = (ggplot(df, aes(x='Actual', y='Predicted'))
                 + geom_point()
-                + geom_abline()
+                + geom_abline(colour='red')
                 + ggtitle(f"Comparison scatter plot for {phase} data")
                 )
         substring = '_' + title if title else ''
         if not os.path.exists(Plotter.path + phase):
             os.makedirs(Plotter.path + phase)
-        plot.save(Plotter.path + f"{phase}/scatter{substring}.png")
+        plot.save(Plotter.path + f"{phase}/comparison{substring}.png")
 
     @staticmethod
     def plot_loss(df: pd.DataFrame, title: str = ''):

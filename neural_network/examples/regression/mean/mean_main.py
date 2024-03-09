@@ -25,6 +25,7 @@ tester = Tester(network, testing_data, 10)
 trainer.run()
 trainer.generate_loss_plot(title=f'mean_epochs_{num_epochs}')
 trainer.generate_scatter(title=f'mean_epochs_{num_epochs}')
+trainer.comparison_scatter(title=f'mean_epochs_{num_epochs}')
 validator.generate_scatter(title=f'mean_epochs_{num_epochs}')
 
 # Running the tester and generating some plots
