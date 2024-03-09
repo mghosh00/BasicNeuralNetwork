@@ -48,7 +48,7 @@ class Validator(AbstractSimulator):
         if self._epoch % factor == 0:
             print(f"Validation loss: {loss}")
 
-        if not self._do_regression:
+        if not self._regression:
             self._update_categorical_dataframe()
 
         return loss
@@ -62,3 +62,14 @@ class Validator(AbstractSimulator):
             An optional title to append to the plot
         """
         super().abs_generate_scatter(phase='validation', title=title)
+
+    def comparison_scatter(self, title: str = ''):
+        """Creates scatter plot comparing predicted to actual values (for
+        regressional problems only).
+
+        Parameters
+        ----------
+        title : str
+            An optional title to append to the plot
+        """
+        super().abs_comparison_scatter(phase='validation', title=title)

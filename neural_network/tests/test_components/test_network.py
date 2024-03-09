@@ -25,14 +25,14 @@ class TestNetwork(TestCase):
         self.default_network = Network(num_features=3, num_hidden_layers=2,
                                        neuron_counts=[4, 2])
         self.network = Network(num_features=2, num_hidden_layers=3,
-                               neuron_counts=[1, 4, 2], do_regression=False,
+                               neuron_counts=[1, 4, 2], regression=False,
                                leak=0.5, learning_rate=0.005, num_classes=3,
                                adaptive=True, gamma=0.8, he_weights=True)
         self.minimal_network = Network(num_features=1, num_hidden_layers=0,
                                        neuron_counts=[], num_classes=2)
         self.regression_network = Network(num_features=2, num_hidden_layers=3,
                                           neuron_counts=[1, 4, 2],
-                                          do_regression=True, leak=0.5,
+                                          regression=True, leak=0.5,
                                           learning_rate=0.005, num_classes=3,
                                           adaptive=True, gamma=0.8,
                                           he_weights=True)
@@ -46,7 +46,7 @@ class TestNetwork(TestCase):
                                             " (2)")
 
     def test_construct_defaults(self):
-        self.assertEqual(self.default_network._do_regression, False)
+        self.assertEqual(self.default_network._regression, False)
         self.assertEqual(self.default_network._relu._leak, 0.01)
         self.assertEqual(self.default_network._learning_rate, 0.01)
 
@@ -118,7 +118,7 @@ class TestNetwork(TestCase):
         self.assertEqual(self.network._gamma, 0.8)
 
     def test_construct_regression_network(self):
-        self.assertEqual(self.regression_network._do_regression, True)
+        self.assertEqual(self.regression_network._regression, True)
 
         # Check that num_classes changed to 1 even though 3 was passed to the
         # constructor
@@ -447,8 +447,8 @@ class TestNetwork(TestCase):
                              self.network.get_neuron_counts())
 
     def test_do_regression(self):
-        self.assertTrue(self.regression_network.do_regression())
-        self.assertFalse(self.network.do_regression())
+        self.assertTrue(self.regression_network.is_regressor())
+        self.assertFalse(self.network.is_regressor())
 
 
 if __name__ == '__main__':

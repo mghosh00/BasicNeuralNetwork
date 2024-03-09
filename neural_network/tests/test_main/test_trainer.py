@@ -53,7 +53,7 @@ class TestTrainer(TestCase):
                                weighted=True)
         self.regression_network = Network(num_features=3, num_hidden_layers=2,
                                           neuron_counts=[4, 3],
-                                          do_regression=True)
+                                          regression=True)
         self.reg_validation_data = np.array([[4, 1, 3, 1.3],
                                              [2, 5, -4, 1.4],
                                              [-2, -4, 1, 0.1],
@@ -93,7 +93,7 @@ class TestTrainer(TestCase):
                                       self.trainer._loss_df)
 
     def test_construct_regression(self):
-        self.assertTrue(self.regression_trainer._do_regression)
+        self.assertTrue(self.regression_trainer._regression)
 
     @mock.patch('neural_network.components.network.Network'
                 '.store_gradient_of_loss')
@@ -240,6 +240,13 @@ class TestTrainer(TestCase):
         self.trainer.generate_scatter('test_title')
         mock_generator.assert_called_once_with(phase='training',
                                                title='test_title')
+
+    @mock.patch('neural_network.main.abstract_simulator.AbstractSimulator'
+                '.abs_comparison_scatter')
+    def test_comparison_scatter(self, mock_comparison):
+        self.regression_trainer.comparison_scatter('test_title')
+        mock_comparison.assert_called_once_with(phase='training',
+                                                title='test_title')
 
     @mock.patch('neural_network.main.plotter.Plotter.plot_loss')
     def test_generate_loss_plot(self, mock_plotter):

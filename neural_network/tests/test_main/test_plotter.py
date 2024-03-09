@@ -16,7 +16,7 @@ class TestPlotter(TestCase):
     weighted_partitions = [[1, 3, 2], [0, 4, 3]]
     batch_losses = [0.5, 0.2]
     ggplot_string = ("plotnine.ggplot.ggplot.save"
-                     if sys.version_info[1] > 10 else "builtins.print")
+                     if sys.version_info[1] > 10 else "builtins.len")
 
     def setUp(self):
         self.scatter_data = np.array([[-2, 0, 1, 1],
@@ -66,10 +66,12 @@ class TestPlotter(TestCase):
         else:
             self.skipTest("plotnine testing incompatible with python 3.10")
 
+    @mock.patch('builtins.print')
     @mock.patch(ggplot_string)
     @mock.patch('os.makedirs')
     @mock.patch('os.path.exists')
-    def test_plot_predictions(self, mock_exists, mock_makedirs, mock_save):
+    def test_plot_predictions(self, mock_exists, mock_makedirs, mock_save,
+                              mock_print):
         if sys.version_info[1] > 10:
             mock_exists.return_value = True
             Plotter.plot_predictions(self.scatter_df, 'validation',
@@ -83,6 +85,30 @@ class TestPlotter(TestCase):
                                          "scatter_test_title.png")
         else:
             self.skipTest("plotnine testing incompatible with python 3.10")
+        mock_print.assert_called_once_with("Generating classification "
+                                           "predictions...")
+
+    @mock.patch('builtins.print')
+    @mock.patch(ggplot_string)
+    @mock.patch('os.makedirs')
+    @mock.patch('os.path.exists')
+    def test_plot_predictions_regression(self, mock_exists, mock_makedirs,
+                                         mock_save, mock_print):
+        if sys.version_info[1] > 10:
+            mock_exists.return_value = True
+            Plotter.plot_predictions(self.scatter_df, 'validation',
+                                     'test_title', regression=True)
+            exists_calls = mock_exists.call_args_list
+            self.assertListEqual([mock.call("plots/"),
+                                  mock.call("plots/validation")], exists_calls)
+            self.assertEqual(mock_exists.call_count, 2)
+            self.assertEqual(mock_makedirs.call_count, 0)
+            mock_save.assert_called_with("plots/validation/"
+                                         "scatter_test_title.png")
+        else:
+            self.skipTest("plotnine testing incompatible with python 3.10")
+        mock_print.assert_called_once_with("Generating regression "
+                                           "predictions...")
 
     @mock.patch(ggplot_string)
     @mock.patch('os.makedirs')
@@ -98,7 +124,7 @@ class TestPlotter(TestCase):
             self.assertListEqual(exists_calls, mock_makedirs.call_args_list)
             self.assertEqual(mock_exists.call_count, 2)
             self.assertEqual(mock_makedirs.call_count, 2)
-            mock_save.assert_called_once_with("plots/training/scatter.png")
+            mock_save.assert_called_once_with("plots/training/comparison.png")
         else:
             self.skipTest("plotnine testing incompatible with python 3.10")
 

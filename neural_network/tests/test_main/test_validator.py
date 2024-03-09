@@ -31,7 +31,7 @@ class TestValidator(TestCase):
                                    weighted=True)
         self.regression_network = Network(num_features=3, num_hidden_layers=2,
                                           neuron_counts=[4, 3],
-                                          do_regression=True)
+                                          regression=True)
         self.reg_validation_data = np.array([[4, 1, 3, 1.3],
                                              [2, 5, -4, 1.4],
                                              [-2, -4, 1, 0.1],
@@ -45,11 +45,11 @@ class TestValidator(TestCase):
     def test_construct(self):
         self.assertEqual(self.network, self.default_validator._network)
         self.assertEqual(0, self.default_validator._epoch)
-        self.assertFalse(self.validator._do_regression)
+        self.assertFalse(self.validator._regression)
         self.assertEqual(0, self.validator._epoch)
 
     def test_construct_regression(self):
-        self.assertTrue(self.reg_validator._do_regression)
+        self.assertTrue(self.reg_validator._regression)
 
     @mock.patch('neural_network.main.validator.Validator'
                 '._update_categorical_dataframe')
@@ -118,6 +118,13 @@ class TestValidator(TestCase):
         self.validator.generate_scatter('test_title')
         mock_generator.assert_called_once_with(phase='validation',
                                                title='test_title')
+
+    @mock.patch('neural_network.main.abstract_simulator.AbstractSimulator'
+                '.abs_comparison_scatter')
+    def test_comparison_scatter(self, mock_comparison):
+        self.reg_validator.comparison_scatter('test_title')
+        mock_comparison.assert_called_once_with(phase='validation',
+                                                title='test_title')
 
 
 if __name__ == '__main__':

@@ -14,7 +14,7 @@ class Plotter:
 
     @staticmethod
     def plot_predictions(df: pd.DataFrame, phase: str = 'training',
-                         title: str = ''):
+                         title: str = '', regression: bool = False):
         """Creates a scatter plot of the predicted classes for a given set
         of data.
 
@@ -26,13 +26,24 @@ class Plotter:
             The phase of learning (training/validation/testing)
         title : str
             The title
+        regression : bool
+            Whether this is for regressional data or classificational data
         """
         if not os.path.exists(Plotter.path):
             os.makedirs(Plotter.path)
 
+        if regression:
+            colouring_string = 'y_hat'
+            class_or_value = 'values'
+            print("Generating regression predictions...")
+        else:
+            colouring_string = 'factor(y_hat)'
+            class_or_value = 'classes'
+            print("Generating classification predictions...")
+
         plot = (ggplot(df, aes(x='x_1', y='x_2'))
-                + geom_point(aes(color='factor(y_hat)'))
-                + ggtitle(f"Predicted classes for {phase} data")
+                + geom_point(aes(color=colouring_string))
+                + ggtitle(f"Predicted {class_or_value} for {phase} data")
                 )
         substring = '_' + title if title else ''
         if not os.path.exists(Plotter.path + phase):
@@ -59,13 +70,13 @@ class Plotter:
         df = df.rename(columns={'y': 'Actual', 'y_hat': 'Predicted'})
         plot = (ggplot(df, aes(x='Actual', y='Predicted'))
                 + geom_point()
-                + geom_abline()
+                + geom_abline(colour='red')
                 + ggtitle(f"Comparison scatter plot for {phase} data")
                 )
         substring = '_' + title if title else ''
         if not os.path.exists(Plotter.path + phase):
             os.makedirs(Plotter.path + phase)
-        plot.save(Plotter.path + f"{phase}/scatter{substring}.png")
+        plot.save(Plotter.path + f"{phase}/comparison{substring}.png")
 
     @staticmethod
     def plot_loss(df: pd.DataFrame, title: str = ''):

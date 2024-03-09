@@ -98,11 +98,11 @@ class Trainer(AbstractSimulator):
                 validation_loss = self._validator.validate(factor)
                 self._loss_df.at[epoch, 'Validation'] = validation_loss
 
-        if not self._do_regression:
+        if not self._regression:
             self._update_categorical_dataframe()
 
     def generate_scatter(self, title: str = ''):
-        """Creates scatter plot from the data and their predicted values
+        """Creates scatter plot from the data and their predicted values.
 
         Parameters
         ----------
@@ -110,6 +110,17 @@ class Trainer(AbstractSimulator):
             An optional title to append to the plot
         """
         super().abs_generate_scatter(phase='training', title=title)
+
+    def comparison_scatter(self, title: str = ''):
+        """Creates scatter plot comparing predicted to actual values (for
+        regressional problems only).
+
+        Parameters
+        ----------
+        title : str
+            An optional title to append to the plot
+        """
+        super().abs_comparison_scatter(phase='training', title=title)
 
     def generate_loss_plot(self, title: str = ''):
         Plotter.plot_loss(self._loss_df, title)
