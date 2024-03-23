@@ -93,7 +93,7 @@ class Plotter:
         for column in reversed(df.columns):
             plt.plot(times, df[column].to_numpy(), label=column)
         plt.xlabel("Epoch")
-        plt.ylabel("Cross entropy loss")
+        plt.ylabel("Loss")
         plt.legend()
         plt.title("Loss over time")
         substring = '_' + title if title else ''

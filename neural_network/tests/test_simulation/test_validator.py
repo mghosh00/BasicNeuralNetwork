@@ -51,9 +51,9 @@ class TestValidator(TestCase):
     def test_construct_regression(self):
         self.assertTrue(self.reg_validator._regression)
 
-    @mock.patch('neural_network.main.validator.Validator'
+    @mock.patch('neural_network.simulation.validator.Validator'
                 '._update_categorical_dataframe')
-    @mock.patch('neural_network.main.validator.Validator'
+    @mock.patch('neural_network.simulation.validator.Validator'
                 '.forward_pass_one_batch',
                 side_effect=batch_losses)
     @mock.patch('neural_network.util.partitioner.Partitioner.__call__')
@@ -81,9 +81,9 @@ class TestValidator(TestCase):
         self.assertEqual(1, mock_print.call_count)
         mock_update_frame.assert_called_once()
 
-    @mock.patch('neural_network.main.validator.Validator'
+    @mock.patch('neural_network.simulation.validator.Validator'
                 '._update_categorical_dataframe')
-    @mock.patch('neural_network.main.validator.Validator'
+    @mock.patch('neural_network.simulation.validator.Validator'
                 '.forward_pass_one_batch',
                 side_effect=batch_losses)
     @mock.patch('neural_network.util.weighted_partitioner'
@@ -106,21 +106,21 @@ class TestValidator(TestCase):
         mock_update_frame.assert_called_once()
         self.assertEqual(1, self.validator._epoch)
 
-    @mock.patch('neural_network.main.validator.Validator'
+    @mock.patch('neural_network.simulation.validator.Validator'
                 '._update_categorical_dataframe')
     def test_validate_regression(self, mock_update_frame):
         self.reg_validator.validate(1)
         self.assertEqual(mock_update_frame.call_count, 0)
 
-    @mock.patch('neural_network.main.abstract_simulator.AbstractSimulator'
-                '.abs_generate_scatter')
+    @mock.patch('neural_network.simulation.abstract_simulator.'
+                'AbstractSimulator.abs_generate_scatter')
     def test_generate_scatter(self, mock_generator):
         self.validator.generate_scatter('test_title')
         mock_generator.assert_called_once_with(phase='validation',
                                                title='test_title')
 
-    @mock.patch('neural_network.main.abstract_simulator.AbstractSimulator'
-                '.abs_comparison_scatter')
+    @mock.patch('neural_network.simulation.abstract_simulator.'
+                'AbstractSimulator.abs_comparison_scatter')
     def test_comparison_scatter(self, mock_comparison):
         self.reg_validator.comparison_scatter('test_title')
         mock_comparison.assert_called_once_with(phase='validation',
