@@ -143,12 +143,12 @@ class TestTrainer(TestCase):
         self.assertEqual(9, mock_bias_propagator.call_count)
         mock_bias_propagator.assert_has_calls(bias_calls)
 
-    @mock.patch('neural_network.main.trainer.Trainer'
+    @mock.patch('neural_network.simulation.trainer.Trainer'
                 '._update_categorical_dataframe')
-    @mock.patch('neural_network.main.trainer.Trainer'
+    @mock.patch('neural_network.simulation.trainer.Trainer'
                 '.back_propagate_one_batch')
-    @mock.patch('neural_network.main.trainer.Trainer.forward_pass_one_batch',
-                side_effect=batch_losses)
+    @mock.patch('neural_network.simulation.trainer.Trainer.'
+                'forward_pass_one_batch', side_effect=batch_losses)
     @mock.patch('neural_network.util.partitioner.Partitioner.__call__')
     @mock.patch('builtins.print')
     def test_run_default(self, mock_print, mock_partition, mock_forward_pass,
@@ -182,14 +182,14 @@ class TestTrainer(TestCase):
                                       self.default_trainer._loss_df)
         mock_update_frame.assert_called_once()
 
-    @mock.patch('neural_network.main.trainer.Trainer'
+    @mock.patch('neural_network.simulation.trainer.Trainer'
                 '._update_categorical_dataframe')
-    @mock.patch('neural_network.main.validator.Validator.validate',
+    @mock.patch('neural_network.simulation.validator.Validator.validate',
                 side_effect=validation_losses)
     @mock.patch('neural_network.main.trainer.Trainer'
                 '.back_propagate_one_batch')
-    @mock.patch('neural_network.main.trainer.Trainer.forward_pass_one_batch',
-                side_effect=batch_losses)
+    @mock.patch('neural_network.simulation.trainer.Trainer.'
+                'forward_pass_one_batch', side_effect=batch_losses)
     @mock.patch('neural_network.util.weighted_partitioner'
                 '.WeightedPartitioner.__call__')
     @mock.patch('builtins.print')
@@ -228,27 +228,27 @@ class TestTrainer(TestCase):
                                       self.trainer._loss_df)
         mock_update_frame.assert_called_once()
 
-    @mock.patch('neural_network.main.trainer.Trainer'
+    @mock.patch('neural_network.simulation.trainer.Trainer'
                 '._update_categorical_dataframe')
     def test_run_regression(self, mock_update_frame):
         self.regression_trainer.run()
         self.assertEqual(mock_update_frame.call_count, 0)
 
-    @mock.patch('neural_network.main.abstract_simulator.AbstractSimulator'
-                '.abs_generate_scatter')
+    @mock.patch('neural_network.simulation.abstract_simulator.'
+                'AbstractSimulator.abs_generate_scatter')
     def test_generate_scatter(self, mock_generator):
         self.trainer.generate_scatter('test_title')
         mock_generator.assert_called_once_with(phase='training',
                                                title='test_title')
 
-    @mock.patch('neural_network.main.abstract_simulator.AbstractSimulator'
-                '.abs_comparison_scatter')
+    @mock.patch('neural_network.simulation.abstract_simulator.'
+                'AbstractSimulator.abs_comparison_scatter')
     def test_comparison_scatter(self, mock_comparison):
         self.regression_trainer.comparison_scatter('test_title')
         mock_comparison.assert_called_once_with(phase='training',
                                                 title='test_title')
 
-    @mock.patch('neural_network.main.plotter.Plotter.plot_loss')
+    @mock.patch('neural_network.simulation.plotter.Plotter.plot_loss')
     def test_generate_loss_plot(self, mock_plotter):
         self.trainer.generate_loss_plot('test_title')
         mock_plotter.assert_called_once_with(self.trainer._loss_df,

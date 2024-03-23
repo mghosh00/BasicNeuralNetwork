@@ -138,8 +138,8 @@ class TestAbstractSimulator(TestCase):
         self.assertFalse(hasattr(self.regression_simulator,
                                  '_categorical_data'))
 
-    @mock.patch('neural_network.main.abstract_simulator.AbstractSimulator.'
-                'store_gradients')
+    @mock.patch('neural_network.simulation.abstract_simulator.'
+                'AbstractSimulator.store_gradients')
     @mock.patch('neural_network.functions.cross_entropy_loss.'
                 'CrossEntropyLoss.__call__',
                 side_effect=[0.2, 0.3])
@@ -160,8 +160,8 @@ class TestAbstractSimulator(TestCase):
         mock_store.assert_any_call(8)
         self.assertEqual(mock_store.call_count, 2)
 
-    @mock.patch('neural_network.main.abstract_simulator.AbstractSimulator.'
-                'store_gradients')
+    @mock.patch('neural_network.simulation.abstract_simulator.'
+                'AbstractSimulator.store_gradients')
     @mock.patch('neural_network.functions.mse_loss.MSELoss.__call__',
                 side_effect=[0.2, 0.3])
     @mock.patch('neural_network.components.network.'
@@ -210,19 +210,19 @@ class TestAbstractSimulator(TestCase):
         pd.testing.assert_frame_equal(expected_df,
                                       self.default_simulator._categorical_data)
 
-    @mock.patch('neural_network.main.plotter.Plotter.plot_predictions')
+    @mock.patch('neural_network.simulation.plotter.Plotter.plot_predictions')
     def test_abs_generate_scatter(self, mock_plot):
         self.simulator.abs_generate_scatter()
         mock_plot.assert_called_once_with(self.simulator._categorical_data,
                                           'training', '')
 
-    @mock.patch('neural_network.main.plotter.Plotter.plot_predictions')
+    @mock.patch('neural_network.simulation.plotter.Plotter.plot_predictions')
     def test_abs_generate_scatter_regression(self, mock_plot):
         self.regression_simulator.abs_generate_scatter()
         mock_plot.assert_called_once_with(self.regression_simulator._data,
                                           'training', '', regression=True)
 
-    @mock.patch('neural_network.main.plotter.Plotter.comparison_scatter')
+    @mock.patch('neural_network.simulation.plotter.Plotter.comparison_scatter')
     def test_abs_comparison_scatter(self, mock_plot):
         self.regression_simulator.abs_comparison_scatter()
         mock_plot.assert_called_once_with(self.regression_simulator._data,

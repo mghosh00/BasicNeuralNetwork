@@ -51,7 +51,7 @@ class TestTester(TestCase):
     def test_construct_regression(self):
         self.assertTrue(self.regression_tester._regression)
 
-    @mock.patch('neural_network.main.tester.Tester'
+    @mock.patch('neural_network.simulation.tester.Tester'
                 '._update_categorical_dataframe')
     @mock.patch('neural_network.main.tester.Tester.forward_pass_one_batch',
                 side_effect=batch_losses)
@@ -79,7 +79,7 @@ class TestTester(TestCase):
         self.assertEqual(1, mock_print.call_count)
         mock_update_frame.assert_called_once()
 
-    @mock.patch('neural_network.main.tester.Tester'
+    @mock.patch('neural_network.simulation.tester.Tester'
                 '._update_categorical_dataframe')
     @mock.patch('neural_network.main.tester.Tester'
                 '.forward_pass_one_batch',
@@ -99,21 +99,21 @@ class TestTester(TestCase):
         mock_forward_pass.assert_has_calls(partition_calls)
         mock_update_frame.assert_called_once()
 
-    @mock.patch('neural_network.main.tester.Tester'
+    @mock.patch('neural_network.simulation.tester.Tester'
                 '._update_categorical_dataframe')
     def test_run_regression(self, mock_update_frame):
         self.regression_tester.run()
         self.assertEqual(mock_update_frame.call_count, 0)
 
-    @mock.patch('neural_network.main.abstract_simulator.AbstractSimulator'
-                '.abs_generate_scatter')
+    @mock.patch('neural_network.simulation.abstract_simulator.'
+                'AbstractSimulator.abs_generate_scatter')
     def test_generate_scatter(self, mock_generator):
         self.tester.generate_scatter('test_title')
         mock_generator.assert_called_once_with(phase='testing',
                                                title='test_title')
 
-    @mock.patch('neural_network.main.abstract_simulator.AbstractSimulator'
-                '.abs_comparison_scatter')
+    @mock.patch('neural_network.simulation.abstract_simulator.'
+                'AbstractSimulator.abs_comparison_scatter')
     def test_comparison_scatter(self, mock_comparison):
         self.regression_tester.comparison_scatter('test_title')
         mock_comparison.assert_called_once_with(phase='testing',

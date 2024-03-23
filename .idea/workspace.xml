@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58548c86-52df-414f-855a-9e2625a8f076" name="Changes" comment="Added to examples">
-      <change afterPath="$PROJECT_DIR$/neural_network/examples/regression/sinusoidal/generate_sine_data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/neural_network/examples/regression/sinusoidal/sine_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_network/main/plotter.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_network/main/plotter.py" afterDir="false" />
-    </list>
+    <list default="true" id="58548c86-52df-414f-855a-9e2625a8f076" name="Changes" comment="Renamed test_main to test_simulation" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -181,7 +176,7 @@
       <recent name="C:\Users\matth\IdeaProjects\Python\NeuralNetwork\neural_network\util" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.sine_main">
+  <component name="RunManager" selected="Python tests.Python tests for test_plotter.TestPlotter">
     <configuration name="generate_sine_data" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
@@ -248,13 +243,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for neural_network.tests.test_simulation.test_plotter.TestPlotter" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="NeuralNetwork" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_simulation" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;neural_network.tests.test_simulation.test_plotter.TestPlotter&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration name="Python tests for test_plotter.TestPlotter" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_main" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_simulation" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -263,28 +273,13 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_trainer.TestTrainer" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="NeuralNetwork" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_main" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_trainer.TestTrainer&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests for test_plotter.TestPlotter" />
         <item itemvalue="Python.sine_main" />
         <item itemvalue="Python.generate_sine_data" />
         <item itemvalue="Python.mean_main" />
-        <item itemvalue="Python tests.Python tests for test_plotter.TestPlotter" />
-        <item itemvalue="Python tests.Python tests for test_trainer.TestTrainer" />
+        <item itemvalue="Python tests.Python tests for neural_network.tests.test_simulation.test_plotter.TestPlotter" />
       </list>
     </recent_temporary>
   </component>
@@ -296,22 +291,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708014585261</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Changed imports">
-      <option name="closed" value="true" />
-      <created>1709058270662</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1709058270662</updated>
-    </task>
-    <task id="LOCAL-00023" summary="Changed imports">
-      <option name="closed" value="true" />
-      <created>1709058520004</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1709058520004</updated>
     </task>
     <task id="LOCAL-00024" summary="Started new tests in test_network.py">
       <option name="closed" value="true" />
@@ -689,7 +668,23 @@
       <option name="project" value="LOCAL" />
       <updated>1709983232943</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="Added to examples and renamed package main to simulation">
+      <option name="closed" value="true" />
+      <created>1711234327876</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1711234327876</updated>
+    </task>
+    <task id="LOCAL-00072" summary="Renamed test_main to test_simulation">
+      <option name="closed" value="true" />
+      <created>1711234353217</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1711234353217</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -704,8 +699,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Finished test_data_splitter.py" />
-    <MESSAGE value="Finished test_partitioner.py and test_weighted_partitioner.py" />
     <MESSAGE value="Made slight adjustments" />
     <MESSAGE value="Created abstract_data_generator.py and uniform_data_generator.py" />
     <MESSAGE value="Created normal_data_generator.py" />
@@ -729,6 +722,8 @@
     <MESSAGE value="Pull request merge" />
     <MESSAGE value="Added new plots" />
     <MESSAGE value="Added to examples" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added to examples" />
+    <MESSAGE value="Added to examples and renamed package main to simulation" />
+    <MESSAGE value="Renamed test_main to test_simulation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Renamed test_main to test_simulation" />
   </component>
 </project>

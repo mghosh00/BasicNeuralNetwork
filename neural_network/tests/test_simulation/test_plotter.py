@@ -156,7 +156,7 @@ class TestPlotter(TestCase):
         self.assertDictEqual(plot_call_list[1].kwargs,
                              {'label': 'Training'})
         mock_xlabel.assert_called_once_with("Epoch")
-        mock_ylabel.assert_called_once_with("Cross entropy loss")
+        mock_ylabel.assert_called_once_with("Loss")
         mock_legend.assert_called_once()
         mock_title.assert_called_once_with("Loss over time")
         mock_save.assert_called_once_with("plots/losses.png")
