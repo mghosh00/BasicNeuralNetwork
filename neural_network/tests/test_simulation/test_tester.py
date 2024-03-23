@@ -53,8 +53,8 @@ class TestTester(TestCase):
 
     @mock.patch('neural_network.simulation.tester.Tester'
                 '._update_categorical_dataframe')
-    @mock.patch('neural_network.main.tester.Tester.forward_pass_one_batch',
-                side_effect=batch_losses)
+    @mock.patch('neural_network.simulation.tester.Tester.'
+                'forward_pass_one_batch', side_effect=batch_losses)
     @mock.patch('neural_network.util.partitioner.Partitioner.__call__')
     @mock.patch('builtins.print')
     def test_run_default(self, mock_print, mock_partition,
@@ -81,7 +81,7 @@ class TestTester(TestCase):
 
     @mock.patch('neural_network.simulation.tester.Tester'
                 '._update_categorical_dataframe')
-    @mock.patch('neural_network.main.tester.Tester'
+    @mock.patch('neural_network.simulation.tester.Tester'
                 '.forward_pass_one_batch',
                 side_effect=batch_losses)
     @mock.patch('neural_network.util.weighted_partitioner'

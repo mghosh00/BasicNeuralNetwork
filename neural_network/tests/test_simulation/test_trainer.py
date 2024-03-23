@@ -186,7 +186,7 @@ class TestTrainer(TestCase):
                 '._update_categorical_dataframe')
     @mock.patch('neural_network.simulation.validator.Validator.validate',
                 side_effect=validation_losses)
-    @mock.patch('neural_network.main.trainer.Trainer'
+    @mock.patch('neural_network.simulation.trainer.Trainer'
                 '.back_propagate_one_batch')
     @mock.patch('neural_network.simulation.trainer.Trainer.'
                 'forward_pass_one_batch', side_effect=batch_losses)
