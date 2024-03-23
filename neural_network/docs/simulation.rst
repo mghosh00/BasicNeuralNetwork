@@ -1,5 +1,5 @@
 ****
-Main
+Simulation
 ****
 
 .. currentmodule:: neural_network
