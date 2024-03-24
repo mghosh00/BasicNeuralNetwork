@@ -125,7 +125,7 @@ After this, we can instantiate our `network`, which accepts the following parame
 | `learning_rate`     | `float`     | The learning rate for the network.                                                                        | `0.01`   |
 | `adaptive`          | `bool`      | Whether we wish to have an adaptive learning rate or not (using momentum).                                | `False`  |
 | `gamma`             | `float`     | The adaptive learning rate parameter. This is ignored if `adaptive` is `False`                            | `0.9`    |
-| `he_weights`        | `bool`      | Whether we wish to initialise the weights of the network according to He or not [^1]().                   | `False`  |
+| `he_weights`        | `bool`      | Whether we wish to initialise the weights of the network according to He or not [^1](## Sources).         | `False`  |
 
 Here is an example below, which we will use for the `diagonals` data:
 
@@ -185,3 +185,6 @@ but for regression there are other plotting methods as well.
 Below is the UML class diagram for this package, created using [VisualParadigm](https://online.visual-paradigm.com).
 
 ![class diagram](images/class_diagram.png)
+
+## Sources
+[^1]: K. He et al., Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification, Proceedings of the IEEE International Conference on Computer Vision (ICCV), 2015, pp. 1026-1034
