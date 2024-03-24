@@ -3,7 +3,6 @@ from unittest import TestCase
 from unittest import mock
 
 import numpy as np
-import networkx as nx
 
 from neural_network import TransferFunction
 from neural_network import ReLU
@@ -465,9 +464,9 @@ class TestNetwork(TestCase):
     @mock.patch('networkx.multipartite_layout')
     @mock.patch('networkx.draw_networkx')
     @mock.patch('networkx.Graph')
-    def test_visualise_network_default(self, mock_graph_init, mock_draw,
-                                       mock_layout, mock_title, mock_save,
-                                       mock_clf):
+    def test_visualise_network(self, mock_graph_init, mock_draw,
+                               mock_layout, mock_title, mock_save,
+                               mock_clf):
         tuple_edges = [("0,0", "1,0"), ("0,1", "1,0"), ("0,2", "1,0"),
                        ("0,0", "1,1"), ("0,1", "1,1"), ("0,2", "1,1"),
                        ("0,0", "1,2"), ("0,1", "1,2"), ("0,2", "1,2"),

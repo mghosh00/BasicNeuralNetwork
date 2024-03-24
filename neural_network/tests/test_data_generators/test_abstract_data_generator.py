@@ -101,5 +101,6 @@ class TestAbstractDataGenerator(TestCase):
         mock_plot.assert_called_once_with(self.two_coord_gen._df, phase='true',
                                           title='test', regression=True)
 
+
 if __name__ == '__main__':
     unittest.main()

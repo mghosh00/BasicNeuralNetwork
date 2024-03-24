@@ -1,5 +1,3 @@
-from plotnine import ggplot, aes, geom_point, ggtitle
-
 from neural_network import NormalDataGenerator
 
 

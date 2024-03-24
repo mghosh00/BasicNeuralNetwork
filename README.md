@@ -58,20 +58,21 @@ To generate your own data, create the file `generate_diagonals_data.py`. From he
 For our example, the `function` takes in `x_1` and `x_2` as arguments, and returns `"North"`, `"East"`, `"South"` or `"West"`, depending on where the point lies on the grid. 
 
 ``
-def classifier(x_1: float, x_2: float) -> str:
-    if x_1 + x_2 > 0:
-        if x_1 - x_2 > 0:
-            return "East"
+
+    def classifier(x_1: float, x_2: float) -> str:
+        if x_1 + x_2 > 0:
+            if x_1 - x_2 > 0:
+                return "East"
+            else:
+                return "North"
         else:
-            return "North"
-    else:
-        if x_1 - x_2 > 0:
-            return "South"
-        else:
-            return "West"
+            if x_1 - x_2 > 0:
+                return "South"
+            else:
+                return "West"
 ``
 
-Next, we feed this to the `NormalDataGenerator` with `400` datapoints and means of [`0.0`, `0.0`], std_devs of [`1.0`, `1.0`] to get the following data:
+Next, we feed this to the `NormalDataGenerator` with `400` datapoints and means of `[0.0, 0.0]`, std_devs of `[1.0, 1.0]` to get the following data:
 
 ![true diagonals data](images/true_scatter.png)
 

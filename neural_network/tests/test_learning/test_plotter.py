@@ -73,7 +73,7 @@ class TestPlotter(TestCase):
         if sys.version_info[1] > 10:
             mock_exists.return_value = True
             Plotter.datapoint_scatter(self.scatter_df, 'validation',
-                                     'test_title')
+                                      'test_title')
             exists_calls = mock_exists.call_args_list
             self.assertListEqual([mock.call("plots/"),
                                   mock.call("plots/validation")], exists_calls)
@@ -92,7 +92,7 @@ class TestPlotter(TestCase):
         if sys.version_info[1] > 10:
             mock_exists.return_value = True
             Plotter.datapoint_scatter(self.scatter_df, 'validation',
-                                     'test_title', regression=True)
+                                      'test_title', regression=True)
             exists_calls = mock_exists.call_args_list
             self.assertListEqual([mock.call("plots/"),
                                   mock.call("plots/validation")], exists_calls)
