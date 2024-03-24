@@ -182,4 +182,4 @@ Below is the UML class diagram for this package, created using [VisualParadigm](
 ![class diagram](images/class_diagram.png)
 
 ## Sources
-[^1]: K. He et al., Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification, Proceedings of the IEEE International Conference on Computer Vision (ICCV), 2015, pp. 1026-1034 [](https://openaccess.thecvf.com/content_iccv_2015/html/He_Delving_Deep_into_ICCV_2015_paper.html)
+[^1]: K. He et al., [Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification](https://openaccess.thecvf.com/content_iccv_2015/html/He_Delving_Deep_into_ICCV_2015_paper.html), Proceedings of the IEEE International Conference on Computer Vision (ICCV), 2015, pp. 1026-1034
