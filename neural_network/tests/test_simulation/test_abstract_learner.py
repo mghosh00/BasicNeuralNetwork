@@ -11,11 +11,11 @@ from neural_network import CrossEntropyLoss
 from neural_network import MSELoss
 from neural_network import Network
 
-from neural_network import AbstractSimulator
+from neural_network import AbstractLearner
 
 
-class TestAbstractSimulator(TestCase):
-    """Tests the `AbstractSimulator` class
+class TestAbstractLearner(TestCase):
+    """Tests the `AbstractLearner` class
     """
 
     def setUp(self):
@@ -34,10 +34,10 @@ class TestAbstractSimulator(TestCase):
         self.df = pd.DataFrame(self.numpy_data,
                                columns=["a", "b", "c", "class"])
         self.df["class"] = ["r", "r", "r", "l", "l", "r", "l", "r", "l", "r"]
-        self.default_simulator = AbstractSimulator(self.network, self.df,
-                                                   batch_size=2)
-        self.simulator = AbstractSimulator(self.network, self.df, batch_size=2,
-                                           weighted=True)
+        self.default_simulator = AbstractLearner(self.network, self.df,
+                                                 batch_size=2)
+        self.simulator = AbstractLearner(self.network, self.df, batch_size=2,
+                                         weighted=True)
         self.regression_network = Network(num_features=3, num_hidden_layers=2,
                                           neuron_counts=[4, 3],
                                           regression=True)
@@ -53,18 +53,18 @@ class TestAbstractSimulator(TestCase):
                                          [2, 3, -4, 3.0]])
         self.regression_df = pd.DataFrame(self.regression_data,
                                           columns=["a", "b", "c", "actual"])
-        self.regression_simulator = AbstractSimulator(self.regression_network,
-                                                      self.regression_df,
-                                                      batch_size=2,
-                                                      weighted=True,
-                                                      bins=5)
+        self.regression_simulator = AbstractLearner(self.regression_network,
+                                                    self.regression_df,
+                                                    batch_size=2,
+                                                    weighted=True,
+                                                    bins=5)
 
     def test_construct_erroneous(self):
         # 1. Not enough columns
         array_1 = np.array([[2, 2, 0], [2, 2, 1], [2, 2, 0]])
         df_1 = pd.DataFrame(array_1)
         with self.assertRaises(ValueError) as ve_1:
-            AbstractSimulator(self.network, df_1, batch_size=1)
+            AbstractLearner(self.network, df_1, batch_size=1)
         self.assertEqual("Number of features must match number of initial "
                          "neurons (features = 2, initial neurons = 3)",
                          str(ve_1.exception))
@@ -73,7 +73,7 @@ class TestAbstractSimulator(TestCase):
         array_2 = np.array([[0, 0, 0, 0], [1, 1, 1, 1], [2, 2, 2, 2]])
         df_2 = pd.DataFrame(array_2)
         with self.assertRaises(ValueError) as ve_2:
-            AbstractSimulator(self.network, df_2, batch_size=1)
+            AbstractLearner(self.network, df_2, batch_size=1)
         self.assertEqual("The number of output neurons in the network "
                          "(2) is less than the number of "
                          "classes in the dataframe (3)",
@@ -81,7 +81,7 @@ class TestAbstractSimulator(TestCase):
 
         # 3. Batch size too big
         with self.assertRaises(ValueError) as ve_4:
-            AbstractSimulator(self.network, self.df, batch_size=11)
+            AbstractLearner(self.network, self.df, batch_size=11)
         self.assertEqual("Batch size must be smaller than number of "
                          "datapoints", str(ve_4.exception))
 
@@ -138,8 +138,8 @@ class TestAbstractSimulator(TestCase):
         self.assertFalse(hasattr(self.regression_simulator,
                                  '_categorical_data'))
 
-    @mock.patch('neural_network.simulation.abstract_simulator.'
-                'AbstractSimulator.store_gradients')
+    @mock.patch('neural_network.learning.abstract_learner.AbstractLearner.'
+                'store_gradients')
     @mock.patch('neural_network.functions.cross_entropy_loss.'
                 'CrossEntropyLoss.__call__',
                 side_effect=[0.2, 0.3])
@@ -160,8 +160,8 @@ class TestAbstractSimulator(TestCase):
         mock_store.assert_any_call(8)
         self.assertEqual(mock_store.call_count, 2)
 
-    @mock.patch('neural_network.simulation.abstract_simulator.'
-                'AbstractSimulator.store_gradients')
+    @mock.patch('neural_network.learning.abstract_learner.AbstractLearner.'
+                'store_gradients')
     @mock.patch('neural_network.functions.mse_loss.MSELoss.__call__',
                 side_effect=[0.2, 0.3])
     @mock.patch('neural_network.components.network.'
@@ -210,19 +210,19 @@ class TestAbstractSimulator(TestCase):
         pd.testing.assert_frame_equal(expected_df,
                                       self.default_simulator._categorical_data)
 
-    @mock.patch('neural_network.simulation.plotter.Plotter.plot_predictions')
+    @mock.patch('neural_network.learning.plotter.Plotter.plot_predictions')
     def test_abs_generate_scatter(self, mock_plot):
         self.simulator.abs_generate_scatter()
         mock_plot.assert_called_once_with(self.simulator._categorical_data,
                                           'training', '')
 
-    @mock.patch('neural_network.simulation.plotter.Plotter.plot_predictions')
+    @mock.patch('neural_network.learning.plotter.Plotter.plot_predictions')
     def test_abs_generate_scatter_regression(self, mock_plot):
         self.regression_simulator.abs_generate_scatter()
         mock_plot.assert_called_once_with(self.regression_simulator._data,
                                           'training', '', regression=True)
 
-    @mock.patch('neural_network.simulation.plotter.Plotter.comparison_scatter')
+    @mock.patch('neural_network.learning.plotter.Plotter.comparison_scatter')
     def test_abs_comparison_scatter(self, mock_plot):
         self.regression_simulator.abs_comparison_scatter()
         mock_plot.assert_called_once_with(self.regression_simulator._data,

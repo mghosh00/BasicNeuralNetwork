@@ -10,7 +10,7 @@ from neural_network.components import Network
 from .plotter import Plotter
 
 
-class AbstractSimulator:
+class AbstractLearner:
     """Base class for trainer, tester and validator
     """
 

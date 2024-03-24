@@ -2,7 +2,7 @@ from neural_network import util
 from neural_network import functions
 from neural_network import data_generators
 from neural_network import components
-from neural_network import simulation
+from neural_network import learning
 
 from neural_network.util import Partitioner
 from neural_network.util import WeightedPartitioner
@@ -25,8 +25,8 @@ from neural_network.components import Edge
 from neural_network.components import Layer
 from neural_network.components import Network
 
-from neural_network.simulation import Plotter
-from neural_network.simulation import AbstractSimulator
-from neural_network.simulation import Validator
-from neural_network.simulation import Trainer
-from neural_network.simulation import Tester
+from neural_network.learning import Plotter
+from neural_network.learning import AbstractLearner
+from neural_network.learning import Validator
+from neural_network.learning import Trainer
+from neural_network.learning import Tester

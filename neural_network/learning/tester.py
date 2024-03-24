@@ -1,13 +1,15 @@
 import math
+import statistics
+
 import pandas as pd
 
 from neural_network.components import Network
 
-from .abstract_simulator import AbstractSimulator
+from .abstract_learner import AbstractLearner
 
 
-class Validator(AbstractSimulator):
-    """Class to validate a neural network
+class Tester(AbstractLearner):
+    """Class to test a neural network.
     """
 
     def __init__(self, network: Network, data: pd.DataFrame, batch_size: int,
@@ -19,7 +21,7 @@ class Validator(AbstractSimulator):
         network : Network
             The neural network
         data : pd.DataFrame
-            All the validation data for the `Network`
+            All the testing data for the `Network`
         batch_size : int
             The number of datapoints used in each epoch
         weighted : bool
@@ -27,17 +29,10 @@ class Validator(AbstractSimulator):
             the standard Partitioner
         """
         super().__init__(network, data, batch_size, weighted)
-        self._epoch = 0
 
-    def validate(self, factor: int):
-        """Performs validation of the network.
-
-        Parameters
-        ----------
-        factor : int
-            The epochs on which we need to print out the validation
+    def run(self):
+        """Performs testing of the network.
         """
-        self._epoch += 1
         total_loss = 0
         batch_partition = self._partitioner()
         for iteration in range(math.ceil(len(self._data)
@@ -45,23 +40,20 @@ class Validator(AbstractSimulator):
             batch_ids = batch_partition[iteration]
             total_loss += self.forward_pass_one_batch(batch_ids)
         loss = round(total_loss / len(self._data), 8)
-        if self._epoch % factor == 0:
-            print(f"Validation loss: {loss}")
+        print(f"Testing loss: {loss}")
 
         if not self._regression:
             self._update_categorical_dataframe()
 
-        return loss
-
     def generate_scatter(self, title: str = ''):
-        """Creates scatter plot from the data and their predicted values
+        """Creates scatter plot from the data and their predicted values.
 
         Parameters
         ----------
         title : str
             An optional title to append to the plot
         """
-        super().abs_generate_scatter(phase='validation', title=title)
+        super().abs_generate_scatter(phase='testing', title=title)
 
     def comparison_scatter(self, title: str = ''):
         """Creates scatter plot comparing predicted to actual values (for
@@ -72,4 +64,21 @@ class Validator(AbstractSimulator):
         title : str
             An optional title to append to the plot
         """
-        super().abs_comparison_scatter(phase='validation', title=title)
+        super().abs_comparison_scatter(phase='testing', title=title)
+
+    def generate_confusion(self):
+        """Creates a confusion matrix from the results.
+        """
+        confusion_df = pd.crosstab(self._categorical_data.y,
+                                   self._categorical_data.y_hat)
+        print("Confusion matrix for testing data:")
+        print(confusion_df)
+        dice_scores = {}
+        for i, category in enumerate(self._category_names):
+            true_positive = confusion_df.at[category, category]
+            sum_row = sum(confusion_df.iloc[i, :])
+            sum_column = sum(confusion_df.iloc[:, i])
+            dice = 2 * true_positive / (sum_row + sum_column)
+            dice_scores[category] = dice
+        print(f"Dice scores: {dice_scores}")
+        print(f"Mean dice score: {statistics.mean(dice_scores.values())}")

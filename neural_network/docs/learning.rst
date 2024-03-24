@@ -1,5 +1,5 @@
 ****
-Simulation
+Learning
 ****
 
 .. currentmodule:: neural_network
@@ -8,14 +8,14 @@ Here is a list of classes in the package.
 
 Overview:
 
-- :class:`AbstractSimulator`
+- :class:`AbstractLearner`
 - :class:`Plotter`
 - :class:`Tester`
 - :class:`Trainer`
 - :class:`Validator`
 
 
-.. autoclass:: AbstractSimulator
+.. autoclass:: AbstractLearner
     :members:
     :private-members:
     :special-members: __init__

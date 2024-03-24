@@ -17,7 +17,7 @@ Contents
     components
     data_generators
     functions
-    simulation
+    learning
     util
 
 Search

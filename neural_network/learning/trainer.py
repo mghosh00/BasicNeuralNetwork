@@ -4,11 +4,11 @@ import pandas as pd
 from neural_network.components import Network
 
 from .plotter import Plotter
-from .abstract_simulator import AbstractSimulator
+from .abstract_learner import AbstractLearner
 from .validator import Validator
 
 
-class Trainer(AbstractSimulator):
+class Trainer(AbstractLearner):
     """Class to train a neural network
     """
 
@@ -123,4 +123,11 @@ class Trainer(AbstractSimulator):
         super().abs_comparison_scatter(phase='training', title=title)
 
     def generate_loss_plot(self, title: str = ''):
+        """Creates a plot of the training and validation loss over time.
+
+        Parameters
+        ----------
+        title : str
+            An optional title to append to the plot
+        """
         Plotter.plot_loss(self._loss_df, title)
