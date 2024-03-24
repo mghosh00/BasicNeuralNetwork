@@ -210,13 +210,13 @@ class TestAbstractLearner(TestCase):
         pd.testing.assert_frame_equal(expected_df,
                                       self.default_simulator._categorical_data)
 
-    @mock.patch('neural_network.learning.plotter.Plotter.plot_predictions')
+    @mock.patch('neural_network.learning.plotter.Plotter.datapoint_scatter')
     def test_abs_generate_scatter(self, mock_plot):
         self.simulator.abs_generate_scatter()
         mock_plot.assert_called_once_with(self.simulator._categorical_data,
                                           'training', '')
 
-    @mock.patch('neural_network.learning.plotter.Plotter.plot_predictions')
+    @mock.patch('neural_network.learning.plotter.Plotter.datapoint_scatter')
     def test_abs_generate_scatter_regression(self, mock_plot):
         self.regression_simulator.abs_generate_scatter()
         mock_plot.assert_called_once_with(self.regression_simulator._data,

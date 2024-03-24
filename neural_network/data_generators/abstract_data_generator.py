@@ -3,6 +3,8 @@ from inspect import signature
 
 import pandas as pd
 
+from neural_network.learning import Plotter
+
 
 class AbstractDataGenerator:
     """Class to randomly generate datapoints and categorise them according to
@@ -65,9 +67,9 @@ class AbstractDataGenerator:
         for j in range(self._num_datapoints):
             # The below will evaluate the function for one datapoint x_j
             # using all its coordinates as inputs
-            category = self._function(*[self._x[i][j]
-                                        for i in range(self._dimensions)])
-            self._df.at[j, 'y'] = category
+            value = self._function(*[self._x[i][j]
+                                   for i in range(self._dimensions)])
+            self._df.at[j, 'y'] = value
 
         return self._df
 
@@ -83,3 +85,15 @@ class AbstractDataGenerator:
         """
         path = f"{directory}/{title}.csv" if directory else f"{title}.csv"
         self._df.to_csv(path)
+
+    def plot_datapoints(self, title: str = '', regression: bool = False):
+        """Uses the Plotter class to generate a scatter plot of the datapoints
+        with their true classes/values represented.
+
+        title : str [Optional, Default='']
+            The optional title of the .png file
+        regression : bool
+            Whether this is a regression or classification problem
+        """
+        Plotter.datapoint_scatter(self._df, phase='true', title=title,
+                                  regression=regression)

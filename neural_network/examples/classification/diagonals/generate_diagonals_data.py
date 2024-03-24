@@ -1,3 +1,5 @@
+from plotnine import ggplot, aes, geom_point, ggtitle
+
 from neural_network import NormalDataGenerator
 
 
@@ -34,3 +36,4 @@ generator = NormalDataGenerator(function=classifier, num_datapoints=400,
 
 data = generator()
 generator.write_to_csv("diagonals_data")
+generator.plot_datapoints("diagonals", regression=False)

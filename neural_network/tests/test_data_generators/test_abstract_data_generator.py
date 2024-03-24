@@ -89,6 +89,17 @@ class TestAbstractDataGenerator(TestCase):
         self.assertEqual(mock.call("test_dir/test_title.csv"), write_calls[1])
         self.assertEqual(2, mock_write.call_count)
 
+    @mock.patch('neural_network.learning.plotter.Plotter.datapoint_scatter')
+    def test_abs_generate_scatter_default(self, mock_plot):
+        self.two_coord_gen.plot_datapoints()
+        mock_plot.assert_called_once_with(self.two_coord_gen._df, phase='true',
+                                          title='', regression=False)
+
+    @mock.patch('neural_network.learning.plotter.Plotter.datapoint_scatter')
+    def test_abs_generate_scatter(self, mock_plot):
+        self.two_coord_gen.plot_datapoints(title='test', regression=True)
+        mock_plot.assert_called_once_with(self.two_coord_gen._df, phase='true',
+                                          title='test', regression=True)
 
 if __name__ == '__main__':
     unittest.main()

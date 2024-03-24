@@ -13,9 +13,9 @@ class Plotter:
     path = "plots/"
 
     @staticmethod
-    def plot_predictions(df: pd.DataFrame, phase: str = 'training',
-                         title: str = '', regression: bool = False):
-        """Creates a scatter plot of the predicted classes for a given set
+    def datapoint_scatter(df: pd.DataFrame, phase: str = 'training',
+                          title: str = '', regression: bool = False):
+        """Creates a scatter plot of the predicted/true classes for a given set
         of data.
 
         Parameters
@@ -23,7 +23,8 @@ class Plotter:
         df : pd.DataFrame
             The data
         phase : str
-            The phase of learning (training/validation/testing)
+            The phase of learning (training/validation/testing) or true for
+            just the true data
         title : str
             The title
         regression : bool
@@ -32,23 +33,25 @@ class Plotter:
         if not os.path.exists(Plotter.path):
             os.makedirs(Plotter.path)
 
-        if regression:
-            colouring_string = 'y_hat'
-            class_or_value = 'values'
-            print("Generating regression predictions...")
-        else:
-            colouring_string = 'factor(y_hat)'
-            class_or_value = 'classes'
-            print("Generating classification predictions...")
+        y_variable = 'y' if phase == 'true' else 'y_hat'
+        actual_or_predicted = 'Actual' if phase == 'true' else 'Predicted'
+        colouring_string = (y_variable if regression
+                            else f'factor({y_variable})')
+        values_or_classes = 'values' if regression else 'classes'
 
         plot = (ggplot(df, aes(x='x_1', y='x_2'))
                 + geom_point(aes(color=colouring_string))
-                + ggtitle(f"Predicted {class_or_value} for {phase} data")
+                + ggtitle(f"{actual_or_predicted} {values_or_classes} "
+                          f"for {phase} data")
                 )
         substring = '_' + title if title else ''
-        if not os.path.exists(Plotter.path + phase):
-            os.makedirs(Plotter.path + phase)
-        plot.save(Plotter.path + f"{phase}/scatter{substring}.png")
+
+        if phase == 'true':
+            plot.save(f"true_scatter{substring}.png")
+        else:
+            if not os.path.exists(Plotter.path + phase):
+                os.makedirs(Plotter.path + phase)
+            plot.save(Plotter.path + f"{phase}/scatter{substring}.png")
 
     @staticmethod
     def comparison_scatter(df: pd.DataFrame, phase: str = 'training',

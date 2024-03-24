@@ -170,10 +170,10 @@ class AbstractLearner:
             An optional title to append to the plot
         """
         if self._regression:
-            Plotter.plot_predictions(self._data, phase, title,
-                                     regression=True)
+            Plotter.datapoint_scatter(self._data, phase, title,
+                                      regression=True)
         else:
-            Plotter.plot_predictions(self._categorical_data, phase, title)
+            Plotter.datapoint_scatter(self._categorical_data, phase, title)
 
     def abs_comparison_scatter(self, phase: str = 'training', title: str = ''):
         """Creates scatter plot comparing the predicted and actual values in
