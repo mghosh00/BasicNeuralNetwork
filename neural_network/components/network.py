@@ -21,9 +21,9 @@ class Network:
     """
 
     def __init__(self, num_features: int, num_hidden_layers: int,
-                 neuron_counts: List[int], regression: bool = False,
-                 leak: float = 0.01, learning_rate: float = 0.01,
-                 num_classes: int = 2, adaptive: bool = False,
+                 neuron_counts: List[int], num_classes: int = 2,
+                 regression: bool = False, leak: float = 0.01,
+                 learning_rate: float = 0.01, adaptive: bool = False,
                  gamma: float = 0.9, he_weights: bool = False):
         """Constructor method
 
@@ -35,6 +35,8 @@ class Network:
             The total number of hidden `Layers` in the `Network`
         neuron_counts : List[int]
             A list of numbers of `Neurons` for each hidden `Layer`
+        num_classes : int
+            The number of classes for the classification task
         regression : bool
             Whether we are performing regression or not (if `False` we are
             performing classification)
@@ -42,8 +44,6 @@ class Network:
             The leak rate of LeakyReLU
         learning_rate : float
             The learning rate of the network
-        num_classes : int
-            The number of classes for the classification task
         adaptive : bool
             Whether we wish to have an adaptive learning rate or not
         gamma : float
