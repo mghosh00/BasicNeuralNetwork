@@ -22,13 +22,13 @@ trainer = Trainer(network, training_data, num_epochs, 16,
                   weighted=True, validator=validator)
 tester = Tester(network, testing_data, 10)
 
-# # Running the trainer and validator and generating some plots
-# trainer.run()
-# trainer.generate_loss_plot(title=f'annulus_epochs_{num_epochs}')
-# trainer.generate_scatter(title=f'annulus_epochs_{num_epochs}')
-# validator.generate_scatter(title=f'annulus_epochs_{num_epochs}')
-#
-# # Running the tester and generating some plots
-# tester.run()
-# tester.generate_confusion()
-# tester.generate_scatter(title=f'annulus_epochs_{num_epochs}')
+# Running the trainer and validator and generating some plots
+trainer.run()
+trainer.generate_loss_plot(title=f'annulus_epochs_{num_epochs}')
+trainer.generate_scatter(title=f'annulus_epochs_{num_epochs}')
+validator.generate_scatter(title=f'annulus_epochs_{num_epochs}')
+
+# Running the tester and generating some plots
+tester.run()
+tester.generate_confusion()
+tester.generate_scatter(title=f'annulus_epochs_{num_epochs}')

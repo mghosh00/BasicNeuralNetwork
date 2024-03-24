@@ -299,7 +299,6 @@ class Network:
             An optional title for the network.
         """
         graph = nx.Graph()
-        tuple_edges = []
         for edge_layer in self._edges:
             for right_neuron in edge_layer:
                 for edge in right_neuron:
@@ -307,9 +306,12 @@ class Network:
                     right_id = edge.get_right_neuron().get_id()
                     left_id_str = f"{left_id[0]},{left_id[1]}"
                     right_id_str = f"{right_id[0]},{right_id[1]}"
-                    tuple_edges.append((left_id_str, right_id_str))
-        graph.add_edges_from(tuple_edges)
-        nx.draw_networkx(graph, node_size=480, node_color='green')
+                    graph.add_node(left_id_str, layer=left_id[0])
+                    graph.add_node(right_id_str, layer=right_id[0])
+                    graph.add_edge(left_id_str, right_id_str)
+        pos = nx.multipartite_layout(graph, subset_key="layer")
+        nx.draw_networkx(graph, pos=pos,
+                         node_size=480, node_color='green')
         joining_str = f"_{title}" if title else ""
         title_str = f": {title}" if title else ""
         plt.title(f"Network{title_str}")

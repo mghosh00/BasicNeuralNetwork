@@ -13,6 +13,7 @@ learning_rate = 0.01
 network = Network(2, 3, [4, 4, 4],
                   learning_rate=learning_rate, adaptive=True,
                   he_weights=True)
+network.visualise_network("circle")
 
 # Creating the different phases of learning
 validator = Validator(network, validation_data, 10)
@@ -20,13 +21,13 @@ trainer = Trainer(network, training_data, 1000, 16,
                   weighted=True, validator=validator)
 tester = Tester(network, testing_data, 10)
 
-# Running the trainer and validator and generating some plots
-trainer.run()
-trainer.generate_loss_plot(title=f'circle_lr_{learning_rate}_he')
-trainer.generate_scatter(title=f'circle_lr_{learning_rate}_he')
-validator.generate_scatter(title=f'circle_lr_{learning_rate}_he')
-
-# Running the tester and generating some plots
-tester.run()
-tester.generate_confusion()
-tester.generate_scatter(title=f'circle_lr_{learning_rate}_he')
+# # Running the trainer and validator and generating some plots
+# trainer.run()
+# trainer.generate_loss_plot(title=f'circle_lr_{learning_rate}_he')
+# trainer.generate_scatter(title=f'circle_lr_{learning_rate}_he')
+# validator.generate_scatter(title=f'circle_lr_{learning_rate}_he')
+#
+# # Running the tester and generating some plots
+# tester.run()
+# tester.generate_confusion()
+# tester.generate_scatter(title=f'circle_lr_{learning_rate}_he')
