@@ -8,4 +8,4 @@ This project provides a framework for using neural networks to solve classificat
 ## Class Structure
 Below is the UML class diagram for this package, created using [VisualParadigm](https://online.visual-paradigm.com).
 
-![class diagram](NeuralNetwork.vpd.png)
+![class diagram](class_diagram.png)
