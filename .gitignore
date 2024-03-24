@@ -1,6 +1,15 @@
+# IntelliJ .idea files
 .idea/
-.idea/*
-/.idea/
-/.idea/*
+.idea/dbnavigator.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+
+# Distribution and packaging
 neural_network.egg-info/
-neural_network.egg-info/*
+neural_network.egg-info/PKG-INFO
+neural_network.egg-info/SOURCES.txt
+neural_network.egg-info/dependency_links.txt
+neural_network.egg-info/requires.txt
+neural_network.egg-info/top_level.txt
