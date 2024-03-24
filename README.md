@@ -122,7 +122,7 @@ After this, we can instantiate our `network`, which accepts the following parame
 | `learning_rate`     | `float`     | The learning rate for the network.                                                                        | `0.01`   |
 | `adaptive`          | `bool`      | Whether we wish to have an adaptive learning rate or not (using momentum).                                | `False`  |
 | `gamma`             | `float`     | The adaptive learning rate parameter. This is ignored if `adaptive` is `False`                            | `0.9`    |
-| `he_weights`        | `bool`      | Whether we wish to initialise the weights of the network according to He or not [^1](## Sources).         | `False`  |
+| `he_weights`        | `bool`      | Whether we wish to initialise the weights of the network according to He or not [^1].                     | `False`  |
 
 Here is an example below, which we will use for the `diagonals` data:
 
