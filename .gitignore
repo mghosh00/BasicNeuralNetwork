@@ -1,3 +1,6 @@
 .idea/
+.idea/*
 /.idea/
+/.idea/*
 neural_network.egg-info/
+neural_network.egg-info/*
