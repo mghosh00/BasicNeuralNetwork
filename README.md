@@ -26,15 +26,15 @@ After this, a different, unseen subset of the data is passed to the network to t
 ## Installation
 This package can be downloaded from github to your local machine via the following terminal command:
 
-``
+```console
 git clone git@github.com:mghosh00/BasicNeuralNetwork.git
-``
+```
 
 From here, navigate to the newly created repository, and enter
 
-``
+```console
 pip install -e .
-``
+```
 
 to pip install the package.
 
@@ -60,20 +60,19 @@ To utilise the helper classes, first create the file `generate_diagonals_data.py
 
 For our example, the `function` takes in `x_1` and `x_2` as arguments, and returns `"North"`, `"East"`, `"South"` or `"West"`, depending on where the point lies on the grid. 
 
-``
-
-    def classifier(x_1: float, x_2: float) -> str:
-        if x_1 + x_2 > 0:
-            if x_1 - x_2 > 0:
-                return "East"
-            else:
-                return "North"
+```
+def classifier(x_1: float, x_2: float) -> str:
+    if x_1 + x_2 > 0:
+        if x_1 - x_2 > 0:
+            return "East"
         else:
-            if x_1 - x_2 > 0:
-                return "South"
-            else:
-                return "West"
-``
+            return "North"
+    else:
+        if x_1 - x_2 > 0:
+            return "South"
+        else:
+            return "West"
+```
 
 Next, we feed this to the `NormalDataGenerator` with `400` datapoints and means of `[0.0, 0.0]`, std_devs of `[1.0, 1.0]`. Use the `__call__` method of the generator,
 followed by `generator.plot_datapoints("diagonals")` to get the plot below:
@@ -105,12 +104,10 @@ The `x_i` and `y` entries must be of the following types:
 Once we have our data in a .csv file, we can begin learning. Within the `diagonals` directory, create a new file named `diagonals_main.py`.
 From here, import the `DataSplitter` which will randomly split our data into training, validation and testing according to some proportions.
 
-`` 
-
-    data_splitter = DataSplitter(path="diagonals_data.csv", proportions=[8, 1, 1]) 
-    training_data, validation_data, testing_data = data_splitter.split()
-
-``
+```
+data_splitter = DataSplitter(path="diagonals_data.csv", proportions=[8, 1, 1]) 
+training_data, validation_data, testing_data = data_splitter.split()
+```
 
 After this, we can instantiate our `network`, which accepts the following parameters to its constructor:
 
@@ -129,10 +126,10 @@ After this, we can instantiate our `network`, which accepts the following parame
 
 Here is an example below, which we will use for the `diagonals` data:
 
-`` 
-    network = Network(num_features=2, num_hidden_layers=2, neuron_counts=[4, 4], 
-                      num_classes=4, adaptive=True, he_weights=True) 
-``
+```
+network = Network(num_features=2, num_hidden_layers=2, neuron_counts=[4, 4], 
+                  num_classes=4, adaptive=True, he_weights=True) 
+```
 
 Note that only the first 3 parameters are required.
 
@@ -150,20 +147,18 @@ For the learning, we now create three separate learners: the `trainer`, `validat
 
 Continuing with the `diagonals` example, these are our learners:
 
-``
-
-    validator = Validator(network, validation_data, batch_size=10)
-    trainer = Trainer(network, training_data, num_epochs=1000, batch_size=16, weighted=True, validator=validator)
-    tester = Tester(network, testing_data, batch_size=10)
-``
+```
+validator = Validator(network, validation_data, batch_size=10)
+trainer = Trainer(network, training_data, num_epochs=1000, batch_size=16, weighted=True, validator=validator)
+tester = Tester(network, testing_data, batch_size=10)
+```
 
 Now, we can run the `trainer` and `tester`! Note that the `validator` is run by the `trainer`.
 
-``
-
-    trainer.run()
-    tester.run()
-``
+``` 
+trainer.run()
+tester.run()
+```
 
 ### Plotting the results
 There are various methods that can be used to analyse the results.
