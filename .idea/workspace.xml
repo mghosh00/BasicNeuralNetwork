@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58548c86-52df-414f-855a-9e2625a8f076" name="Changes" comment="Fixed errors">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neural_network/simulation/trainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_network/simulation/trainer.py" afterDir="false" />
-    </list>
+    <list default="true" id="58548c86-52df-414f-855a-9e2625a8f076" name="Changes" comment="Renamed AbstractSimulator to AbstractLearner and simulation to learning" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,130 +36,130 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python tests.Python tests for test_abstract_data_generator.TestAbstractDataGenerator.executor": "Run",
-    "Python tests.Python tests for test_abstract_data_generator.TestAbstractDataGenerator.test_construct.executor": "Run",
-    "Python tests.Python tests for test_abstract_data_generator.TestAbstractDataGenerator.test_construct_erroneous.executor": "Run",
-    "Python tests.Python tests for test_abstract_data_generator.TestAbstractDataGenerator.test_write_to_csv.executor": "Run",
-    "Python tests.Python tests for test_abstract_function.TestAbstractFunction.executor": "Run",
-    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.executor": "Run",
-    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_abs_generate_scatter.executor": "Run",
-    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_abs_generate_scatter_regression.executor": "Run",
-    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct.executor": "Run",
-    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_default.executor": "Run",
-    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_erroneous.executor": "Run",
-    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_non_default.executor": "Run",
-    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_forward_pass_one_batch.executor": "Run",
-    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_forward_pass_one_batch_regression.executor": "Debug",
-    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_store_gradients.executor": "Run",
-    "Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_update_categorical_dataframe.executor": "Run",
-    "Python tests.Python tests for test_cross_entropy_loss.TestLoss.executor": "Run",
-    "Python tests.Python tests for test_data_splitter.TestDataSplitter.executor": "Run",
-    "Python tests.Python tests for test_data_splitter.TestDataSplitter.test_construct.executor": "Run",
-    "Python tests.Python tests for test_data_splitter.TestDataSplitter.test_construct_erroneous.executor": "Run",
-    "Python tests.Python tests for test_data_splitter.TestDataSplitter.test_split_1.executor": "Run",
-    "Python tests.Python tests for test_edge.TestEdge.executor": "Run",
-    "Python tests.Python tests for test_layer.TestNeuron.executor": "Run",
-    "Python tests.Python tests for test_loss.TestLoss.executor": "Run",
-    "Python tests.Python tests for test_mse_loss.TestMSELoss.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_activate_output_layer.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_back_propagate_bias.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_back_propagate_weight_no_momentum.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_back_propagate_weight_with_momentum.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_calculate_pre_activated_value.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_construct.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_construct_defaults.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_construct_edges.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_construct_erroneous.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_construct_layers.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_construct_others.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_forward_pass_one_datapoint.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_forward_pass_one_datapoint_erroneous.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_get_neuron_counts.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_propagate_softmax_layer.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_propagate_value_forward.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_store_gradient_of_loss_hidden_layer.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_store_gradient_of_loss_outer_layer.executor": "Run",
-    "Python tests.Python tests for test_network.TestNetwork.test_store_gradient_of_loss_outer_layer_regression.executor": "Run",
-    "Python tests.Python tests for test_neuron.TestNeuron.executor": "Run",
-    "Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.executor": "Run",
-    "Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_call_one_coord.executor": "Run",
-    "Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_call_str.executor": "Run",
-    "Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_call_two_coord.executor": "Run",
-    "Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_generate_data_one_coord.executor": "Run",
-    "Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_generate_data_two_coord.executor": "Run",
-    "Python tests.Python tests for test_partitioner.TestPartitioner.executor": "Run",
-    "Python tests.Python tests for test_partitioner.TestPartitioner.test_call_even_partitioner.executor": "Run",
-    "Python tests.Python tests for test_plotter.TestPlotter.executor": "Run",
-    "Python tests.Python tests for test_plotter.TestPlotter.test_construct.executor": "Run",
-    "Python tests.Python tests for test_plotter.TestPlotter.test_plot_loss.executor": "Run",
-    "Python tests.Python tests for test_plotter.TestPlotter.test_plot_loss_default.executor": "Run",
-    "Python tests.Python tests for test_plotter.TestPlotter.test_plot_predictions.executor": "Run",
-    "Python tests.Python tests for test_plotter.TestPlotter.test_plot_predictions_default.executor": "Run",
-    "Python tests.Python tests for test_relu.TestReLU.executor": "Run",
-    "Python tests.Python tests for test_sigmoid.TestSigmoid.executor": "Run",
-    "Python tests.Python tests for test_softmax.TestSoftmax.executor": "Run",
-    "Python tests.Python tests for test_tester.TestTester.executor": "Run",
-    "Python tests.Python tests for test_tester.TestTester.test_construct.executor": "Run",
-    "Python tests.Python tests for test_tester.TestTester.test_generate_confusion.executor": "Run",
-    "Python tests.Python tests for test_tester.TestTester.test_generate_scatter.executor": "Run",
-    "Python tests.Python tests for test_tester.TestTester.test_run.executor": "Run",
-    "Python tests.Python tests for test_tester.TestTester.test_run_regression.executor": "Run",
-    "Python tests.Python tests for test_tester.TestTester.test_validate_default.executor": "Run",
-    "Python tests.Python tests for test_trainer.TestTrainer.executor": "Run",
-    "Python tests.Python tests for test_trainer.TestTrainer.test_back_propagate_one_batch.executor": "Run",
-    "Python tests.Python tests for test_trainer.TestTrainer.test_construct_default.executor": "Run",
-    "Python tests.Python tests for test_trainer.TestTrainer.test_generate_gif.executor": "Run",
-    "Python tests.Python tests for test_trainer.TestTrainer.test_generate_loss_plot.executor": "Run",
-    "Python tests.Python tests for test_trainer.TestTrainer.test_generate_scatter.executor": "Run",
-    "Python tests.Python tests for test_trainer.TestTrainer.test_run.executor": "Run",
-    "Python tests.Python tests for test_trainer.TestTrainer.test_run_default.executor": "Run",
-    "Python tests.Python tests for test_trainer.TestTrainer.test_store_gradients.executor": "Run",
-    "Python tests.Python tests for test_transfer.TestTransferFunction.executor": "Run",
-    "Python tests.Python tests for test_transfer.TestTransferFunction.test_call_erroneous.executor": "Run",
-    "Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator.executor": "Run",
-    "Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator.test_call_one_coord.executor": "Run",
-    "Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator.test_call_str.executor": "Run",
-    "Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator.test_call_two_coord.executor": "Run",
-    "Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator.test_construct_erroneous.executor": "Run",
-    "Python tests.Python tests for test_validator.TestTrainer.test_construct.executor": "Run",
-    "Python tests.Python tests for test_validator.TestValidator.executor": "Run",
-    "Python tests.Python tests for test_validator.TestValidator.test_generate_scatter.executor": "Run",
-    "Python tests.Python tests for test_validator.TestValidator.test_run.executor": "Run",
-    "Python tests.Python tests for test_validator.TestValidator.test_run_default.executor": "Run",
-    "Python tests.Python tests for test_weighted_partitioner.TestWeightedPartitioner.executor": "Run",
-    "Python tests.Python tests for test_weighted_partitioner.TestWeightedPartitioner.test_call_even_partitioner.executor": "Run",
-    "Python tests.Python tests for test_weighted_partitioner.TestWeightedPartitioner.test_construct.executor": "Run",
-    "Python.annulus_main.executor": "Run",
-    "Python.circle_main (1).executor": "Run",
-    "Python.circle_main.executor": "Run",
-    "Python.diagonals_main.executor": "Run",
-    "Python.even_odd_main.executor": "Run",
-    "Python.generate_annulus_data.executor": "Run",
-    "Python.generate_circle_data (1).executor": "Run",
-    "Python.generate_circle_data.executor": "Run",
-    "Python.generate_diagonals_data.executor": "Run",
-    "Python.generate_even_odd_data.executor": "Run",
-    "Python.generate_mean_data.executor": "Run",
-    "Python.generate_sine_data.executor": "Run",
-    "Python.linear_main.executor": "Run",
-    "Python.mean_main.executor": "Run",
-    "Python.sine_main.executor": "Run",
-    "Python.trainer.executor": "Run",
-    "Python.weighted_partitioner.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/matth/IdeaProjects/Python/NeuralNetwork/neural_network/examples/classification/sinusoidal",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python tests.Python tests for test_abstract_data_generator.TestAbstractDataGenerator.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_abstract_data_generator.TestAbstractDataGenerator.test_construct.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_abstract_data_generator.TestAbstractDataGenerator.test_construct_erroneous.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_abstract_data_generator.TestAbstractDataGenerator.test_write_to_csv.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_abstract_function.TestAbstractFunction.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_abs_generate_scatter.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_abs_generate_scatter_regression.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_default.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_erroneous.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_construct_non_default.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_forward_pass_one_batch.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_forward_pass_one_batch_regression.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_store_gradients.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_abstract_simulator.TestAbstractSimulator.test_update_categorical_dataframe.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_cross_entropy_loss.TestLoss.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_data_splitter.TestDataSplitter.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_data_splitter.TestDataSplitter.test_construct.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_data_splitter.TestDataSplitter.test_construct_erroneous.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_data_splitter.TestDataSplitter.test_split_1.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_edge.TestEdge.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_layer.TestNeuron.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_loss.TestLoss.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_mse_loss.TestMSELoss.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_activate_output_layer.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_back_propagate_bias.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_back_propagate_weight_no_momentum.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_back_propagate_weight_with_momentum.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_calculate_pre_activated_value.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_construct.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_construct_defaults.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_construct_edges.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_construct_erroneous.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_construct_layers.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_construct_others.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_forward_pass_one_datapoint.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_forward_pass_one_datapoint_erroneous.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_get_neuron_counts.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_propagate_softmax_layer.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_propagate_value_forward.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_store_gradient_of_loss_hidden_layer.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_store_gradient_of_loss_outer_layer.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_network.TestNetwork.test_store_gradient_of_loss_outer_layer_regression.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_neuron.TestNeuron.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_call_one_coord.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_call_str.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_call_two_coord.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_generate_data_one_coord.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_normal_data_generator.TestNormalDataGenerator.test_generate_data_two_coord.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_partitioner.TestPartitioner.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_partitioner.TestPartitioner.test_call_even_partitioner.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_plotter.TestPlotter.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_plotter.TestPlotter.test_construct.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_plotter.TestPlotter.test_plot_loss.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_plotter.TestPlotter.test_plot_loss_default.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_plotter.TestPlotter.test_plot_predictions.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_plotter.TestPlotter.test_plot_predictions_default.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_relu.TestReLU.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_sigmoid.TestSigmoid.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_softmax.TestSoftmax.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_tester.TestTester.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_tester.TestTester.test_construct.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_tester.TestTester.test_generate_confusion.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_tester.TestTester.test_generate_scatter.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_tester.TestTester.test_run.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_tester.TestTester.test_run_regression.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_tester.TestTester.test_validate_default.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_trainer.TestTrainer.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_trainer.TestTrainer.test_back_propagate_one_batch.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_trainer.TestTrainer.test_construct_default.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_trainer.TestTrainer.test_generate_gif.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_trainer.TestTrainer.test_generate_loss_plot.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_trainer.TestTrainer.test_generate_scatter.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_trainer.TestTrainer.test_run.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_trainer.TestTrainer.test_run_default.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_trainer.TestTrainer.test_store_gradients.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_transfer.TestTransferFunction.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_transfer.TestTransferFunction.test_call_erroneous.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator.test_call_one_coord.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator.test_call_str.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator.test_call_two_coord.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_uniform_data_generator.TestUniformDataGenerator.test_construct_erroneous.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_validator.TestTrainer.test_construct.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_validator.TestValidator.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_validator.TestValidator.test_generate_scatter.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_validator.TestValidator.test_run.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_validator.TestValidator.test_run_default.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_weighted_partitioner.TestWeightedPartitioner.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_weighted_partitioner.TestWeightedPartitioner.test_call_even_partitioner.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_weighted_partitioner.TestWeightedPartitioner.test_construct.executor&quot;: &quot;Run&quot;,
+    &quot;Python.annulus_main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.circle_main (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.circle_main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.diagonals_main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.even_odd_main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.generate_annulus_data.executor&quot;: &quot;Run&quot;,
+    &quot;Python.generate_circle_data (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.generate_circle_data.executor&quot;: &quot;Run&quot;,
+    &quot;Python.generate_diagonals_data.executor&quot;: &quot;Run&quot;,
+    &quot;Python.generate_even_odd_data.executor&quot;: &quot;Run&quot;,
+    &quot;Python.generate_mean_data.executor&quot;: &quot;Run&quot;,
+    &quot;Python.generate_sine_data.executor&quot;: &quot;Run&quot;,
+    &quot;Python.linear_main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.mean_main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.sine_main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.trainer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.weighted_partitioner.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/matth/IdeaProjects/Python/NeuralNetwork/neural_network/examples/classification/sinusoidal&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\matth\IdeaProjects\Python\NeuralNetwork\neural_network\examples\classification\sinusoidal" />
@@ -294,14 +291,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708014585261</updated>
-    </task>
-    <task id="LOCAL-00025" summary="Added He weights feature">
-      <option name="closed" value="true" />
-      <created>1709114594488</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1709114594488</updated>
     </task>
     <task id="LOCAL-00026" summary="Added new tests">
       <option name="closed" value="true" />
@@ -687,7 +676,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711234814679</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="Renamed AbstractSimulator to AbstractLearner and simulation to learning">
+      <option name="closed" value="true" />
+      <created>1711274355857</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1711274355857</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -702,7 +699,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created abstract_data_generator.py and uniform_data_generator.py" />
     <MESSAGE value="Created normal_data_generator.py" />
     <MESSAGE value="Updated docs and added test_abstract_data_generator.py" />
     <MESSAGE value="Added test_normal_data_generator.py and test_uniform_data_generator.py" />
@@ -727,6 +723,7 @@
     <MESSAGE value="Added to examples and renamed package main to simulation" />
     <MESSAGE value="Renamed test_main to test_simulation" />
     <MESSAGE value="Fixed errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed errors" />
+    <MESSAGE value="Renamed AbstractSimulator to AbstractLearner and simulation to learning" />
+    <option name="LAST_COMMIT_MESSAGE" value="Renamed AbstractSimulator to AbstractLearner and simulation to learning" />
   </component>
 </project>

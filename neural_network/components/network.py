@@ -2,7 +2,9 @@ from typing import List
 import math
 import random
 
+import matplotlib.pyplot as plt
 import numpy as np
+import networkx as nx
 
 from neural_network.functions import TransferFunction
 from neural_network.functions import ReLU
@@ -287,6 +289,32 @@ class Network:
         neuron.set_bias(current_bias - self._learning_rate
                         * avg_bias_gradient)
         neuron.bias_gradients = []
+
+    def visualise_network(self, title: str = ''):
+        """Uses the networkx package to visualise the network.
+
+        Parameters
+        ----------
+        title : str [Optional, Default='']
+            An optional title for the network.
+        """
+        graph = nx.Graph()
+        tuple_edges = []
+        for edge_layer in self._edges:
+            for right_neuron in edge_layer:
+                for edge in right_neuron:
+                    left_id = edge.get_left_neuron().get_id()
+                    right_id = edge.get_right_neuron().get_id()
+                    left_id_str = f"{left_id[0]},{left_id[1]}"
+                    right_id_str = f"{right_id[0]},{right_id[1]}"
+                    tuple_edges.append((left_id_str, right_id_str))
+        graph.add_edges_from(tuple_edges)
+        nx.draw_networkx(graph, node_size=480, node_color='green')
+        joining_str = f"_{title}" if title else ""
+        title_str = f": {title}" if title else ""
+        plt.title(f"Network{title_str}")
+        plt.savefig(f"network{joining_str}.png")
+        plt.clf()
 
     def get_edges(self) -> List[List[List[Edge]]]:
         """Getter method for edges

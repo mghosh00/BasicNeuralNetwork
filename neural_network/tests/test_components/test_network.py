@@ -3,6 +3,7 @@ from unittest import TestCase
 from unittest import mock
 
 import numpy as np
+import networkx as nx
 
 from neural_network import TransferFunction
 from neural_network import ReLU
@@ -433,6 +434,54 @@ class TestNetwork(TestCase):
 
         # Recall learning_rate = 0.005
         self.assertEqual(neuron.get_bias(), 2 - 0.005 * 0.25)
+
+    @mock.patch('matplotlib.pyplot.clf')
+    @mock.patch('matplotlib.pyplot.savefig')
+    @mock.patch('matplotlib.pyplot.title')
+    @mock.patch('networkx.draw_networkx')
+    @mock.patch('networkx.Graph')
+    def test_visualise_network_default(self, mock_graph_init, mock_draw,
+                                       mock_title, mock_save, mock_clf):
+        tuple_edges = [("0,0", "1,0"), ("0,1", "1,0"), ("0,2", "1,0"),
+                       ("0,0", "1,1"), ("0,1", "1,1"), ("0,2", "1,1"),
+                       ("0,0", "1,2"), ("0,1", "1,2"), ("0,2", "1,2"),
+                       ("0,0", "1,3"), ("0,1", "1,3"), ("0,2", "1,3"),
+                       ("1,0", "2,0"), ("1,1", "2,0"), ("1,2", "2,0"),
+                       ("1,3", "2,0"), ("1,0", "2,1"), ("1,1", "2,1"),
+                       ("1,2", "2,1"), ("1,3", "2,1"), ("2,0", "3,0"),
+                       ("2,1", "3,0"), ("2,0", "3,1"), ("2,1", "3,1")]
+        self.default_network.visualise_network()
+        mock_graph = mock_graph_init()
+        mock_graph.add_edges_from.assert_called_once_with(tuple_edges)
+        mock_draw.assert_called_once_with(mock_graph, node_size=480,
+                                          node_color='green')
+        mock_title.assert_called_once_with("Network")
+        mock_save.assert_called_once_with("network.png")
+        mock_clf.assert_called_once()
+
+    @mock.patch('matplotlib.pyplot.clf')
+    @mock.patch('matplotlib.pyplot.savefig')
+    @mock.patch('matplotlib.pyplot.title')
+    @mock.patch('networkx.draw_networkx')
+    @mock.patch('networkx.Graph')
+    def test_visualise_network_default(self, mock_graph_init, mock_draw,
+                                       mock_title, mock_save, mock_clf):
+        tuple_edges = [("0,0", "1,0"), ("0,1", "1,0"), ("0,2", "1,0"),
+                       ("0,0", "1,1"), ("0,1", "1,1"), ("0,2", "1,1"),
+                       ("0,0", "1,2"), ("0,1", "1,2"), ("0,2", "1,2"),
+                       ("0,0", "1,3"), ("0,1", "1,3"), ("0,2", "1,3"),
+                       ("1,0", "2,0"), ("1,1", "2,0"), ("1,2", "2,0"),
+                       ("1,3", "2,0"), ("1,0", "2,1"), ("1,1", "2,1"),
+                       ("1,2", "2,1"), ("1,3", "2,1"), ("2,0", "3,0"),
+                       ("2,1", "3,0"), ("2,0", "3,1"), ("2,1", "3,1")]
+        self.default_network.visualise_network(title="test")
+        mock_graph = mock_graph_init()
+        mock_graph.add_edges_from.assert_called_once_with(tuple_edges)
+        mock_draw.assert_called_once_with(mock_graph, node_size=480,
+                                          node_color='green')
+        mock_title.assert_called_once_with("Network: test")
+        mock_save.assert_called_once_with("network_test.png")
+        mock_clf.assert_called_once()
 
     def test_get_edges(self):
         self.assertListEqual(self.network._edges,
