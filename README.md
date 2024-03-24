@@ -4,3 +4,7 @@
 [![codecov](https://codecov.io/github/mghosh00/NeuralNetwork/graph/badge.svg?token=R9tbcFyT6t)](https://codecov.io/github/mghosh00/NeuralNetwork)
 
 This project provides a framework for using neural networks to solve classification and regression problems with n-dimensional datapoints. 
+
+## Class Structure
+Here is a [link](https://drive.google.com/file/d/1ZWmzzZOHoqOZ3XbgsW8LuRhKH5tEtshl/view?usp=drive_link) to the UML class diagram for this package, created using
+[VisualParadigm](https://online.visual-paradigm.com).
