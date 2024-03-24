@@ -437,10 +437,12 @@ class TestNetwork(TestCase):
     @mock.patch('matplotlib.pyplot.clf')
     @mock.patch('matplotlib.pyplot.savefig')
     @mock.patch('matplotlib.pyplot.title')
+    @mock.patch('networkx.multipartite_layout')
     @mock.patch('networkx.draw_networkx')
     @mock.patch('networkx.Graph')
     def test_visualise_network_default(self, mock_graph_init, mock_draw,
-                                       mock_title, mock_save, mock_clf):
+                                       mock_layout, mock_title, mock_save,
+                                       mock_clf):
         tuple_edges = [("0,0", "1,0"), ("0,1", "1,0"), ("0,2", "1,0"),
                        ("0,0", "1,1"), ("0,1", "1,1"), ("0,2", "1,1"),
                        ("0,0", "1,2"), ("0,1", "1,2"), ("0,2", "1,2"),
@@ -449,10 +451,16 @@ class TestNetwork(TestCase):
                        ("1,3", "2,0"), ("1,0", "2,1"), ("1,1", "2,1"),
                        ("1,2", "2,1"), ("1,3", "2,1"), ("2,0", "3,0"),
                        ("2,1", "3,0"), ("2,0", "3,1"), ("2,1", "3,1")]
+        mock_layout.return_value = {}
         self.default_network.visualise_network()
         mock_graph = mock_graph_init()
-        mock_graph.add_edges_from.assert_called_once_with(tuple_edges)
-        mock_draw.assert_called_once_with(mock_graph, node_size=480,
+        for edge in tuple_edges:
+            mock_graph.add_edge.assert_any_call(edge[0], edge[1])
+            mock_graph.add_node.assert_any_call(edge[0], layer=int(edge[0][0]))
+            mock_graph.add_node.assert_any_call(edge[1], layer=int(edge[1][0]))
+        self.assertEqual(mock_graph.add_edge.call_count, 24)
+        self.assertEqual(mock_graph.add_node.call_count, 48)
+        mock_draw.assert_called_once_with(mock_graph, pos={}, node_size=480,
                                           node_color='green')
         mock_title.assert_called_once_with("Network")
         mock_save.assert_called_once_with("network.png")
