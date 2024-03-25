@@ -1,0 +1,44 @@
+apply plugin: "jacoco"
+
+jacoco {
+    toolVersion = '0.8.9'
+    reportsDirectory = layout.buildDirectory.dir('reports/jacoco')
+}
+
+jacocoTestReport {
+    dependsOn test
+    description = "Generate Jacoco coverage reports after running tests."
+    reports {
+        xml.required = true
+        html.required = true
+        xml.destination(file("$buildDir/reports/jacoco/jacocoTestReport.xml"))
+    }
+    finalizedBy jacocoTestCoverageVerification
+}
+
+jacocoTestCoverageVerification {
+    dependsOn jacocoTestReport
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.5
+            }
+        }
+
+        rule {
+            enabled = false
+            element = 'CLASS'
+            includes = ['org.gradle.*']
+
+            limit {
+                counter = 'LINE'
+                value = 'TOTALCOUNT'
+                maximum = 0.3
+            }
+        }
+    }
+}
+
+build.dependsOn(jacocoTestReport)
+build.dependsOn(jacocoTestCoverageVerification)
+check.dependsOn(jacocoTestReport)
