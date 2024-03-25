@@ -4,3 +4,5 @@ pandas
 plotnine
 sphinx
 networkx
+jupyter
+notebook

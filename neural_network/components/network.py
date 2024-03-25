@@ -315,6 +315,7 @@ class Network:
         joining_str = f"_{title}" if title else ""
         title_str = f": {title}" if title else ""
         plt.title(f"Network{title_str}")
+        plt.show()
         plt.savefig(f"network{joining_str}.png")
         plt.clf()
 

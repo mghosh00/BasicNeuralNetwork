@@ -11,6 +11,7 @@ class Plotter:
     """
 
     path = "plots/"
+    show_plots = False
 
     @staticmethod
     def datapoint_scatter(df: pd.DataFrame, phase: str = 'training',
@@ -46,6 +47,8 @@ class Plotter:
                 )
         substring = '_' + title if title else ''
 
+        if Plotter.show_plots:
+            print(plot)
         if phase == 'true':
             plot.save(f"true_scatter{substring}.png")
         else:
@@ -79,6 +82,9 @@ class Plotter:
         substring = '_' + title if title else ''
         if not os.path.exists(Plotter.path + phase):
             os.makedirs(Plotter.path + phase)
+
+        if Plotter.show_plots:
+            print(plot)
         plot.save(Plotter.path + f"{phase}/comparison{substring}.png")
 
     @staticmethod
@@ -100,4 +106,7 @@ class Plotter:
         plt.legend()
         plt.title("Loss over time")
         substring = '_' + title if title else ''
+
+        if Plotter.show_plots:
+            plt.show()
         plt.savefig(Plotter.path + f"losses{substring}.png")

@@ -19,6 +19,7 @@ class TestPlotter(TestCase):
                      if sys.version_info[1] > 10 else "builtins.len")
 
     def setUp(self):
+        Plotter.show_plots = False
         self.scatter_data = np.array([[-2, 0, 1, 1],
                                       [2, 6, 1, 0],
                                       [-8, -2, 0, 0],
@@ -51,11 +52,13 @@ class TestPlotter(TestCase):
     @mock.patch(ggplot_string)
     @mock.patch('os.makedirs')
     @mock.patch('os.path.exists')
-    def test_datapoint_scatter_default(self, mock_exists, mock_makedirs,
-                                       mock_save):
+    @mock.patch('builtins.print')
+    def test_datapoint_scatter_default(self, mock_print, mock_exists,
+                                       mock_makedirs, mock_save):
         if sys.version_info[1] > 10:
             mock_exists.return_value = False
             Plotter.datapoint_scatter(self.scatter_df)
+            mock_print.assert_not_called()
             exists_calls = mock_exists.call_args_list
             self.assertListEqual([mock.call("plots/"),
                                   mock.call("plots/training")], exists_calls)
@@ -69,11 +72,14 @@ class TestPlotter(TestCase):
     @mock.patch(ggplot_string)
     @mock.patch('os.makedirs')
     @mock.patch('os.path.exists')
-    def test_datapoint_scatter(self, mock_exists, mock_makedirs, mock_save):
+    @mock.patch('builtins.print')
+    def test_datapoint_scatter(self, mock_print, mock_exists, mock_makedirs,
+                               mock_save):
         if sys.version_info[1] > 10:
             mock_exists.return_value = True
             Plotter.datapoint_scatter(self.scatter_df, 'validation',
                                       'test_title')
+            mock_print.assert_not_called()
             exists_calls = mock_exists.call_args_list
             self.assertListEqual([mock.call("plots/"),
                                   mock.call("plots/validation")], exists_calls)
@@ -87,12 +93,14 @@ class TestPlotter(TestCase):
     @mock.patch(ggplot_string)
     @mock.patch('os.makedirs')
     @mock.patch('os.path.exists')
-    def test_datapoint_scatter_regression(self, mock_exists, mock_makedirs,
-                                          mock_save):
+    @mock.patch('builtins.print')
+    def test_datapoint_scatter_regression(self, mock_print, mock_exists,
+                                          mock_makedirs, mock_save):
         if sys.version_info[1] > 10:
             mock_exists.return_value = True
             Plotter.datapoint_scatter(self.scatter_df, 'validation',
                                       'test_title', regression=True)
+            mock_print.assert_not_called()
             exists_calls = mock_exists.call_args_list
             self.assertListEqual([mock.call("plots/"),
                                   mock.call("plots/validation")], exists_calls)
@@ -104,10 +112,24 @@ class TestPlotter(TestCase):
             self.skipTest("plotnine testing incompatible with python 3.10")
 
     @mock.patch(ggplot_string)
-    def test_datapoint_scatter_true(self, mock_save):
+    @mock.patch('builtins.print')
+    def test_datapoint_scatter_true(self, mock_print, mock_save):
         if sys.version_info[1] > 10:
             Plotter.datapoint_scatter(self.scatter_df, 'true',
                                       'test_title', regression=True)
+            mock_print.assert_not_called()
+            mock_save.assert_called_with("true_scatter_test_title.png")
+        else:
+            self.skipTest("plotnine testing incompatible with python 3.10")
+
+    @mock.patch(ggplot_string)
+    @mock.patch('builtins.print')
+    def test_datapoint_scatter_show(self, mock_print, mock_save):
+        if sys.version_info[1] > 10:
+            Plotter.show_plots = True
+            Plotter.datapoint_scatter(self.scatter_df, 'true',
+                                      'test_title', regression=True)
+            mock_print.assert_called_once()
             mock_save.assert_called_with("true_scatter_test_title.png")
         else:
             self.skipTest("plotnine testing incompatible with python 3.10")
@@ -115,11 +137,34 @@ class TestPlotter(TestCase):
     @mock.patch(ggplot_string)
     @mock.patch('os.makedirs')
     @mock.patch('os.path.exists')
-    def test_comparison_scatter(self, mock_exists, mock_makedirs,
+    @mock.patch('builtins.print')
+    def test_comparison_scatter(self, mock_print, mock_exists, mock_makedirs,
                                 mock_save):
         if sys.version_info[1] > 10:
             mock_exists.return_value = False
             Plotter.comparison_scatter(self.reg_scatter_df)
+            mock_print.assert_not_called()
+            exists_calls = mock_exists.call_args_list
+            self.assertListEqual([mock.call("plots/"),
+                                  mock.call("plots/training")], exists_calls)
+            self.assertListEqual(exists_calls, mock_makedirs.call_args_list)
+            self.assertEqual(mock_exists.call_count, 2)
+            self.assertEqual(mock_makedirs.call_count, 2)
+            mock_save.assert_called_once_with("plots/training/comparison.png")
+        else:
+            self.skipTest("plotnine testing incompatible with python 3.10")
+
+    @mock.patch(ggplot_string)
+    @mock.patch('os.makedirs')
+    @mock.patch('os.path.exists')
+    @mock.patch('builtins.print')
+    def test_comparison_scatter_show(self, mock_print, mock_exists,
+                                     mock_makedirs, mock_save):
+        if sys.version_info[1] > 10:
+            mock_exists.return_value = False
+            Plotter.show_plots = True
+            Plotter.comparison_scatter(self.reg_scatter_df)
+            mock_print.assert_called_once()
             exists_calls = mock_exists.call_args_list
             self.assertListEqual([mock.call("plots/"),
                                   mock.call("plots/training")], exists_calls)
@@ -172,6 +217,21 @@ class TestPlotter(TestCase):
         Plotter.plot_loss(self.loss_df, "test_title")
         mock_exists.assert_called_with("plots/")
         mock_makedirs.assert_called_with("plots/")
+        mock_save.assert_called_once_with("plots/losses_test_title.png")
+
+    @mock.patch('matplotlib.pyplot.savefig')
+    @mock.patch('matplotlib.pyplot.show')
+    @mock.patch('matplotlib.pyplot.plot')
+    @mock.patch('os.makedirs')
+    @mock.patch('os.path.exists')
+    def test_plot_loss_show(self, mock_exists, mock_makedirs, mock_plt,
+                            mock_show, mock_save):
+        mock_exists.return_value = False
+        Plotter.show_plots = True
+        Plotter.plot_loss(self.loss_df, "test_title")
+        mock_exists.assert_called_with("plots/")
+        mock_makedirs.assert_called_with("plots/")
+        mock_show.assert_called_once()
         mock_save.assert_called_once_with("plots/losses_test_title.png")
 
 
