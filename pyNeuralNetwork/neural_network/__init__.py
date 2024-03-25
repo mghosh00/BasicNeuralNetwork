@@ -1,8 +1,8 @@
-from . import util
-from . import functions
-from . import data_generators
-from . import components
-from . import learning
+from neural_network import util
+from neural_network import functions
+from neural_network import data_generators
+from neural_network import components
+from neural_network import learning
 
 from util import Partitioner
 from util import WeightedPartitioner

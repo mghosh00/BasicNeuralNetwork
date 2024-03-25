@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58548c86-52df-414f-855a-9e2625a8f076" name="Changes" comment="Created and finished circle.ipynb, and updated the Plotter class to allow for showing plots.">
-      <change beforePath="$PROJECT_DIR$/neural_network/examples/notebooks/circle/circle.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/neural_network/examples/notebooks/circle/circle.ipynb" afterDir="false" />
+    <list default="true" id="58548c86-52df-414f-855a-9e2625a8f076" name="Changes" comment="Moved python into new directory - py_neural_network">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/coverage.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/coverage.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/os_versions.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/os_versions.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/python_versions.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/python_versions.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/style.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/style.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="java-package" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -160,9 +163,9 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "java-package",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/matth/IdeaProjects/Python/NeuralNetwork/images",
+    "last_opened_file_path": "C:/Users/matth/IdeaProjects/Python/NeuralNetwork/pyNeuralNetwork",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0"
@@ -184,8 +187,30 @@
       <recent name="C:\Users\matth\IdeaProjects\Python\NeuralNetwork\neural_network\util" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for test_plotter.TestPlotter">
-    <configuration name="Python tests for test_network.TestNetwork.test_visualise_network_default" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.diagonals_main">
+    <configuration name="diagonals_main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="NeuralNetwork" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/examples/classification/diagonals" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/neural_network/examples/classification/diagonals/diagonals_main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for pyNeuralNetwork.neural_network.tests.test_components.test_network.TestNetwork.test_visualise_network_default" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="NeuralNetwork" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -196,7 +221,37 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_network.TestNetwork.test_visualise_network_default&quot;" />
+      <option name="_new_target" value="&quot;pyNeuralNetwork.neural_network.tests.test_components.test_network.TestNetwork.test_visualise_network_default&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for pyNeuralNetwork.neural_network.tests.test_data_generators.test_abstract_data_generator.TestAbstractDataGenerator.test_abs_generate_scatter" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="NeuralNetwork" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_data_generators" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;pyNeuralNetwork.neural_network.tests.test_data_generators.test_abstract_data_generator.TestAbstractDataGenerator.test_abs_generate_scatter&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for pyNeuralNetwork.neural_network.tests.test_learning.test_plotter.TestPlotter.test_datapoint_scatter_true" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="NeuralNetwork" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_learning" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;pyNeuralNetwork.neural_network.tests.test_learning.test_plotter.TestPlotter.test_datapoint_scatter_true&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -215,58 +270,13 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_plotter.TestPlotter.test_datapoint_scatter_default" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="NeuralNetwork" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_learning" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_plotter.TestPlotter.test_datapoint_scatter_default&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for test_plotter.TestPlotter.test_datapoint_scatter_show" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="NeuralNetwork" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_learning" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_plotter.TestPlotter.test_datapoint_scatter_show&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for test_plotter.TestPlotter.test_datapoint_scatter_true" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="NeuralNetwork" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/neural_network/tests/test_learning" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_plotter.TestPlotter.test_datapoint_scatter_true&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests for pyNeuralNetwork.neural_network.tests.test_learning.test_plotter.TestPlotter.test_datapoint_scatter_true" />
         <item itemvalue="Python tests.Python tests for test_plotter.TestPlotter" />
-        <item itemvalue="Python tests.Python tests for test_plotter.TestPlotter.test_datapoint_scatter_show" />
-        <item itemvalue="Python tests.Python tests for test_plotter.TestPlotter.test_datapoint_scatter_default" />
-        <item itemvalue="Python tests.Python tests for test_plotter.TestPlotter.test_datapoint_scatter_true" />
-        <item itemvalue="Python tests.Python tests for test_network.TestNetwork.test_visualise_network_default" />
+        <item itemvalue="Python tests.Python tests for pyNeuralNetwork.neural_network.tests.test_components.test_network.TestNetwork.test_visualise_network_default" />
+        <item itemvalue="Python tests.Python tests for pyNeuralNetwork.neural_network.tests.test_data_generators.test_abstract_data_generator.TestAbstractDataGenerator.test_abs_generate_scatter" />
+        <item itemvalue="Python.diagonals_main" />
       </list>
     </recent_temporary>
   </component>
@@ -278,14 +288,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708014585261</updated>
-    </task>
-    <task id="LOCAL-00036" summary="Finished test_trainer.py">
-      <option name="closed" value="true" />
-      <created>1709392893518</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1709392893519</updated>
     </task>
     <task id="LOCAL-00037" summary="Finished test_validator.py">
       <option name="closed" value="true" />
@@ -671,7 +673,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711375297448</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="Cleared outputs of circle.ipynb">
+      <option name="closed" value="true" />
+      <created>1711375844103</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1711375844103</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -686,8 +696,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Increased codecov to 100%" />
-    <MESSAGE value="Added new examples" />
     <MESSAGE value="Modified network.py with regression changes and created mse_loss.py" />
     <MESSAGE value="Added tests for test_network.py" />
     <MESSAGE value="Created test_mse_loss.py" />
@@ -711,6 +719,8 @@
     <MESSAGE value="Updated the README.md" />
     <MESSAGE value="Updated workflows to include the java-package branch" />
     <MESSAGE value="Created and finished circle.ipynb, and updated the Plotter class to allow for showing plots." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created and finished circle.ipynb, and updated the Plotter class to allow for showing plots." />
+    <MESSAGE value="Cleared outputs of circle.ipynb" />
+    <MESSAGE value="Moved python into new directory - py_neural_network" />
+    <option name="LAST_COMMIT_MESSAGE" value="Moved python into new directory - py_neural_network" />
   </component>
 </project>
