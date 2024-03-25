@@ -12,7 +12,7 @@ def get_version():
     import sys
 
     sys.path.append(os.path.abspath('neural_network'))
-    version = "1.0.0"
+    from version_info import VERSION as version
     sys.path.pop()
 
     return version
