@@ -6,3 +6,4 @@ omit =
 	setup.py
 	*/__init__.py
 	neural_network/examples/*
+	neural_network/verson_info.py
