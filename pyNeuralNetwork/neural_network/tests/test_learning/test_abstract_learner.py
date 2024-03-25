@@ -5,13 +5,13 @@ from unittest import mock
 import numpy as np
 import pandas as pd
 
-from neural_network import Partitioner
-from neural_network import WeightedPartitioner
-from neural_network import CrossEntropyLoss
-from neural_network import MSELoss
-from neural_network import Network
+from neural_network.util import Partitioner
+from neural_network.util import WeightedPartitioner
+from neural_network.functions import CrossEntropyLoss
+from neural_network.functions import MSELoss
+from neural_network.components import Network
 
-from neural_network import AbstractLearner
+from neural_network.learning import AbstractLearner
 
 
 class TestAbstractLearner(TestCase):

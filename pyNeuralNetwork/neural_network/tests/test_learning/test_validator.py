@@ -5,9 +5,9 @@ from unittest import mock
 import numpy as np
 import pandas as pd
 
-from neural_network import Network
+from neural_network.components import Network
 
-from neural_network import Validator
+from neural_network.learning import Validator
 
 
 class TestValidator(TestCase):

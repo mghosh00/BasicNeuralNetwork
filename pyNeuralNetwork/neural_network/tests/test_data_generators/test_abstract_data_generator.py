@@ -5,7 +5,7 @@ from unittest import mock
 
 import pandas as pd
 
-from neural_network import AbstractDataGenerator
+from neural_network.data_generators import AbstractDataGenerator
 
 
 class TestAbstractDataGenerator(TestCase):

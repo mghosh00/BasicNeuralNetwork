@@ -4,12 +4,12 @@ from unittest import mock
 
 import numpy as np
 
-from neural_network import TransferFunction
-from neural_network import ReLU
-from neural_network import Softmax
-from neural_network import MSELoss
+from neural_network.functions import TransferFunction
+from neural_network.functions import ReLU
+from neural_network.functions import Softmax
+from neural_network.functions import MSELoss
 
-from neural_network import Network
+from neural_network.components import Network
 
 
 class TestNetwork(TestCase):

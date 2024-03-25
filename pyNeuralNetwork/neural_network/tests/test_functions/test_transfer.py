@@ -1,7 +1,7 @@
 import unittest
 from unittest import TestCase
 
-from neural_network import TransferFunction
+from neural_network.functions import TransferFunction
 
 
 class TestTransferFunction(TestCase):

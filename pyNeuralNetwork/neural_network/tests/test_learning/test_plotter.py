@@ -6,7 +6,7 @@ from unittest import mock
 import numpy as np
 import pandas as pd
 
-from neural_network import Plotter
+from neural_network.learning import Plotter
 
 
 class TestPlotter(TestCase):

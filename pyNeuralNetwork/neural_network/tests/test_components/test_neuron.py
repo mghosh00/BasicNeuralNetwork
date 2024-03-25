@@ -1,7 +1,7 @@
 import unittest
 from unittest import TestCase
 
-from neural_network import Neuron
+from neural_network.components import Neuron
 
 
 class TestNeuron(TestCase):

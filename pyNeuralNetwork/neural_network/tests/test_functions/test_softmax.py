@@ -1,7 +1,7 @@
 import unittest
 from unittest import TestCase
 
-from neural_network import Softmax
+from neural_network.functions import Softmax
 
 
 class TestSoftmax(TestCase):

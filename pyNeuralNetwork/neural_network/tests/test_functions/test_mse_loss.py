@@ -1,7 +1,7 @@
 import unittest
 from unittest import TestCase
 
-from neural_network import MSELoss
+from neural_network.functions import MSELoss
 
 
 class TestMSELoss(TestCase):

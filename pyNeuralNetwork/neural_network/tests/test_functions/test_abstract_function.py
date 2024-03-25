@@ -1,7 +1,7 @@
 import unittest
 from unittest import TestCase
 
-from neural_network import AbstractFunction
+from neural_network.functions import AbstractFunction
 
 
 class TestAbstractFunction(TestCase):

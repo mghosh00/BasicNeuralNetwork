@@ -1,7 +1,7 @@
 import unittest
 from unittest import TestCase
 
-from neural_network import Sigmoid
+from neural_network.functions import Sigmoid
 
 
 class TestSigmoid(TestCase):

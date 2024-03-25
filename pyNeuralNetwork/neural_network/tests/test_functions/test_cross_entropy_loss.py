@@ -1,7 +1,7 @@
 import unittest
 from unittest import TestCase
 
-from neural_network import CrossEntropyLoss
+from neural_network.functions import CrossEntropyLoss
 
 
 class TestCrossEntropyLoss(TestCase):

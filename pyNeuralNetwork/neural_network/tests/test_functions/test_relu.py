@@ -1,7 +1,7 @@
 import unittest
 from unittest import TestCase
 
-from neural_network import ReLU
+from neural_network.functions import ReLU
 
 
 class TestReLU(TestCase):
