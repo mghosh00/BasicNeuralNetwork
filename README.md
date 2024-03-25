@@ -31,7 +31,7 @@ git clone git@github.com:mghosh00/BasicNeuralNetwork.git
 ```
 
 ## Languages
-This package is written in both python (pyNeuralNetwork) and Java (javaNeuralNetwork). See README.md in ![pyNeuralNetwork](pyNeuralNetwork/README.md) and ![javaNeuralNetwork]() for language-specific information and examples.
+This package is written in both python (pyNeuralNetwork) and Java (javaNeuralNetwork). See README.md in [pyNeuralNetwork](pyNeuralNetwork/README.md) and [javaNeuralNetwork]() for language-specific information and examples.
 
 ## Class structure
 Below is the UML class diagram for this package, created using [VisualParadigm](https://online.visual-paradigm.com).

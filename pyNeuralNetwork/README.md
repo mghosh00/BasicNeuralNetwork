@@ -14,7 +14,7 @@ This network is made up of an input layer (one neuron for each coordinate of the
 The output layer has either one neuron for regression problems, or the number of classes for classification. Below is an example network
 from `examples/classification/circle` produced using the `networkx` package, with 1 input layer, 3 hidden layers and 1 output layer.
 
-![example network](images/network_circle.png)
+![example network](python_images/network_circle.png)
 
 ### Learning
 Once a network is set up, with node values, biases and edge weights initialised, learning can begin. A subset of the data is used for training the network,
@@ -77,7 +77,7 @@ def classifier(x_1: float, x_2: float) -> str:
 Next, we feed this to the `NormalDataGenerator` with `400` datapoints and means of `[0.0, 0.0]`, std_devs of `[1.0, 1.0]`. Use the `__call__` method of the generator,
 followed by `generator.plot_datapoints("diagonals")` to get the plot below:
 
-![true diagonals data](images/true_scatter_diagonals.png)
+![true diagonals data](python_images/true_scatter_diagonals.png)
 
 We can then save this data to a .csv file using `generator.write_to_csv("diagonals_data.csv")`.
 
@@ -165,21 +165,21 @@ There are various methods that can be used to analyse the results.
 
 Using `trainer.generate_loss_plot(title='diagonals')`, we can plot the loss of the training and validation over time.
 
-![loss plot diagonals](images/losses_diagonals.png)
+![loss plot diagonals](python_images/losses_diagonals.png)
 
 All three learners have a `generate_scatter` method which also accepts a title as an argument. This method shows the predicted classes for the data.
 
-![scatter diagonals](images/scatter_diagonals.png)
+![scatter diagonals](python_images/scatter_diagonals.png)
 
 The `tester` also has a `generate_confusion` method, which will print out the confusion matrix and dice scores for the data. This is only for classification problems,
 but for regression there are other plotting methods as well.
 
-![confusion diagonals](images/confusion_diagonals.png)
+![confusion diagonals](python_images/confusion_diagonals.png)
 
 ## Class structure
 Below is the UML class diagram for this package, created using [VisualParadigm](https://online.visual-paradigm.com).
 
-![class diagram](images/class_diagram.png)
+![class diagram](python_images/class_diagram.png)
 
 ## Sources
 [^1]: K. He et al., [Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification](https://openaccess.thecvf.com/content_iccv_2015/html/He_Delving_Deep_into_ICCV_2015_paper.html), Proceedings of the IEEE International Conference on Computer Vision (ICCV), 2015, pp. 1026-1034
