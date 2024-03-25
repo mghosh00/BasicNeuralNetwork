@@ -24,12 +24,12 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip setuptools wheel
-        python -m pip install .[dev]
+        python -m pip install py_neural_network/.
         python -m pip install coverage codecov
 
     - name: Run coverage
       run: |
-        coverage run run_tests.py --unit
+        coverage run py_neural_network/run_tests.py --unit
 
     - name: codecov
       if: success()
