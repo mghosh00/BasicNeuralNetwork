@@ -436,13 +436,14 @@ class TestNetwork(TestCase):
 
     @mock.patch('matplotlib.pyplot.clf')
     @mock.patch('matplotlib.pyplot.savefig')
+    @mock.patch('matplotlib.pyplot.show')
     @mock.patch('matplotlib.pyplot.title')
     @mock.patch('networkx.multipartite_layout')
     @mock.patch('networkx.draw_networkx')
     @mock.patch('networkx.Graph')
     def test_visualise_network_default(self, mock_graph_init, mock_draw,
-                                       mock_layout, mock_title, mock_save,
-                                       mock_clf):
+                                       mock_layout, mock_title, mock_show,
+                                       mock_save, mock_clf):
         tuple_edges = [("0,0", "1,0"), ("0,1", "1,0"), ("0,2", "1,0"),
                        ("0,0", "1,1"), ("0,1", "1,1"), ("0,2", "1,1"),
                        ("0,0", "1,2"), ("0,1", "1,2"), ("0,2", "1,2"),
@@ -463,17 +464,19 @@ class TestNetwork(TestCase):
         mock_draw.assert_called_once_with(mock_graph, pos={}, node_size=480,
                                           node_color='green')
         mock_title.assert_called_once_with("Network")
+        mock_show.assert_called_once()
         mock_save.assert_called_once_with("network.png")
         mock_clf.assert_called_once()
 
     @mock.patch('matplotlib.pyplot.clf')
     @mock.patch('matplotlib.pyplot.savefig')
+    @mock.patch('matplotlib.pyplot.show')
     @mock.patch('matplotlib.pyplot.title')
     @mock.patch('networkx.multipartite_layout')
     @mock.patch('networkx.draw_networkx')
     @mock.patch('networkx.Graph')
     def test_visualise_network(self, mock_graph_init, mock_draw,
-                               mock_layout, mock_title, mock_save,
+                               mock_layout, mock_title, mock_show, mock_save,
                                mock_clf):
         tuple_edges = [("0,0", "1,0"), ("0,1", "1,0"), ("0,2", "1,0"),
                        ("0,0", "1,1"), ("0,1", "1,1"), ("0,2", "1,1"),
@@ -495,6 +498,7 @@ class TestNetwork(TestCase):
         mock_draw.assert_called_once_with(mock_graph, pos={}, node_size=480,
                                           node_color='green')
         mock_title.assert_called_once_with("Network: test")
+        mock_show.assert_called_once()
         mock_save.assert_called_once_with("network_test.png")
         mock_clf.assert_called_once()
 
