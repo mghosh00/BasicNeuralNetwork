@@ -5,7 +5,7 @@ from unittest import mock
 import numpy as np
 import pandas as pd
 
-from neural_network import DataSplitter
+from neural_network.util import DataSplitter
 
 
 class TestDataSplitter(TestCase):

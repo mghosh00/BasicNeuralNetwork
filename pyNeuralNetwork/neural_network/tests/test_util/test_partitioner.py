@@ -2,7 +2,7 @@ import unittest
 from unittest import TestCase
 import random
 
-from neural_network import Partitioner
+from neural_network.util import Partitioner
 
 
 class TestPartitioner(TestCase):
