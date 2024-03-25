@@ -2,7 +2,7 @@ name: Style tests (flake8)
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "java-package" ]
   pull_request:
     branches: [ "master" ]
   workflow_dispatch:

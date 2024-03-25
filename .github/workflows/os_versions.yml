@@ -5,7 +5,7 @@ name: Operating systems
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "java-package" ]
   pull_request:
     branches: [ "master" ]
   workflow_dispatch:
