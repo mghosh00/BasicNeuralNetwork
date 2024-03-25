@@ -30,7 +30,7 @@ jobs:
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@ccb4328a959376b642e027874838f60f8e596de3
       - name: Change wrapper permissions
-        run: chmod +x ./javaNeuralNetwork/gradlew
+        run: chmod +x ./gradlew
       - name: Build with Gradle
         uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
         with:
