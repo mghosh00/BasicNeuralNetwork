@@ -28,8 +28,8 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip setuptools wheel
-        python -m pip install py_neural_network/.
+        python -m pip install pyNeuralNetwork/.
     - name: Run unit tests
       run: |
-        python py_neural_network/run_tests.py --unit
+        python pyNeuralNetwork/run_tests.py --unit
 
