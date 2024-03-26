@@ -11,7 +11,7 @@ jacocoTestReport {
     reports {
         xml.required = true
         html.required = true
-        xml.destination(file("$buildDir/reports/jacoco/jacocoTestReport.xml"))
+        xml.destination(file("build/reports/jacoco/jacocoTestReport.xml"))
     }
     finalizedBy jacocoTestCoverageVerification
 }

@@ -18,6 +18,7 @@ test {
         classDumpDir = layout.buildDirectory.dir('jacoco/classpathdumps').get().asFile
     }
     finalizedBy jacocoTestReport
+    finalizedBy jacocoTestCoverageVerification
 }
 sourceSets {
     main {

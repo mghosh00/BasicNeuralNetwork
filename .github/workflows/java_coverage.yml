@@ -21,7 +21,7 @@ jobs:
         working-directory: ./javaNeuralNetwork
         run: |
           chmod +x ./gradlew
-          ./gradlew test
+          ./gradlew build
 
       - name: Add coverage to PR
         id: jacoco
