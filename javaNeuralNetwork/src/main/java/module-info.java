@@ -1,0 +1,2 @@
+module javaNeuralNetwork.main {
+}
