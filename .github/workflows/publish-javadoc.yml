@@ -20,3 +20,4 @@ jobs:
           java-version: 17
           target-folder: javaNeuralNetwork/javadoc 
           project: gradle
+          javadoc-source-folder: javaNeuralNetwork/build/docs/javadoc
