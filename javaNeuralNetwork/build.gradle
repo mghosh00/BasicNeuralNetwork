@@ -20,6 +20,9 @@ test {
     finalizedBy jacocoTestReport
     finalizedBy jacocoTestCoverageVerification
 }
+javadoc {
+    destinationDir = file("build/docs/javadoc")
+}
 sourceSets {
     main {
         java {
