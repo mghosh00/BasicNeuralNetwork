@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
+      push: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v3
