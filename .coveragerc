@@ -1,9 +1,9 @@
 [run]
-source = neural_network
+source = pyNeuralNetwork
 omit =
 	*/tests/*
-	run_tests.py
-	setup.py
+	pyNeuralNetwork/run_tests.py
+	pyNeuralNetwork/setup.py
 	*/__init__.py
-	neural_network/examples/*
-	neural_network/verson_info.py
+	pyNeuralNetwork/neural_network/examples/*
+	pyNeuralNetwork/neural_network/verson_info.py

@@ -33,7 +33,6 @@ jobs:
         working-directory: ./javaNeuralNetwork
         run: chmod +x ./gradlew
       - name: Build with Gradle
-        uses: gradle/actions/setup-gradle@v3
-        with:
-          arguments: build
+        working-directory: ./javaNeuralNetwork
+        run: ./gradlew build
 
