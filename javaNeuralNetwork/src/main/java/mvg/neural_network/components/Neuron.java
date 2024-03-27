@@ -7,7 +7,7 @@ import java.util.List;
  * @version 1.0.0
  * @since 1.0.0
  */
-class Neuron {
+public class Neuron {
 
     private final List<Integer> id = new ArrayList<>();
     private double bias = 0.0;
