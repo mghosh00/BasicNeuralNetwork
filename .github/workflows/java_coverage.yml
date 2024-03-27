@@ -38,6 +38,8 @@ jobs:
         working-directory: ./javaNeuralNetwork/build/reports/jacoco/test
         run: |
           bash <(curl https://codecov.io/bash) -f jacocoTestReport.xml
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Upload coverage reports to Codecov 2
         uses: codecov/codecov-action@v4.0.1
