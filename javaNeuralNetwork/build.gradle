@@ -9,6 +9,8 @@ version '1.0-SNAPSHOT'
 repositories {
     mavenCentral()
 }
+
+apply from: 'jacoco.gradle'
 test {
     enabled = true
     useJUnitPlatform()
@@ -21,7 +23,7 @@ test {
     finalizedBy jacocoTestCoverageVerification
 }
 javadoc {
-    options.memberLevel = JavadocMemberLevel.PRIVATE
+    options.memberLevel = JavadocMemberLevel.PACKAGE
     destinationDir = file("build/docs/javadoc")
 }
 sourceSets {
