@@ -3,7 +3,7 @@ package neural_network.components;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Class to represent a single @code{Neuron} in a neural network.
+/** Class to represent a single {@code Neuron} in a neural network.
  * @version 1.0.0
  * @since 1.0.0
  */
@@ -15,14 +15,14 @@ public class Neuron {
     private final List<Double> biasGradients = new ArrayList<>();
 
     /** Constructor method.
-     * @param layerId The id of the @code{Layer} of the @code{Network}.
-     * @param rowId The row in the @code{Layer}.
+     * @param layerId The id of the {@code Layer} of the {@code Network}.
+     * @param rowId The row in the {@code Layer}.
      */
     Neuron(int layerId, int rowId) {
         this.id.addAll(List.of(layerId, rowId));
     }
 
-    /** Adds an element to the @code{biasGradients} list.
+    /** Adds an element to the {@code biasGradients} list.
      *
      * @param biasGradient The bias gradient to be added.
      */
@@ -30,56 +30,56 @@ public class Neuron {
         biasGradients.add(biasGradient);
     }
 
-    /** Clears the @code{biasGradients} list.
+    /** Clears the {@code biasGradients} list.
      *
      */
     void clearBiasGradients() {
         biasGradients.clear();
     }
 
-    /** Getter method for @code{id}.
+    /** Getter method for {@code id}.
      *
-     * @return The @code{id}.
+     * @return The {@code id}.
      */
     List<Integer> getId() {
         return id;
     }
 
-    /** Getter method for @code{bias}.
+    /** Getter method for {@code bias}.
      *
-     * @return The @code{bias}.
+     * @return The {@code bias}.
      */
     double getBias() {
         return bias;
     }
 
-    /** Setter method for @code{bias}.
+    /** Setter method for {@code bias}.
      *
-     * @param bias The new @code{bias}.
+     * @param bias The new {@code bias}.
      */
     void setBias(double bias) {
         this.bias = bias;
     }
 
-    /** Getter method for @code{value}.
+    /** Getter method for {@code value}.
      *
-     * @return The @code{value}.
+     * @return The {@code value}.
      */
     double getValue() {
         return value;
     }
 
-    /** Setter method for @code{value}.
+    /** Setter method for {@code value}.
      *
-     * @param value The new @code{value}.
+     * @param value The new {@code value}.
      */
     void setValue(double value) {
         this.value = value;
     }
 
-    /** Getter method for @code{biasGradients}.
+    /** Getter method for {@code biasGradients}.
      *
-     * @return A copy of the @code{biasGradients} list.
+     * @return A copy of the {@code biasGradients} list.
      */
     List<Double> getBiasGradients() {
         return List.copyOf(biasGradients);
@@ -87,7 +87,7 @@ public class Neuron {
 
     /** String method.
      *
-     * @return @code{String} representation of the @code{Neuron}.
+     * @return {@code String} representation of the {@code Neuron}.
      */
     @Override
     public String toString() {
