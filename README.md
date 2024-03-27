@@ -7,6 +7,9 @@
 
 This project provides a framework for using neural networks to solve classification and regression problems with n-dimensional datapoints.
 
+## Languages
+This package is written in both python (pyNeuralNetwork) and Java (javaNeuralNetwork). See README.md in [pyNeuralNetwork](pyNeuralNetwork/README.md) and [javaNeuralNetwork]() for language-specific information and examples.
+
 ## Background
 For this section, we give a brief overview of how neural networks work.
 Given a set of labelled datapoints, our goal is to use a neural network to learn the features of the dataset and accurately predict the labels of the points.
@@ -31,9 +34,6 @@ This package can be downloaded from github to your local machine via the followi
 ```console
 git clone git@github.com:mghosh00/BasicNeuralNetwork.git
 ```
-
-## Languages
-This package is written in both python (pyNeuralNetwork) and Java (javaNeuralNetwork). See README.md in [pyNeuralNetwork](pyNeuralNetwork/README.md) and [javaNeuralNetwork]() for language-specific information and examples.
 
 ## Class structure
 Below is the UML class diagram for this package, created using [VisualParadigm](https://online.visual-paradigm.com).
