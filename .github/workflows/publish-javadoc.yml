@@ -18,6 +18,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           javadoc-branch: javadoc
           java-version: 17
-          target-folder: javaNeuralNetwork/javadoc 
+          target-folder: javadoc 
           project: gradle
           javadoc-source-folder: javaNeuralNetwork/build/docs/javadoc
