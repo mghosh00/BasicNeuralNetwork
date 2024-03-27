@@ -1,6 +1,6 @@
 # BasicNeuralNetwork
 [![unittest](https://github.com/mghosh00/NeuralNetwork/actions/workflows/python_versions.yml/badge.svg)](https://github.com/mghosh00/BasicNeuralNetwork/actions/workflows/python_versions.yml)
-[![JUnit](https://github.com/mghosh00/NeuralNetwork/actions/workflows/gradle.yml/badge.svg)](https://github.com/mghosh00/BasicNeuralNetwork/actions/workflows/gradle.yml)
+[![JUnit 5](https://github.com/mghosh00/NeuralNetwork/actions/workflows/gradle.yml/badge.svg)](https://github.com/mghosh00/BasicNeuralNetwork/actions/workflows/gradle.yml)
 [![Documentation Status](https://readthedocs.org/projects/neuralnetwork/badge/?version=latest)](https://neuralnetwork.readthedocs.io/en/latest/?badge=latest)
 [![Javadoc](https://img.shields.io/badge/JavaDoc-Online-green)](https://mghosh00.github.io/BasicNeuralNetwork/javadoc/)
 [![codecov](https://codecov.io/github/mghosh00/BasicNeuralNetwork/graph/badge.svg?token=R9tbcFyT6t)](https://codecov.io/github/mghosh00/BasicNeuralNetwork)
