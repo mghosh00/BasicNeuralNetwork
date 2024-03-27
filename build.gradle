@@ -1,0 +1,30 @@
+/*
+This file is intended only to be used for unit tests of individual files, as
+there must be a build.gradle file at the root of the project. For all other
+tasks, see javaNeuralNetwork/build.gradle.
+ */
+
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+test {
+    enabled = true
+    useJUnitPlatform()
+}
+sourceSets {
+    main.java.srcDirs = ['javaNeuralNetwork/src/main/java']
+    main.resources.srcDirs = ['javaNeuralNetwork/src/main/resources']
+    test.java.srcDirs = ['javaNeuralNetwork/src/test/java']
+}
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    testImplementation 'org.mockito:mockito-core:3.12.4'
+    testImplementation 'org.mockito:mockito-inline:2.13.0'
+}
