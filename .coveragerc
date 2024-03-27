@@ -6,4 +6,4 @@ omit =
 	pyNeuralNetwork/setup.py
 	*/__init__.py
 	pyNeuralNetwork/neural_network/examples/*
-	pyNeuralNetwork/neural_network/verson_info.py
+	pyNeuralNetwork/neural_network/version_info.py
