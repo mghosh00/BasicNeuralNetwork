@@ -21,6 +21,7 @@ test {
     finalizedBy jacocoTestCoverageVerification
 }
 javadoc {
+    options.memberLevel = JavadocMemberLevel.PRIVATE
     destinationDir = file("build/docs/javadoc")
 }
 sourceSets {
