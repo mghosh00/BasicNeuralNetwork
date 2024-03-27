@@ -33,8 +33,13 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           min-coverage-overall: 50
           min-coverage-changed-files: 80
-  
-      - name: Upload coverage reports to Codecov
+
+      - name: Upload coverage reports to Codecov 1
+        working-directory: ./javaNeuralNetwork/build/reports/jacoco/test
+        run: |
+          bash <(curl https://codecov.io/bash) -f jacocoTestReport.xml
+
+      - name: Upload coverage reports to Codecov 2
         uses: codecov/codecov-action@v4.0.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
