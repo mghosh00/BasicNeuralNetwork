@@ -1,4 +1,4 @@
-package mvg.neural_network.components;
+package neural_network.components;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

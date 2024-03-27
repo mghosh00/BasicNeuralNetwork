@@ -9,4 +9,4 @@
  * @author mghosh00
  * @version 1.0.0
  */
-package mvg.neural_network;
+package neural_network;
