@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"mvg.neural_network.components","l":"Neuron"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"neural_network.components","l":"Edge"},{"p":"neural_network.components","l":"Neuron"}];updateSearchResults();
