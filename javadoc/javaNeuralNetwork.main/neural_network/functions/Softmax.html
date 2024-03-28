@@ -83,10 +83,10 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Softmax</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
 implements <a href="Activator.html" title="interface in neural_network.functions">Activator</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;</span></div>
-<div class="block">Class to represent a softmax function. This takes in the vector of values
- from the output neurons in a classification problem and converts them into
- softmax probabilities. This is an <code>Activator</code> function for the output
- <code>Layer</code>.</div>
+<div class="block">Class to represent a softmax function.
+ This takes in the vector of values from the output neurons in a classification
+ problem and converts them into softmax probabilities. This is an <code>Activator</code>
+ function for the output <code>Layer</code>.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -166,8 +166,7 @@ implements <a href="Activator.html" title="interface in neural_network.functions
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">normalise</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;&nbsp;zList)</span></div>
 <div class="block">Calculates the normalisation constant for the softmax function.
  We wish to avoid any overflow errors, so we multiply the normalisation
- constant by exp(m). We account for this when finding the
- Softmax value later.</div>
+ constant by exp(m). We account for this when finding the Softmax value later.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>zList</code> - The vector of pre-activated <code>values</code> from the output
@@ -187,7 +186,7 @@ implements <a href="Activator.html" title="interface in neural_network.functions
 <dt>Parameters:</dt>
 <dd><code>z</code> - The value of an output neuron.</dd>
 <dt>Returns:</dt>
-<dd>The softmax activation value of <code>z</code></dd>
+<dd>The softmax activation value of <code>z</code>.</dd>
 </dl>
 </section>
 </li>
