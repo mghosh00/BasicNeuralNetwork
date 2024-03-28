@@ -38,7 +38,7 @@ public abstract class ActivatorTest<T> {
         for (int i = 0; i < n; i ++) {
             Activator<T> activator = (Activator<T>) gradientMap.get("activators").get(i);
             T x = (T) gradientMap.get("xs").get(i);
-            double expectedGradient = (double) gradientMap.get("gradients").get(i);
+            T expectedGradient = (T) gradientMap.get("gradients").get(i);
             assertEquals(expectedGradient, activator.gradient(x));
         }
     }
