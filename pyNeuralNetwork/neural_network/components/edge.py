@@ -5,7 +5,7 @@ from .neuron import Neuron
 
 
 class Edge:
-    """Class to represent an `Edge` joining two `Nodes` of a `Network`
+    """Class to represent an `Edge` joining two `Neurons` of a `Network`
     """
 
     def __init__(self, left_neuron: Neuron, right_neuron: Neuron):

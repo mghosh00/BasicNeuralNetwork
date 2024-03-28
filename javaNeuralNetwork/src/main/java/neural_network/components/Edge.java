@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-/** Class to represent an {@code Edge} joining two {@code Nodes} of a network
+/** Class to represent an {@code Edge} joining two {@code Neurons} of a network
  *
  */
 public class Edge {
@@ -71,7 +71,7 @@ public class Edge {
 
     /** Getter method for {@code id}.
      *
-     * @return The {@code id}.
+     * @return The {@code id} of form {@code [leftLayer, leftRow, rightRow]}.
      */
     List<Integer> getId() {
         return id;
@@ -79,7 +79,7 @@ public class Edge {
 
     /** Getter method for {@code weight}.
      *
-     * @return The {@code weight}.
+     * @return The {@code weight} of the {@code Edge}.
      */
     double getWeight() {
         return weight;
@@ -103,7 +103,7 @@ public class Edge {
 
     /** Getter method for {@code delta}.
      *
-     * @return The {@code delta}.
+     * @return The current {@code delta}.
      */
     double getDelta() {
         return delta;
@@ -119,7 +119,7 @@ public class Edge {
 
     /** Getter method for {@code velocity}.
      *
-     * @return The {@code velocity}.
+     * @return The current {@code velocity} (for adaptive only).
      */
     double getVelocity() {
         return velocity;

@@ -39,7 +39,7 @@ public class Neuron {
 
     /** Getter method for {@code id}.
      *
-     * @return The {@code id}.
+     * @return The {@code id} of form {@code [layer, row]}.
      */
     List<Integer> getId() {
         return id;
@@ -47,7 +47,7 @@ public class Neuron {
 
     /** Getter method for {@code bias}.
      *
-     * @return The {@code bias}.
+     * @return The {@code bias} of the {@code Neuron}.
      */
     double getBias() {
         return bias;
@@ -63,7 +63,7 @@ public class Neuron {
 
     /** Getter method for {@code value}.
      *
-     * @return The {@code value}.
+     * @return The {@code value} of the {@code Neuron}.
      */
     double getValue() {
         return value;
