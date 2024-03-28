@@ -32,8 +32,8 @@ public class Softmax implements Activator<Double> {
                 .sum();
     }
 
-    /** The softmax function. Note we multiply top and bottom by _max_z to
-     * avoid any overflow error.
+    /** The softmax function. Note we multiply top and bottom by {@code maxZ} to avoid
+     * any overflow error.
      *
      * @param z The value of an output neuron.
      * @return The softmax activation value of {@code z}.
@@ -49,6 +49,7 @@ public class Softmax implements Activator<Double> {
      *
      * @param z The value of an output neuron.
      * @throws UnsupportedOperationException This method should not be called.
+     * @return void
      */
     @Override
     public Double gradient(Double z) {
