@@ -49,7 +49,7 @@ loadScripts(document, 'script');</script>
 <div class="header">
 <h1>Index</h1>
 </div>
-<a href="#I:A">A</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:J">J</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a>
+<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:J">J</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a>
 <h2 class="title" id="I:A">A</h2>
 <dl class="index">
 <dt><a href="javaNeuralNetwork.main/neural_network/functions/Activator.html" class="type-name-link" title="interface in neural_network.functions">Activator</a>&lt;<a href="javaNeuralNetwork.main/neural_network/functions/Activator.html" title="type parameter in Activator">T</a>&gt; - Interface in <a href="javaNeuralNetwork.main/neural_network/functions/package-summary.html">neural_network.functions</a></dt>
@@ -65,11 +65,30 @@ loadScripts(document, 'script');</script>
 <div class="block">Adds an element to the <code>lossGradients</code> list.</div>
 </dd>
 </dl>
+<h2 class="title" id="I:B">B</h2>
+<dl class="index">
+<dt><a href="javaNeuralNetwork.main/neural_network/functions/TransferFunction.html#bindBias(double)" class="member-name-link">bindBias(double)</a> - Method in class neural_network.functions.<a href="javaNeuralNetwork.main/neural_network/functions/TransferFunction.html" title="class in neural_network.functions">TransferFunction</a></dt>
+<dd>
+<div class="block">Binds the <code>bias</code> from the right <code>Neuron</code> to the
+ <code>TransferFunction</code>.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/functions/TransferFunction.html#bindWeights(java.util.List)" class="member-name-link">bindWeights(List&lt;Double&gt;)</a> - Method in class neural_network.functions.<a href="javaNeuralNetwork.main/neural_network/functions/TransferFunction.html" title="class in neural_network.functions">TransferFunction</a></dt>
+<dd>
+<div class="block">Binds <code>weights</code> from the <code>Edges</code> to the
+ <code>TransferFunction</code>.</div>
+</dd>
+</dl>
 <h2 class="title" id="I:C">C</h2>
 <dl class="index">
 <dt><a href="javaNeuralNetwork.main/neural_network/functions/LeakyReLU.html#call(java.lang.Double)" class="member-name-link">call(Double)</a> - Method in class neural_network.functions.<a href="javaNeuralNetwork.main/neural_network/functions/LeakyReLU.html" title="class in neural_network.functions">LeakyReLU</a></dt>
 <dd>
 <div class="block">Implementation of the leaky ReLU function.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/functions/TransferFunction.html#call(java.util.List)" class="member-name-link">call(List&lt;Double&gt;)</a> - Method in class neural_network.functions.<a href="javaNeuralNetwork.main/neural_network/functions/TransferFunction.html" title="class in neural_network.functions">TransferFunction</a></dt>
+<dd>
+<div class="block">Implementation of the transfer function, which returns a sum of
+ w_ij * o_j where w_ij are weights and o_j are values of <code>Neurons</code>
+ in the left <code>Layer</code>.</div>
 </dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/functions/Activator.html#call(T)" class="member-name-link">call(T)</a> - Method in interface neural_network.functions.<a href="javaNeuralNetwork.main/neural_network/functions/Activator.html" title="interface in neural_network.functions">Activator</a></dt>
 <dd>
@@ -157,6 +176,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="javaNeuralNetwork.main/neural_network/functions/LeakyReLU.html#gradient(java.lang.Double)" class="member-name-link">gradient(Double)</a> - Method in class neural_network.functions.<a href="javaNeuralNetwork.main/neural_network/functions/LeakyReLU.html" title="class in neural_network.functions">LeakyReLU</a></dt>
 <dd>
 <div class="block">The gradient of the leaky ReLU function.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/functions/TransferFunction.html#gradient(java.util.List)" class="member-name-link">gradient(List&lt;Double&gt;)</a> - Method in class neural_network.functions.<a href="javaNeuralNetwork.main/neural_network/functions/TransferFunction.html" title="class in neural_network.functions">TransferFunction</a></dt>
+<dd>
+<div class="block">Gradient of the transfer function.</div>
 </dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/functions/Activator.html#gradient(T)" class="member-name-link">gradient(T)</a> - Method in interface neural_network.functions.<a href="javaNeuralNetwork.main/neural_network/functions/Activator.html" title="interface in neural_network.functions">Activator</a></dt>
 <dd>
@@ -262,8 +285,16 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">String method.</div>
 </dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/functions/TransferFunction.html" class="type-name-link" title="class in neural_network.functions">TransferFunction</a> - Class in <a href="javaNeuralNetwork.main/neural_network/functions/package-summary.html">neural_network.functions</a></dt>
+<dd>
+<div class="block">A class to represent the transfer function of a neural network, which
+ creates a linear combination of <code>weights</code> from <code>values</code> of
+ <code>Neurons</code>.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/functions/TransferFunction.html#%3Cinit%3E()" class="member-name-link">TransferFunction()</a> - Constructor for class neural_network.functions.<a href="javaNeuralNetwork.main/neural_network/functions/TransferFunction.html" title="class in neural_network.functions">TransferFunction</a></dt>
+<dd>&nbsp;</dd>
 </dl>
-<a href="#I:A">A</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:J">J</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a></main>
+<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:J">J</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a></main>
 </div>
 </div>
 </body>
