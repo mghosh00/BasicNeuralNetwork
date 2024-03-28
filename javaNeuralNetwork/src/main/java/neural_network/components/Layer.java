@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-/** Class to represent one {@code Layer} of a network.
+/** Class to represent one {@code Layer} of a {@code Network}.
  * @version 1.0.0
  * @since 1.0.0
  */

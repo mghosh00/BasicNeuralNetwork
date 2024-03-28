@@ -3,7 +3,7 @@ package neural_network.components;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Class to represent a single {@code Neuron} in a neural network.
+/** Class to represent a single {@code Neuron} in a {@code Network}.
  * @version 1.0.0
  * @since 1.0.0
  */

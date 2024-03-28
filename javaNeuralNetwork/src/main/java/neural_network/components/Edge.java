@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-/** Class to represent an {@code Edge} joining two {@code Neurons} of a network
+/** Class to represent an {@code Edge} joining two {@code Neurons} of a
+ * {@code Network}
  *
  */
 public class Edge {
