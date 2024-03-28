@@ -20,7 +20,7 @@ public class CrossEntropyLoss {
      * is not an acceptable probability.
      * @return The cross entropy loss.
      */
-    public double call(List<Double> yHat, int y) {
+    public static double call(List<Double> yHat, int y) {
         double softmaxValue = yHat.get(y);
         if (0 <= softmaxValue && softmaxValue <= 1) {
             return -log(softmaxValue);
