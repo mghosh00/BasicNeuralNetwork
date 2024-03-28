@@ -180,10 +180,13 @@ implements <a href="Activator.html" title="interface in neural_network.functions
 <dt>Specified by:</dt>
 <dd><code><a href="Activator.html#call(T)">call</a></code>&nbsp;in interface&nbsp;<code><a href="Activator.html" title="interface in neural_network.functions">Activator</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a>&gt;&gt;</code></dd>
 <dt>Parameters:</dt>
-<dd><code>o</code> - A vector of values from <code>Neurons</code> in the left
- <code>Layer</code>.</dd>
+<dd><code>o</code> - A vector of values from <code>Neurons</code> in the left</dd>
 <dt>Returns:</dt>
 <dd>The output of the transfer function.</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - This method should not be called if
+ weights or bias have not been bound.
+ <code>Layer</code>.</dd>
 </dl>
 </section>
 </li>
