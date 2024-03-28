@@ -27,13 +27,13 @@ class Softmax:
         self._normalisation = sum([math.exp(z_i - self._max_z) for z_i in z])
 
     def __call__(self, z_k: float) -> float:
-        """The loss function. Note we multiply top and bottom by _max_z to
+        """The softmax function. Note we multiply top and bottom by _max_z to
         avoid any overflow error.
 
         Parameters
         ----------
         z_k : float
-            The value of an output node
+            The value of an output neuron
 
         Returns
         -------

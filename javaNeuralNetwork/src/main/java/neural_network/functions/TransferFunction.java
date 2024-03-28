@@ -20,6 +20,8 @@ public class TransferFunction implements Activator<List<Double>> {
      * before this function.
      *
      * @param o A vector of values from {@code Neurons} in the left
+     * @throws IllegalStateException This method should not be called if
+     * weights or bias have not been bound.
      * {@code Layer}.
      * @return The output of the transfer function.
      */
@@ -29,11 +31,11 @@ public class TransferFunction implements Activator<List<Double>> {
         // weights must contain all weights of edges connected to the previous
         // layer from one right neuron
         if (! (weights.size() == o_size)) {
-            throw new RuntimeException("weights must have same size as o," +
+            throw new IllegalStateException("weights must have same size as o," +
                     "check that weights have been bound (%d != %d)"
                             .formatted(weights.size(), o_size));
         } else if (Double.isNaN(bias)) {
-            throw new RuntimeException("bias has not yet been bound, cannot" +
+            throw new IllegalStateException("bias has not yet been bound, cannot" +
                     "call this method");
         }
         double weightedSum = IntStream

@@ -26,7 +26,7 @@ public class TransferFunctionTest extends ActivatorTest<List<Double>> {
     @Test
     void callNoBindingExceptions() {
         // No binding at all
-        Exception exception1 = assertThrows(RuntimeException.class,
+        Exception exception1 = assertThrows(IllegalStateException.class,
                 () -> transfer.call(oList));
         assertEquals("weights must have same size as o," +
                 "check that weights have been bound (0 != 3)",
@@ -34,7 +34,7 @@ public class TransferFunctionTest extends ActivatorTest<List<Double>> {
 
         // Just weights binding
         transfer.bindWeights(wList);
-        Exception exception2 = assertThrows(RuntimeException.class,
+        Exception exception2 = assertThrows(IllegalStateException.class,
                 () -> transfer.call(oList));
         assertEquals("bias has not yet been bound, cannot" +
                 "call this method",
@@ -43,7 +43,7 @@ public class TransferFunctionTest extends ActivatorTest<List<Double>> {
         // Bind both but then try to use call twice in a row
         transfer.bindBias(bias);
         transfer.call(oList);
-        Exception exception3 = assertThrows(RuntimeException.class,
+        Exception exception3 = assertThrows(IllegalStateException.class,
                 () -> transfer.call(oList));
         assertEquals("weights must have same size as o," +
                         "check that weights have been bound (0 != 3)",
@@ -53,7 +53,7 @@ public class TransferFunctionTest extends ActivatorTest<List<Double>> {
     @Test
     void callWeightsWrongSizeException() {
         transfer.bindWeights(List.of(2.0, 3.0));
-        Exception exception = assertThrows(RuntimeException.class,
+        Exception exception = assertThrows(IllegalStateException.class,
                 () -> transfer.call(oList));
         assertEquals("weights must have same size as o," +
                 "check that weights have been bound (2 != 3)",
