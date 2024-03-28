@@ -49,7 +49,7 @@ loadScripts(document, 'script');</script>
 <div class="header">
 <h1>Index</h1>
 </div>
-<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:J">J</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a>
+<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:J">J</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a>
 <h2 class="title" id="I:A">A</h2>
 <dl class="index">
 <dt><a href="javaNeuralNetwork.main/neural_network/functions/Activator.html" class="type-name-link" title="interface in neural_network.functions">Activator</a>&lt;<a href="javaNeuralNetwork.main/neural_network/functions/Activator.html" title="type parameter in Activator">T</a>&gt; - Interface in <a href="javaNeuralNetwork.main/neural_network/functions/package-summary.html">neural_network.functions</a></dt>
@@ -80,6 +80,11 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:C">C</h2>
 <dl class="index">
+<dt><a href="javaNeuralNetwork.main/neural_network/functions/MSELoss.html#call(double,double)" class="member-name-link">call(double, double)</a> - Static method in class neural_network.functions.<a href="javaNeuralNetwork.main/neural_network/functions/MSELoss.html" title="class in neural_network.functions">MSELoss</a></dt>
+<dd>
+<div class="block">This method simply returns the squared error between the two values
+ <code>yHat</code> and <code>y</code>.</div>
+</dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/functions/LeakyReLU.html#call(java.lang.Double)" class="member-name-link">call(Double)</a> - Method in class neural_network.functions.<a href="javaNeuralNetwork.main/neural_network/functions/LeakyReLU.html" title="class in neural_network.functions">LeakyReLU</a></dt>
 <dd>
 <div class="block">Implementation of the leaky ReLU function.</div>
@@ -98,7 +103,7 @@ loadScripts(document, 'script');</script>
  w_ij * o_j where w_ij are weights and o_j are values of <code>Neurons</code>
  in the left <code>Layer</code>.</div>
 </dd>
-<dt><a href="javaNeuralNetwork.main/neural_network/functions/CrossEntropyLoss.html#call(java.util.List,int)" class="member-name-link">call(List&lt;Double&gt;, int)</a> - Method in class neural_network.functions.<a href="javaNeuralNetwork.main/neural_network/functions/CrossEntropyLoss.html" title="class in neural_network.functions">CrossEntropyLoss</a></dt>
+<dt><a href="javaNeuralNetwork.main/neural_network/functions/CrossEntropyLoss.html#call(java.util.List,int)" class="member-name-link">call(List&lt;Double&gt;, int)</a> - Static method in class neural_network.functions.<a href="javaNeuralNetwork.main/neural_network/functions/CrossEntropyLoss.html" title="class in neural_network.functions">CrossEntropyLoss</a></dt>
 <dd>
 <div class="block">This returns the cross entropy loss, which is the negative logarithm of
  the probability of the true label.</div>
@@ -193,6 +198,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Getter method for <code>weight</code>.</div>
 </dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/functions/MSELoss.html#gradient(double,double)" class="member-name-link">gradient(double, double)</a> - Static method in class neural_network.functions.<a href="javaNeuralNetwork.main/neural_network/functions/MSELoss.html" title="class in neural_network.functions">MSELoss</a></dt>
+<dd>
+<div class="block">This method returns the gradient of the loss function.</div>
+</dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/functions/LeakyReLU.html#gradient(java.lang.Double)" class="member-name-link">gradient(Double)</a> - Method in class neural_network.functions.<a href="javaNeuralNetwork.main/neural_network/functions/LeakyReLU.html" title="class in neural_network.functions">LeakyReLU</a></dt>
 <dd>
 <div class="block">The gradient of the leaky ReLU function.</div>
@@ -244,6 +253,15 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Constructor method with a given <code>leak</code>.</div>
 </dd>
+</dl>
+<h2 class="title" id="I:M">M</h2>
+<dl class="index">
+<dt><a href="javaNeuralNetwork.main/neural_network/functions/MSELoss.html" class="type-name-link" title="class in neural_network.functions">MSELoss</a> - Class in <a href="javaNeuralNetwork.main/neural_network/functions/package-summary.html">neural_network.functions</a></dt>
+<dd>
+<div class="block">Class to test the mean squared error loss for regression networks.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/functions/MSELoss.html#%3Cinit%3E()" class="member-name-link">MSELoss()</a> - Constructor for class neural_network.functions.<a href="javaNeuralNetwork.main/neural_network/functions/MSELoss.html" title="class in neural_network.functions">MSELoss</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:N">N</h2>
 <dl class="index">
@@ -337,7 +355,7 @@ loadScripts(document, 'script');</script>
 <dt><a href="javaNeuralNetwork.main/neural_network/functions/TransferFunction.html#%3Cinit%3E()" class="member-name-link">TransferFunction()</a> - Constructor for class neural_network.functions.<a href="javaNeuralNetwork.main/neural_network/functions/TransferFunction.html" title="class in neural_network.functions">TransferFunction</a></dt>
 <dd>&nbsp;</dd>
 </dl>
-<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:J">J</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a></main>
+<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:J">J</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a></main>
 </div>
 </div>
 </body>
