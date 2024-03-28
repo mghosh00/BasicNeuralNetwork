@@ -78,7 +78,7 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Edge</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Class to represent an <code>Edge</code> joining two <code>Nodes</code> of a network</div>
+<div class="block">Class to represent an <code>Edge</code> joining two <code>Neurons</code> of a network</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -264,7 +264,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Getter method for <code>id</code>.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>The <code>id</code>.</dd>
+<dd>The <code>id</code> of form <code>[leftLayer, leftRow, rightRow]</code>.</dd>
 </dl>
 </section>
 </li>
@@ -275,7 +275,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Getter method for <code>weight</code>.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>The <code>weight</code>.</dd>
+<dd>The <code>weight</code> of the <code>Edge</code>.</dd>
 </dl>
 </section>
 </li>
@@ -308,7 +308,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Getter method for <code>delta</code>.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>The <code>delta</code>.</dd>
+<dd>The current <code>delta</code>.</dd>
 </dl>
 </section>
 </li>
@@ -330,7 +330,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Getter method for <code>velocity</code>.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>The <code>velocity</code>.</dd>
+<dd>The current <code>velocity</code> (for adaptive only).</dd>
 </dl>
 </section>
 </li>
