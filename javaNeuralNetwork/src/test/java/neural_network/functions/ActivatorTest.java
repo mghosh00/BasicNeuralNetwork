@@ -25,7 +25,7 @@ public abstract class ActivatorTest<T> {
             Activator<T> activator = (Activator<T>) callMap.get("activators").get(i);
             T x = (T) callMap.get("xs").get(i);
             double expectedValue = (double) callMap.get("values").get(i);
-            assertEquals(expectedValue, activator.call(x));
+            assertEquals(expectedValue, activator.call(x), .00000001);
         }
     }
 
@@ -39,7 +39,13 @@ public abstract class ActivatorTest<T> {
             Activator<T> activator = (Activator<T>) gradientMap.get("activators").get(i);
             T x = (T) gradientMap.get("xs").get(i);
             T expectedGradient = (T) gradientMap.get("gradients").get(i);
-            assertEquals(expectedGradient, activator.gradient(x));
+            if (expectedGradient instanceof Double) {
+                double expected = (double) expectedGradient;
+                double actual = (double) activator.gradient(x);
+                assertEquals(expected, actual, .00000001);
+            } else {
+                assertEquals(expectedGradient, activator.gradient(x));
+            }
         }
     }
 }
