@@ -1,2 +1,3 @@
 module:javaNeuralNetwork.main
 neural_network.components
+neural_network.functions
