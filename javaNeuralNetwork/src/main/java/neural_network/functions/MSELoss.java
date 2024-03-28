@@ -12,7 +12,7 @@ public class MSELoss {
      * @param y The true label for the datapoint.
      * @return The squared error between the two.
      */
-    public static double call(double yHat, double y) {
+    public double call(double yHat, double y) {
         return (yHat - y) * (yHat - y);
     }
 
@@ -22,7 +22,7 @@ public class MSELoss {
      * @param y The true label for the datapoint.
      * @return The gradient of the squared error between the two.
      */
-    public static double gradient(double yHat, double y) {
+    public double gradient(double yHat, double y) {
         return 2 * (yHat - y);
     }
 }
