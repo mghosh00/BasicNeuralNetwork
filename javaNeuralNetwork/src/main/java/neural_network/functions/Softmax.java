@@ -6,10 +6,10 @@ import java.util.stream.Stream;
 
 import static java.lang.Math.exp;
 
-/** Class to represent a softmax function. This takes in the vector of values
- * from the output neurons in a classification problem and converts them into
- * softmax probabilities. This is an {@code Activator} function for the output
- * {@code Layer}.
+/** Class to represent a softmax function.
+ * This takes in the vector of values from the output neurons in a classification
+ * problem and converts them into softmax probabilities. This is an {@code Activator}
+ * function for the output {@code Layer}.
  *
  */
 public class Softmax implements Activator<Double> {
@@ -19,8 +19,7 @@ public class Softmax implements Activator<Double> {
 
     /** Calculates the normalisation constant for the softmax function.
      * We wish to avoid any overflow errors, so we multiply the normalisation
-     * constant by exp(m). We account for this when finding the
-     * Softmax value later.
+     * constant by exp(m). We account for this when finding the Softmax value later.
      *
      * @param zList The vector of pre-activated {@code values} from the output
      *              {@code Layer}.
@@ -37,7 +36,7 @@ public class Softmax implements Activator<Double> {
      * avoid any overflow error.
      *
      * @param z The value of an output neuron.
-     * @return The softmax activation value of {@code z}
+     * @return The softmax activation value of {@code z}.
      */
     @Override
     public double call(Double z) {

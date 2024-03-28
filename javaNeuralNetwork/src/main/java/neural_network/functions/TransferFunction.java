@@ -19,10 +19,9 @@ public class TransferFunction implements Activator<List<Double>> {
      * in the left {@code Layer}. Note that we must call {@code bindWeights}
      * before this function.
      *
-     * @param o A vector of values from {@code Neurons} in the left
+     * @param o A vector of values from {@code Neurons} in the left {@code Layer}.
      * @throws IllegalStateException This method should not be called if
      * weights or bias have not been bound.
-     * {@code Layer}.
      * @return The output of the transfer function.
      */
     @Override
