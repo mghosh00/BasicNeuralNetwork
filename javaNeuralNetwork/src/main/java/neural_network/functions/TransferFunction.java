@@ -11,7 +11,7 @@ import java.util.stream.IntStream;
  */
 public class TransferFunction implements Activator<List<Double>> {
 
-    private List<Double> weights = new ArrayList<>();
+    private final List<Double> weights = new ArrayList<>();
     private double bias = Double.NaN;
 
     /** Implementation of the transfer function, which returns a sum of

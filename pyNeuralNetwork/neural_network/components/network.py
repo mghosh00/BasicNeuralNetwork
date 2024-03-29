@@ -17,7 +17,7 @@ from .layer import Layer
 
 
 class Network:
-    """Class to represent the whole `Network`
+    """Class to represent the whole network.
     """
 
     def __init__(self, num_features: int, num_hidden_layers: int,
@@ -85,7 +85,7 @@ class Network:
                     n = len(left_layer)
                     for edge in edge_list:
                         edge.set_weight(random.gauss(0.0,
-                                                     math.sqrt(2 / n)))
+                                                     math.sqrt(2.0 / n)))
             self._edges.append(layer_list)
 
         # Functions and other parameters
@@ -173,6 +173,10 @@ class Network:
             The current `left_layer` in forward propagation
         right_neuron : Neuron
             The current `right_neuron` in forward propagation
+
+        Returns
+        -------
+        The value returned by the `TransferFunction` before activation
         """
         left_neurons = left_layer.get_neurons()
         i, j = right_neuron.get_id()
@@ -191,6 +195,12 @@ class Network:
     def _activate_output_layer(self, z_list: List[float]) -> List[float]:
         """Activates the values from the `output_layer` using the Softmax
         activation function.
+
+        Parameters
+        ----------
+        z_list : List[float]
+            The pre-activated values from the output layer in a classification
+            problem
 
         Returns
         -------
@@ -215,7 +225,7 @@ class Network:
         edge : Edge
             The `Edge` containing the weight we are interested in
         target : int
-            The target value for the final output node for this specific
+            The target value for the final output neuron for this specific
             datapoint
         first : bool
             Determines whether we find the bias gradient or not
