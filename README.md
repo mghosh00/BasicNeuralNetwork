@@ -17,7 +17,7 @@ Given a set of labelled datapoints, our goal is to use a neural network to learn
 ### Network
 This network is made up of an input layer (one neuron for each coordinate of the data), some hidden layers and an output layer.
 The output layer has either one neuron for regression problems, or the number of classes for classification. Below is an example network
-from `examples/classification/circle` produced using the `networkx` package, with 1 input layer, 3 hidden layers and 1 output layer.
+from `pyNeuralNetwork/examples/classification/circle` produced using the `networkx` package, with 1 input layer, 3 hidden layers and 1 output layer.
 
 ![example network](images/network_circle.png)
 
