@@ -36,7 +36,10 @@ public class NetworkTest {
         network = new Network(2, 3, new ArrayList<>(
                 List.of(1, 4, 2)), 3, 0.5, 0.005,
                 false, true, 0.8, true);
-        minimalNetwork = new Network(1, 0, new ArrayList<>());
+
+        // Uses the medium level constructor
+        minimalNetwork = new Network(1, 0, new ArrayList<>(),
+                2, 0.01, 0.01);
         regressionNetwork = new Network(2, 3, new ArrayList<>(
                 List.of(1, 4, 2)), 3, 0.5, 0.005,
                 true, true, 0.8, true);
@@ -430,6 +433,54 @@ public class NetworkTest {
         }
         List<Double> expectedBiasGradients = List.of(-0.3, 0.1, 0.4, -4.0);
         for (int i = 0; i < 4; i ++) {
+            assertEquals(rightNeuron.getBiasGradients().get(i),
+                    expectedBiasGradients.get(i),
+                    .00000001);
+        }
+    }
+
+    @Test
+    void storeGradientOfLossHiddenLayerNotFirst() {
+        // edge location: leftLayer = 2, rightNeuron = 1, leftNeuron = 0
+        Edge edge = network.getEdges().get(2).get(1).get(0);
+
+        edge.getLeftNeuron().setValue(0.2);
+        Neuron rightNeuron = edge.getRightNeuron();
+        rightNeuron.setValue(-0.5);
+        edge.addLossGradient(0.2);
+        edge.addLossGradient(0.1);
+        edge.addLossGradient(0.3);
+        rightNeuron.addBiasGradient(-0.3);
+        rightNeuron.addBiasGradient(0.1);
+        rightNeuron.addBiasGradient(0.4);
+
+        // There are 3 edges connecting the rightNeuron to the next layer
+        // along, and we must take these values into account also
+        List<Edge> newEdges = Stream
+                .iterate(0, j -> j < 3, j -> j + 1)
+                .map(j -> network.getEdges().get(3).get(j).get(1))
+                .toList();
+        for (int j = 0; j < 3; j ++) {
+            Edge newEdge = newEdges.get(j);
+            newEdge.setWeight(j + 1);
+            newEdge.setDelta(-j);
+        }
+
+        int target = 0;
+        boolean first = false;
+        network.storeGradientOfLoss(edge, target, first);
+
+        // 1 * 0 + 2 * (-1) + 3 * (-2)
+        double factor = -8.0;
+        double reluGrad = 0.5;
+        assertEquals(factor * reluGrad, edge.getDelta());
+        List<Double> expected = List.of(0.2, 0.1, 0.3, -0.8);
+        for (int i = 0; i < 4; i ++) {
+            assertEquals(edge.getLossGradients().get(i), expected.get(i),
+                    .00000001);
+        }
+        List<Double> expectedBiasGradients = List.of(-0.3, 0.1, 0.4);
+        for (int i = 0; i < 3; i ++) {
             assertEquals(rightNeuron.getBiasGradients().get(i),
                     expectedBiasGradients.get(i),
                     .00000001);
