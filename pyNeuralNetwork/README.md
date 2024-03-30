@@ -15,7 +15,7 @@ Given a set of labelled datapoints, our goal is to use a neural network to learn
 ### Network
 This network is made up of an input layer (one neuron for each coordinate of the data), some hidden layers and an output layer.
 The output layer has either one neuron for regression problems, or the number of classes for classification. Below is an example network
-from `examples/classification/circle` produced using the `networkx` package, with 1 input layer, 3 hidden layers and 1 output layer.
+from `pyNeuralNetwork/examples/classification/circle` produced using the `networkx` package, with 1 input layer, 3 hidden layers and 1 output layer.
 
 ![example network](python_images/network_circle.png)
 
@@ -33,7 +33,7 @@ This package can be downloaded from github to your local machine via the followi
 git clone git@github.com:mghosh00/BasicNeuralNetwork.git
 ```
 
-From here, navigate to the newly created repository, and enter
+From here, navigate to `BasicNeuralNetwork/pyNeuralNetwork`, the newly created python repository, and enter
 
 ```console
 pip install -e .
@@ -42,11 +42,11 @@ pip install -e .
 to pip install the package.
 
 ## Creating an example
-There are a few different ways of creating an example. In this section, we demonstrate creating a new directory in the `examples` folder, but if you prefer
-`jupyter notebook`, see `examples/notebooks/circle/circle.ipynb` for a different walkthrough.
+There are a few different ways of creating an example. In this section, we demonstrate creating a new directory in the `pyNeuralNetwork/examples` folder, but if you prefer
+`jupyter notebook`, see `pyNeuralNetwork/examples/notebooks/circle/circle.ipynb` for a different walkthrough.
 
-Here, we use `examples/diagonals` as our example, which has data in the $x-y$ plane split into 4 classes for North, East, South and West.
-First, create a directory named `diagonals` in the `examples` folder (or in your own new folder if you prefer).
+Here, we use `pyNeuralNetwork/examples/diagonals` as our example, which has data in the $x-y$ plane split into 4 classes for North, East, South and West.
+First, create a directory named `diagonals` in the `pyNeuralNetwork/examples` folder (or in your own new folder if you prefer).
 
 ### Generating data
 Next, you can either use one of the helper classes to generate some data, or use your own. We demonstrate both ways below.
