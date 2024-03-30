@@ -1,0 +1,49 @@
+plugins {
+    id 'java'
+    id 'jacoco'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+apply from: 'jacoco.gradle'
+test {
+    enabled = true
+    useJUnitPlatform()
+    jacoco {
+        enabled = true
+        destinationFile = layout.buildDirectory.file('jacoco/jacocoTest.exec').get().asFile
+        classDumpDir = layout.buildDirectory.dir('jacoco/classpathdumps').get().asFile
+    }
+    finalizedBy jacocoTestReport
+    finalizedBy jacocoTestCoverageVerification
+}
+javadoc {
+    options.memberLevel = JavadocMemberLevel.PACKAGE
+    destinationDir = file("build/docs/javadoc")
+}
+sourceSets {
+    main {
+        java {
+            srcDirs 'main/java'
+        }
+        resources {
+            srcDirs 'main/resources'
+        }
+    }
+
+    test {
+        java {
+            srcDirs 'test/java'
+        }
+    }
+}
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    testImplementation 'org.mockito:mockito-core:5.11.0'
+    testImplementation 'org.mockito:mockito-inline:5.2.0'
+}

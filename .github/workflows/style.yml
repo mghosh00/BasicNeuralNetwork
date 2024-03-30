@@ -2,7 +2,7 @@ name: Style tests (flake8)
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "java-package" ]
   pull_request:
     branches: [ "master" ]
   workflow_dispatch:
@@ -25,7 +25,8 @@ jobs:
         run: |
           python --version
           python -m pip install --upgrade pip setuptools wheel
-          python -m pip install .[dev]
+          python -m pip install pyNeuralNetwork/.
+          python -m pip install pyNeuralNetwork/.[dev]
       - name: Run style tests
         run: |
           python -m flake8
