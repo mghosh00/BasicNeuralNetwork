@@ -225,7 +225,7 @@ public class Network {
      * @param rightNeuron The current right {@code Neuron} in forward propagation.
      * @return The value returned by the {@code transferFunction} before activation.
      */
-    private double calculatePreActivatedValue(Layer leftLayer, Neuron rightNeuron) {
+    double calculatePreActivatedValue(Layer leftLayer, Neuron rightNeuron) {
         List<Neuron> leftNeurons = leftLayer.getNeurons();
         int i = rightNeuron.getId().get(0); int j = rightNeuron.getId().get(1);
 
@@ -254,7 +254,7 @@ public class Network {
      *                     classification problem.
      * @return The list of softmax probabilities.
      */
-    private List<Double> activateOutputLayer(List<Double> zOutputLayer) {
+    List<Double> activateOutputLayer(List<Double> zOutputLayer) {
         softmax.normalise(zOutputLayer);
         List<Neuron> softmaxNeurons = outputLayer.getNeurons();
         List<Double> softmaxVector = new ArrayList<>();
