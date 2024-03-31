@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"m":"javaNeuralNetwork.main","l":"neural_network.components"},{"m":"javaNeuralNetwork.main","l":"neural_network.functions"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"m":"javaNeuralNetwork.main","l":"neural_network.components"},{"m":"javaNeuralNetwork.main","l":"neural_network.functions"},{"m":"javaNeuralNetwork.main","l":"neural_network.util"}];updateSearchResults();
