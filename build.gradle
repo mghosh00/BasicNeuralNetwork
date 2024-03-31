@@ -11,6 +11,12 @@ plugins {
 group 'org.example'
 version '1.0-SNAPSHOT'
 
+allprojects {
+    wrapper {
+        gradleVersion = '8.7'
+    }
+}
+
 repositories {
     mavenCentral()
 }

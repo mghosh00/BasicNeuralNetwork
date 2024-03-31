@@ -18,11 +18,11 @@ public class HeaderTest {
     void setDimensionsErroneous() {
         Exception exception1 = assertThrows(IllegalArgumentException.class,
                 () -> Header.setDimensions(-1));
-        assertEquals("Invalid dimensions passed: -1, must be between 0 and 10.",
+        assertEquals("Invalid dimensions passed: -1, must be between 0 and 9.",
                 exception1.getMessage());
         Exception exception2 = assertThrows(IllegalArgumentException.class,
                 () -> Header.setDimensions(12));
-        assertEquals("Invalid dimensions passed: 12, must be between 0 and 10.",
+        assertEquals("Invalid dimensions passed: 12, must be between 0 and 9.",
                 exception2.getMessage());
     }
 

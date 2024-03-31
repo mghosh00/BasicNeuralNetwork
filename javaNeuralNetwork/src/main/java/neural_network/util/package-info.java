@@ -4,7 +4,7 @@
  * This includes helper classes for splitting our data into training, validation and
  * testing within the {@code DataSplitter} class; {@code Partitioners} to sort the
  * datapoints into batches, weighted and unweighted and a helper enum for column
- * headers of the dataframes we use.
+ * {@code Headers} of the dataframes we use.
  * </p>
  *
  * @since 1.0.0

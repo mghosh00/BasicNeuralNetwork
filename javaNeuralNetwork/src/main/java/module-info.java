@@ -3,4 +3,5 @@
  * validating and testing a neural network for n-dimensional datapoints.
  */
 module javaNeuralNetwork.main {
+    requires static org.apache.commons.csv;
 }

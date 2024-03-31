@@ -5,22 +5,67 @@ import java.util.List;
 
 /** Enum to represent the column headers of a dataframe for datapoints.
  *
+ *
  */
-public enum Header {X_1, X_2, X_3, X_4, X_5, X_6, X_7, X_8, X_9, X_10, Y, Y_HAT;
+public enum Header {
+    /** First x coordinate.
+     *
+     */
+    X_1,
+    /** Second x coordinate.
+     *
+     */
+    X_2,
+    /** Third x coordinate.
+     *
+     */
+    X_3,
+    /** Fourth x coordinate.
+     *
+     */
+    X_4,
+    /** Fifth x coordinate.
+     *
+     */
+    X_5,
+    /** Sixth x coordinate.
+     *
+     */
+    X_6,
+    /** Seventh x coordinate.
+     *
+     */
+    X_7,
+    /** Eighth x coordinate.
+     *
+     */
+    X_8,
+    /** Ninth x coordinate.
+     *
+     */
+    X_9,
+    /** True class/value of the datapoint.
+     *
+     */
+    Y,
+    /** Predicted class/value of the datapoint.
+     *
+     */
+    Y_HAT;
 
     private static int dimensions = 0;
 
     /** Sets up the dimensions (number of x coordinates) for the datapoints.
      *
      * @param dimensions The number of x coordinates for the datapoints.
-     * @throws IllegalArgumentException If {@code dimensions} is not between 1 and 10.
+     * @throws IllegalArgumentException If {@code dimensions} is not between 0 and 9.
      */
     public static void setDimensions(int dimensions) {
-        if (0 <= dimensions && dimensions <= 10) {
+        if (0 <= dimensions && dimensions <= 9) {
             Header.dimensions = dimensions;
         } else {
             throw new IllegalArgumentException("Invalid dimensions passed: %d, "
-                    .formatted(dimensions) + "must be between 0 and 10.");
+                    .formatted(dimensions) + "must be between 0 and 9.");
         }
     }
 
