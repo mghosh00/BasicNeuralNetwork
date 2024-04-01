@@ -35,6 +35,4 @@ jobs:
       - name: Build with Gradle
         working-directory: ./javaNeuralNetwork
         run: ./gradlew build
-      - name: Download all workflow run artifacts
-        uses: actions/download-artifact@v4
 
