@@ -14,11 +14,10 @@ import java.util.*;
 import java.util.stream.Stream;
 
 /** Class to randomly generate datapoints and categorise them according to
- * a given rule, or provide an output value if we are regressing,
- * with data being generated via a normal distribution.
+ * a given rule or provide an output value if we are regressing.
  *
  * @param <T> The return type of the {@code function} (could be any type
- *           for a classification problem).
+ *            for a classification problem).
  */
 public abstract class DataGenerator<T> {
     
@@ -176,7 +175,7 @@ public abstract class DataGenerator<T> {
         return numDatapoints;
     }
 
-    /** Adder method for xData - only needed for package access.
+    /** Adder method for {@code xData} - only needed for package access.
      *
      * @param data The generated data from a subclass.
      */

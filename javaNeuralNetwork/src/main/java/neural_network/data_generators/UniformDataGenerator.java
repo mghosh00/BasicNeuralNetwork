@@ -4,6 +4,13 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.stream.Stream;
 
+/** Class to randomly generate datapoints and categorise them according to
+ * a given rule, or provide an output value if we are regressing,
+ * with data being generated via a uniform distribution.
+ *
+ * @param <T> The return type of the {@code function} (could be any type
+ *            for a classification problem).
+ */
 public class UniformDataGenerator<T> extends DataGenerator<T> {
 
     private final List<Double> lowerBounds;
