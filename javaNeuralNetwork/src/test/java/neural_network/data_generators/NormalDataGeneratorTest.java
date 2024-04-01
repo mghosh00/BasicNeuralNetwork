@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -117,8 +119,13 @@ public class NormalDataGeneratorTest extends DataGeneratorTest {
     @Test
     void writeToCsvOneCoord() throws InvocationTargetException, IllegalAccessException {
         oneCoordGen.call();
-        oneCoordGen.writeToCsv("testing",
-                "src/test/resources/data_generators");
+        if (Files.exists(Path.of("javaNeuralNetwork"))) {
+            oneCoordGen.writeToCsv("testing",
+                    "javaNeuralNetwork/src/test/resources/data_generators");
+        } else {
+            oneCoordGen.writeToCsv("testing",
+                    "src/test/resources/data_generators");
+        }
         CSVPrinter printer = oneCoordGen.getPrinter();
         assertNotNull(printer);
     }
