@@ -2,7 +2,6 @@ package neural_network.data_generators;
 
 import java.lang.reflect.Method;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Stream;
 
 public class UniformDataGenerator<T> extends DataGenerator<T> {
