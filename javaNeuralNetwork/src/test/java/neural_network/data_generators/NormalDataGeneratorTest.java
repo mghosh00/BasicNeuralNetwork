@@ -52,6 +52,40 @@ public class NormalDataGeneratorTest extends DataGeneratorTest {
     }
 
     @Test
+    void constructBaseClassErroneous() throws NoSuchMethodException {
+        Method erroneous1Method = DataGeneratorTest.class.getMethod("erroneousClassifier1", String.class);
+        Method erroneous2Method = DataGeneratorTest.class.getMethod("erroneousClassifier2", double.class);
+        Method erroneous3Method = DataGeneratorTest.class.getMethod("erroneousClassifier3");
+        Method erroneous4Method = DataGeneratorTest.class.getMethod("erroneousClassifier4", double.class,
+                double.class, double.class, double.class, double.class, double.class, double.class, double.class,
+                double.class, double.class);
+        Exception exception1 = assertThrows(IllegalArgumentException.class,
+                () -> new NormalDataGenerator<>(erroneous1Method, 10,
+                        List.of(0.0), List.of(0.0)));
+        assertEquals("All parameters of function must be doubles, " +
+                "{class java.lang.String} illegal", exception1.getMessage());
+        Exception exception2 = assertThrows(IllegalArgumentException.class,
+                () -> new NormalDataGenerator<>(erroneous2Method, 10,
+                        List.of(0.0), List.of(0.0)));
+        assertEquals("function must be a static method", exception2.getMessage());
+        Exception exception3 = assertThrows(IllegalArgumentException.class,
+                () -> new NormalDataGenerator<>(erroneous3Method, 10,
+                        List.of(0.0), List.of(0.0)));
+        assertEquals("function must have 1 - 9 coordinates, " +
+                "numCoordinates = 0", exception3.getMessage());
+        Exception exception4 = assertThrows(IllegalArgumentException.class,
+                () -> new NormalDataGenerator<>(erroneous4Method, 10,
+                        List.of(0.0), List.of(0.0)));
+        assertEquals("function must have 1 - 9 coordinates, " +
+                "numCoordinates = 10", exception4.getMessage());
+        Exception exception5 = assertThrows(IllegalArgumentException.class,
+                () -> new NormalDataGenerator<>(oneCoordMethod, 0,
+                        List.of(0.0), List.of(0.0)));
+        assertEquals("Must have at least 1 datapoint, " +
+                "numDatapoints = 0", exception5.getMessage());
+    }
+
+    @Test
     void constructErroneous() {
         Exception exception1 = assertThrows(IllegalArgumentException.class,
                 () -> new NormalDataGenerator<>(oneCoordMethod, 10,
@@ -104,13 +138,15 @@ public class NormalDataGeneratorTest extends DataGeneratorTest {
 
     @Test
     void writeToCsvErroneous() {
+        NormalDataGenerator<Integer> spyGen = spy(oneCoordGen);
         Exception exception1 = assertThrows(RuntimeException.class,
-                () -> oneCoordGen.writeToCsv("testing", "fake_dir"));
+                () -> spyGen.writeToCsv("testing", "fake_dir"));
         assertEquals("Path fake_dir/testing.csv does not exist or is " +
                         "otherwise invalid.",
                 exception1.getMessage());
         Exception exception2 = assertThrows(RuntimeException.class,
-                () -> oneCoordGen.writeToCsv("/invalid_name"));
+                () -> spyGen.writeToCsv("/invalid_name"));
+        verify(spyGen).writeToCsv("/invalid_name", "");
         assertEquals("Path /invalid_name.csv does not exist or is " +
                         "otherwise invalid.",
                 exception2.getMessage());

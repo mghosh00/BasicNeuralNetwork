@@ -16,9 +16,17 @@ public abstract class DataGeneratorTest {
 
     public abstract Map<String, List<Object>> getGeneratorWithExpectedDf();
 
-    public static int erroneousClassifier() {
+    public static String erroneousClassifier1(String bad) {return bad;}
+
+    public int erroneousClassifier2(double x1) {return (int) x1;}
+
+    public static int erroneousClassifier3() {
         return 4;
     }
+
+    public static int erroneousClassifier4(double x1, double x2, double x3, double x4,
+                                           double x5, double x6, double x7, double x8,
+                                           double x9, double x10) {return 0;}
 
     public static int oneCoordClassifier(double x1) {
         if (x1 < 0) {

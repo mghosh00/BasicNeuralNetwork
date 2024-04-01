@@ -47,7 +47,7 @@ public abstract class DataGenerator<T> {
         // Checks on function parameter types; return type must match T
         for (Class<?> type : function.getParameterTypes()) {
             if (! (type == double.class)) {
-                throw new IllegalArgumentException("All parameters of function" +
+                throw new IllegalArgumentException("All parameters of function " +
                         "must be doubles, {%s} illegal".formatted(type));
             }
         }
