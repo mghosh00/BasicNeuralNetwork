@@ -77,9 +77,17 @@ loadScripts(document, 'script');</script>
 </div>
 </div>
 <section class="class-description" id="class-description">
+<dl class="notes">
+<dt>Type Parameters:</dt>
+<dd><code>T</code> - The return type of the <code>function</code> (could be any type
+            for a classification problem).</dd>
+</dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">UniformDataGenerator&lt;T&gt;</span>
 <span class="extends-implements">extends <a href="DataGenerator.html" title="class in neural_network.data_generators">DataGenerator</a>&lt;T&gt;</span></div>
+<div class="block">Class to randomly generate datapoints and categorise them according to
+ a given rule, or provide an output value if we are regressing,
+ with data being generated via a uniform distribution.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
