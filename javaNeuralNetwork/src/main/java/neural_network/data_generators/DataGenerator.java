@@ -14,7 +14,8 @@ import java.util.*;
 import java.util.stream.Stream;
 
 /** Class to randomly generate datapoints and categorise them according to
- * a given rule or provide an output value if we are regressing.
+ * a given rule, or provide an output value if we are regressing,
+ * with data being generated via a normal distribution.
  *
  * @param <T> The return type of the {@code function} (could be any type
  *           for a classification problem).
@@ -27,6 +28,8 @@ public abstract class DataGenerator<T> {
     private final List<Header> headers;
     private final NavigableMap<Header, List<String>> df = new TreeMap<>();
     private final List<List<Double>> xData = new ArrayList<>();
+    private static Random random = new Random();
+    private CSVPrinter printer = null;
 
     /** Constructor method for {@code DataGenerator}. Importantly, the {@code df} is
      * set up here, which consists of a map of column {@code Headers} as keys and lists
@@ -100,7 +103,10 @@ public abstract class DataGenerator<T> {
 
         for (int j = 0; j < numDatapoints; j ++) {
             // First convert to an Object array
-            Object[] x = xData.get(j).toArray();
+            int finalJ = j;
+            Object[] x = xData.stream()
+                    .map(list -> list.get(finalJ))
+                    .toArray();
 
             // The below will evaluate the function for one datapoint x_j
             // using all its coordinates as inputs. We use null on the
@@ -119,10 +125,12 @@ public abstract class DataGenerator<T> {
      * @throws RuntimeException If the directory does not exist.
      */
     public void writeToCsv(String title, String directory) {
-        String path = directory.isEmpty() ? "%s/%s.csv".formatted(directory, title)
+        String path = !directory.isEmpty() ? "%s/%s.csv".formatted(directory, title)
                 : "%s.csv".formatted(title);
-        try (CSVPrinter printer = new CSVPrinter(new FileWriter(path), CSVFormat.DEFAULT)) {
-
+        try {
+            if (printer == null) {
+                printer = new CSVPrinter(new FileWriter(path), CSVFormat.DEFAULT);
+            }
             // Write a row for the headers
             printer.printRecord(headers);
             for (int j = 0; j < numDatapoints; j ++) {
@@ -134,11 +142,13 @@ public abstract class DataGenerator<T> {
                         .map(i -> df.get(headers.get(i)).get(finalJ))
                         .toList();
 
-                // Write a row for this record
+                // Write a row for this datapoint
                 printer.printRecord(record);
             }
+            printer.flush();
         } catch (IOException e) {
-            throw new RuntimeException(e.getMessage());
+            throw new RuntimeException("Path %s does not exist or is otherwise invalid."
+                    .formatted(path));
         }
     }
 
@@ -150,4 +160,61 @@ public abstract class DataGenerator<T> {
         writeToCsv(title, "");
     }
 
+    /** Getter method for dimensions - only needed for package access.
+     *
+     * @return The number of dimensions.
+     */
+    int getDimensions() {
+        return dimensions;
+    }
+
+    /** Getter method for numDatapoints - only needed for package access.
+     *
+     * @return The number of datapoints.
+     */
+    int getNumDatapoints() {
+        return numDatapoints;
+    }
+
+    /** Adder method for xData - only needed for package access.
+     *
+     * @param data The generated data from a subclass.
+     */
+    void addData(List<List<Double>> data) {
+        xData.addAll(data);
+    }
+
+    /** Getter method for {@code random}.
+     *
+     * @return The {@code random}.
+     */
+    static Random getRandom() {
+        return random;
+    }
+
+    /** Setter method for {@code random}.
+     *
+     * @param random The new {@code random}. This can be used for mocking
+     *               purposes.
+     */
+    static void setRandom(Random random) {
+        DataGenerator.random = random;
+    }
+
+    /** Setter method for {@code printer}.
+     *
+     * @param printer The new {@code printer}. This can be used for mocking
+     *                purposes.
+     */
+    void setPrinter(CSVPrinter printer) {
+        this.printer = printer;
+    }
+
+    /** Getter method for {@code printer}.
+     *
+     * @return The {@code printer}. This is used for testing purposes.
+     */
+    CSVPrinter getPrinter() {
+        return printer;
+    }
 }
