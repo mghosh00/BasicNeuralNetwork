@@ -137,6 +137,14 @@ public class NormalDataGeneratorTest extends DataGeneratorTest {
     }
 
     @Test
+    void writeToCsvDefault() throws InvocationTargetException, IllegalAccessException {
+        NormalDataGenerator<Integer> spyGen = spy(oneCoordGen);
+        spyGen.call();
+        spyGen.writeToCsv("test_file");
+        verify(spyGen).writeToCsv("test_file", "");
+    }
+
+    @Test
     void writeToCsvErroneous() {
         NormalDataGenerator<Integer> spyGen = spy(oneCoordGen);
         Exception exception1 = assertThrows(RuntimeException.class,
