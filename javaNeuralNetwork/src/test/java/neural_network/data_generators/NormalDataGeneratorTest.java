@@ -137,11 +137,14 @@ public class NormalDataGeneratorTest extends DataGeneratorTest {
     }
 
     @Test
-    void writeToCsvDefault() throws InvocationTargetException, IllegalAccessException {
+    void writeToCsvDefault() throws InvocationTargetException, IllegalAccessException, IOException {
         NormalDataGenerator<Integer> spyGen = spy(oneCoordGen);
         spyGen.call();
         spyGen.writeToCsv("test_file");
         verify(spyGen).writeToCsv("test_file", "");
+        Path testFile = Path.of("test_file.csv");
+        assertTrue(Files.exists(testFile));
+        Files.delete(testFile);
     }
 
     @Test
@@ -194,5 +197,6 @@ public class NormalDataGeneratorTest extends DataGeneratorTest {
         verify(mockPrinter).printRecord(List.of("0.5", "4.2", "4.7"));
         verify(mockPrinter).printRecord(List.of("0.2", "3.1", "3.3"));
         verify(mockPrinter).flush();
+        verify(mockPrinter).close();
     }
 }

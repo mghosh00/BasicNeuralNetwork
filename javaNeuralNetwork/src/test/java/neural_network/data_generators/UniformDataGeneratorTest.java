@@ -118,7 +118,7 @@ public class UniformDataGeneratorTest extends DataGeneratorTest {
     }
 
     @Test
-    void writeToCsvOneCoord() throws InvocationTargetException, IllegalAccessException {
+    void writeToCsvOneCoord() throws InvocationTargetException, IllegalAccessException, IOException {
         oneCoordGen.call();
         if (Files.exists(Path.of("javaNeuralNetwork"))) {
             oneCoordGen.writeToCsv("testing",

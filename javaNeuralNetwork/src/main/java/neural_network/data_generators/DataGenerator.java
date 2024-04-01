@@ -145,6 +145,7 @@ public abstract class DataGenerator<T> {
                 printer.printRecord(record);
             }
             printer.flush();
+            printer.close();
         } catch (IOException e) {
             throw new RuntimeException("Path %s does not exist or is otherwise invalid."
                     .formatted(path));
