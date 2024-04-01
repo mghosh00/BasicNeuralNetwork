@@ -118,7 +118,7 @@ public class NormalDataGeneratorTest extends DataGeneratorTest {
     void writeToCsvOneCoord() throws InvocationTargetException, IllegalAccessException {
         oneCoordGen.call();
         oneCoordGen.writeToCsv("testing",
-                "BasicNeuralNetwork/javaNeuralNetwork/src/test/resources/data_generators");
+                "javaNeuralNetwork/src/test/resources/data_generators");
         CSVPrinter printer = oneCoordGen.getPrinter();
         assertNotNull(printer);
     }
