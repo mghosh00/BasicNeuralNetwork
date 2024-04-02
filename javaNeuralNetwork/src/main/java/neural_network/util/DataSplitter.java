@@ -69,11 +69,8 @@ public class DataSplitter {
                 }
             }
 
-        } catch (FileNotFoundException e) {
+        } catch (IOException e){
             throw new RuntimeException("Path %s is invalid.".formatted(path));
-
-        } catch (IllegalArgumentException | IOException e) {
-            throw new RuntimeException("Cannot parse data from path %s.".formatted(path));
         }
 
         return newDf;

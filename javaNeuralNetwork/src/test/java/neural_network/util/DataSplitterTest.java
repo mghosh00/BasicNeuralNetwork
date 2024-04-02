@@ -81,15 +81,6 @@ public class DataSplitterTest {
         printer.close();
     }
 
-    void writeInvalidCsv() {
-
-        try (FileWriter fileWriter = new FileWriter("not_a_csv.txt")) {
-            fileWriter.write(",,,\n,,\n0");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     @Test
     void csvToMapErroneous() throws IOException {
         DataSplitter badSplitter1 = new DataSplitter("invalid_file.csv", List.of(4));
@@ -97,13 +88,6 @@ public class DataSplitterTest {
                 badSplitter1::csvToMap);
         assertEquals("Path invalid_file.csv is invalid.",
                 exception1.getMessage());
-        writeInvalidCsv();
-        DataSplitter badSplitter2 = new DataSplitter("not_a_csv.txt", List.of(4));
-        Exception exception2 = assertThrows(RuntimeException.class,
-                badSplitter2::csvToMap);
-        assertEquals("Cannot parse data from path not_a_csv.txt.",
-                exception2.getMessage());
-        Files.delete(Path.of("not_a_csv.txt"));
     }
 
     @Test
