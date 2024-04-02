@@ -31,7 +31,7 @@ class DataSplitter:
         -------
         Tuple[pd.DataFrame, ...]
             A tuple containing the training, validation and testing dataframes
-            or fewer if fewer proportions have been passed
+            or fewer, if fewer proportions have been passed
         """
         n = len(self._df)
         prop_total = sum(self._proportions)
