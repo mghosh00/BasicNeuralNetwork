@@ -82,7 +82,7 @@ public class DataSplitterTest {
     }
 
     @Test
-    void csvToMapErroneous() throws IOException {
+    void csvToMapErroneous() {
         DataSplitter badSplitter1 = new DataSplitter("invalid_file.csv", List.of(4));
         Exception exception1 = assertThrows(RuntimeException.class,
                 badSplitter1::csvToMap);
