@@ -107,6 +107,8 @@ public class DataSplitterTest {
             assertIterableEquals(df.get(header), actualMap.get(header));
         }
 
+        assertEquals(csvFormat, goodSplitter.getCsvFormat());
+
         // Do not spy on CSVFormat to check that the correct one is produced
         goodSplitter.setCsvFormat(null);
         NavigableMap<Header, List<String>> actualMap2 = goodSplitter.csvToMap();
@@ -115,6 +117,8 @@ public class DataSplitterTest {
             assertTrue(actualMap2.containsKey(header));
             assertIterableEquals(df.get(header), actualMap2.get(header));
         }
+
+        assertNotEquals(csvFormat, goodSplitter.getCsvFormat());
 
         Files.delete(Path.of("testing.csv"));
     }
