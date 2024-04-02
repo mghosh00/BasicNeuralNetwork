@@ -49,7 +49,7 @@ loadScripts(document, 'script');</script>
 <div class="header">
 <h1>Index</h1>
 </div>
-<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:J">J</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:U">U</a>&nbsp;<a href="#I:V">V</a>&nbsp;<a href="#I:W">W</a>&nbsp;<a href="#I:X">X</a>&nbsp;<a href="#I:Y">Y</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a>
+<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:J">J</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:U">U</a>&nbsp;<a href="#I:V">V</a>&nbsp;<a href="#I:W">W</a>&nbsp;<a href="#I:X">X</a>&nbsp;<a href="#I:Y">Y</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a>
 <h2 class="title" id="I:A">A</h2>
 <dl class="index">
 <dt><a href="javaNeuralNetwork.main/neural_network/components/Network.html#activateOutputLayer(java.util.List)" class="member-name-link">activateOutputLayer(List&lt;Double&gt;)</a> - Method in class neural_network.components.<a href="javaNeuralNetwork.main/neural_network/components/Network.html" title="class in neural_network.components">Network</a></dt>
@@ -110,6 +110,11 @@ loadScripts(document, 'script');</script>
 <div class="block">Writes to the <code>df</code> with generated data and the specific classes
  or regression values (depending on whether this is for a classification
  or regression problem).</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/util/Partitioner.html#call()" class="member-name-link">call()</a> - Method in class neural_network.util.<a href="javaNeuralNetwork.main/neural_network/util/Partitioner.html" title="class in neural_network.util">Partitioner</a></dt>
+<dd>
+<div class="block">Shuffles all integers from <code>0</code> to <code>numInts - 1</code> and creates
+ a partition of this list.</div>
 </dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/functions/MSELoss.html#call(double,double)" class="member-name-link">call(double, double)</a> - Method in class neural_network.functions.<a href="javaNeuralNetwork.main/neural_network/functions/MSELoss.html" title="class in neural_network.functions">MSELoss</a></dt>
 <dd>
@@ -472,6 +477,18 @@ loadScripts(document, 'script');</script>
 <div class="block">Calculates the normalisation constant for the softmax function.</div>
 </dd>
 </dl>
+<h2 class="title" id="I:P">P</h2>
+<dl class="index">
+<dt><a href="javaNeuralNetwork.main/neural_network/util/Partitioner.html" class="type-name-link" title="class in neural_network.util">Partitioner</a> - Class in <a href="javaNeuralNetwork.main/neural_network/util/package-summary.html">neural_network.util</a></dt>
+<dd>
+<div class="block">Class to randomly partition <code>numInts</code> integers into sets of size
+ <code>setSize</code>.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/util/Partitioner.html#%3Cinit%3E(int,int)" class="member-name-link">Partitioner(int, int)</a> - Constructor for class neural_network.util.<a href="javaNeuralNetwork.main/neural_network/util/Partitioner.html" title="class in neural_network.util">Partitioner</a></dt>
+<dd>
+<div class="block">Constructor method.</div>
+</dd>
+</dl>
 <h2 class="title" id="I:S">S</h2>
 <dl class="index">
 <dt><a href="javaNeuralNetwork.main/neural_network/components/Neuron.html#setBias(double)" class="member-name-link">setBias(double)</a> - Method in class neural_network.components.<a href="javaNeuralNetwork.main/neural_network/components/Neuron.html" title="class in neural_network.components">Neuron</a></dt>
@@ -506,6 +523,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Setter method for <code>random</code>.</div>
 </dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/util/Partitioner.html#setRandom(java.util.Random)" class="member-name-link">setRandom(Random)</a> - Method in class neural_network.util.<a href="javaNeuralNetwork.main/neural_network/util/Partitioner.html" title="class in neural_network.util">Partitioner</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/components/Neuron.html#setValue(double)" class="member-name-link">setValue(double)</a> - Method in class neural_network.components.<a href="javaNeuralNetwork.main/neural_network/components/Neuron.html" title="class in neural_network.components">Neuron</a></dt>
 <dd>
 <div class="block">Setter method for <code>value</code>.</div>
@@ -659,7 +678,7 @@ the order they are declared.</div>
 <div class="block">Predicted class/value of the datapoint.</div>
 </dd>
 </dl>
-<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:J">J</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:U">U</a>&nbsp;<a href="#I:V">V</a>&nbsp;<a href="#I:W">W</a>&nbsp;<a href="#I:X">X</a>&nbsp;<a href="#I:Y">Y</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a></main>
+<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:J">J</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:U">U</a>&nbsp;<a href="#I:V">V</a>&nbsp;<a href="#I:W">W</a>&nbsp;<a href="#I:X">X</a>&nbsp;<a href="#I:Y">Y</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a></main>
 </div>
 </div>
 </body>
