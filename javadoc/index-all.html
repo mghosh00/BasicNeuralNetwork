@@ -158,6 +158,11 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/functions/CrossEntropyLoss.html#%3Cinit%3E()" class="member-name-link">CrossEntropyLoss()</a> - Constructor for class neural_network.functions.<a href="javaNeuralNetwork.main/neural_network/functions/CrossEntropyLoss.html" title="class in neural_network.functions">CrossEntropyLoss</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/util/DataSplitter.html#csvToMap()" class="member-name-link">csvToMap()</a> - Method in class neural_network.util.<a href="javaNeuralNetwork.main/neural_network/util/DataSplitter.html" title="class in neural_network.util">DataSplitter</a></dt>
+<dd>
+<div class="block">Reads the .csv file with data and converts it into a map
+ of the required form, keyed by <code>Headers</code>.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:D">D</h2>
 <dl class="index">
@@ -169,6 +174,15 @@ loadScripts(document, 'script');</script>
 <dt><a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator.html#%3Cinit%3E(java.lang.reflect.Method,int)" class="member-name-link">DataGenerator(Method, int)</a> - Constructor for class neural_network.data_generators.<a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator.html" title="class in neural_network.data_generators">DataGenerator</a></dt>
 <dd>
 <div class="block">Constructor method for <code>DataGenerator</code>.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/util/DataSplitter.html" class="type-name-link" title="class in neural_network.util">DataSplitter</a> - Class in <a href="javaNeuralNetwork.main/neural_network/util/package-summary.html">neural_network.util</a></dt>
+<dd>
+<div class="block">Class to split a dataset into training, validation and testing, given a
+ split ratio.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/util/DataSplitter.html#%3Cinit%3E(java.lang.String,java.util.List)" class="member-name-link">DataSplitter(String, List&lt;Integer&gt;)</a> - Constructor for class neural_network.util.<a href="javaNeuralNetwork.main/neural_network/util/DataSplitter.html" title="class in neural_network.util">DataSplitter</a></dt>
+<dd>
+<div class="block">Constructor method.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:E">E</h2>
@@ -219,6 +233,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="javaNeuralNetwork.main/neural_network/components/Neuron.html#getBiasGradients()" class="member-name-link">getBiasGradients()</a> - Method in class neural_network.components.<a href="javaNeuralNetwork.main/neural_network/components/Neuron.html" title="class in neural_network.components">Neuron</a></dt>
 <dd>
 <div class="block">Getter method for <code>biasGradients</code>.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/util/DataSplitter.html#getCsvFormat()" class="member-name-link">getCsvFormat()</a> - Method in class neural_network.util.<a href="javaNeuralNetwork.main/neural_network/util/DataSplitter.html" title="class in neural_network.util">DataSplitter</a></dt>
+<dd>
+<div class="block">Getter method for <code>csvFormat</code>.</div>
 </dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/components/Edge.html#getDelta()" class="member-name-link">getDelta()</a> - Method in class neural_network.components.<a href="javaNeuralNetwork.main/neural_network/components/Edge.html" title="class in neural_network.components">Edge</a></dt>
 <dd>
@@ -297,6 +315,11 @@ loadScripts(document, 'script');</script>
 <dt><a href="javaNeuralNetwork.main/neural_network/components/Edge.html#getRightNeuron()" class="member-name-link">getRightNeuron()</a> - Method in class neural_network.components.<a href="javaNeuralNetwork.main/neural_network/components/Edge.html" title="class in neural_network.components">Edge</a></dt>
 <dd>
 <div class="block">Getter method for <code>rightNeuron</code>.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/util/DataSplitter.html#getSubDf(int,int)" class="member-name-link">getSubDf(int, int)</a> - Method in class neural_network.util.<a href="javaNeuralNetwork.main/neural_network/util/DataSplitter.html" title="class in neural_network.util">DataSplitter</a></dt>
+<dd>
+<div class="block">Returns a subset of the dataframe <code>df</code> from entry <code>fromIndex</code>
+ (inclusive) to entry <code>toIndex</code> (exclusive).</div>
 </dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/components/Neuron.html#getValue()" class="member-name-link">getValue()</a> - Method in class neural_network.components.<a href="javaNeuralNetwork.main/neural_network/components/Neuron.html" title="class in neural_network.components">Neuron</a></dt>
 <dd>
@@ -455,6 +478,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Setter method for <code>bias</code>.</div>
 </dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/util/DataSplitter.html#setCsvFormat(org.apache.commons.csv.CSVFormat)" class="member-name-link">setCsvFormat(CSVFormat)</a> - Method in class neural_network.util.<a href="javaNeuralNetwork.main/neural_network/util/DataSplitter.html" title="class in neural_network.util">DataSplitter</a></dt>
+<dd>
+<div class="block">Setter method for <code>csvFormat</code>.</div>
+</dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/components/Edge.html#setDelta(double)" class="member-name-link">setDelta(double)</a> - Method in class neural_network.components.<a href="javaNeuralNetwork.main/neural_network/components/Edge.html" title="class in neural_network.components">Edge</a></dt>
 <dd>
 <div class="block">Setter method for <code>delta</code>.</div>
@@ -508,6 +535,10 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/functions/Softmax.html#%3Cinit%3E()" class="member-name-link">Softmax()</a> - Constructor for class neural_network.functions.<a href="javaNeuralNetwork.main/neural_network/functions/Softmax.html" title="class in neural_network.functions">Softmax</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/util/DataSplitter.html#split()" class="member-name-link">split()</a> - Method in class neural_network.util.<a href="javaNeuralNetwork.main/neural_network/util/DataSplitter.html" title="class in neural_network.util">DataSplitter</a></dt>
+<dd>
+<div class="block">Main method for the class - splits the data into train:valid:test.</div>
+</dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/components/Network.html#storeGradientOfLoss(neural_network.components.Edge,double,boolean)" class="member-name-link">storeGradientOfLoss(Edge, double, boolean)</a> - Method in class neural_network.components.<a href="javaNeuralNetwork.main/neural_network/components/Network.html" title="class in neural_network.components">Network</a></dt>
 <dd>
 <div class="block">Calculates the gradient of the loss function with respect to one
