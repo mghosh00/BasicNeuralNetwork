@@ -12,7 +12,7 @@ public class WeightedPartitioner extends Partitioner {
     private int numBins;
     private final Map<Integer, List<Integer>> classMap = new HashMap<>();
 
-    /** Constructor method.
+    /** General constructor method.
      *
      * @param numInts Number of integers.
      * @param setSize Size of each set.
