@@ -3,8 +3,8 @@ package neural_network.util;
 import java.util.*;
 import java.util.stream.Stream;
 
-/** Class to create numSets sets from a list of numInts integers weighted by which
- * ground truth class each integer lies in.
+/** Class to create a number of sets of size {@code setSize} from a list of
+ * {@code numInts} integers weighted by which ground truth class each integer lies in.
  *
  */
 public class WeightedPartitioner extends Partitioner {
@@ -92,7 +92,7 @@ public class WeightedPartitioner extends Partitioner {
         this(numInts, setSize, yVals, false, 10);
     }
 
-    /** Uses weights for each class to create sets of size setSize containing
+    /** Uses weights for each class to create sets of size {@code setSize} containing
      * integers (sampled with replacement).
      *
      * @return The list of lists of datapoint indices.
