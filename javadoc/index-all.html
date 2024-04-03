@@ -116,6 +116,11 @@ loadScripts(document, 'script');</script>
 <div class="block">Shuffles all integers from <code>0</code> to <code>numInts - 1</code> and creates
  a partition of this list.</div>
 </dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/util/WeightedPartitioner.html#call()" class="member-name-link">call()</a> - Method in class neural_network.util.<a href="javaNeuralNetwork.main/neural_network/util/WeightedPartitioner.html" title="class in neural_network.util">WeightedPartitioner</a></dt>
+<dd>
+<div class="block">Uses weights for each class to create sets of size setSize containing
+ integers (sampled with replacement).</div>
+</dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/functions/MSELoss.html#call(double,double)" class="member-name-link">call(double, double)</a> - Method in class neural_network.functions.<a href="javaNeuralNetwork.main/neural_network/functions/MSELoss.html" title="class in neural_network.functions">MSELoss</a></dt>
 <dd>
 <div class="block">This method simply returns the squared error between the two values
@@ -239,6 +244,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Getter method for <code>biasGradients</code>.</div>
 </dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/util/WeightedPartitioner.html#getClassMap()" class="member-name-link">getClassMap()</a> - Method in class neural_network.util.<a href="javaNeuralNetwork.main/neural_network/util/WeightedPartitioner.html" title="class in neural_network.util">WeightedPartitioner</a></dt>
+<dd>
+<div class="block">Getter for <code>classMap</code>.</div>
+</dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/util/DataSplitter.html#getCsvFormat()" class="member-name-link">getCsvFormat()</a> - Method in class neural_network.util.<a href="javaNeuralNetwork.main/neural_network/util/DataSplitter.html" title="class in neural_network.util">DataSplitter</a></dt>
 <dd>
 <div class="block">Getter method for <code>csvFormat</code>.</div>
@@ -309,6 +318,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Getter method for numDatapoints - only needed for package access.</div>
 </dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/util/Partitioner.html#getNumInts()" class="member-name-link">getNumInts()</a> - Method in class neural_network.util.<a href="javaNeuralNetwork.main/neural_network/util/Partitioner.html" title="class in neural_network.util">Partitioner</a></dt>
+<dd>
+<div class="block">Getter method for <code>numInts</code>.</div>
+</dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator.html#getPrinter()" class="member-name-link">getPrinter()</a> - Method in class neural_network.data_generators.<a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator.html" title="class in neural_network.data_generators">DataGenerator</a></dt>
 <dd>
 <div class="block">Getter method for <code>printer</code>.</div>
@@ -317,9 +330,17 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Getter method for <code>random</code>.</div>
 </dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/util/Partitioner.html#getRandom()" class="member-name-link">getRandom()</a> - Method in class neural_network.util.<a href="javaNeuralNetwork.main/neural_network/util/Partitioner.html" title="class in neural_network.util">Partitioner</a></dt>
+<dd>
+<div class="block">Getter method for <code>random</code>.</div>
+</dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/components/Edge.html#getRightNeuron()" class="member-name-link">getRightNeuron()</a> - Method in class neural_network.components.<a href="javaNeuralNetwork.main/neural_network/components/Edge.html" title="class in neural_network.components">Edge</a></dt>
 <dd>
 <div class="block">Getter method for <code>rightNeuron</code>.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/util/Partitioner.html#getSetSize()" class="member-name-link">getSetSize()</a> - Method in class neural_network.util.<a href="javaNeuralNetwork.main/neural_network/util/Partitioner.html" title="class in neural_network.util">Partitioner</a></dt>
+<dd>
+<div class="block">Getter method for <code>setSize</code>.</div>
 </dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/util/DataSplitter.html#getSubDf(int,int)" class="member-name-link">getSubDf(int, int)</a> - Method in class neural_network.util.<a href="javaNeuralNetwork.main/neural_network/util/DataSplitter.html" title="class in neural_network.util">DataSplitter</a></dt>
 <dd>
@@ -524,7 +545,9 @@ loadScripts(document, 'script');</script>
 <div class="block">Setter method for <code>random</code>.</div>
 </dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/util/Partitioner.html#setRandom(java.util.Random)" class="member-name-link">setRandom(Random)</a> - Method in class neural_network.util.<a href="javaNeuralNetwork.main/neural_network/util/Partitioner.html" title="class in neural_network.util">Partitioner</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Sets the new <code>random</code> for <code>Collections.shuffle</code>.</div>
+</dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/components/Neuron.html#setValue(double)" class="member-name-link">setValue(double)</a> - Method in class neural_network.components.<a href="javaNeuralNetwork.main/neural_network/components/Neuron.html" title="class in neural_network.components">Neuron</a></dt>
 <dd>
 <div class="block">Setter method for <code>value</code>.</div>
@@ -619,6 +642,19 @@ the order they are declared.</div>
 </dl>
 <h2 class="title" id="I:W">W</h2>
 <dl class="index">
+<dt><a href="javaNeuralNetwork.main/neural_network/util/WeightedPartitioner.html" class="type-name-link" title="class in neural_network.util">WeightedPartitioner</a> - Class in <a href="javaNeuralNetwork.main/neural_network/util/package-summary.html">neural_network.util</a></dt>
+<dd>
+<div class="block">Class to create numSets sets from a list of numInts integers weighted by which
+ ground truth class each integer lies in.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/util/WeightedPartitioner.html#%3Cinit%3E(int,int,java.util.List)" class="member-name-link">WeightedPartitioner(int, int, List&lt;Double&gt;)</a> - Constructor for class neural_network.util.<a href="javaNeuralNetwork.main/neural_network/util/WeightedPartitioner.html" title="class in neural_network.util">WeightedPartitioner</a></dt>
+<dd>
+<div class="block">Constructor for classification.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/util/WeightedPartitioner.html#%3Cinit%3E(int,int,java.util.List,boolean,int)" class="member-name-link">WeightedPartitioner(int, int, List&lt;Double&gt;, boolean, int)</a> - Constructor for class neural_network.util.<a href="javaNeuralNetwork.main/neural_network/util/WeightedPartitioner.html" title="class in neural_network.util">WeightedPartitioner</a></dt>
+<dd>
+<div class="block">Constructor method.</div>
+</dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator.html#writeToCsv(java.lang.String)" class="member-name-link">writeToCsv(String)</a> - Method in class neural_network.data_generators.<a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator.html" title="class in neural_network.data_generators">DataGenerator</a></dt>
 <dd>
 <div class="block">Writes the generated data to a .csv file.</div>
