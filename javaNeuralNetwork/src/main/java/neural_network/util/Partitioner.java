@@ -53,7 +53,36 @@ public class Partitioner {
         return outputList;
     }
 
-    public void setRandom(Random random) {
+    /** Sets the new {@code random} for {@code Collections.shuffle}. To be
+     * used for testing purposes.
+     *
+     * @param random The new random.
+     */
+    void setRandom(Random random) {
         this.random = random;
+    }
+
+    /** Getter method for {@code numInts}. For subclasses.
+     *
+     * @return The number of integers.
+     */
+    protected int getNumInts() {
+        return numInts;
+    }
+
+    /** Getter method for {@code setSize}. For subclasses.
+     *
+     * @return The size of each set.
+     */
+    protected int getSetSize() {
+        return setSize;
+    }
+
+    /** Getter method for {@code random}. For subclasses.
+     *
+     * @return The random instance.
+     */
+    protected Random getRandom() {
+        return random;
     }
 }

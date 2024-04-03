@@ -20,10 +20,11 @@ public class PartitionerTest {
     private Partitioner unevenPartitioner;
     private Partitioner bigPartitioner;
     private Partitioner smallPartitioner;
+    private Random random;
 
     @BeforeEach
     void setUp() {
-        Random random = new Random(42);
+        random = new Random(42);
         evenPartitioner = new Partitioner(10, 5);
         evenPartitioner.setRandom(random);
         unevenPartitioner = new Partitioner(10, 3);
@@ -48,6 +49,13 @@ public class PartitionerTest {
                 () -> new Partitioner(4, 5));
         assertEquals("setSize (5) cannot be greater than numInts (4).",
                 exception3.getMessage());
+    }
+
+    @Test
+    void construct() {
+        assertEquals(10, evenPartitioner.getNumInts());
+        assertEquals(5, evenPartitioner.getSetSize());
+        assertEquals(random, evenPartitioner.getRandom());
     }
 
     @Test

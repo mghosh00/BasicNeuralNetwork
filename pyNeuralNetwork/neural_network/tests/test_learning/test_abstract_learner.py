@@ -115,7 +115,7 @@ class TestAbstractLearner(TestCase):
         self.assertIsInstance(self.simulator._partitioner, WeightedPartitioner)
         self.assertEqual(10, self.simulator._partitioner._n)
         self.assertEqual(2, self.simulator._partitioner._m)
-        self.assertEqual(2, self.simulator._partitioner._num_classes)
+        self.assertEqual(2, self.simulator._partitioner._num_bins)
 
         # Each class and a list of indices corresponding to datapoints which
         # belong to the class

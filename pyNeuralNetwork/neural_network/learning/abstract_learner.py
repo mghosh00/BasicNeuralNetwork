@@ -87,7 +87,7 @@ class AbstractLearner:
             self._partitioner = WeightedPartitioner(len(self._data),
                                                     batch_size, self._data,
                                                     self._regression,
-                                                    bins=bins)
+                                                    num_bins=bins)
         else:
             self._partitioner = Partitioner(len(self._data), batch_size)
 
