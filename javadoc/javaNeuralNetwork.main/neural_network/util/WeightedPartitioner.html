@@ -80,8 +80,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">WeightedPartitioner</span>
 <span class="extends-implements">extends <a href="Partitioner.html" title="class in neural_network.util">Partitioner</a></span></div>
-<div class="block">Class to create numSets sets from a list of numInts integers weighted by which
- ground truth class each integer lies in.</div>
+<div class="block">Class to create a number of sets of size <code>setSize</code> from a list of
+ <code>numInts</code> integers weighted by which ground truth class each integer lies in.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -124,7 +124,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#call()" class="member-name-link">call</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Uses weights for each class to create sets of size setSize containing
+<div class="block">Uses weights for each class to create sets of size <code>setSize</code> containing
  integers (sampled with replacement).</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>(package private) <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;&gt;</code></div>
@@ -201,7 +201,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="call()">
 <h3>call</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;&gt;</span>&nbsp;<span class="element-name">call</span>()</div>
-<div class="block">Uses weights for each class to create sets of size setSize containing
+<div class="block">Uses weights for each class to create sets of size <code>setSize</code> containing
  integers (sampled with replacement).</div>
 <dl class="notes">
 <dt>Overrides:</dt>
