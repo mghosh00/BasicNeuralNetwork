@@ -171,7 +171,7 @@ class TestTrainer(TestCase):
         print_calls = []
         for i in range(5):
             print_calls.append(mock.call(f"Epoch: {i}"))
-            print_calls.append(mock.call(f"Loss: {losses[i]}"))
+            print_calls.append(mock.call(f"Training loss: {losses[i]}"))
         mock_print.assert_has_calls(print_calls)
         self.assertEqual(10, mock_print.call_count)
 
@@ -210,7 +210,7 @@ class TestTrainer(TestCase):
         print_calls = []
         for i in range(5):
             print_calls.append(mock.call(f"Epoch: {i}"))
-            print_calls.append(mock.call(f"Loss: {losses[i]}"))
+            print_calls.append(mock.call(f"Training loss: {losses[i]}"))
         mock_print.assert_has_calls(print_calls)
         self.assertEqual(10, mock_print.call_count)
 
