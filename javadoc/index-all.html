@@ -49,7 +49,7 @@ loadScripts(document, 'script');</script>
 <div class="header">
 <h1>Index</h1>
 </div>
-<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:J">J</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:U">U</a>&nbsp;<a href="#I:V">V</a>&nbsp;<a href="#I:W">W</a>&nbsp;<a href="#I:X">X</a>&nbsp;<a href="#I:Y">Y</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a>
+<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:J">J</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:U">U</a>&nbsp;<a href="#I:V">V</a>&nbsp;<a href="#I:W">W</a>&nbsp;<a href="#I:X">X</a>&nbsp;<a href="#I:Y">Y</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a>
 <h2 class="title" id="I:A">A</h2>
 <dl class="index">
 <dt><a href="javaNeuralNetwork.main/neural_network/components/Network.html#activateOutputLayer(java.util.List)" class="member-name-link">activateOutputLayer(List&lt;Double&gt;)</a> - Method in class neural_network.components.<a href="javaNeuralNetwork.main/neural_network/components/Network.html" title="class in neural_network.components">Network</a></dt>
@@ -81,10 +81,25 @@ loadScripts(document, 'script');</script>
 <div class="block">Uses the bias gradients of all datapoints (for this specific <code>Neuron</code>)
  to perform gradient descent and calculate a new bias for this <code>Neuron</code>.</div>
 </dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/components/Network.html#backPropagateBiases()" class="member-name-link">backPropagateBiases()</a> - Method in class neural_network.components.<a href="javaNeuralNetwork.main/neural_network/components/Network.html" title="class in neural_network.components">Network</a></dt>
+<dd>
+<div class="block">Back propagates all the biases of the network after one batch
+ of datapoints has been passed through.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Trainer.html#backPropagateOneBatch()" class="member-name-link">backPropagateOneBatch()</a> - Method in class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Trainer.html" title="class in neural_network.learning">Trainer</a></dt>
+<dd>
+<div class="block">Performs back propagation for one batch of datapoints (stored within
+ the memory of the edges).</div>
+</dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/components/Network.html#backPropagateWeight(neural_network.components.Edge)" class="member-name-link">backPropagateWeight(Edge)</a> - Method in class neural_network.components.<a href="javaNeuralNetwork.main/neural_network/components/Network.html" title="class in neural_network.components">Network</a></dt>
 <dd>
 <div class="block">Uses the loss gradients of all datapoints (for this specific <code>edge</code>)
  to perform gradient descent and calculate a new weight for this <code>edge</code>.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/components/Network.html#backPropagateWeights()" class="member-name-link">backPropagateWeights()</a> - Method in class neural_network.components.<a href="javaNeuralNetwork.main/neural_network/components/Network.html" title="class in neural_network.components">Network</a></dt>
+<dd>
+<div class="block">Back propagates all the weights of the network after one batch
+ of datapoints has been passed through.</div>
 </dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/functions/TransferFunction.html#bindBias(double)" class="member-name-link">bindBias(double)</a> - Method in class neural_network.functions.<a href="javaNeuralNetwork.main/neural_network/functions/TransferFunction.html" title="class in neural_network.functions">TransferFunction</a></dt>
 <dd>
@@ -209,6 +224,11 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:F">F</h2>
 <dl class="index">
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Learner.html#forwardPassOneBatch(java.util.List)" class="member-name-link">forwardPassOneBatch(List&lt;Integer&gt;)</a> - Method in class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Learner.html" title="class in neural_network.learning">Learner</a></dt>
+<dd>
+<div class="block">Performs the forward pass through the <code>network</code>
+ for one batch of the data.</div>
+</dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/components/Network.html#forwardPassOneDatapoint(java.util.List)" class="member-name-link">forwardPassOneDatapoint(List&lt;Double&gt;)</a> - Method in class neural_network.components.<a href="javaNeuralNetwork.main/neural_network/components/Network.html" title="class in neural_network.components">Network</a></dt>
 <dd>
 <div class="block">Performs a forward pass for one datapoint, excluding the ground
@@ -236,6 +256,10 @@ loadScripts(document, 'script');</script>
  the <code>Y</code> header (the true class/value of the datapoint) and the <code>Y_HAT</code>
  header (the predicted class/value of the datapoint).</div>
 </dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Learner.html#getBatchSize()" class="member-name-link">getBatchSize()</a> - Method in class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Learner.html" title="class in neural_network.learning">Learner</a></dt>
+<dd>
+<div class="block">Getter for <code>batchSize</code>.</div>
+</dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/components/Neuron.html#getBias()" class="member-name-link">getBias()</a> - Method in class neural_network.components.<a href="javaNeuralNetwork.main/neural_network/components/Neuron.html" title="class in neural_network.components">Neuron</a></dt>
 <dd>
 <div class="block">Getter method for <code>bias</code>.</div>
@@ -243,6 +267,14 @@ loadScripts(document, 'script');</script>
 <dt><a href="javaNeuralNetwork.main/neural_network/components/Neuron.html#getBiasGradients()" class="member-name-link">getBiasGradients()</a> - Method in class neural_network.components.<a href="javaNeuralNetwork.main/neural_network/components/Neuron.html" title="class in neural_network.components">Neuron</a></dt>
 <dd>
 <div class="block">Getter method for <code>biasGradients</code>.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Learner.html#getCategoricalDf()" class="member-name-link">getCategoricalDf()</a> - Method in class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Learner.html" title="class in neural_network.learning">Learner</a></dt>
+<dd>
+<div class="block">Getter for <code>categoricalDf</code>.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Learner.html#getCategoryNames()" class="member-name-link">getCategoryNames()</a> - Method in class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Learner.html" title="class in neural_network.learning">Learner</a></dt>
+<dd>
+<div class="block">Getter for <code>categoryNames</code>.</div>
 </dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/util/WeightedPartitioner.html#getClassMap()" class="member-name-link">getClassMap()</a> - Method in class neural_network.util.<a href="javaNeuralNetwork.main/neural_network/util/WeightedPartitioner.html" title="class in neural_network.util">WeightedPartitioner</a></dt>
 <dd>
@@ -255,6 +287,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="javaNeuralNetwork.main/neural_network/components/Edge.html#getDelta()" class="member-name-link">getDelta()</a> - Method in class neural_network.components.<a href="javaNeuralNetwork.main/neural_network/components/Edge.html" title="class in neural_network.components">Edge</a></dt>
 <dd>
 <div class="block">Getter method for <code>delta</code>.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Learner.html#getDf()" class="member-name-link">getDf()</a> - Method in class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Learner.html" title="class in neural_network.learning">Learner</a></dt>
+<dd>
+<div class="block">Getter for <code>df</code>.</div>
 </dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator.html#getDimensions()" class="member-name-link">getDimensions()</a> - Method in class neural_network.data_generators.<a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator.html" title="class in neural_network.data_generators">DataGenerator</a></dt>
 <dd>
@@ -301,9 +337,17 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Getter method for <code>leftNeuron</code>.</div>
 </dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Trainer.html#getLossDf()" class="member-name-link">getLossDf()</a> - Method in class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Trainer.html" title="class in neural_network.learning">Trainer</a></dt>
+<dd>
+<div class="block">Getter for <code>lossDf</code>.</div>
+</dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/components/Edge.html#getLossGradients()" class="member-name-link">getLossGradients()</a> - Method in class neural_network.components.<a href="javaNeuralNetwork.main/neural_network/components/Edge.html" title="class in neural_network.components">Edge</a></dt>
 <dd>
 <div class="block">Getter method for <code>lossGradients</code>.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Learner.html#getNetwork()" class="member-name-link">getNetwork()</a> - Method in class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Learner.html" title="class in neural_network.learning">Learner</a></dt>
+<dd>
+<div class="block">Getter for <code>network</code>.</div>
 </dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/components/Network.html#getNeuronCounts()" class="member-name-link">getNeuronCounts()</a> - Method in class neural_network.components.<a href="javaNeuralNetwork.main/neural_network/components/Network.html" title="class in neural_network.components">Network</a></dt>
 <dd>
@@ -318,9 +362,17 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Getter method for numDatapoints - only needed for package access.</div>
 </dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Learner.html#getNumDatapoints()" class="member-name-link">getNumDatapoints()</a> - Method in class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Learner.html" title="class in neural_network.learning">Learner</a></dt>
+<dd>
+<div class="block">Getter for <code>numDatapoints</code>.</div>
+</dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/util/Partitioner.html#getNumInts()" class="member-name-link">getNumInts()</a> - Method in class neural_network.util.<a href="javaNeuralNetwork.main/neural_network/util/Partitioner.html" title="class in neural_network.util">Partitioner</a></dt>
 <dd>
 <div class="block">Getter method for <code>numInts</code>.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Learner.html#getPartitioner()" class="member-name-link">getPartitioner()</a> - Method in class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Learner.html" title="class in neural_network.learning">Learner</a></dt>
+<dd>
+<div class="block">Getter for <code>partitioner</code>.</div>
 </dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator.html#getPrinter()" class="member-name-link">getPrinter()</a> - Method in class neural_network.data_generators.<a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator.html" title="class in neural_network.data_generators">DataGenerator</a></dt>
 <dd>
@@ -395,6 +447,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Getter method for the <code>regression</code> parameter.</div>
 </dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Learner.html#isRegressor()" class="member-name-link">isRegressor()</a> - Method in class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Learner.html" title="class in neural_network.learning">Learner</a></dt>
+<dd>
+<div class="block">Getter for <code>doRegression</code>.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:J">J</h2>
 <dl class="index">
@@ -427,6 +483,18 @@ loadScripts(document, 'script');</script>
 <dt><a href="javaNeuralNetwork.main/neural_network/functions/LeakyReLU.html#%3Cinit%3E(double)" class="member-name-link">LeakyReLU(double)</a> - Constructor for class neural_network.functions.<a href="javaNeuralNetwork.main/neural_network/functions/LeakyReLU.html" title="class in neural_network.functions">LeakyReLU</a></dt>
 <dd>
 <div class="block">Constructor method with a given <code>leak</code>.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Learner.html" class="type-name-link" title="class in neural_network.learning">Learner</a> - Class in <a href="javaNeuralNetwork.main/neural_network/learning/package-summary.html">neural_network.learning</a></dt>
+<dd>
+<div class="block">Base class for <code>Trainer</code>, <code>Validator</code> and <code>Tester</code>.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Learner.html#%3Cinit%3E(neural_network.components.Network,java.util.NavigableMap,int)" class="member-name-link">Learner(Network, NavigableMap&lt;Header, List&lt;String&gt;&gt;, int)</a> - Constructor for class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Learner.html" title="class in neural_network.learning">Learner</a></dt>
+<dd>
+<div class="block">Constructor for non-weighted partitions.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Learner.html#%3Cinit%3E(neural_network.components.Network,java.util.NavigableMap,int,boolean,int)" class="member-name-link">Learner(Network, NavigableMap&lt;Header, List&lt;String&gt;&gt;, int, boolean, int)</a> - Constructor for class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Learner.html" title="class in neural_network.learning">Learner</a></dt>
+<dd>
+<div class="block">General constructor method (with possibility of weighted partition).</div>
 </dd>
 </dl>
 <h2 class="title" id="I:M">M</h2>
@@ -471,6 +539,10 @@ loadScripts(document, 'script');</script>
 <div class="block">The <code>functions</code> package contains all mathematical functions used in
  a neural network.</div>
 </dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/package-summary.html">neural_network.learning</a> - package neural_network.learning</dt>
+<dd>
+<div class="block">The <code>learning</code> package contains the main classes the user will interact with.</div>
+</dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/util/package-summary.html">neural_network.util</a> - package neural_network.util</dt>
 <dd>
 <div class="block">The <code>util</code> package contains a selection of useful classes for this module.</div>
@@ -510,11 +582,26 @@ loadScripts(document, 'script');</script>
 <div class="block">Constructor method.</div>
 </dd>
 </dl>
+<h2 class="title" id="I:R">R</h2>
+<dl class="index">
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Learner.html#run()" class="member-name-link">run()</a> - Method in class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Learner.html" title="class in neural_network.learning">Learner</a></dt>
+<dd>
+<div class="block">Performs training/validation/testing</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Trainer.html#run()" class="member-name-link">run()</a> - Method in class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Trainer.html" title="class in neural_network.learning">Trainer</a></dt>
+<dd>
+<div class="block">Performs training of the network.</div>
+</dd>
+</dl>
 <h2 class="title" id="I:S">S</h2>
 <dl class="index">
 <dt><a href="javaNeuralNetwork.main/neural_network/components/Neuron.html#setBias(double)" class="member-name-link">setBias(double)</a> - Method in class neural_network.components.<a href="javaNeuralNetwork.main/neural_network/components/Neuron.html" title="class in neural_network.components">Neuron</a></dt>
 <dd>
 <div class="block">Setter method for <code>bias</code>.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Learner.html#setCrossEntropyLoss(neural_network.functions.CrossEntropyLoss)" class="member-name-link">setCrossEntropyLoss(CrossEntropyLoss)</a> - Method in class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Learner.html" title="class in neural_network.learning">Learner</a></dt>
+<dd>
+<div class="block">Setter for <code>crossEntropyLoss</code>.</div>
 </dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/util/DataSplitter.html#setCsvFormat(org.apache.commons.csv.CSVFormat)" class="member-name-link">setCsvFormat(CSVFormat)</a> - Method in class neural_network.util.<a href="javaNeuralNetwork.main/neural_network/util/DataSplitter.html" title="class in neural_network.util">DataSplitter</a></dt>
 <dd>
@@ -527,6 +614,14 @@ loadScripts(document, 'script');</script>
 <dt><a href="javaNeuralNetwork.main/neural_network/util/Header.html#setDimensions(int)" class="member-name-link">setDimensions(int)</a> - Static method in enum class neural_network.util.<a href="javaNeuralNetwork.main/neural_network/util/Header.html" title="enum class in neural_network.util">Header</a></dt>
 <dd>
 <div class="block">Sets up the dimensions (number of x coordinates) for the datapoints.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Learner.html#setMseLoss(neural_network.functions.MSELoss)" class="member-name-link">setMseLoss(MSELoss)</a> - Method in class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Learner.html" title="class in neural_network.learning">Learner</a></dt>
+<dd>
+<div class="block">Setter for <code>mseLoss</code>.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Learner.html#setNetwork(neural_network.components.Network)" class="member-name-link">setNetwork(Network)</a> - Method in class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Learner.html" title="class in neural_network.learning">Learner</a></dt>
+<dd>
+<div class="block">Setter for <code>network</code>.</div>
 </dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator.html#setPrinter(org.apache.commons.csv.CSVPrinter)" class="member-name-link">setPrinter(CSVPrinter)</a> - Method in class neural_network.data_generators.<a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator.html" title="class in neural_network.data_generators">DataGenerator</a></dt>
 <dd>
@@ -587,6 +682,16 @@ loadScripts(document, 'script');</script>
  weight (assigned to the <code>edge</code>) based on the values at edges of future
  layers.</div>
 </dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Learner.html#storeGradients(int)" class="member-name-link">storeGradients(int)</a> - Method in class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Learner.html" title="class in neural_network.learning">Learner</a></dt>
+<dd>
+<div class="block">To be overridden by a <code>Trainer</code>, but will not be touched by the
+ <code>Validator</code> or <code>Tester</code>.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Trainer.html#storeGradients(int)" class="member-name-link">storeGradients(int)</a> - Method in class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Trainer.html" title="class in neural_network.learning">Trainer</a></dt>
+<dd>
+<div class="block">Stores the gradients of the loss functions after a forward pass of
+ a single datapoint.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:T">T</h2>
 <dl class="index">
@@ -605,6 +710,18 @@ loadScripts(document, 'script');</script>
 <dt><a href="javaNeuralNetwork.main/neural_network/util/Header.html#toString()" class="member-name-link">toString()</a> - Method in enum class neural_network.util.<a href="javaNeuralNetwork.main/neural_network/util/Header.html" title="enum class in neural_network.util">Header</a></dt>
 <dd>
 <div class="block">String representation.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Trainer.html" class="type-name-link" title="class in neural_network.learning">Trainer</a> - Class in <a href="javaNeuralNetwork.main/neural_network/learning/package-summary.html">neural_network.learning</a></dt>
+<dd>
+<div class="block">Class to train a neural network.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Trainer.html#%3Cinit%3E(neural_network.components.Network,java.util.NavigableMap,int,boolean,int,int,neural_network.learning.Validator)" class="member-name-link">Trainer(Network, NavigableMap&lt;Header, List&lt;String&gt;&gt;, int, boolean, int, int, Validator)</a> - Constructor for class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Trainer.html" title="class in neural_network.learning">Trainer</a></dt>
+<dd>
+<div class="block">General constructor method.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Trainer.html#%3Cinit%3E(neural_network.components.Network,java.util.NavigableMap,int,int)" class="member-name-link">Trainer(Network, NavigableMap&lt;Header, List&lt;String&gt;&gt;, int, int)</a> - Constructor for class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Trainer.html" title="class in neural_network.learning">Trainer</a></dt>
+<dd>
+<div class="block">Defaults constructor.</div>
 </dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/functions/TransferFunction.html" class="type-name-link" title="class in neural_network.functions">TransferFunction</a> - Class in <a href="javaNeuralNetwork.main/neural_network/functions/package-summary.html">neural_network.functions</a></dt>
 <dd>
@@ -627,9 +744,21 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Constructor method for <code>NormalDataGenerator</code>.</div>
 </dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Learner.html#updateCategoricalDataframe()" class="member-name-link">updateCategoricalDataframe()</a> - Method in class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Learner.html" title="class in neural_network.learning">Learner</a></dt>
+<dd>
+<div class="block">Update the categorical dataframe with <code>yHat</code> data but using the
+ original categories from the data - to be used for plotting and
+ outputs to the user.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:V">V</h2>
 <dl class="index">
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Validator.html#validate(int)" class="member-name-link">validate(int)</a> - Method in class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Validator.html" title="class in neural_network.learning">Validator</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Validator.html" class="type-name-link" title="class in neural_network.learning">Validator</a> - Class in <a href="javaNeuralNetwork.main/neural_network/learning/package-summary.html">neural_network.learning</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Validator.html#%3Cinit%3E(neural_network.components.Network,java.util.NavigableMap,int)" class="member-name-link">Validator(Network, NavigableMap&lt;Header, List&lt;String&gt;&gt;, int)</a> - Constructor for class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Validator.html" title="class in neural_network.learning">Validator</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/util/Header.html#valueOf(java.lang.String)" class="member-name-link">valueOf(String)</a> - Static method in enum class neural_network.util.<a href="javaNeuralNetwork.main/neural_network/util/Header.html" title="enum class in neural_network.util">Header</a></dt>
 <dd>
 <div class="block">Returns the enum constant of this class with the specified name.</div>
@@ -653,7 +782,7 @@ the order they are declared.</div>
 </dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/util/WeightedPartitioner.html#%3Cinit%3E(int,int,java.util.List,boolean,int)" class="member-name-link">WeightedPartitioner(int, int, List&lt;Double&gt;, boolean, int)</a> - Constructor for class neural_network.util.<a href="javaNeuralNetwork.main/neural_network/util/WeightedPartitioner.html" title="class in neural_network.util">WeightedPartitioner</a></dt>
 <dd>
-<div class="block">Constructor method.</div>
+<div class="block">General constructor method.</div>
 </dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator.html#writeToCsv(java.lang.String)" class="member-name-link">writeToCsv(String)</a> - Method in class neural_network.data_generators.<a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator.html" title="class in neural_network.data_generators">DataGenerator</a></dt>
 <dd>
@@ -714,7 +843,7 @@ the order they are declared.</div>
 <div class="block">Predicted class/value of the datapoint.</div>
 </dd>
 </dl>
-<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:J">J</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:U">U</a>&nbsp;<a href="#I:V">V</a>&nbsp;<a href="#I:W">W</a>&nbsp;<a href="#I:X">X</a>&nbsp;<a href="#I:Y">Y</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a></main>
+<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:J">J</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:U">U</a>&nbsp;<a href="#I:V">V</a>&nbsp;<a href="#I:W">W</a>&nbsp;<a href="#I:X">X</a>&nbsp;<a href="#I:Y">Y</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a></main>
 </div>
 </div>
 </body>

@@ -2,4 +2,5 @@ module:javaNeuralNetwork.main
 neural_network.components
 neural_network.data_generators
 neural_network.functions
+neural_network.learning
 neural_network.util

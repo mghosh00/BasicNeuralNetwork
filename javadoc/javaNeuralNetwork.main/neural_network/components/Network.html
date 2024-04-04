@@ -139,17 +139,29 @@ loadScripts(document, 'script');</script>
 <div class="block">Activates the values from the <code>outputLayer</code> using the <code>softmax</code>
  activation function.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>(package private) void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#backPropagateBias(neural_network.components.Neuron)" class="member-name-link">backPropagateBias</a><wbr>(<a href="Neuron.html" title="class in neural_network.components">Neuron</a>&nbsp;neuron)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Uses the bias gradients of all datapoints (for this specific <code>Neuron</code>)
  to perform gradient descent and calculate a new bias for this <code>Neuron</code>.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#backPropagateWeight(neural_network.components.Edge)" class="member-name-link">backPropagateWeight</a><wbr>(<a href="Edge.html" title="class in neural_network.components">Edge</a>&nbsp;edge)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#backPropagateBiases()" class="member-name-link">backPropagateBiases</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Back propagates all the biases of the network after one batch
+ of datapoints has been passed through.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>(package private) void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#backPropagateWeight(neural_network.components.Edge)" class="member-name-link">backPropagateWeight</a><wbr>(<a href="Edge.html" title="class in neural_network.components">Edge</a>&nbsp;edge)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Uses the loss gradients of all datapoints (for this specific <code>edge</code>)
  to perform gradient descent and calculate a new weight for this <code>edge</code>.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#backPropagateWeights()" class="member-name-link">backPropagateWeights</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Back propagates all the weights of the network after one batch
+ of datapoints has been passed through.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>(package private) double</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#calculatePreActivatedValue(neural_network.components.Layer,neural_network.components.Neuron)" class="member-name-link">calculatePreActivatedValue</a><wbr>(<a href="Layer.html" title="class in neural_network.components">Layer</a>&nbsp;leftLayer,
@@ -361,7 +373,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="backPropagateWeight(neural_network.components.Edge)">
 <h3>backPropagateWeight</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">backPropagateWeight</span><wbr><span class="parameters">(<a href="Edge.html" title="class in neural_network.components">Edge</a>&nbsp;edge)</span></div>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">backPropagateWeight</span><wbr><span class="parameters">(<a href="Edge.html" title="class in neural_network.components">Edge</a>&nbsp;edge)</span></div>
 <div class="block">Uses the loss gradients of all datapoints (for this specific <code>edge</code>)
  to perform gradient descent and calculate a new weight for this <code>edge</code>.</div>
 <dl class="notes">
@@ -371,15 +383,31 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
+<section class="detail" id="backPropagateWeights()">
+<h3>backPropagateWeights</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">backPropagateWeights</span>()</div>
+<div class="block">Back propagates all the weights of the network after one batch
+ of datapoints has been passed through.</div>
+</section>
+</li>
+<li>
 <section class="detail" id="backPropagateBias(neural_network.components.Neuron)">
 <h3>backPropagateBias</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">backPropagateBias</span><wbr><span class="parameters">(<a href="Neuron.html" title="class in neural_network.components">Neuron</a>&nbsp;neuron)</span></div>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">backPropagateBias</span><wbr><span class="parameters">(<a href="Neuron.html" title="class in neural_network.components">Neuron</a>&nbsp;neuron)</span></div>
 <div class="block">Uses the bias gradients of all datapoints (for this specific <code>Neuron</code>)
  to perform gradient descent and calculate a new bias for this <code>Neuron</code>.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>neuron</code> - The <code>Neuron</code> whose bias we are interested in updating.</dd>
 </dl>
+</section>
+</li>
+<li>
+<section class="detail" id="backPropagateBiases()">
+<h3>backPropagateBiases</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">backPropagateBiases</span>()</div>
+<div class="block">Back propagates all the biases of the network after one batch
+ of datapoints has been passed through.</div>
 </section>
 </li>
 <li>
@@ -423,7 +451,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Getter method for the <code>edges</code>.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>A list of all the edges of the <code>Network</code>.</dd>
+<dd>A copied list of all the edges of the <code>Network</code>.</dd>
 </dl>
 </section>
 </li>
