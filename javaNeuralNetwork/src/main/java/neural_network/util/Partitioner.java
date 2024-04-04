@@ -45,7 +45,7 @@ public class Partitioner {
                 .boxed().toList());
         Collections.shuffle(ints, random);
         List<List<Integer>> outputList = new ArrayList<>();
-        int numSets = (int) Math.ceil((double) numInts / setSize);
+        int numSets = Math.ceilDiv(numInts, setSize);
         for (int i = 0; i < numSets - 1; i ++) {
             outputList.add(ints.subList(i * setSize, (i + 1) * setSize));
         }

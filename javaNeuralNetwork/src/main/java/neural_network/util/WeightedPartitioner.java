@@ -104,7 +104,7 @@ public class WeightedPartitioner extends Partitioner {
                 .boxed().toList();
 
         List<List<Integer>> outputList = new ArrayList<>();
-        int numSets = (int) Math.ceil((double) getNumInts() / getSetSize());
+        int numSets = Math.ceilDiv(getNumInts(), getSetSize());
         for (int i = 0; i < numSets - 1; i ++) {
             List<Integer> innerList = new ArrayList<>();
             for (int j = 0; j < getSetSize(); j ++) {

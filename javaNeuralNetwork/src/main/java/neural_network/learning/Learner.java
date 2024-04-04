@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public abstract class Learner {
 
-    private final Network network;
+    private Network network;
     private final boolean doRegression;
     private final int dimensions;
     private final int numDatapoints;
@@ -25,7 +25,7 @@ public abstract class Learner {
     private final NavigableMap<Header, List<Double>> df = new TreeMap<>();
     private CrossEntropyLoss crossEntropyLoss;
     private MSELoss mseLoss;
-    private final Partitioner partitioner;
+    private Partitioner partitioner;
 
     /** General constructor method (with possibility of weighted partition).
      *
@@ -176,14 +176,14 @@ public abstract class Learner {
     /** To be overridden by a {@code Trainer}, but will not be touched by the
      * {@code Validator} or {@code Tester}.
      *
-     * @param batchId The id of the current batch.
+     * @param id The id of the current datapoint.
      */
-    void storeGradients(int batchId) {}
+    void storeGradients(int id) {}
 
     /** Performs training/validation/testing
      *
      */
-    abstract void run();
+    public abstract void run();
 
     /** Update the categorical dataframe with {@code yHat} data but using the
      * original categories from the data - to be used for plotting and
@@ -297,5 +297,13 @@ public abstract class Learner {
      */
     void setMseLoss(MSELoss mseLoss) {
         this.mseLoss = mseLoss;
+    }
+
+    /** Setter for {@code network}. For mocking.
+     *
+     * @param network The new {@code network}.
+     */
+    void setNetwork(Network network) {
+        this.network = network;
     }
 }

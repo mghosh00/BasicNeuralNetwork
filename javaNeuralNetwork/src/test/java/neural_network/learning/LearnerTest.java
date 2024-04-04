@@ -5,6 +5,7 @@ import neural_network.functions.CrossEntropyLoss;
 import neural_network.functions.MSELoss;
 import neural_network.util.Header;
 import neural_network.util.Partitioner;
+import neural_network.util.WeightedPartitioner;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -38,7 +39,7 @@ public abstract class LearnerTest {
                     (NavigableMap<Header, List<String>>) constructMap.get("categoricalDfs").get(i);
             NavigableMap<Header, List<Double>> df =
                     (NavigableMap<Header, List<Double>>) constructMap.get("dfs").get(i);
-            Partitioner partitioner = (Partitioner) constructMap.get("partitioners").get(i);
+            boolean weighted = (boolean) constructMap.get("weighted").get(i);
 
             assertEquals(network, learner.getNetwork());
             assertEquals(regressor, learner.isRegressor());
@@ -47,12 +48,17 @@ public abstract class LearnerTest {
             if (! regressor) {
                 assertIterableEquals(categoryNames, learner.getCategoryNames());
             }
-            assertEquals(partitioner, learner.getPartitioner());
+            if (weighted) {
+                assertInstanceOf(WeightedPartitioner.class, learner.getPartitioner());
+            } else {
+                assertInstanceOf(Partitioner.class, learner.getPartitioner());
+                assertFalse(learner.getPartitioner() instanceof WeightedPartitioner);
+            }
 
-            NavigableMap<Header, List<String>> trueCategoricalDf = learner.getCategoricalDf();
             NavigableMap<Header, List<Double>> trueDf = learner.getDf();
             for (Header header : df.keySet()) {
                 if (! regressor) {
+                    NavigableMap<Header, List<String>> trueCategoricalDf = learner.getCategoricalDf();
                     assertTrue(trueCategoricalDf.containsKey(header));
                     assertIterableEquals(categoricalDf.get(header),
                             trueCategoricalDf.get(header));
@@ -66,7 +72,7 @@ public abstract class LearnerTest {
 
     @SuppressWarnings("unchecked")
     @Test
-    void forwardPassOneDatapoint() {
+    void forwardPassOneBatch() {
         Map<String, List<Object>> forwardPassMap = getLearnerWithExpectedLoss();
         int n = forwardPassMap.get("learners").size();
         for (int i = 0; i < n; i ++) {
@@ -76,7 +82,6 @@ public abstract class LearnerTest {
             Learner spyLearner = (Learner) forwardPassMap.get("learners").get(i);
             boolean doRegression = spyLearner.isRegressor();
             Network mockNetwork = spyLearner.getNetwork();
-            NavigableMap<Header, List<Double>> df = spyLearner.getDf();
 
             // These are the chosen batch ids and values from the output neurons -
             // either softmax probabilities or regression values
@@ -93,6 +98,7 @@ public abstract class LearnerTest {
 
                 // Assertions start here
                 double trueLoss = spyLearner.forwardPassOneBatch(batchIds);
+                NavigableMap<Header, List<Double>> df = spyLearner.getDf();
                 assertEquals(totalLoss, trueLoss);
                 for (int j = 0; j < batchIds.size(); j ++) {
                     int batchId = batchIds.get(j);
@@ -111,18 +117,19 @@ public abstract class LearnerTest {
                         (CrossEntropyLoss) forwardPassMap.get("lossFunctions").get(i);
                 List<Integer> trueYHats =
                         (List<Integer>) forwardPassMap.get("yHats").get(i);
-                List<Integer> predictedYHats =
-                        (List<Integer>) forwardPassMap.get("predictedYHats").get(i);
+                List<Double> predictedYHats =
+                        (List<Double>) forwardPassMap.get("predictedYHats").get(i);
 
                 // Assertions start here
                 double trueLoss = spyLearner.forwardPassOneBatch(batchIds);
+                NavigableMap<Header, List<Double>> df = spyLearner.getDf();
                 assertEquals(totalLoss, trueLoss);
                 for (int j = 0; j < batchIds.size(); j ++) {
                     int batchId = batchIds.get(j);
                     // Check that the most likely class has been written
                     // to the df
                     assertEquals(predictedYHats.get(j),
-                            (int) (double) df.get(Header.Y_HAT).get(batchId));
+                            df.get(Header.Y_HAT).get(batchId));
                     verify(mockCrossEntropyLoss, times(1))
                             .call(outputNeuronVals.get(j), trueYHats.get(j));
                     verify(spyLearner, times(1))

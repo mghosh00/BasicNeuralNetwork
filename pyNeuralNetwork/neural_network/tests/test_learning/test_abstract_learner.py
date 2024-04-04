@@ -80,10 +80,10 @@ class TestAbstractLearner(TestCase):
                          str(ve_2.exception))
 
         # 3. Batch size too big
-        with self.assertRaises(ValueError) as ve_4:
+        with self.assertRaises(ValueError) as ve_3:
             AbstractLearner(self.network, self.df, batch_size=11)
         self.assertEqual("Batch size must be smaller than number of "
-                         "datapoints", str(ve_4.exception))
+                         "datapoints", str(ve_3.exception))
 
     def test_construct_default(self):
         self.assertEqual(self.network, self.default_simulator._network)

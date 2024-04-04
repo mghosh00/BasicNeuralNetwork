@@ -91,7 +91,7 @@ class Trainer(AbstractLearner):
             loss = round(total_loss / len(self._data), 8)
             if epoch % factor == 0:
                 print(f"Epoch: {epoch}")
-                print(f"Loss: {loss}")
+                print(f"Training loss: {loss}")
 
             self._loss_df.at[epoch, 'Training'] = loss
             if self._validator:

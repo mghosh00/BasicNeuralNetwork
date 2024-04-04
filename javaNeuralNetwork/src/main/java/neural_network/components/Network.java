@@ -6,6 +6,7 @@ import neural_network.functions.Softmax;
 import neural_network.functions.TransferFunction;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Stream;
@@ -329,7 +330,7 @@ public class Network {
      *
      * @param edge The {@code Edge} whose weight we are interested in updating.
      */
-    public void backPropagateWeight(Edge edge) {
+    void backPropagateWeight(Edge edge) {
         double currentWeight = edge.getWeight();
 
         // The number of datapoints which we have passed through the network
@@ -353,12 +354,29 @@ public class Network {
         edge.clearLossGradients();
     }
 
+    /** Back propagates all the weights of the network after one batch
+     * of datapoints has been passed through.
+     *
+     */
+    public void backPropagateWeights() {
+        // Make a copy of the edges list so that we can reverse it
+        List<List<List<Edge>>> edges = getEdges();
+        Collections.reverse(edges);
+        for (List<List<Edge>> edgeLayer : edges) {
+            for (List<Edge> rightNeuron : edgeLayer) {
+                for (Edge edge : rightNeuron) {
+                    backPropagateWeight(edge);
+                }
+            }
+        }
+    }
+
     /** Uses the bias gradients of all datapoints (for this specific {@code Neuron})
      * to perform gradient descent and calculate a new bias for this {@code Neuron}.
      *
      * @param neuron The {@code Neuron} whose bias we are interested in updating.
      */
-    public void backPropagateBias(Neuron neuron) {
+    void backPropagateBias(Neuron neuron) {
         double currentBias = neuron.getBias();
         double batchSize = neuron.getBiasGradients().size();
         double avgBiasGradient = neuron.getBiasGradients().stream()
@@ -366,6 +384,18 @@ public class Network {
                 .sum() / batchSize;
         neuron.setBias(currentBias - learningRate * avgBiasGradient);
         neuron.clearBiasGradients();
+    }
+
+    /** Back propagates all the biases of the network after one batch
+     * of datapoints has been passed through.
+     *
+     */
+    public void backPropagateBiases() {
+        for (Layer layer : layers.subList(1, layers.size())) {
+            for (Neuron neuron : layer.getNeurons()) {
+                backPropagateBias(neuron);
+            }
+        }
     }
 
     /** Getter method for all the neuron counts, for the input,
@@ -399,7 +429,7 @@ public class Network {
 
     /** Getter method for the {@code edges}.
      *
-     * @return A list of all the edges of the {@code Network}.
+     * @return A copied list of all the edges of the {@code Network}.
      */
     public List<List<List<Edge>>> getEdges() {
         List<List<List<Edge>>> copyEdges = new ArrayList<>();
