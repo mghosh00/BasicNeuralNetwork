@@ -94,12 +94,13 @@ public class Trainer extends Learner {
      */
     @Override
     public void run() {
-        int factor = Math.ceilDiv(numEpochs, 100);
+        int factor = (int) Math.ceil((double) numEpochs / 100);
         for (int epoch = 0; epoch < numEpochs; epoch ++) {
             double totalLoss = 0.0;
             // Partition all the datapoints into batches
             List<List<Integer>> batchPartition = getPartitioner().call();
-            int itsPerEpoch = Math.ceilDiv(getNumDatapoints(), getBatchSize());
+            int itsPerEpoch = (int) Math
+                    .ceil((double) getNumDatapoints() / getBatchSize());
             for (int iteration = 0; iteration < itsPerEpoch; iteration ++) {
                 List<Integer> batchIds = batchPartition.get(iteration);
 
