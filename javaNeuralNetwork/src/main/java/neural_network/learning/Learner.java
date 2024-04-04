@@ -18,6 +18,7 @@ public abstract class Learner {
     private final Network network;
     private final boolean doRegression;
     private final int dimensions;
+    private final int numDatapoints;
     private final int batchSize;
     private List<String> categoryNames;
     private NavigableMap<Header, List<String>> categoricalDf;
@@ -61,6 +62,7 @@ public abstract class Learner {
             throw new IllegalArgumentException("Batch size must be smaller than " +
                     "number of datapoints");
         }
+        this.numDatapoints = numDatapoints;
         this.batchSize = batchSize;
 
         // This is setting up the df by converting strings to doubles.
@@ -207,5 +209,93 @@ public abstract class Learner {
                     categoricalDf.get(Header.Y_HAT).set(index.get(), categoryNames.get(category));
                     index.getAndIncrement();
                 });
+    }
+
+    /** Getter for {@code network}. For subclasses.
+     *
+     * @return The {@code network}.
+     */
+    Network getNetwork() {
+        return network;
+    }
+
+    /** Getter for {@code doRegression}. For subclasses.
+     *
+     * @return If {@code true} then we are regressing, else we are classifying.
+     */
+    boolean isRegressor() {
+        return doRegression;
+    }
+
+    /** Getter for {@code numDatapoints}. For subclasses.
+     *
+     * @return The {@code numDatapoints}.
+     */
+    int getNumDatapoints() {
+        return numDatapoints;
+    }
+
+    /** Getter for {@code batchSize}. For subclasses.
+     *
+     * @return The {@code batchSize}.
+     */
+    int getBatchSize() {
+        return batchSize;
+    }
+
+    /** Getter for {@code categoryNames}. For subclasses.
+     *
+     * @return A copy of the {@code categoryNames}.
+     */
+    List<String> getCategoryNames() {
+        return List.copyOf(categoryNames);
+    }
+
+    /** Getter for {@code categoricalDf}. For subclasses.
+     *
+     * @return A deep copy of the {@code categoricalDf}.
+     */
+    NavigableMap<Header, List<String>> getCategoricalDf() {
+        NavigableMap<Header, List<String>> returnMap = new TreeMap<>();
+        for (Header header : categoricalDf.keySet()) {
+            returnMap.put(header, List.copyOf(categoricalDf.get(header)));
+        }
+        return returnMap;
+    }
+
+    /** Getter for {@code df}. For subclasses.
+     *
+     * @return A deep copy of the {@code df}.
+     */
+    NavigableMap<Header, List<Double>> getDf() {
+        NavigableMap<Header, List<Double>> returnMap = new TreeMap<>();
+        for (Header header : df.keySet()) {
+            returnMap.put(header, List.copyOf(df.get(header)));
+        }
+        return returnMap;
+    }
+
+    /** Getter for {@code partitioner}. For subclasses.
+     *
+     * @return The {@code partitioner}.
+     */
+    Partitioner getPartitioner() {
+        return partitioner;
+    }
+
+    /** Setter for {@code crossEntropyLoss}. For mocking.
+     *
+     * @param crossEntropyLoss The new {@code crossEntropyLoss}.
+     */
+    void setCrossEntropyLoss(CrossEntropyLoss crossEntropyLoss) {
+        this.crossEntropyLoss = crossEntropyLoss;
+    }
+
+    /** Setter for {@code mseLoss}. For mocking.
+     *
+     * @param mseLoss The new {@code mseLoss}.
+     */
+    void setMseLoss(MSELoss mseLoss) {
+        this.mseLoss = mseLoss;
     }
 }
