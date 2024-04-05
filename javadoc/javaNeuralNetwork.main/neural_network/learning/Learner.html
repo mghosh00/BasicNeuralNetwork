@@ -189,14 +189,19 @@ loadScripts(document, 'script');</script>
 <div class="block">Setter for <code>network</code>.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>(package private) void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#storeGradients(int)" class="member-name-link">storeGradients</a><wbr>(int&nbsp;id)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPartitioner(neural_network.util.Partitioner)" class="member-name-link">setPartitioner</a><wbr>(<a href="../util/Partitioner.html" title="class in neural_network.util">Partitioner</a>&nbsp;partitioner)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Setter for <code>partitioner</code>.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>(package private) void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#storeGradients(int)" class="member-name-link">storeGradients</a><wbr>(int&nbsp;id)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">To be overridden by a <code>Trainer</code>, but will not be touched by the
  <code>Validator</code> or <code>Tester</code>.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>(package private) void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateCategoricalDataframe()" class="member-name-link">updateCategoricalDataframe</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>(package private) void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateCategoricalDataframe()" class="member-name-link">updateCategoricalDataframe</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Update the categorical dataframe with <code>yHat</code> data but using the
  original categories from the data - to be used for plotting and
  outputs to the user.</div>
@@ -425,6 +430,17 @@ loadScripts(document, 'script');</script>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>network</code> - The new <code>network</code>.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="setPartitioner(neural_network.util.Partitioner)">
+<h3>setPartitioner</h3>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">setPartitioner</span><wbr><span class="parameters">(<a href="../util/Partitioner.html" title="class in neural_network.util">Partitioner</a>&nbsp;partitioner)</span></div>
+<div class="block">Setter for <code>partitioner</code>. For mocking.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>partitioner</code> - The new <code>partitioner</code>.</dd>
 </dl>
 </section>
 </li>
