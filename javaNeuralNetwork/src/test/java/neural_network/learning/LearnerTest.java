@@ -137,9 +137,8 @@ public abstract class LearnerTest {
                 }
             }
 
-            verify(mockNetwork, times(2))
+            verify(mockNetwork, times(batchIds.size()))
                     .forwardPassOneDatapoint(anyList());
-
         }
     }
 
