@@ -108,10 +108,10 @@ public class Trainer extends Learner {
                 totalLoss += forwardPassOneBatch(batchIds);
                 backPropagateOneBatch();
             }
-            double loss = totalLoss / getNumDatapoints();
+            double loss = Math.round(10000 * totalLoss / getNumDatapoints()) / 10000.0;
             if (epoch % factor == 0) {
                 System.out.println("Epoch: " + epoch);
-                System.out.println("Training loss: " + loss);
+                System.out.printf("Training loss: %.4f%n", loss);
             }
             // Record the loss and potential validation loss
             lossDf.get("Training").add(loss);

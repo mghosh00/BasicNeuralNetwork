@@ -6,9 +6,12 @@ import neural_network.functions.CrossEntropyLoss;
 import neural_network.functions.MSELoss;
 import neural_network.util.Header;
 import neural_network.util.Partitioner;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -79,6 +82,19 @@ public class TrainerTest extends LearnerTest {
     private Network regNetwork;
     private Validator regValidator;
     private Trainer regTrainer;
+
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
+
+    @BeforeEach
+    public void setUpStreams() {
+        System.setOut(new PrintStream(outContent));
+    }
+
+    @AfterEach
+    public void restoreStreams() {
+        System.setOut(originalOut);
+    }
 
     @BeforeEach
     void setUp() {
@@ -234,5 +250,137 @@ public class TrainerTest extends LearnerTest {
                 .backPropagateWeights();
         verify(mockNetwork, times(1))
                 .backPropagateBiases();
+    }
+
+    @Test
+    void runDefault() {
+        // Mock most of the trainer methods and the partitioner call
+        Trainer spyTrainer = spy(defaultTrainer);
+        Partitioner mockPartitioner = mock(Partitioner.class);
+        when(mockPartitioner.call()).thenReturn(partitions);
+        spyTrainer.setPartitioner(mockPartitioner);
+        doAnswer(new Answer<>() {
+            int callIndex = -1;
+            @Override
+            public Object answer(InvocationOnMock invocationOnMock) {
+                callIndex ++;
+                return batchLosses.get(callIndex);
+            }
+        }).when(spyTrainer).forwardPassOneBatch(anyList());
+        doNothing().when(spyTrainer).backPropagateOneBatch();
+        doNothing().when(spyTrainer).updateCategoricalDataframe();
+        // Run
+        spyTrainer.run();
+        // Ensure the partitioner, forward propagate and back propagate
+        // have been called the right number of times
+        verify(mockPartitioner, times(5)).call();
+        for (int i = 0; i < 5; i ++) {
+            verify(spyTrainer, times(5))
+                    .forwardPassOneBatch(partitions.get(i));
+        }
+        verify(spyTrainer, times(25))
+                .backPropagateOneBatch();
+        // Now check the print calls
+        List<Double> losses = List.of(0.13, 0.15, 0.05, 0.05, 0.02);
+        List<String> printOutput = new ArrayList<>();
+        for (int i = 0; i < 5; i ++) {
+            printOutput.add("Epoch:%d".formatted(i));
+            printOutput.add("Trainingloss:%.4f".formatted(losses.get(i)));
+        }
+        assertEquals(String.join("", printOutput),
+                outContent.toString().replaceAll("\\s+", ""));
+        // And finally, check the loss dataframe
+        assertTrue(spyTrainer.getLossDf().containsKey("Training"));
+        assertIterableEquals(spyTrainer.getLossDf().get("Training"),
+                losses);
+        verify(spyTrainer, times(1))
+                .updateCategoricalDataframe();
+    }
+
+    @Test
+    void run() {
+        // Mock most of the trainer methods and the partitioner call
+        Validator mockValidator = mock(Validator.class);
+        doReturn(0.9, 0.7, 0.5, 0.3, 0.1)
+                .when(mockValidator).validate(1);
+        Trainer spyTrainer = spy(new Trainer(network, trainingDf, 2, true,
+                10, 5, mockValidator));
+        Partitioner mockPartitioner = mock(Partitioner.class);
+        when(mockPartitioner.call()).thenReturn(weightedPartitions);
+        spyTrainer.setPartitioner(mockPartitioner);
+        doAnswer(new Answer<>() {
+            int callIndex = -1;
+            @Override
+            public Object answer(InvocationOnMock invocationOnMock) {
+                callIndex ++;
+                return batchLosses.get(callIndex);
+            }
+        }).when(spyTrainer).forwardPassOneBatch(anyList());
+        doNothing().when(spyTrainer).backPropagateOneBatch();
+        doNothing().when(spyTrainer).updateCategoricalDataframe();
+        // Run
+        spyTrainer.run();
+        // Ensure the partitioner, forward propagate and back propagate
+        // have been called the right number of times
+        verify(mockPartitioner, times(5)).call();
+        for (int i = 0; i < 5; i ++) {
+            verify(spyTrainer, times(5))
+                    .forwardPassOneBatch(weightedPartitions.get(i));
+        }
+        verify(spyTrainer, times(25))
+                .backPropagateOneBatch();
+        // Now check the print calls
+        List<Double> losses = List.of(0.13, 0.15, 0.05, 0.05, 0.02);
+        List<String> printOutput = new ArrayList<>();
+        for (int i = 0; i < 5; i ++) {
+            printOutput.add("Epoch:%d".formatted(i));
+            printOutput.add("Trainingloss:%.4f".formatted(losses.get(i)));
+        }
+        assertEquals(String.join("", printOutput),
+                outContent.toString().replaceAll("\\s+", ""));
+        // Check validation occurs
+        verify(mockValidator, times(5))
+                .validate(1);
+        // And finally, check the loss dataframe
+        assertTrue(spyTrainer.getLossDf().containsKey("Training"));
+        assertTrue(spyTrainer.getLossDf().containsKey("Validation"));
+        assertIterableEquals(spyTrainer.getLossDf().get("Training"),
+                losses);
+        assertIterableEquals(spyTrainer.getLossDf().get("Validation"),
+                validationLosses);
+        verify(spyTrainer, times(1))
+                .updateCategoricalDataframe();
+    }
+
+    @Test
+    void runRegressor() {
+        // Just check that the update categorical dataframe method
+        // is not called
+        Trainer spyTrainer = spy(regTrainer);
+        spyTrainer.run();
+        verify(spyTrainer, times(0))
+                .updateCategoricalDataframe();
+    }
+
+    @Test
+    void runManyEpochs() {
+        // This is just to test the print calls
+        Trainer spyTrainer = spy(new Trainer(network, trainingDf, 2, 120));
+        Partitioner mockPartitioner = mock(Partitioner.class);
+        when(mockPartitioner.call()).thenReturn(partitions);
+        spyTrainer.setPartitioner(mockPartitioner);
+        doReturn(0.1).when(spyTrainer).forwardPassOneBatch(anyList());
+        doNothing().when(spyTrainer).backPropagateOneBatch();
+        doNothing().when(spyTrainer).updateCategoricalDataframe();
+        // Run
+        spyTrainer.run();
+        // Check that even epochs were printed out but odd ones were not
+        String output = outContent.toString();
+        assertTrue(output.contains("Epoch: 104"));
+        assertFalse(output.contains("Epoch: 105"));
+        assertTrue(output.contains("Epoch: 106"));
+        assertFalse(output.contains("Epoch: 107"));
+        assertTrue(output.contains("Epoch: 108"));
+        assertFalse(output.contains("Epoch: 109"));
     }
 }

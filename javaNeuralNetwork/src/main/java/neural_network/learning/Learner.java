@@ -306,4 +306,12 @@ public abstract class Learner {
     void setNetwork(Network network) {
         this.network = network;
     }
+
+    /** Setter for {@code partitioner}. For mocking.
+     *
+     * @param partitioner The new {@code partitioner}.
+     */
+    void setPartitioner(Partitioner partitioner) {
+        this.partitioner = partitioner;
+    }
 }
