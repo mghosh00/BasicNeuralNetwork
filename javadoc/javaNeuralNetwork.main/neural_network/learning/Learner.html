@@ -77,7 +77,7 @@ loadScripts(document, 'script');</script>
 <section class="class-description" id="class-description">
 <dl class="notes">
 <dt>Direct Known Subclasses:</dt>
-<dd><code><a href="Trainer.html" title="class in neural_network.learning">Trainer</a></code>, <code><a href="Validator.html" title="class in neural_network.learning">Validator</a></code></dd>
+<dd><code><a href="Tester.html" title="class in neural_network.learning">Tester</a></code>, <code><a href="Trainer.html" title="class in neural_network.learning">Trainer</a></code>, <code><a href="Validator.html" title="class in neural_network.learning">Validator</a></code></dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public abstract class </span><span class="element-name type-name-label">Learner</span>
@@ -194,14 +194,19 @@ loadScripts(document, 'script');</script>
 <div class="block">Setter for <code>partitioner</code>.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>(package private) void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#storeGradients(int)" class="member-name-link">storeGradients</a><wbr>(int&nbsp;id)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setYHat(java.util.List)" class="member-name-link">setYHat</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&nbsp;yHat)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Setter for <code>yHat</code> of the categorical dataframe.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>(package private) void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#storeGradients(int)" class="member-name-link">storeGradients</a><wbr>(int&nbsp;id)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">To be overridden by a <code>Trainer</code>, but will not be touched by the
  <code>Validator</code> or <code>Tester</code>.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>(package private) void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateCategoricalDataframe()" class="member-name-link">updateCategoricalDataframe</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>(package private) void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateCategoricalDataframe()" class="member-name-link">updateCategoricalDataframe</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Update the categorical dataframe with <code>yHat</code> data but using the
  original categories from the data - to be used for plotting and
  outputs to the user.</div>
@@ -441,6 +446,17 @@ loadScripts(document, 'script');</script>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>partitioner</code> - The new <code>partitioner</code>.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="setYHat(java.util.List)">
+<h3>setYHat</h3>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">setYHat</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&nbsp;yHat)</span></div>
+<div class="block">Setter for <code>yHat</code> of the categorical dataframe. For testing.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>yHat</code> - The new <code>yHat</code>.</dd>
 </dl>
 </section>
 </li>

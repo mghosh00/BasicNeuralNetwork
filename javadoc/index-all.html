@@ -237,6 +237,10 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:G">G</h2>
 <dl class="index">
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Tester.html#generateConfusion()" class="member-name-link">generateConfusion()</a> - Method in class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Tester.html" title="class in neural_network.learning">Tester</a></dt>
+<dd>
+<div class="block">Creates a confusion matrix from the results.</div>
+</dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator.html#generateData()" class="member-name-link">generateData()</a> - Method in class neural_network.data_generators.<a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator.html" title="class in neural_network.data_generators">DataGenerator</a></dt>
 <dd>
 <div class="block">To generate the data using a specific probability distribution from
@@ -581,12 +585,24 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Constructor method.</div>
 </dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Tester.html#printConfusion(java.util.List)" class="member-name-link">printConfusion(List&lt;List&lt;Integer&gt;&gt;)</a> - Method in class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Tester.html" title="class in neural_network.learning">Tester</a></dt>
+<dd>
+<div class="block">Prints out the confusion matrix from a contingency table.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Tester.html#printDiceScores(java.util.List)" class="member-name-link">printDiceScores(List&lt;List&lt;Integer&gt;&gt;)</a> - Method in class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Tester.html" title="class in neural_network.learning">Tester</a></dt>
+<dd>
+<div class="block">Prints out the dice scores from a contingency table.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:R">R</h2>
 <dl class="index">
 <dt><a href="javaNeuralNetwork.main/neural_network/learning/Learner.html#run()" class="member-name-link">run()</a> - Method in class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Learner.html" title="class in neural_network.learning">Learner</a></dt>
 <dd>
 <div class="block">Performs training/validation/testing</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Tester.html#run()" class="member-name-link">run()</a> - Method in class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Tester.html" title="class in neural_network.learning">Tester</a></dt>
+<dd>
+<div class="block">Performs testing of the network.</div>
 </dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/learning/Trainer.html#run()" class="member-name-link">run()</a> - Method in class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Trainer.html" title="class in neural_network.learning">Trainer</a></dt>
 <dd>
@@ -663,6 +679,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Setter method for <code>weight</code>.</div>
 </dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Learner.html#setYHat(java.util.List)" class="member-name-link">setYHat(List&lt;String&gt;)</a> - Method in class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Learner.html" title="class in neural_network.learning">Learner</a></dt>
+<dd>
+<div class="block">Setter for <code>yHat</code> of the categorical dataframe.</div>
+</dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/functions/Sigmoid.html" class="type-name-link" title="class in neural_network.functions">Sigmoid</a> - Class in <a href="javaNeuralNetwork.main/neural_network/functions/package-summary.html">neural_network.functions</a></dt>
 <dd>
 <div class="block">Class to represent the sigmoid function, which is an <code>Activator</code> for
@@ -703,6 +723,18 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:T">T</h2>
 <dl class="index">
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Tester.html" class="type-name-link" title="class in neural_network.learning">Tester</a> - Class in <a href="javaNeuralNetwork.main/neural_network/learning/package-summary.html">neural_network.learning</a></dt>
+<dd>
+<div class="block">Class to test a neural network</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Tester.html#%3Cinit%3E(neural_network.components.Network,java.util.NavigableMap,int)" class="member-name-link">Tester(Network, NavigableMap&lt;Header, List&lt;String&gt;&gt;, int)</a> - Constructor for class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Tester.html" title="class in neural_network.learning">Tester</a></dt>
+<dd>
+<div class="block">Default constructor for non-weighted partitions - matches <code>Learner</code>.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/learning/Tester.html#%3Cinit%3E(neural_network.components.Network,java.util.NavigableMap,int,boolean,int)" class="member-name-link">Tester(Network, NavigableMap&lt;Header, List&lt;String&gt;&gt;, int, boolean, int)</a> - Constructor for class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Tester.html" title="class in neural_network.learning">Tester</a></dt>
+<dd>
+<div class="block">General constructor - matches <code>Learner</code>.</div>
+</dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/components/Edge.html#toString()" class="member-name-link">toString()</a> - Method in class neural_network.components.<a href="javaNeuralNetwork.main/neural_network/components/Edge.html" title="class in neural_network.components">Edge</a></dt>
 <dd>
 <div class="block">String method.</div>
