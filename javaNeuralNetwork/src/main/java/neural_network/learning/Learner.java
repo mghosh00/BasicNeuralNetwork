@@ -314,4 +314,13 @@ public abstract class Learner {
     void setPartitioner(Partitioner partitioner) {
         this.partitioner = partitioner;
     }
+
+    /** Setter for {@code yHat} of the categorical dataframe. For testing.
+     *
+     * @param yHat The new {@code yHat}.
+     */
+    void setYHat(List<String> yHat) {
+        categoricalDf.get(Header.Y_HAT).clear();
+        categoricalDf.get(Header.Y_HAT).addAll(yHat);
+    }
 }

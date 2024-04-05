@@ -66,7 +66,6 @@ public class ValidatorTest extends LearnerTest {
     private Validator validator;
     private Network regNetwork;
     private Validator regValidator;
-
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
 
