@@ -72,12 +72,15 @@ loadScripts(document, 'script');</script>
 <h1 title="Class Validator" class="title">Class Validator</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
+<div class="inheritance"><a href="Learner.html" title="class in neural_network.learning">neural_network.learning.Learner</a>
 <div class="inheritance">neural_network.learning.Validator</div>
+</div>
 </div>
 <section class="class-description" id="class-description">
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Validator</span>
-<span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<span class="extends-implements">extends <a href="Learner.html" title="class in neural_network.learning">Learner</a></span></div>
+<div class="block">Class to validate a neural network.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -90,9 +93,19 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(neural_network.components.Network,java.util.NavigableMap,int)" class="member-name-link">Validator</a><wbr>(<a href="../components/Network.html" title="class in neural_network.components">Network</a>&nbsp;network,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/NavigableMap.html" title="class or interface in java.util" class="external-link">NavigableMap</a>&lt;<a href="../util/Header.html" title="enum class in neural_network.util">Header</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&gt;&nbsp;df,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/NavigableMap.html" title="class or interface in java.util" class="external-link">NavigableMap</a>&lt;<a href="../util/Header.html" title="enum class in neural_network.util">Header</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&gt;&nbsp;data,
  int&nbsp;batchSize)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Default constructor for non-weighted partitions - matches <code>Learner</code>.</div>
+</div>
+<div class="col-constructor-name odd-row-color"><code><a href="#%3Cinit%3E(neural_network.components.Network,java.util.NavigableMap,int,boolean,int)" class="member-name-link">Validator</a><wbr>(<a href="../components/Network.html" title="class in neural_network.components">Network</a>&nbsp;network,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/NavigableMap.html" title="class or interface in java.util" class="external-link">NavigableMap</a>&lt;<a href="../util/Header.html" title="enum class in neural_network.util">Header</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&gt;&nbsp;data,
+ int&nbsp;batchSize,
+ boolean&nbsp;weighted,
+ int&nbsp;numBins)</code></div>
+<div class="col-last odd-row-color">
+<div class="block">General constructor - matches <code>Learner</code>.</div>
+</div>
 </div>
 </section>
 </li>
@@ -107,12 +120,22 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#validate(int)" class="member-name-link">validate</a><wbr>(int&nbsp;factor)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#run()" class="member-name-link">run</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">This method does nothing, as we need to use the <code>validate</code> method instead.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#validate(int)" class="member-name-link">validate</a><wbr>(int&nbsp;factor)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Performs validation of the network.</div>
 </div>
 </div>
 </div>
+</div>
+<div class="inherited-list">
+<h3 id="methods-inherited-from-class-neural_network.learning.Learner">Methods inherited from class&nbsp;neural_network.learning.<a href="Learner.html" title="class in neural_network.learning">Learner</a></h3>
+<code><a href="Learner.html#forwardPassOneBatch(java.util.List)">forwardPassOneBatch</a>, <a href="Learner.html#getBatchSize()">getBatchSize</a>, <a href="Learner.html#getCategoricalDf()">getCategoricalDf</a>, <a href="Learner.html#getCategoryNames()">getCategoryNames</a>, <a href="Learner.html#getDf()">getDf</a>, <a href="Learner.html#getNetwork()">getNetwork</a>, <a href="Learner.html#getNumDatapoints()">getNumDatapoints</a>, <a href="Learner.html#getPartitioner()">getPartitioner</a>, <a href="Learner.html#isRegressor()">isRegressor</a>, <a href="Learner.html#setCrossEntropyLoss(neural_network.functions.CrossEntropyLoss)">setCrossEntropyLoss</a>, <a href="Learner.html#setMseLoss(neural_network.functions.MSELoss)">setMseLoss</a>, <a href="Learner.html#setNetwork(neural_network.components.Network)">setNetwork</a>, <a href="Learner.html#setPartitioner(neural_network.util.Partitioner)">setPartitioner</a>, <a href="Learner.html#storeGradients(int)">storeGradients</a>, <a href="Learner.html#updateCategoricalDataframe()">updateCategoricalDataframe</a></code></div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-java.lang.Object">Methods inherited from class&nbsp;java.lang.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></h3>
 <code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#clone()" title="class or interface in java.lang" class="external-link">clone</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object)" title="class or interface in java.lang" class="external-link">equals</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#finalize()" title="class or interface in java.lang" class="external-link">finalize</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#getClass()" title="class or interface in java.lang" class="external-link">getClass</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#hashCode()" title="class or interface in java.lang" class="external-link">hashCode</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#notify()" title="class or interface in java.lang" class="external-link">notify</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#notifyAll()" title="class or interface in java.lang" class="external-link">notifyAll</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#toString()" title="class or interface in java.lang" class="external-link">toString</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait()" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait(long)" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait(long,int)" title="class or interface in java.lang" class="external-link">wait</a></code></div>
@@ -128,11 +151,40 @@ loadScripts(document, 'script');</script>
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
+<section class="detail" id="&lt;init&gt;(neural_network.components.Network,java.util.NavigableMap,int,boolean,int)">
+<h3>Validator</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Validator</span><wbr><span class="parameters">(<a href="../components/Network.html" title="class in neural_network.components">Network</a>&nbsp;network,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/NavigableMap.html" title="class or interface in java.util" class="external-link">NavigableMap</a>&lt;<a href="../util/Header.html" title="enum class in neural_network.util">Header</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&gt;&nbsp;data,
+ int&nbsp;batchSize,
+ boolean&nbsp;weighted,
+ int&nbsp;numBins)</span></div>
+<div class="block">General constructor - matches <code>Learner</code>.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>network</code> - The neural network to train.</dd>
+<dd><code>data</code> - All the data to be passed to the <code>network</code>.</dd>
+<dd><code>batchSize</code> - The number of datapoints per batch for an epoch.</dd>
+<dd><code>weighted</code> - If <code>true</code> then we use the <code>WeightedPartitioner</code>,
+                 else we use the <code>Partitioner</code>.</dd>
+<dd><code>numBins</code> - If <code>weighted</code> is <code>true</code> and the <code>network</code> is
+                a regressor, then we need to specify the number of bins for the
+                <code>WeightedPartitioner</code>. Otherwise, this parameter is ignored.</dd>
+</dl>
+</section>
+</li>
+<li>
 <section class="detail" id="&lt;init&gt;(neural_network.components.Network,java.util.NavigableMap,int)">
 <h3>Validator</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Validator</span><wbr><span class="parameters">(<a href="../components/Network.html" title="class in neural_network.components">Network</a>&nbsp;network,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/NavigableMap.html" title="class or interface in java.util" class="external-link">NavigableMap</a>&lt;<a href="../util/Header.html" title="enum class in neural_network.util">Header</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&gt;&nbsp;df,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/NavigableMap.html" title="class or interface in java.util" class="external-link">NavigableMap</a>&lt;<a href="../util/Header.html" title="enum class in neural_network.util">Header</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&gt;&nbsp;data,
  int&nbsp;batchSize)</span></div>
+<div class="block">Default constructor for non-weighted partitions - matches <code>Learner</code>.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>network</code> - The neural network to train.</dd>
+<dd><code>data</code> - All the data to be passed to the <code>network</code>.</dd>
+<dd><code>batchSize</code> - The number of datapoints per batch for an epoch.</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -144,9 +196,27 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
+<section class="detail" id="run()">
+<h3>run</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">run</span>()</div>
+<div class="block">This method does nothing, as we need to use the <code>validate</code> method instead.</div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="Learner.html#run()">run</a></code>&nbsp;in class&nbsp;<code><a href="Learner.html" title="class in neural_network.learning">Learner</a></code></dd>
+</dl>
+</section>
+</li>
+<li>
 <section class="detail" id="validate(int)">
 <h3>validate</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">validate</span><wbr><span class="parameters">(int&nbsp;factor)</span></div>
+<div class="block">Performs validation of the network.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>factor</code> - The epochs on which we need to print out the validation.</dd>
+<dt>Returns:</dt>
+<dd>The validation loss.</dd>
+</dl>
 </section>
 </li>
 </ul>
