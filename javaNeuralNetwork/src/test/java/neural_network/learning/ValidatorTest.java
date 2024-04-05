@@ -225,8 +225,16 @@ public class ValidatorTest extends LearnerTest {
         // Just check that the update categorical dataframe method
         // is not called
         Validator spyValidator = spy(regValidator);
-        spyValidator.run();
+        spyValidator.validate(1);
         verify(spyValidator, times(0))
                 .updateCategoricalDataframe();
+    }
+
+    @Test
+    void run() {
+        Validator spyValidator = spy(validator);
+        spyValidator.run();
+        verify(spyValidator, times(1))
+                .run();
     }
 }
