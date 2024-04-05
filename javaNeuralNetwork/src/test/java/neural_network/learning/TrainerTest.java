@@ -213,6 +213,12 @@ public class TrainerTest extends LearnerTest {
         assertTrue(defaultLossDf.containsKey("Training"));
         assertFalse(defaultLossDf.containsKey("Validation"));
         assertIterableEquals(List.of(), defaultLossDf.get("Training"));
+        Trainer anotherDefaultTrainer = new Trainer(network, trainingDf, 2, false,
+                10, 5, null);
+        Map<String, List<Double>> anotherLossDf = anotherDefaultTrainer.getLossDf();
+        assertTrue(anotherLossDf.containsKey("Training"));
+        assertFalse(anotherLossDf.containsKey("Validation"));
+        assertIterableEquals(List.of(), anotherLossDf.get("Training"));
         Map<String, List<Double>> lossDf = trainer.getLossDf();
         for (String header : List.of("Training", "Validation")) {
             assertTrue(lossDf.containsKey(header));
