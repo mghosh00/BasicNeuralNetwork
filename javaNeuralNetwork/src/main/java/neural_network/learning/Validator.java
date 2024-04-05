@@ -50,7 +50,7 @@ public class Validator extends Learner {
      * @param factor The epochs on which we need to print out the validation.
      * @return The validation loss.
      */
-    public double validate(int factor) {
+    double validate(int factor) {
         double totalLoss = 0.0;
         List<List<Integer>> batchPartition = getPartitioner().call();
         int itsPerEpoch = (int) Math

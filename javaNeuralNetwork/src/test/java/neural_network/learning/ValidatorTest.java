@@ -191,7 +191,7 @@ public class ValidatorTest extends LearnerTest {
         spyValidator.validate(2);
         assertTrue(outContent.toString().contains("Validation loss: 0.3000"));
         assertFalse(outContent.toString().contains("Validation loss: 0.1000"));
-        verify(spyValidator, times(1))
+        verify(spyValidator, times(2))
                 .updateCategoricalDataframe();
     }
 
