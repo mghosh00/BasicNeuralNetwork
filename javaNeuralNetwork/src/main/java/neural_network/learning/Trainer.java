@@ -12,7 +12,7 @@ import java.util.*;
 public class Trainer extends Learner {
 
     private final int numEpochs;
-    private final Validator validator;
+    private Validator validator;
     private final Map<String, List<Double>> lossDf = new TreeMap<>();
 
     /** General constructor method.
@@ -50,8 +50,9 @@ public class Trainer extends Learner {
      */
     public Trainer(Network network, NavigableMap<Header, List<String>> data,
                    int batchSize, int numEpochs) {
-        this(network, data, batchSize, false,
-                10, numEpochs, null);
+        super(network, data, batchSize);
+        this.numEpochs = numEpochs;
+        this.lossDf.put("Training", new ArrayList<>());
     }
 
     /** Stores the gradients of the loss functions after a forward pass of
