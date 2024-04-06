@@ -80,9 +80,9 @@ public class PlotterTest {
         SwingWrapper<XYChart> mockWrappedChart = mock(SwingWrapper.class);
         Plotter.setChart(mockChart);
         Plotter.setWrappedChart(mockWrappedChart);
-        Plotter.datapointScatter(scatterDf, "training", "test_title", false);
+        Plotter.datapointScatter(scatterDf, "validation", "test_title", false);
         verify(mockChart, times(1))
-                .setTitle("Predicted classes for training data");
+                .setTitle("Predicted classes for validation data");
         verify(mockChart, times(1))
                 .getStyler();
         verify(mockStyler, times(1))
