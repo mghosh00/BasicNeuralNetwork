@@ -48,6 +48,13 @@ public class PlotterTest {
     }
 
     @Test
+    void construct() {
+        assertNull(Plotter.getChart());
+        assertNull(Plotter.getWrappedChart());
+        assertInstanceOf(Plotter.class, new Plotter());
+    }
+
+    @Test
     void datapointScatterErroneous() throws IOException {
         Exception exception = assertThrows(RuntimeException.class,
                 () -> Plotter.datapointScatter(scatterDf, "good_phase",
@@ -100,7 +107,7 @@ public class PlotterTest {
 
     @Test
     void datapointScatterNoMocks() throws IOException {
-        Plotter.datapointScatter(scatterDf, "training", "test_title", true);
+        Plotter.datapointScatter(scatterDf, "true", "", true);
         assertNull(Plotter.getChart());
         assertNull(Plotter.getWrappedChart());
     }
@@ -175,7 +182,7 @@ public class PlotterTest {
 
     @Test
     void comparisonScatterNoMocks() throws IOException {
-        Plotter.comparisonScatter(regScatterDf, "training", "test_title");
+        Plotter.comparisonScatter(regScatterDf, "true", "");
         assertNull(Plotter.getChart());
         assertNull(Plotter.getWrappedChart());
     }
@@ -228,7 +235,7 @@ public class PlotterTest {
 
     @Test
     void plotLossNoMocks() throws IOException {
-        Plotter.plotLoss(lossDf, "test_title");
+        Plotter.plotLoss(lossDf, "");
         assertNull(Plotter.getChart());
         assertNull(Plotter.getWrappedChart());
     }
