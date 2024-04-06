@@ -70,7 +70,8 @@ loadScripts(document, 'script');</script>
  This includes helper classes for splitting our data into training, validation and
  testing within the <code>DataSplitter</code> class; <code>Partitioners</code> to sort the
  datapoints into batches, weighted and unweighted and a helper enum for column
- <code>Headers</code> of the dataframes we use.
+ <code>Headers</code> of the dataframes we use. Additionally, this package contains a
+ <code>Plotter</code> class, which can be used to evaluate the performance of the neural network.
  </p></div>
 <dl class="notes">
 <dt>Since:</dt>
@@ -100,8 +101,12 @@ loadScripts(document, 'script');</script>
 <div class="block">Class to randomly partition <code>numInts</code> integers into sets of size
  <code>setSize</code>.</div>
 </div>
-<div class="col-first odd-row-color class-summary class-summary-tab2"><a href="WeightedPartitioner.html" title="class in neural_network.util">WeightedPartitioner</a></div>
+<div class="col-first odd-row-color class-summary class-summary-tab2"><a href="Plotter.html" title="class in neural_network.util">Plotter</a></div>
 <div class="col-last odd-row-color class-summary class-summary-tab2">
+<div class="block">Class to create plots evaluating the performance of the neural network.</div>
+</div>
+<div class="col-first even-row-color class-summary class-summary-tab2"><a href="WeightedPartitioner.html" title="class in neural_network.util">WeightedPartitioner</a></div>
+<div class="col-last even-row-color class-summary class-summary-tab2">
 <div class="block">Class to create a number of sets of size <code>setSize</code> from a list of
  <code>numInts</code> integers weighted by which ground truth class each integer lies in.</div>
 </div>
