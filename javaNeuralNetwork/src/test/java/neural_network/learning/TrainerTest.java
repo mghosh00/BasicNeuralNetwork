@@ -128,14 +128,6 @@ public class TrainerTest extends LearnerTest {
         return constructMap;
     }
 
-    @Test
-    void testPlotter() throws IOException {
-        Plotter.setShowPlots(true);
-        Plotter.datapointScatter(categoricalDf, "true", "testing", false);
-        Plotter.comparisonScatter(regDf, "true", "testing");
-        Plotter.plotLoss(Map.of("Validation", validationLosses), "testing");
-    }
-
     @Override
     public Map<String, List<Object>> getLearnerWithExpectedLoss() {
         List<List<Double>> outputNeuronVals = List.of(
