@@ -60,7 +60,7 @@ public class Tester extends Learner {
         }
     }
 
-    /** Creates a confusion matrix from the results.
+    /** Creates a confusion matrix and dice scores from the results.
      *
      */
     public void generateConfusion() {

@@ -6,11 +6,13 @@ import neural_network.functions.CrossEntropyLoss;
 import neural_network.functions.MSELoss;
 import neural_network.util.Header;
 import neural_network.util.Partitioner;
+import neural_network.util.Plotter;
 import org.junit.jupiter.api.*;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.*;
 
@@ -124,6 +126,14 @@ public class TrainerTest extends LearnerTest {
         constructMap.put("dfs", List.of(df, df, regDf));
         constructMap.put("weighted", List.of(false, true, false));
         return constructMap;
+    }
+
+    @Test
+    void testPlotter() throws IOException {
+        Plotter.setShowPlots(true);
+        Plotter.datapointScatter(categoricalDf, "true", "testing", false);
+        Plotter.comparisonScatter(regDf, "true", "testing");
+        Plotter.plotLoss(Map.of("Validation", validationLosses), "testing");
     }
 
     @Override

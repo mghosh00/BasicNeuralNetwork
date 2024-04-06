@@ -3,8 +3,7 @@
  * <p>
  * The bulk of the machine learning will be performed by the {@code Trainer},
  * {@code Validator} and {@code Tester} classes (all of which inherit from
- * {@code Learner}). Additionally, this package contains a {@code Plotter} class,
- * which can be used to evaluate the performance of the neural network.
+ * {@code Learner}).
  * </p>
  *
  * @since 1.0.0

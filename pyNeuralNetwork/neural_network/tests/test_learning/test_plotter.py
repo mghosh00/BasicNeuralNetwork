@@ -12,9 +12,6 @@ from neural_network.learning import Plotter
 class TestPlotter(TestCase):
     """Tests the `Plotter` class
     """
-    partitions = [[2, 4, 0], [3, 1]]
-    weighted_partitions = [[1, 3, 2], [0, 4, 3]]
-    batch_losses = [0.5, 0.2]
     ggplot_string = ("plotnine.ggplot.ggplot.save"
                      if sys.version_info[1] > 10 else "builtins.len")
 

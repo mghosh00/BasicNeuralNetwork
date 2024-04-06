@@ -4,4 +4,7 @@
  */
 module javaNeuralNetwork.main {
     requires static org.apache.commons.csv;
+    requires static org.knowm.xchart;
+    requires java.datatransfer;
+    requires java.desktop;
 }
