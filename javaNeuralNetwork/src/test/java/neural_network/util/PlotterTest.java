@@ -75,6 +75,8 @@ public class PlotterTest {
         Plotter.setWrappedChart(mockWrappedChart);
         Plotter.datapointScatter(scatterDf, "training", "test_title", false);
         verify(mockChart, times(1))
+                .setTitle("Predicted classes for training data");
+        verify(mockChart, times(1))
                 .getStyler();
         verify(mockStyler, times(1))
                 .setMarkerSize(5);
@@ -118,6 +120,16 @@ public class PlotterTest {
     }
 
     @Test
+    void comparisonScatterErroneous() throws IOException {
+        Exception exception = assertThrows(RuntimeException.class,
+                () -> Plotter.comparisonScatter(regScatterDf, "good_phase",
+                        "bad_title/"));
+        assertEquals("Invalid title: bad_title/",
+                exception.getMessage());
+        Files.delete(Path.of(dirName + "good_phase"));
+    }
+
+    @Test
     void comparisonScatter() throws IOException {
         Plotter.setShowPlots(true);
         XYChart mockChart = mock(XYChart.class);
@@ -134,6 +146,8 @@ public class PlotterTest {
         Plotter.setChart(mockChart);
         Plotter.setWrappedChart(mockWrappedChart);
         Plotter.comparisonScatter(regScatterDf, "training", "test_title");
+        verify(mockChart, times(1))
+                .setTitle("Comparison scatter plot for training data");
         verify(mockChart, times(1))
                 .getStyler();
         verify(mockStyler, times(1))
@@ -164,6 +178,15 @@ public class PlotterTest {
         Plotter.comparisonScatter(regScatterDf, "training", "test_title");
         assertNull(Plotter.getChart());
         assertNull(Plotter.getWrappedChart());
+    }
+
+
+    @Test
+    void plotLossErroneous() throws IOException {
+        Exception exception = assertThrows(RuntimeException.class,
+                () -> Plotter.plotLoss(lossDf,"bad_title/"));
+        assertEquals("Invalid title: bad_title/",
+                exception.getMessage());
     }
 
     @Test

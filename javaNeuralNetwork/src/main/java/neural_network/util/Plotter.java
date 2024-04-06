@@ -4,7 +4,6 @@ import org.knowm.xchart.*;
 
 import java.awt.*;
 import java.io.IOException;
-import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
@@ -46,9 +45,9 @@ public class Plotter {
         // Create chart instance if it has not been set already
         if (chart == null) {
             chart = new XYChartBuilder().width(800).height(600)
-                    .title("%s %s for %s data".formatted(actualOrPredicted, valuesOrClasses, phase))
                     .xAxisTitle("x1").yAxisTitle("x2").build();
         }
+        chart.setTitle("%s %s for %s data".formatted(actualOrPredicted, valuesOrClasses, phase));
         chart.getStyler().setMarkerSize(5);
         if (! regression) {
             NavigableMap<String, List<List<Double>>> dataByCategory = organiseDataByCategory(
@@ -124,9 +123,9 @@ public class Plotter {
         // Create chart instance if it is null
         if (chart == null) {
             chart = new XYChartBuilder().width(800).height(600)
-                    .title("Comparison scatter plot for %s data".formatted(phase))
                     .xAxisTitle("Actual").yAxisTitle("Predicted").build();
         }
+        chart.setTitle("Comparison scatter plot for %s data".formatted(phase));
         chart.getStyler().setMarkerSize(5);
 
         // Add the line y = x as we want to get as close to this line as possible
@@ -155,7 +154,7 @@ public class Plotter {
             BitmapEncoder.saveBitmap(chart, dirName + phase + "/comparison" + subString,
                     BitmapEncoder.BitmapFormat.PNG);
         } catch (IOException e) {
-            throw new RuntimeException("Invalid title:" + title);
+            throw new RuntimeException("Invalid title: " + title);
         }
 
         // Reset the chart and wrappedChart
@@ -200,7 +199,7 @@ public class Plotter {
             BitmapEncoder.saveBitmap(chart, dirName + "/losses" + subString,
                     BitmapEncoder.BitmapFormat.PNG);
         } catch (IOException e) {
-            throw new RuntimeException("Invalid title:" + title);
+            throw new RuntimeException("Invalid title: " + title);
         }
 
         chart = null;
@@ -247,9 +246,9 @@ public class Plotter {
         return chart;
     }
 
-    /** Setter for wrapperChart. Used for mocking.
+    /** Setter for wrappedChart. Used for mocking.
      *
-     * @return The wrapperChart instance from {@code org.knowm.xchart}.
+     * @return The wrappedChart instance from {@code org.knowm.xchart}.
      */
     static SwingWrapper<XYChart> getWrappedChart() {
         return wrappedChart;
