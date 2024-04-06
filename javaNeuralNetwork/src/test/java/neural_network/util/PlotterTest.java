@@ -110,6 +110,9 @@ public class PlotterTest {
         Plotter.datapointScatter(scatterDf, "true", "", true);
         assertNull(Plotter.getChart());
         assertNull(Plotter.getWrappedChart());
+        Plotter.datapointScatter(scatterDf, "true", "", true);
+        assertNull(Plotter.getChart());
+        assertNull(Plotter.getWrappedChart());
     }
 
     @Test
