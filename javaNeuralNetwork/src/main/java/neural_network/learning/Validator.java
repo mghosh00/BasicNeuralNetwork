@@ -3,6 +3,7 @@ package neural_network.learning;
 import neural_network.components.Network;
 import neural_network.util.Header;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.NavigableMap;
 
@@ -72,5 +73,26 @@ public class Validator extends Learner {
         // Keep a track of the epoch and increment it here
         epoch ++;
         return loss;
+    }
+
+    /** Creates scatter plot from the data and their predicted values.
+     *
+     * @param title An optional title to append to the plot.
+     * @throws IOException If an IO error occurs.
+     */
+    public void generateScatter(String title) throws IOException {
+        super.generateScatter("validation", title);
+    }
+
+    /** Creates scatter plot comparing predicted to actual values (for
+     * regression problems only).
+     *
+     * @param title An optional title to append to the plot.
+     * @throws IOException If an IO error occurs.
+     * @throws RuntimeException If this method is called with a categorical network,
+     *                          instead user should call {@code Tester.generateConfusion()}.
+     */
+    public void comparisonScatter(String title) throws IOException {
+        super.comparisonScatter("validation", title);
     }
 }

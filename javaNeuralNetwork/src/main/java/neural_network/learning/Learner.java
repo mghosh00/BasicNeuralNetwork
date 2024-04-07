@@ -5,8 +5,10 @@ import neural_network.functions.CrossEntropyLoss;
 import neural_network.functions.MSELoss;
 import neural_network.util.Header;
 import neural_network.util.Partitioner;
+import neural_network.util.Plotter;
 import neural_network.util.WeightedPartitioner;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -209,6 +211,35 @@ public abstract class Learner {
                     categoricalDf.get(Header.Y_HAT).set(index.get(), categoryNames.get(category));
                     index.getAndIncrement();
                 });
+    }
+
+    /** Creates scatter plot from the data and their predicted values. For
+     * classification, we use the categories the user provided with the data
+     * instead of arbitrary integer classes.
+     *
+     * @param phase The phase of learning.
+     * @param title An optional title to append to the plot.
+     * @throws IOException If an IO error occurs.
+     */
+    void generateScatter(String phase, String title) throws IOException {
+        Plotter.datapointScatter(categoricalDf, phase, title, doRegression);
+    }
+
+    /** Creates scatter plot comparing the predicted and actual values in
+     * a regression problem. Cannot be called with classification problems.
+     *
+     * @param phase The phase of learning.
+     * @param title An optional title to append to the plot.
+     * @throws IOException If an IO error occurs.
+     * @throws RuntimeException If this method is called with a categorical network,
+     *                          instead user should call {@code Tester.generateConfusion()}.
+     */
+    void comparisonScatter(String phase, String title) throws IOException {
+        if (doRegression) {
+            Plotter.comparisonScatter(df, phase, title);
+        } else {
+            throw new RuntimeException("Cannot call this method with categorical data.");
+        }
     }
 
     /** Getter for {@code network}. For subclasses.

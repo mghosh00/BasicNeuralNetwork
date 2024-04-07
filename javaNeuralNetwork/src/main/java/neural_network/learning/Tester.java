@@ -3,6 +3,7 @@ package neural_network.learning;
 import neural_network.components.Network;
 import neural_network.util.Header;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Stream;
 
@@ -58,6 +59,27 @@ public class Tester extends Learner {
         if (! isRegressor()) {
             updateCategoricalDataframe();
         }
+    }
+
+    /** Creates scatter plot from the data and their predicted values.
+     *
+     * @param title An optional title to append to the plot.
+     * @throws IOException If an IO error occurs.
+     */
+    public void generateScatter(String title) throws IOException {
+        super.generateScatter("testing", title);
+    }
+
+    /** Creates scatter plot comparing predicted to actual values (for
+     * regression problems only).
+     *
+     * @param title An optional title to append to the plot.
+     * @throws IOException If an IO error occurs.
+     * @throws RuntimeException If this method is called with a categorical network,
+     *                          instead user should call {@code Tester.generateConfusion()}.
+     */
+    public void comparisonScatter(String title) throws IOException {
+        super.comparisonScatter("testing", title);
     }
 
     /** Creates a confusion matrix and dice scores from the results.

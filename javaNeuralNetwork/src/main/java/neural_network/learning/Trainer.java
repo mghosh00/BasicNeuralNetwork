@@ -3,7 +3,9 @@ package neural_network.learning;
 import neural_network.components.Edge;
 import neural_network.components.Network;
 import neural_network.util.Header;
+import neural_network.util.Plotter;
 
+import java.io.IOException;
 import java.util.*;
 
 /** Class to train a neural network.
@@ -125,6 +127,36 @@ public class Trainer extends Learner {
         if (! isRegressor()) {
             updateCategoricalDataframe();
         }
+    }
+
+    /** Creates scatter plot from the data and their predicted values.
+     *
+     * @param title An optional title to append to the plot.
+     * @throws IOException If an IO error occurs.
+     */
+    public void generateScatter(String title) throws IOException {
+        super.generateScatter("training", title);
+    }
+
+    /** Creates scatter plot comparing predicted to actual values (for
+     * regression problems only).
+     *
+     * @param title An optional title to append to the plot.
+     * @throws IOException If an IO error occurs.
+     * @throws RuntimeException If this method is called with a categorical network,
+     *                          instead user should call {@code Tester.generateConfusion()}.
+     */
+    public void comparisonScatter(String title) throws IOException {
+        super.comparisonScatter("training", title);
+    }
+
+    /** Creates a plot of the training and validation loss over time.
+     *
+     * @param title An optional title to append to the plot.
+     * @throws IOException If an IO error occurs.
+     */
+    public void generateLossPlot(String title) throws IOException {
+        Plotter.plotLoss(lossDf, title);
     }
 
     /** Getter for {@code lossDf}.

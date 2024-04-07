@@ -2,6 +2,7 @@ package neural_network.data_generators;
 
 import neural_network.util.Header;
 
+import neural_network.util.Plotter;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 
@@ -158,6 +159,17 @@ public abstract class DataGenerator<T> {
      */
     public void writeToCsv(String title) {
         writeToCsv(title, "");
+    }
+
+    /** Uses the {@code Plotter} class to generate a scatter plot of the datapoints
+     * with their true classes/values represented.
+     *
+     * @param title The title of the .png file.
+     * @param doRegression Whether this is a regression or classification problem.
+     * @throws IOException If an IO error occurs.
+     */
+    public void plotDatapoints(String title, boolean doRegression) throws IOException {
+        Plotter.datapointScatter(df, "true", title, doRegression);
     }
 
     /** Getter method for dimensions - only needed for package access.
