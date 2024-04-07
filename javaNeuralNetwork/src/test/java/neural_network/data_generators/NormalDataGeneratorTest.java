@@ -1,9 +1,11 @@
 package neural_network.data_generators;
 
 import neural_network.util.Header;
+import neural_network.util.Plotter;
 import org.apache.commons.csv.CSVPrinter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.MockedStatic;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -198,5 +200,18 @@ public class NormalDataGeneratorTest extends DataGeneratorTest {
         verify(mockPrinter).printRecord(List.of("0.2", "3.1", "3.3"));
         verify(mockPrinter).flush();
         verify(mockPrinter).close();
+    }
+
+    @Test
+    void plotDatapoints() throws IOException {
+        NavigableMap<Header, List<String>> blankDf = new TreeMap<>(Map.of(
+                Header.X_1, List.of(), Header.Y, List.of()
+        ));
+        try (MockedStatic<Plotter> mockPlotter = mockStatic(Plotter.class)) {
+            oneCoordGen.plotDatapoints("test_title", false);
+            mockPlotter.verify(
+                    () -> Plotter.datapointScatter(blankDf, "true",
+                            "test_title", false), times(1));
+        }
     }
 }

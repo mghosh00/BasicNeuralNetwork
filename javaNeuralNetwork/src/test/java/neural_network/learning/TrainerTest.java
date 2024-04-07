@@ -8,6 +8,7 @@ import neural_network.util.Header;
 import neural_network.util.Partitioner;
 import neural_network.util.Plotter;
 import org.junit.jupiter.api.*;
+import org.mockito.MockedStatic;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
@@ -390,5 +391,39 @@ public class TrainerTest extends LearnerTest {
         assertFalse(output.contains("Epoch: 107"));
         assertTrue(output.contains("Epoch: 108"));
         assertFalse(output.contains("Epoch: 109"));
+    }
+
+    @Test
+    void generateScatter() throws IOException {
+        try (MockedStatic<Plotter> mockPlotter = mockStatic(Plotter.class)) {
+            trainer.generateScatter("test_title");
+            mockPlotter.verify(
+                    () -> Plotter.datapointScatter(categoricalDf, "training",
+                            "test_title", false), times(1));
+        }
+    }
+
+    @Test
+    void comparisonScatter() throws IOException {
+        Exception exception = assertThrows(RuntimeException.class,
+                () -> trainer.comparisonScatter("test_title"));
+        assertEquals("Cannot call this method with categorical data.",
+                exception.getMessage());
+        try (MockedStatic<Plotter> mockPlotter = mockStatic(Plotter.class)) {
+            regTrainer.comparisonScatter("test_title");
+            mockPlotter.verify(
+                    () -> Plotter.comparisonScatter(regDf, "training",
+                            "test_title"), times(1));
+        }
+    }
+
+    @Test
+    void generateLossPlot() throws IOException {
+        try (MockedStatic<Plotter> mockPlotter = mockStatic(Plotter.class)) {
+            trainer.generateLossPlot("test_title");
+            mockPlotter.verify(
+                    () -> Plotter.plotLoss(trainer.getLossDf(),
+                            "test_title"), times(1));
+        }
     }
 }

@@ -5,17 +5,19 @@ import neural_network.functions.CrossEntropyLoss;
 import neural_network.functions.MSELoss;
 import neural_network.util.Header;
 import neural_network.util.Partitioner;
+import neural_network.util.Plotter;
 import neural_network.util.WeightedPartitioner;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.MockedStatic;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
@@ -218,6 +220,30 @@ public class TesterTest extends LearnerTest {
         spyTester.run();
         verify(spyTester, times(0))
                 .updateCategoricalDataframe();
+    }
+
+    @Test
+    void generateScatter() throws IOException {
+        try (MockedStatic<Plotter> mockPlotter = mockStatic(Plotter.class)) {
+            tester.generateScatter("test_title");
+            mockPlotter.verify(
+                    () -> Plotter.datapointScatter(categoricalDf, "testing",
+                            "test_title", false), times(1));
+        }
+    }
+
+    @Test
+    void comparisonScatter() throws IOException {
+        Exception exception = assertThrows(RuntimeException.class,
+                () -> tester.comparisonScatter("test_title"));
+        assertEquals("Cannot call this method with categorical data.",
+                exception.getMessage());
+        try (MockedStatic<Plotter> mockPlotter = mockStatic(Plotter.class)) {
+            regTester.comparisonScatter("test_title");
+            mockPlotter.verify(
+                    () -> Plotter.comparisonScatter(regDf, "testing",
+                            "test_title"), times(1));
+        }
     }
 
     @Test

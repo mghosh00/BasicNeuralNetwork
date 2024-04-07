@@ -5,12 +5,15 @@ import neural_network.functions.CrossEntropyLoss;
 import neural_network.functions.MSELoss;
 import neural_network.util.Header;
 import neural_network.util.Partitioner;
+import neural_network.util.Plotter;
 import neural_network.util.WeightedPartitioner;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.MockedStatic;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.*;
 
@@ -235,5 +238,29 @@ public class ValidatorTest extends LearnerTest {
         spyValidator.run();
         verify(spyValidator, times(1))
                 .run();
+    }
+
+    @Test
+    void generateScatter() throws IOException {
+        try (MockedStatic<Plotter> mockPlotter = mockStatic(Plotter.class)) {
+            validator.generateScatter("test_title");
+            mockPlotter.verify(
+                    () -> Plotter.datapointScatter(categoricalDf, "validation",
+                            "test_title", false), times(1));
+        }
+    }
+
+    @Test
+    void comparisonScatter() throws IOException {
+        Exception exception = assertThrows(RuntimeException.class,
+                () -> validator.comparisonScatter("test_title"));
+        assertEquals("Cannot call this method with categorical data.",
+                exception.getMessage());
+        try (MockedStatic<Plotter> mockPlotter = mockStatic(Plotter.class)) {
+            regValidator.comparisonScatter("test_title");
+            mockPlotter.verify(
+                    () -> Plotter.comparisonScatter(regDf, "validation",
+                            "test_title"), times(1));
+        }
     }
 }
