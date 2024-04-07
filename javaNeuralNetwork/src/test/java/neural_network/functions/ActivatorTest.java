@@ -16,6 +16,7 @@ public abstract class ActivatorTest<T> {
 
     public abstract Map<String, List<Object>> getActivatorWithExpectedGradient();
 
+    @SuppressWarnings("unchecked")
     @Test
     void call() {
         // The below code allows for testing of multiple different activators
@@ -30,6 +31,7 @@ public abstract class ActivatorTest<T> {
         }
     }
 
+    @SuppressWarnings("unchecked")
     @Test
     void gradient() {
         // The below code allows for testing of multiple different activators

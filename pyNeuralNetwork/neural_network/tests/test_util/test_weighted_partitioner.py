@@ -45,7 +45,7 @@ class TestWeightedPartitioner(TestCase):
                                                            "x_3", "y"])
         self.reg_partitioner = WeightedPartitioner(10, 5, self.reg_df,
                                                    do_regression=True,
-                                                   bins=8)
+                                                   num_bins=8)
 
     def test_construct_erroneous(self):
         with self.assertRaises(ValueError) as ve:
@@ -57,14 +57,14 @@ class TestWeightedPartitioner(TestCase):
     def test_construct(self):
         self.assertEqual(10, self.even_partitioner._n)
         self.assertEqual(5, self.even_partitioner._m)
-        self.assertEqual(3, self.even_partitioner._num_classes)
+        self.assertEqual(3, self.even_partitioner._num_bins)
         self.assertDictEqual({0: [4, 6, 8], 1: [0, 1, 5, 7, 9], 2: [2, 3]},
                              self.even_partitioner._class_dict)
 
     def test_construct_regression(self):
         self.assertEqual(10, self.reg_partitioner._n)
         self.assertEqual(5, self.reg_partitioner._m)
-        self.assertEqual(6, self.reg_partitioner._num_classes)
+        self.assertEqual(6, self.reg_partitioner._num_bins)
         self.assertDictEqual({0: [0, 7], 1: [6], 2: [4, 5], 3: [2], 4: [1],
                               5: [3, 8, 9]},
                              self.reg_partitioner._class_dict)

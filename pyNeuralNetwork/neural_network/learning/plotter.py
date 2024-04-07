@@ -7,7 +7,7 @@ from plotnine import ggplot, aes, geom_point, ggtitle, geom_abline
 
 
 class Plotter:
-    """Class to track progress of training/testing
+    """Class to create plots evaluating the performance of the neural network.
     """
 
     path = "plots/"
@@ -94,6 +94,8 @@ class Plotter:
         Parameters
         df : pd.DataFrame
             The data
+        str : title [Optional, Default='']
+            A title for the plot
         """
         if not os.path.exists(Plotter.path):
             os.makedirs(Plotter.path)

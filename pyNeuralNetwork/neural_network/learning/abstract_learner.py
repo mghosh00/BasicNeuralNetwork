@@ -25,7 +25,7 @@ class AbstractLearner:
         data : pd.DataFrame
             All the data for the `Network`
         batch_size : int
-            The number of datapoints used in each epoch
+            The number of datapoints per batch for an epoch
         weighted : bool
             If `True` then we use the `WeightedPartitioner`, otherwise we use
             the standard `Partitioner`
@@ -36,7 +36,7 @@ class AbstractLearner:
         self._network = network
         self._regression = network.is_regressor()
         data = data.copy()
-        # Ensure that number of input nodes equals number of features
+        # Ensure that number of input neurons equals number of features
         n = len(data.columns) - 1
         m = network.get_neuron_counts()[0]
         if m != n:
@@ -87,7 +87,7 @@ class AbstractLearner:
             self._partitioner = WeightedPartitioner(len(self._data),
                                                     batch_size, self._data,
                                                     self._regression,
-                                                    bins=bins)
+                                                    num_bins=bins)
         else:
             self._partitioner = Partitioner(len(self._data), batch_size)
 
@@ -108,8 +108,6 @@ class AbstractLearner:
         for i in batch_ids:
             labelled_point = self._data.loc[i].to_numpy()
             x, y = labelled_point[:-2], labelled_point[-2]
-            if not self._regression:
-                y = int(y)
 
             # Do the forward pass and save the predicted value to the df
             if self._regression:
@@ -119,6 +117,7 @@ class AbstractLearner:
             else:
                 # We choose the class with maximal softmax probability as our
                 # y_hat for output
+                y = int(y)
                 softmax_vector = self._network.forward_pass_one_datapoint(x)
                 total_loss += self._cross_entropy_loss(softmax_vector, y)
                 self._data.at[i, 'y_hat'] = max(range(len(softmax_vector)),

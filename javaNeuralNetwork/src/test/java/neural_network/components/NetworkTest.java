@@ -509,7 +509,7 @@ public class NetworkTest {
     }
 
     @Test
-    void testBackPropagateWeightWithNoMomentum() {
+    void backPropagateWeightWithNoMomentum() {
         // The network has adaptive = true
         Edge edge = network.getEdges().get(1).get(1).get(0);
 
@@ -533,6 +533,21 @@ public class NetworkTest {
     }
 
     @Test
+    void backPropagateWeights() {
+        Network spyNetwork = spy(network);
+        doNothing().when(spyNetwork).backPropagateWeight(any(Edge.class));
+        spyNetwork.backPropagateWeights();
+        for (List<List<Edge>> list1 : spyNetwork.getEdges()) {
+            for (List<Edge> list2 : list1) {
+                for (Edge edge : list2) {
+                    verify(spyNetwork, times(1))
+                            .backPropagateWeight(edge);
+                }
+            }
+        }
+    }
+
+    @Test
     void backPropagateBias() {
         Neuron neuron = network.getLayers().get(3).getNeurons().get(0);
 
@@ -550,5 +565,23 @@ public class NetworkTest {
         assertIterableEquals(List.of(), neuron.getBiasGradients());
 
         assertEquals(neuron.getBias(), 2 - 0.005 * 0.25);
+    }
+
+    @Test
+    void backPropagateBiases() {
+        Network spyNetwork = spy(network);
+        doNothing().when(spyNetwork).backPropagateBias(any(Neuron.class));
+        spyNetwork.backPropagateBiases();
+        for (Layer layer : spyNetwork.getLayers()) {
+            for (Neuron neuron : layer.getNeurons()) {
+                if (neuron.getId().get(0) == 0) {
+                    verify(spyNetwork, times(0))
+                            .backPropagateBias(neuron);
+                } else {
+                    verify(spyNetwork, times(1))
+                            .backPropagateBias(neuron);
+                }
+            }
+        }
     }
 }

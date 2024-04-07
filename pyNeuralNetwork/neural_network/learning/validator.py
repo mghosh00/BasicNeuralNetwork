@@ -29,13 +29,18 @@ class Validator(AbstractLearner):
         super().__init__(network, data, batch_size, weighted)
         self._epoch = 0
 
-    def validate(self, factor: int):
+    def validate(self, factor: int) -> float:
         """Performs validation of the network.
 
         Parameters
         ----------
         factor : int
             The epochs on which we need to print out the validation
+
+        Returns
+        -------
+        float
+            The validation loss
         """
         self._epoch += 1
         total_loss = 0

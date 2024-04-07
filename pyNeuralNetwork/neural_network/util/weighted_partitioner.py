@@ -8,11 +8,11 @@ from .partitioner import Partitioner
 
 class WeightedPartitioner(Partitioner):
     """Class to create `m` sets from a list of `n` integers weighted by which
-    ground truth class each integer lies in
+    ground truth class each integer lies in.
     """
 
     def __init__(self, n: int, m: int, df: pd.DataFrame,
-                 do_regression: bool = False, bins: int = 10):
+                 do_regression: bool = False, num_bins: int = 10):
         """Constructor method
 
         Parameters
@@ -25,7 +25,7 @@ class WeightedPartitioner(Partitioner):
             The classes for the integers
         do_regression : bool
             Whether we are partitioning regressional or classificational data
-        bins : int
+        num_bins : int
             If regression is True, this represents the number of bins to
             split the data in to. Otherwise, this parameter is ignored
         """
@@ -34,30 +34,30 @@ class WeightedPartitioner(Partitioner):
             raise ValueError(f"n must equal the length of the dataframe "
                              f"(n = {n}, len(df) = {len(df)})")
         if do_regression:
-            self._num_classes = bins
-            class_dict = {j: [] for j in range(self._num_classes)}
+            self._num_bins = num_bins
+            class_dict = {j: [] for j in range(self._num_bins)}
             min_y, max_y = min(df['y']), max(df['y'])
-            class_width = (max_y - min_y) / bins
+            class_width = (max_y - min_y) / num_bins
             for i in range(len(df)):
                 y = df.loc[i, 'y']
                 chosen_bin = int((y - min_y) / class_width)
-                if chosen_bin == self._num_classes:
-                    chosen_bin = self._num_classes - 1
+                if chosen_bin == self._num_bins:
+                    chosen_bin = self._num_bins - 1
                 class_dict[chosen_bin].append(i)
 
             # Need to account for potentially empty class lists
-            for j in range(self._num_classes):
+            for j in range(self._num_bins):
                 if not class_dict[j]:
                     class_dict.pop(j)
-                    self._num_classes -= 1
+                    self._num_bins -= 1
 
             self._class_dict = {}
             for i, j in enumerate(class_dict.keys()):
                 # Relabelling the classes
                 self._class_dict[i] = class_dict[j]
         else:
-            self._num_classes = len(set(df['y'].to_numpy()))
-            self._class_dict = {j: [] for j in range(self._num_classes)}
+            self._num_bins = len(set(df['y'].to_numpy()))
+            self._class_dict = {j: [] for j in range(self._num_bins)}
             for i in range(len(df)):
                 self._class_dict[int(df.loc[i, 'y'])].append(i)
 
@@ -71,7 +71,7 @@ class WeightedPartitioner(Partitioner):
             The list of sets
         """
         # Produces a list of `n` class indices
-        chosen_classes = random.choices(population=range(self._num_classes),
+        chosen_classes = random.choices(population=range(self._num_bins),
                                         k=self._n)
         output_list = []
         num_sets = math.ceil(self._n / self._m)

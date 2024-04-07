@@ -1,5 +1,8 @@
 package neural_network.functions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static java.lang.Math.exp;
 
 /** Class to represent the sigmoid function, which is an {@code Activator} for
