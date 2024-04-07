@@ -121,6 +121,17 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#comparisonScatter(java.lang.String)" class="member-name-link">comparisonScatter</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;title)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Creates scatter plot comparing predicted to actual values (for
+ regression problems only).</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#generateScatter(java.lang.String)" class="member-name-link">generateScatter</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;title)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Creates scatter plot from the data and their predicted values.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#run()" class="member-name-link">run</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">This method does nothing, as we need to use the <code>validate</code> method instead.</div>
@@ -135,7 +146,7 @@ loadScripts(document, 'script');</script>
 </div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-neural_network.learning.Learner">Methods inherited from class&nbsp;neural_network.learning.<a href="Learner.html" title="class in neural_network.learning">Learner</a></h3>
-<code><a href="Learner.html#forwardPassOneBatch(java.util.List)">forwardPassOneBatch</a>, <a href="Learner.html#getBatchSize()">getBatchSize</a>, <a href="Learner.html#getCategoricalDf()">getCategoricalDf</a>, <a href="Learner.html#getCategoryNames()">getCategoryNames</a>, <a href="Learner.html#getDf()">getDf</a>, <a href="Learner.html#getNetwork()">getNetwork</a>, <a href="Learner.html#getNumDatapoints()">getNumDatapoints</a>, <a href="Learner.html#getPartitioner()">getPartitioner</a>, <a href="Learner.html#isRegressor()">isRegressor</a>, <a href="Learner.html#setCrossEntropyLoss(neural_network.functions.CrossEntropyLoss)">setCrossEntropyLoss</a>, <a href="Learner.html#setMseLoss(neural_network.functions.MSELoss)">setMseLoss</a>, <a href="Learner.html#setNetwork(neural_network.components.Network)">setNetwork</a>, <a href="Learner.html#setPartitioner(neural_network.util.Partitioner)">setPartitioner</a>, <a href="Learner.html#setYHat(java.util.List)">setYHat</a>, <a href="Learner.html#storeGradients(int)">storeGradients</a>, <a href="Learner.html#updateCategoricalDataframe()">updateCategoricalDataframe</a></code></div>
+<code><a href="Learner.html#comparisonScatter(java.lang.String,java.lang.String)">comparisonScatter</a>, <a href="Learner.html#forwardPassOneBatch(java.util.List)">forwardPassOneBatch</a>, <a href="Learner.html#generateScatter(java.lang.String,java.lang.String)">generateScatter</a>, <a href="Learner.html#getBatchSize()">getBatchSize</a>, <a href="Learner.html#getCategoricalDf()">getCategoricalDf</a>, <a href="Learner.html#getCategoryNames()">getCategoryNames</a>, <a href="Learner.html#getDf()">getDf</a>, <a href="Learner.html#getNetwork()">getNetwork</a>, <a href="Learner.html#getNumDatapoints()">getNumDatapoints</a>, <a href="Learner.html#getPartitioner()">getPartitioner</a>, <a href="Learner.html#isRegressor()">isRegressor</a>, <a href="Learner.html#setCrossEntropyLoss(neural_network.functions.CrossEntropyLoss)">setCrossEntropyLoss</a>, <a href="Learner.html#setMseLoss(neural_network.functions.MSELoss)">setMseLoss</a>, <a href="Learner.html#setNetwork(neural_network.components.Network)">setNetwork</a>, <a href="Learner.html#setPartitioner(neural_network.util.Partitioner)">setPartitioner</a>, <a href="Learner.html#setYHat(java.util.List)">setYHat</a>, <a href="Learner.html#storeGradients(int)">storeGradients</a>, <a href="Learner.html#updateCategoricalDataframe()">updateCategoricalDataframe</a></code></div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-java.lang.Object">Methods inherited from class&nbsp;java.lang.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></h3>
 <code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#clone()" title="class or interface in java.lang" class="external-link">clone</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object)" title="class or interface in java.lang" class="external-link">equals</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#finalize()" title="class or interface in java.lang" class="external-link">finalize</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#getClass()" title="class or interface in java.lang" class="external-link">getClass</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#hashCode()" title="class or interface in java.lang" class="external-link">hashCode</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#notify()" title="class or interface in java.lang" class="external-link">notify</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#notifyAll()" title="class or interface in java.lang" class="external-link">notifyAll</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#toString()" title="class or interface in java.lang" class="external-link">toString</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait()" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait(long)" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait(long,int)" title="class or interface in java.lang" class="external-link">wait</a></code></div>
@@ -216,6 +227,37 @@ loadScripts(document, 'script');</script>
 <dd><code>factor</code> - The epochs on which we need to print out the validation.</dd>
 <dt>Returns:</dt>
 <dd>The validation loss.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="generateScatter(java.lang.String)">
+<h3>generateScatter</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">generateScatter</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;title)</span>
+                     throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></span></div>
+<div class="block">Creates scatter plot from the data and their predicted values.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>title</code> - An optional title to append to the plot.</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></code> - If an IO error occurs.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="comparisonScatter(java.lang.String)">
+<h3>comparisonScatter</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">comparisonScatter</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;title)</span>
+                       throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></span></div>
+<div class="block">Creates scatter plot comparing predicted to actual values (for
+ regression problems only).</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>title</code> - An optional title to append to the plot.</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></code> - If an IO error occurs.</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - If this method is called with a categorical network,
+                          instead user should call <code>Tester.generateConfusion()</code>.</dd>
 </dl>
 </section>
 </li>
