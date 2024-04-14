@@ -126,6 +126,12 @@ loadScripts(document, 'script');</script>
  or regression values (depending on whether this is for a classification
  or regression problem).</div>
 </dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator2.html#call()" class="member-name-link">call()</a> - Method in class neural_network.data_generators.<a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator2.html" title="class in neural_network.data_generators">DataGenerator2</a></dt>
+<dd>
+<div class="block">Writes to the <code>df</code> with generated data and the specific classes
+ or regression values (depending on whether this is for a classification
+ or regression problem).</div>
+</dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/util/Partitioner.html#call()" class="member-name-link">call()</a> - Method in class neural_network.util.<a href="javaNeuralNetwork.main/neural_network/util/Partitioner.html" title="class in neural_network.util">Partitioner</a></dt>
 <dd>
 <div class="block">Shuffles all integers from <code>0</code> to <code>numInts - 1</code> and creates
@@ -167,6 +173,14 @@ loadScripts(document, 'script');</script>
 <dt><a href="javaNeuralNetwork.main/neural_network/functions/Activator.html#call(T)" class="member-name-link">call(T)</a> - Method in interface neural_network.functions.<a href="javaNeuralNetwork.main/neural_network/functions/Activator.html" title="interface in neural_network.functions">Activator</a></dt>
 <dd>
 <div class="block">Calling of the activating function.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/examples/classification/circle/Circle.html" class="type-name-link" title="class in examples.classification.circle">Circle</a> - Class in <a href="javaNeuralNetwork.main/examples/classification/circle/package-summary.html">examples.classification.circle</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="javaNeuralNetwork.main/examples/classification/circle/Circle.html#%3Cinit%3E()" class="member-name-link">Circle()</a> - Constructor for class examples.classification.circle.<a href="javaNeuralNetwork.main/examples/classification/circle/Circle.html" title="class in examples.classification.circle">Circle</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="javaNeuralNetwork.main/examples/classification/circle/Circle.html#classifier(double,double)" class="member-name-link">classifier(double, double)</a> - Static method in class examples.classification.circle.<a href="javaNeuralNetwork.main/examples/classification/circle/Circle.html" title="class in examples.classification.circle">Circle</a></dt>
+<dd>
+<div class="block">The classifier method for the circle example.</div>
 </dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/components/Neuron.html#clearBiasGradients()" class="member-name-link">clearBiasGradients()</a> - Method in class neural_network.components.<a href="javaNeuralNetwork.main/neural_network/components/Neuron.html" title="class in neural_network.components">Neuron</a></dt>
 <dd>
@@ -225,6 +239,15 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Constructor method for <code>DataGenerator</code>.</div>
 </dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator2.html" class="type-name-link" title="class in neural_network.data_generators">DataGenerator2</a>&lt;<a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator2.html" title="type parameter in DataGenerator2">T</a>&gt; - Class in <a href="javaNeuralNetwork.main/neural_network/data_generators/package-summary.html">neural_network.data_generators</a></dt>
+<dd>
+<div class="block">Class to randomly generate datapoints and categorise them according to
+ a given rule or provide an output value if we are regressing.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator2.html#%3Cinit%3E(int)" class="member-name-link">DataGenerator2(int)</a> - Constructor for class neural_network.data_generators.<a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator2.html" title="class in neural_network.data_generators">DataGenerator2</a></dt>
+<dd>
+<div class="block">Constructor method for <code>DataGenerator</code>.</div>
+</dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/util/Plotter.html#datapointScatter(java.util.NavigableMap,java.lang.String,java.lang.String,boolean)" class="member-name-link">datapointScatter(NavigableMap&lt;Header, List&lt;String&gt;&gt;, String, String, boolean)</a> - Static method in class neural_network.util.<a href="javaNeuralNetwork.main/neural_network/util/Plotter.html" title="class in neural_network.util">Plotter</a></dt>
 <dd>
 <div class="block">Creates a scatter plot of the predicted/true classes for a given set
@@ -251,6 +274,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Constructor method.</div>
 </dd>
+<dt><a href="javaNeuralNetwork.main/examples/classification/circle/package-summary.html">examples.classification.circle</a> - package examples.classification.circle</dt>
+<dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:F">F</h2>
 <dl class="index">
@@ -264,6 +289,10 @@ loadScripts(document, 'script');</script>
 <div class="block">Performs a forward pass for one datapoint, excluding the ground
  truth value.</div>
 </dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator2.html#function(double...)" class="member-name-link">function(double...)</a> - Method in class neural_network.data_generators.<a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator2.html" title="class in neural_network.data_generators">DataGenerator2</a></dt>
+<dd>
+<div class="block">THIS FUNCTION MUST BE OVERRIDDEN BY THE USER.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:G">G</h2>
 <dl class="index">
@@ -271,7 +300,14 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Creates a confusion matrix and dice scores from the results.</div>
 </dd>
+<dt><a href="javaNeuralNetwork.main/examples/classification/circle/Circle.html#generateData()" class="member-name-link">generateData()</a> - Static method in class examples.classification.circle.<a href="javaNeuralNetwork.main/examples/classification/circle/Circle.html" title="class in examples.classification.circle">Circle</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator.html#generateData()" class="member-name-link">generateData()</a> - Method in class neural_network.data_generators.<a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator.html" title="class in neural_network.data_generators">DataGenerator</a></dt>
+<dd>
+<div class="block">To generate the data using a specific probability distribution from
+ a subclass.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator2.html#generateData()" class="member-name-link">generateData()</a> - Method in class neural_network.data_generators.<a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator2.html" title="class in neural_network.data_generators">DataGenerator2</a></dt>
 <dd>
 <div class="block">To generate the data using a specific probability distribution from
  a subclass.</div>
@@ -561,6 +597,8 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:M">M</h2>
 <dl class="index">
+<dt><a href="javaNeuralNetwork.main/examples/classification/circle/Circle.html#main(java.lang.String%5B%5D)" class="member-name-link">main(String[])</a> - Static method in class examples.classification.circle.<a href="javaNeuralNetwork.main/examples/classification/circle/Circle.html" title="class in examples.classification.circle">Circle</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/functions/MSELoss.html" class="type-name-link" title="class in neural_network.functions">MSELoss</a> - Class in <a href="javaNeuralNetwork.main/neural_network/functions/package-summary.html">neural_network.functions</a></dt>
 <dd>
 <div class="block">Class to test the mean squared error loss for regression networks.</div>
@@ -677,6 +715,8 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:R">R</h2>
 <dl class="index">
+<dt><a href="javaNeuralNetwork.main/examples/classification/circle/Circle.html#run()" class="member-name-link">run()</a> - Static method in class examples.classification.circle.<a href="javaNeuralNetwork.main/examples/classification/circle/Circle.html" title="class in examples.classification.circle">Circle</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/learning/Learner.html#run()" class="member-name-link">run()</a> - Method in class neural_network.learning.<a href="javaNeuralNetwork.main/neural_network/learning/Learner.html" title="class in neural_network.learning">Learner</a></dt>
 <dd>
 <div class="block">Performs training/validation/testing</div>
@@ -935,7 +975,15 @@ the order they are declared.</div>
 <dd>
 <div class="block">Writes the generated data to a .csv file.</div>
 </dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator2.html#writeToCsv(java.lang.String)" class="member-name-link">writeToCsv(String)</a> - Method in class neural_network.data_generators.<a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator2.html" title="class in neural_network.data_generators">DataGenerator2</a></dt>
+<dd>
+<div class="block">Writes the generated data to a .csv file.</div>
+</dd>
 <dt><a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator.html#writeToCsv(java.lang.String,java.lang.String)" class="member-name-link">writeToCsv(String, String)</a> - Method in class neural_network.data_generators.<a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator.html" title="class in neural_network.data_generators">DataGenerator</a></dt>
+<dd>
+<div class="block">Writes the generated data to a .csv file.</div>
+</dd>
+<dt><a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator2.html#writeToCsv(java.lang.String,java.lang.String)" class="member-name-link">writeToCsv(String, String)</a> - Method in class neural_network.data_generators.<a href="javaNeuralNetwork.main/neural_network/data_generators/DataGenerator2.html" title="class in neural_network.data_generators">DataGenerator2</a></dt>
 <dd>
 <div class="block">Writes the generated data to a .csv file.</div>
 </dd>
