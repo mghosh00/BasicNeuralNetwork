@@ -242,4 +242,14 @@ public class PlotterTest {
         assertNull(Plotter.getChart());
         assertNull(Plotter.getWrappedChart());
     }
+
+    @Test
+    void plotLossNewDir() throws IOException {
+        Plotter.setDirName(dirName + "losses/");
+        Plotter.plotLoss(lossDf, "");
+        assertNull(Plotter.getChart());
+        assertNull(Plotter.getWrappedChart());
+        Files.deleteIfExists(Path.of(dirName + "losses/losses.png"));
+        Files.deleteIfExists(Path.of(dirName + "losses"));
+    }
 }
