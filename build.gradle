@@ -46,6 +46,7 @@ registerExample("runCircle", "examples.classification.circle.Circle")
 registerExample("runDiagonals", "examples.classification.diagonals.Diagonals")
 registerExample("runSineClassification", "examples.classification.sinusoidal.Sinusoidal")
 registerExample("runSineRegression", "examples.regression.sinusoidal.Sinusoidal")
+registerExample("runEvenOdd", "examples.classification.even_odd.EvenOdd")
 
 //tasks.register('circleJar', Jar) {
 //    // Define the name of the JAR file
