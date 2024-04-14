@@ -17,8 +17,8 @@ public class Plotter {
 
     private static String dirName = "plots/";
     private static boolean showPlots = false;
-    private static final List<Color> colours = List.of(Color.RED, Color.BLUE, Color.YELLOW,
-            Color.MAGENTA, Color.GREEN, Color.ORANGE, Color.CYAN, Color.PINK);
+    private static final List<Color> colours = List.of(Color.RED, Color.BLUE, Color.MAGENTA,
+            Color.GREEN, Color.YELLOW, Color.ORANGE, Color.CYAN, Color.PINK);
     private static XYChart chart = null;
     private static SwingWrapper<XYChart> wrappedChart = null;
 
