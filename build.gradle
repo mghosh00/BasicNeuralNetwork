@@ -9,7 +9,7 @@ plugins {
 }
 
 group 'mvg.solo'
-version '1.0-SNAPSHOT'
+version '1.0.0'
 
 allprojects {
     wrapper {
@@ -44,7 +44,8 @@ ext.registerExample = {String label, String mainClass ->
 // First argument is a label for the task, second argument is the location of the main method
 registerExample("runCircle", "examples.classification.circle.Circle")
 registerExample("runDiagonals", "examples.classification.diagonals.Diagonals")
-registerExample("runSine", "examples.classification.sinusoidal.Sinusoidal")
+registerExample("runSineClassification", "examples.classification.sinusoidal.Sinusoidal")
+registerExample("runSineRegression", "examples.regression.sinusoidal.Sinusoidal")
 
 //tasks.register('circleJar', Jar) {
 //    // Define the name of the JAR file
