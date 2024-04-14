@@ -50,3 +50,6 @@ sourceSets {
         }
     }
 }
+processResources {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
