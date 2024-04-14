@@ -16,6 +16,9 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.NavigableMap;
 
+/** The {@code Circle} example can be run as a gradle task labelled {@code runCircle}.
+ *
+ */
 public class Circle {
 
     private static final String resourcesPath = "javaNeuralNetwork/src/main/resources/examples/classification/circle";

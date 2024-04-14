@@ -116,18 +116,23 @@ public class Tester extends Learner {
      * @param contingencyTable Pairwise frequency data for y and y hat values.
      */
     void printConfusion(List<List<Integer>> contingencyTable) {
+        System.out.println("Confusion matrix");
+        System.out.println("-----------------------------------------------");
         List<String> categoryNames = getCategoryNames();
         int numCategories = categoryNames.size();
+        int maxLength = Collections.max(categoryNames.stream()
+                .map(String::length).toList());
         String strCategoryNames = String.join("  ", categoryNames);
-        System.out.printf("%-5s%-5s%-5s%n", "", "", "yHat");
-        System.out.printf("%-5s%-5s%-5s%n", "", "", strCategoryNames);
+        System.out.printf("%-5s%-8s%-10s%n", "", "", "yHat");
+        System.out.printf("%-5s%-8s%-10s%n", "", "", strCategoryNames);
         int halfWay = numCategories / 2;
         for (int i = 0; i < numCategories; i ++) {
             String yTitle = (i == halfWay) ? "y" : "";
-            String strRow = String.join("  ", contingencyTable.get(i).stream()
+            String strRow = String.join(" ".repeat(maxLength), contingencyTable.get(i).stream()
                     .map(Object::toString).toList());
-            System.out.printf("%-5s%-5s%-5s%n", yTitle, categoryNames.get(i), strRow);
+            System.out.printf("%-5s%-8s%-10s%n", yTitle, categoryNames.get(i), strRow);
         }
+        System.out.println("-----------------------------------------------");
     }
 
     /** Prints out the dice scores from a contingency table.

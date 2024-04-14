@@ -267,10 +267,12 @@ public class TesterTest extends LearnerTest {
                 List.of(3, 0), List.of(1, 1));
         tester.printConfusion(expectedContingencyTable);
         String outputString = outContent.toString();
-        assertTrue(outputString.contains("          yHat"));
-        assertTrue(outputString.contains("          l  r"));
-        assertTrue(outputString.contains("     l    3  0"));
-        assertTrue(outputString.contains("y    r    1  1"));
+        assertTrue(outputString.contains("Confusion matrix"));
+        assertTrue(outputString.contains("-----------------------------------------------"));
+        assertTrue(outputString.contains("             yHat"));
+        assertTrue(outputString.contains("             l  r"));
+        assertTrue(outputString.contains("     l       3 0"));
+        assertTrue(outputString.contains("y    r       1 1"));
     }
 
     @Test
