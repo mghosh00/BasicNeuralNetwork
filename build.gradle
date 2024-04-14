@@ -20,20 +20,31 @@ allprojects {
 repositories {
     mavenCentral()
 }
+
 test {
     enabled = true
     useJUnitPlatform()
 }
+
 sourceSets {
     main.java.srcDirs = ['javaNeuralNetwork/src/main/java']
     main.resources.srcDirs = ['javaNeuralNetwork/src/main/resources']
     test.java.srcDirs = ['javaNeuralNetwork/src/test/java']
 }
-tasks.register('runCircle', JavaExec) {
-    dependsOn 'classes'
-    main 'examples.classification.circle.Circle'
-    classpath sourceSets.main.runtimeClasspath
+
+ext.registerExample = {String label, String mainClass ->
+    tasks.register(label, JavaExec) {
+        dependsOn 'classes'
+        main mainClass
+        classpath sourceSets.main.runtimeClasspath
+    }
 }
+
+// Example run configurations go here!
+// First argument is a label for the task, second argument is the location of the main method
+registerExample("runCircle", "examples.classification.circle.Circle")
+registerExample("runDiagonals", "examples.classification.diagonals.Diagonals")
+
 //tasks.register('circleJar', Jar) {
 //    // Define the name of the JAR file
 //    archiveFileName = 'circleJar.jar'
