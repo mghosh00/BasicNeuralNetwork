@@ -1,5 +1,6 @@
 module:javaNeuralNetwork.main
 examples.classification.circle
+examples.classification.diagonals
 neural_network.components
 neural_network.data_generators
 neural_network.functions
