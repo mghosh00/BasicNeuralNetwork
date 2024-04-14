@@ -8,7 +8,7 @@ plugins {
     id 'java'
 }
 
-group 'org.example'
+group 'mvg.solo'
 version '1.0-SNAPSHOT'
 
 allprojects {
@@ -29,6 +29,22 @@ sourceSets {
     main.resources.srcDirs = ['javaNeuralNetwork/src/main/resources']
     test.java.srcDirs = ['javaNeuralNetwork/src/test/java']
 }
+tasks.register('runCircle', JavaExec) {
+    dependsOn 'classes'
+    main 'examples.classification.circle.Circle'
+    classpath sourceSets.main.runtimeClasspath
+}
+//tasks.register('circleJar', Jar) {
+//    // Define the name of the JAR file
+//    archiveFileName = 'circleJar.jar'
+//    // Define the contents of the JAR file (in this case, example source code)
+//    from sourceSets.main.java.srcDirs
+//
+//     manifest {
+//         attributes 'Main-Class': 'examples.classification.circle.Circle'
+//     }
+//}
+
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
     testImplementation 'org.mockito:mockito-core:5.11.0'

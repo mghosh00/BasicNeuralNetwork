@@ -3,11 +3,19 @@ plugins {
     id 'jacoco'
 }
 
-group 'org.example'
+group 'mvg.solo'
 version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    testImplementation 'org.mockito:mockito-core:5.11.0'
+    testImplementation 'org.mockito:mockito-inline:5.2.0'
+    implementation 'org.apache.commons:commons-csv:1.10.0'
+    implementation 'org.knowm.xchart:xchart:3.8.7'
 }
 
 apply from: 'jacoco.gradle'
@@ -29,23 +37,16 @@ javadoc {
 sourceSets {
     main {
         java {
-            srcDirs 'main/java'
+            srcDirs 'src/main/java'
         }
         resources {
-            srcDirs 'main/resources'
+            srcDirs 'src/main/resources'
         }
     }
 
     test {
         java {
-            srcDirs 'test/java'
+            srcDirs 'src/test/java'
         }
     }
-}
-dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
-    testImplementation 'org.mockito:mockito-core:5.11.0'
-    testImplementation 'org.mockito:mockito-inline:5.2.0'
-    implementation 'org.apache.commons:commons-csv:1.10.0'
-    implementation 'org.knowm.xchart:xchart:3.8.7'
 }
