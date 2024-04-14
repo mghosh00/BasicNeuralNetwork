@@ -7,17 +7,17 @@ jacoco {
 
 jacocoTestReport {
     dependsOn test
-    afterEvaluate {
-        classDirectories.setFrom(files(classDirectories.files.collect {
-            fileTree(dir: it, exclude: [
-                    "javaNeuralNetwork/src/main/java/examples/**"
-            ])
-        }))
-    }
     description = "Generate Jacoco coverage reports after running tests."
     reports {
         xml.required = true
         html.required = true
+    }
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: [
+                    "examples/**"
+            ])
+        }))
     }
     finalizedBy jacocoTestCoverageVerification
 }
