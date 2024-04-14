@@ -34,6 +34,10 @@ tasks.register('runCircle', JavaExec) {
     main 'examples.classification.circle.Circle'
     classpath sourceSets.main.runtimeClasspath
 }
+
+processResources {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
 //tasks.register('circleJar', Jar) {
 //    // Define the name of the JAR file
 //    archiveFileName = 'circleJar.jar'
