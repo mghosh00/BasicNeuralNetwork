@@ -1,6 +1,7 @@
 module:javaNeuralNetwork.main
 examples.classification.circle
 examples.classification.diagonals
+examples.classification.even_odd
 examples.classification.sinusoidal
 examples.regression.sinusoidal
 neural_network.components
